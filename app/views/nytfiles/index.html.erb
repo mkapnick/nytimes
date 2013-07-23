@@ -1,0 +1,23 @@
+<h1>Listing nytfiles</h1>
+
+<table>
+  <tr>
+    <th>Uploads</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @nytfiles.each do |nytfile| %>
+  <tr>
+    <td><%= nytfile.uploads %></td>
+    <td><%= link_to 'Show', nytfile %></td>
+    <td><%= link_to 'Edit', edit_nytfile_path(nytfile) %></td>
+    <td><%= link_to 'Destroy', nytfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Nytfile', new_nytfile_path %>

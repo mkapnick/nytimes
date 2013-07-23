@@ -1,0 +1,2 @@
+module NytfilesHelper
+end

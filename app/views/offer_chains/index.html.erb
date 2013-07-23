@@ -1,0 +1,25 @@
+<h1>Listing offer_chains</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Approved</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @offer_chains.each do |offer_chain| %>
+  <tr>
+    <td><%= offer_chain.date %></td>
+    <td><%= offer_chain.approved %></td>
+    <td><%= link_to 'Show', offer_chain %></td>
+    <td><%= link_to 'Edit', edit_offer_chain_path(offer_chain) %></td>
+    <td><%= link_to 'Destroy', offer_chain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Offer chain', new_offer_chain_path %>

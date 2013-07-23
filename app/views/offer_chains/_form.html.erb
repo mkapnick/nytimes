@@ -1,0 +1,25 @@
+<%= form_for(@offer_chain) do |f| %>
+  <% if @offer_chain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@offer_chain.errors.count, "error") %> prohibited this offer_chain from being saved:</h2>
+
+      <ul>
+      <% @offer_chain.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.text_field :date %>
+  </div>
+  <div class="field">
+    <%= f.label :approved %><br />
+    <%= f.text_field :approved %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<%= form_for(@nytfile) do |f| %>
+  <% if @nytfile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@nytfile.errors.count, "error") %> prohibited this nytfile from being saved:</h2>
+
+      <ul>
+      <% @nytfile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uploads %><br />
+    <%= f.text_field :uploads %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

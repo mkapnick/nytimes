@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @offer_chain.date %>
+</p>
+
+<p>
+  <b>Approved:</b>
+  <%= @offer_chain.approved %>
+</p>
+
+
+<%= link_to 'Edit', edit_offer_chain_path(@offer_chain) %> |
+<%= link_to 'Back', offer_chains_path %>
