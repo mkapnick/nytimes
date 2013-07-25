@@ -1,25 +1,60 @@
-<h1>Listing offer_chains</h1>
+Ecommerce Platform
+<style type="text/css">
+  .file{
+    position:absolute;
+    background-color: #DDF;
+    left: 15%;
+    padding-right: 144px;
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Approved</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  }
+ 
+  .textBox {
+    position:absolute;
+    width: 400px;
+    left: 15%;
+  }
+    #excelDiv {
+    position:relative;
+    top:35px;   
+  }
+ input[type='file']
+ {
+    opacity:0;  
+ }
 
-<% @offer_chains.each do |offer_chain| %>
-  <tr>
-    <td><%= offer_chain.date %></td>
-    <td><%= offer_chain.approved %></td>
-    <td><%= link_to 'Show', offer_chain %></td>
-    <td><%= link_to 'Edit', edit_offer_chain_path(offer_chain) %></td>
-    <td><%= link_to 'Destroy', offer_chain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+ #chooseFileButton {
+  position:absolute;
+  top: 40px;
+  left: 285px;
+ }
 
-<br />
+ #excelSSText {
+  position:absolute;
+  left: 20px;
+ }
 
-<%= link_to 'New Offer chain', new_offer_chain_path %>
+</style>
+
+<script>
+function getPath() {
+  alert($('input[type=file]').val())
+}
+function putInTextBox(oFileInput, sTargetID) {
+  value = oFileInput.value.substring(12)
+  document.getElementById(sTargetID).value = value
+}
+</script>
+
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+<div id= "excelDiv">
+<form action="upload.php" method="post" enctype="multipart/form-data">
+  <!--<span class="excelSSText "> Excel Spreadsheet </span>!-->
+  <input type="text" class = "textBox" id="txtFileName" size = "50" readonly/>
+  <input type="file" id="fileSelect" class ="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" onchange="putInTextBox(this, 'txtFileName');"/> 
+  <input type="submit" value="Generate" id="chooseFileButton" /> 
+</div>
+ 
+</form>
+
+
+

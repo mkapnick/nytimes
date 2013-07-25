@@ -8,6 +8,9 @@ Nytimes::Application.routes.draw do
   resources :offer_chains
 
   root :to => "offer_chains#index"
+  
+  /get --> creating an endpoint/ 
+  get '/upload', :to => 'upload#index' #:to => '' goes to that controller, specifically, the upload controller 
 
 
   # The priority is based upon order of creation:
