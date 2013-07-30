@@ -18,7 +18,7 @@ class NytfilesControllerTest < ActionController::TestCase
 
   test "should create nytfile" do
     assert_difference('Nytfile.count') do
-      post :create, nytfile: { uploads: @nytfile.uploads }
+      post :create, nytfile: { upload: @nytfile.upload }
     end
 
     assert_redirected_to nytfile_path(assigns(:nytfile))
@@ -35,7 +35,7 @@ class NytfilesControllerTest < ActionController::TestCase
   end
 
   test "should update nytfile" do
-    put :update, id: @nytfile, nytfile: { uploads: @nytfile.uploads }
+    put :update, id: @nytfile, nytfile: { upload: @nytfile.upload }
     assert_redirected_to nytfile_path(assigns(:nytfile))
   end
 

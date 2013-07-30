@@ -1,9 +1,10 @@
 Nytimes::Application.routes.draw do
+  resources :nyt_efiles
+
+
   resources :tickets
 
-
   resources :nytfiles
-
 
   resources :offer_chains
 
@@ -11,7 +12,8 @@ Nytimes::Application.routes.draw do
   
   /get --> creating an endpoint/ 
   get '/upload', :to => 'upload#index' #:to => '' goes to that controller, specifically, the upload controller 
-
+  match '/upload', :to => 'upload#upload'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

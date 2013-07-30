@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Uploads</th>
+    <th>Upload</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +10,7 @@
 
 <% @nytfiles.each do |nytfile| %>
   <tr>
-    <td><%= nytfile.uploads %></td>
+    <td><%= nytfile.upload %></td>
     <td><%= link_to 'Show', nytfile %></td>
     <td><%= link_to 'Edit', edit_nytfile_path(nytfile) %></td>
     <td><%= link_to 'Destroy', nytfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
