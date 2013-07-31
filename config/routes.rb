@@ -13,7 +13,9 @@ Nytimes::Application.routes.draw do
   /get --> creating an endpoint/ 
   get '/upload', :to => 'upload#index' #:to => '' goes to that controller, specifically, the upload controller 
   match '/upload', :to => 'upload#upload'
-  
+  match '/execute', :to => 'upload#execute_python'
+  match '/offers.auto.yaml', :to => 'upload#download_yaml_file' 
+  match '/offers.auto.sql', :to => 'upload#download_sql_file' 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

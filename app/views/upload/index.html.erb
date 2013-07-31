@@ -22,51 +22,18 @@
     padding-right: 144px; 
  }
 
+ span {
+  font-family: "proxima-nova", "Proxima Nova", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+ }
+
  #chooseFileButton {
   position:relative;
   top: 40px;
   left: 15%;
  }
- .step1 {
-  display: inline-block;
-  padding: 0px 40px;
-  margin-left: 40px;
-  margin-top: 130px;
-  font-size: 29px;
-  color: white;
-  font-weight: 300;
-  line-height: 56px;
-  background: #FAA226;
-  position:relative;
-
- }
-  .step2 {
-  display: inline-block;
-  padding: 0px 40px;
-  margin-top: 190px;
-  font-size: 29px;
-  color: white;
-  font-weight: 300;
-  line-height: 56px;
-  background: #00ACEE;
-  position:relative;
-
- }
-  .step3 {
-  display: inline-block;
-  padding: 0px 40px;
-  margin-top: 250px;
-  font-size: 29px;
-  color: white;
-  font-weight: 300;
-  line-height: 56px;
-  background: #f4503e;
-  position:relative;
-
- }
 
  .textStep1 {
-    display: inline-block;
+    display: block;
     line-height: 56px;
     font-size: 29px;
     padding: 0px 40px;
@@ -78,7 +45,7 @@
  }
 
   .textStep2 {
-    display: inline-block;
+    display: block;
     padding: 0px 40px;
     margin-top: 160px;
     font-size: 29px;
@@ -90,7 +57,7 @@
  }
 
 .textStep3 {
-    display: inline-block;
+    display: block;
     padding: 0px 40px;
     margin-top: 180px;
     font-size: 29px;
@@ -102,7 +69,7 @@
   }
 
   .textStep4 {
-    display: inline-block;
+    display: block;
     padding: 0px 40px;
     margin-top: 200px;
     font-size: 29px;
@@ -113,6 +80,17 @@
     position:relative;
   }
 
+  #yaml {
+    position: absolute;
+    left: 600px;
+  }
+
+  #sql {
+
+    position: absolute;
+    left: 800px;
+  }
+
 
 </style>
 
@@ -120,22 +98,43 @@
  $(document).ready(function () {
  $('#file').change(function() {
   $("#textBox").val($('#file').val().substring(12));
-});
-});
+      if ($("#textBox").val().length > 0){
+      
+    }
+  });
+ });
+
 </script>
 
 <span class = "textStep1"> Step 1: Upload Excel File </span>
+
 <div id= "excelDiv">
+
 <%= form_tag({action: :upload}, multipart: true) do %>
-  <input type="text" class = "textBox" id="textBox" size = "50" readonly />
+  
+  <input type="text" class = "textBox" id="textBox" size = "50" readonly  />
+
   <%= file_field_tag 'file', accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' %> 
-<!--<input type="submit" value="Generate" id="chooseFileButton" /> !-->
+  
+  <input type="submit" value="Upload" id="chooseFileButton" /> 
+
 <% end %>
 </div>
 
 <span class = "textStep2"> Step 2: Generate .yaml & .sql files </span>
 <div>
+  <%= form_tag({action: :execute_python}) do %>
+  <input type="submit" value="Run plato_offers.sh" id="chooseFileButton" /> 
+  <% end %>
 </div>
+
+<% if flash[:alert] %>
+    <script> alert("Created offers.auto.yaml and offers.auto.sql successfully") </script>
+    <div> <a href = <%= '/offers.auto.yaml'%> id="yaml"> offers.auto.yaml</a>  </div>
+    <div> <a href = <%= '/offers.auto.sql'%> id="sql"> offers.auto.sql</a>  </div>
+    <% flash.alert = false %>
+<% end %>
+
 <span class = "textStep3"> Step 3: Inject .sql file into Database </span>
 <div>
 </div>
