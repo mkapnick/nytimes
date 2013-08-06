@@ -7,23 +7,23 @@
   
    #success1 {
     position:absolute;
-    left: 620px;
+    left: 710px;
     top: 5px;
   }
   #success2 {
     position: absolute;
-    left: 620px;
+    left: 710px;
 
   } 
   #success3 {
     position: absolute;
-    left: 620px;
+    left: 710px;
     margin-top: 5px;
   } 
 
   #success4 {
     position: absolute;
-    left: 620px;
+    left: 710px;
   }
 
   .textBox {
@@ -31,10 +31,11 @@
     width: 400px;
     left: 15%;
   }
-  #textBox2 {
+  #textBox2{
     position:absolute;
     width: 400px;
     left: 15%;
+    margin-top: 30px;
   }
     #excelDiv {
     position:relative;
@@ -63,7 +64,7 @@
  #updateRepoButton {
   position:absolute;
   left: 15%;
-  margin-top: 40px;
+  margin-top: 70px;
  }
 
  #dbinjectButton {
@@ -147,7 +148,7 @@
 
   #yaml{
     position: absolute;
-    left: 600px;
+    left: 710px;
     margin-top: 50px;
     font-size: 12px;
     font-weight: 300;
@@ -156,20 +157,20 @@
   #sql {
 
     position: absolute;
-    left: 710px;
+    left: 800px;
     margin-top: 50px;
     font-size: 12px;
     font-weight: 300;
   }
   #excel {
     position: absolute;
-    left: 600px;
+    left: 710px;
     font-size: 12px;
     font-weight: 300;
   }
   #dbtext {
     position: absolute;
-    left: 600px;
+    left: 710px;
     font-size: 12px;
     font-weight: 300;
     margin-top: 50px;
@@ -177,7 +178,7 @@
   #jira {
   position:relative;
   top: 10px;
-  left: 10%;
+  left: 15%;
 
   }
 
@@ -213,10 +214,31 @@
    margin: 0 auto;
 
    }
+   #injectIntoDButton {
+    height: 100%;
+
+   }
    #jiraButton{
       position: absolute;
       left: 450px;
       top:320px;
+   }
+
+   #recentRepoDirectoriesText {
+      left: 710px;
+      display: block;
+      position: absolute;
+      margin-top: 20px;
+   }
+   #recentRepoArea_hatch {
+    position: relative;
+    left: 710px;
+    margin-top: 40px;
+   }
+   #injectInDBText {
+    position: absolute;
+    margin-top: 100px;
+    left: 710px;
    }
 
 </style>
@@ -231,68 +253,76 @@
   });
  });
  function setBlank(me) {
-  document.getElementById("textBox2").value = ""
+  document.getElementById("textBox2_hatch_hatch").value = ""
  }
 
 </script>
 
-<span class = "textStep1"> Step 1: Upload Excel File </span>
+<span class = "textStep1"> Upload Excel File </span>
 <div id= "excelDiv">
 
 <%= form_tag({action: :upload}, multipart: true) do %> 
-  <input type="text" class = "textBox" id="textBox" size = "50" readonly  />
+  <input type="text" class = "textBox" id="textBox" size = "50" value="Click here first to upload a file (then press the upload button) " readonly  />
   <%= file_field_tag 'file', accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' %>  
   <input type="submit" value="Upload" id="chooseFileButton" /> 
-<% end %>
+  <% end %>
 
-<% if @alert1 %>
+<% if @alert1 && @alert1_check %>
   <div id="success1"> <%= image_tag("check2.jpeg", :alt => "success1", :size => "20x20") %> </div>
   <div id="excel"> <b>File uploaded: </b> <%= Nytfile.order('created_at DESC').first.name %> </div>
 <% end %>
 </div>
 
-<span class = "textStep2"> Step 2: Generate .yaml & .sql files </span>
+<% if @alert2 %>
+<span class = "textStep2"> Generate .yaml & .sql files </span>
 
 <div>
   <%= form_tag({action: :execute_python}) do %>
   <input type="submit" value="Run plato_offers.sh" id="chooseFileButton" /> 
   <% end %>
+<% end %>
 </div>
-
-<% if @alert2 %>
+  
+  <% if @alert2 && @alert2_check %>
     <div id="success2"> <%= image_tag("check2.jpeg", :alt => "success2", :size => "20x20") %> </div>
     <div> <a href = <%= '/offers.auto.yaml'%> id="yaml"> offers.auto.yaml</a>  </div>
     <div>  <a href = <%= '/offers.auto.sql'%> id="sql"> offers.auto.sql</a>  </div>
 <% end %>
 
-<span class = "textStep3"> Step 3: Update Subversion repo </span>
+<% if @alert3 %>
+<span class = "textStep3"> Update Subversion repo </span>
 <div>
   <%= form_tag({action: :update_svn_repo}) do %>
-  <%= text_field_tag 'textBox2' %>
+  <%= text_field_tag 'textBox2', nil, :placeholder => 'New subversion directory here' %>
   <input type="submit" value="Update repo" id="updateRepoButton" />
+  <div>
+      <span id="recentRepoDirectoriesText" > <i>Subversion Directory Names </i></span>
+      <%= text_area 'recentRepoArea', :hatch, :size => "45x10", :readonly => true, :value => `cd #{Rails.root}/public/offer_chains_svn_2/core_owner && ls` %>
+   </div>
   <% end %>
-
-<% if @alert3 %>
-  <div id="success3"> <%= image_tag("check2.jpeg", :alt => "success3", :size => "20x20") %> </div>
-  <span id="svnCommitText"> Changes Commited. Check repo</span>
 <% end %>
 
-</div>
-
-<span class = "textStep4"> Step 4: Inject .sql file into Database </span>
-
-<div>
-  <%= form_tag({action: :inject_into_db}) do %>
-  <input type="submit" value="Inject into DB" id="dbinjectButton" />
+  <% if @alert3 && @alert3_check %>
+  <div id="success3"> <%= image_tag("check2.jpeg", :alt => "success3", :size => "20x20") %> </div>
   <% end %>
+</div>
 
 <% if @alert4 %>
-  <div id="success4"> <%= image_tag("check2.jpeg", :alt => "success4", :size => "20x20") %> </div>
-  <span id="dbtext"> ECST and ECST2 now updated</span>
+  <span class = "textStep4"> Inject .sql file into Database </span>
+  <div id="injectIntoDButton">
+    <%= form_tag({action: :inject_into_db}) do %>
+    <input type="submit" value="Inject into DB" id="dbinjectButton" />
+    <div id="injectInDBText"> <i>Clicking "Inject into DB" will update both ECST and ECST2 </i> </div>
+  <% end %>
 <% end %>
 
+  <% if @alert4 && @alert4_check %>
+    <div id="success4"> <%= image_tag("check2.jpeg", :alt => "success4", :size => "20x20") %> </div>
+    <span id="dbtext"> <b> ECST and ECST2 now updated </b></span>
+ <% end %>
 </div>
 
+<% if @alert5 %>
 <span class = "textStep5"> Step 5: Generate JIRA Tickets </span>
 <div id = "jira">
 
@@ -307,9 +337,9 @@
     <span id="jira3">Priority</span> <%= select_tag(:priority, options_for_select([['None', 1],['Blocker', 2], ['Critical', 3], ['Major', 4], ['Minor', 5], ['Trivial', 6]], 1)) %>
     <br>
 
-    <span id="jira4">Summary *</span> <%= text_area_tag 'summary' %>
+    <span id="jira4">Summary *</span> <%= text_area_tag 'summary', "Please deploy to", :size => "30x5" %>
     <br>
-    <span id="jira5">Description * </span> <%= text_area_tag 'description'%>
+    <span id="jira5">Description * </span> <%= text_area_tag 'description', "Please deploy to", :size => "30x5"%>
 
     <div id="jira6"><span id="jira6span">Database Service Type </span><%= select_tag(:serviceType, options_for_select([['None', 1],['Deploy a Migration', 2], ['Backup Existing Database', 3], ['Setup new Database', 4]], 1)) %>
 
@@ -321,12 +351,13 @@
     </div>
 
     <div id="password">
-      <span id= "passwordSpan"> Password * </span> <%= text_field_tag 'passwordTag' %> 
+      <span id= "passwordSpan"> Password * </span> <%= password_field_tag 'passwordTag' %> 
     </div>
 
     <input type="submit" value="Generate JIRA Ticket" id="jiraButton" />
 
      <% end %>
+ <% end %>
 </div>
 
 </form>

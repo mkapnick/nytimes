@@ -6,10 +6,6 @@ class UploadController < ApplicationController
     -
     -
     --------------------------------------------------------------/
-    @alert1 = false
-    @alert2 = false
-    @alert3 = false
-    @alert4 = false 
 
 	def index
     	 respond_to do |format|
@@ -39,6 +35,8 @@ class UploadController < ApplicationController
 
          offer_chain.save
          @alert1 = true
+         @alert1_check = true
+         @alert2 = true
          render "index.html.erb"	
           
     else
@@ -58,8 +56,11 @@ class UploadController < ApplicationController
 
         begin 
             if system("bash #{Rails.root}/public/scripts/plato_offers.sh #{excel}")
-                @alert1= true
+                @alert1 = true
+                @alert1_check = true
                 @alert2 = true
+                @alert2_check = true
+                @alert3 = true
                 render "index.html.erb" 
             end
         rescue Exception 
@@ -73,12 +74,18 @@ class UploadController < ApplicationController
         if system ("cd #{Rails.root}/public/offer_chains_svn_2/core_owner && mkdir #{directory} && cd #{directory} && touch rollback.sql && touch upgrade.sql")
             if system("cd #{Rails.root}/public/scripts && cat ./offers.auto.sql > #{Rails.root}/public/offer_chains_svn_2/core_owner/#{directory}/upgrade.sql ")
                 @alert1 = true
+                @alert1_check = true
                 @alert2 = true
+                @alert2_check = true
                 @alert3 = true
+                @alert3_check = true
+                @alert4 = true
                 render "index.html.erb"
             else
                 render :text => "Could not copy contents into upgrade.sql"
             end
+        else
+            render :text => "Could not update svn repo, try changing the name of the directory"
         end
     end
 
@@ -124,10 +131,15 @@ class UploadController < ApplicationController
             value = system("sqlplus core_owner/ecdvo1@ECDV7 @offers.auto.sql") 
             value2 = system("sqlplus core_owner/ecdvo1@ECDV6 @offers.auto.sql") 
             #system("sqlplus core_owner/ecdvo1@ECDV7 @/Users/205463/nytimes/public/scripts/simple_query.sql")
-            @alert1= true
-            @alert2 = true
-            @alert3 = true
-            @alert4 = true
+                @alert1 = true
+                @alert1_check = true
+                @alert2 = true
+                @alert2_check = true
+                @alert3 = true
+                @alert3_check = true
+                @alert4 = true
+                @alert4_check = true
+                @alert5 = true
             render "index.html.erb" 
         rescue Exception
             render :text => "Build Failed"
@@ -159,7 +171,17 @@ class UploadController < ApplicationController
     end
         
     system(curl)
-        
+      @alert1 = true
+      @alert1_check = true
+      @alert2 = true
+      @alert2_check = true
+      @alert3 = true
+      @alert3_check = true
+      @alert4 = true
+      @alert4_check = true
+      @alert5 = true
+      @alert5_check = true
+    
     end
 
    /-------------------------------------------------------------
