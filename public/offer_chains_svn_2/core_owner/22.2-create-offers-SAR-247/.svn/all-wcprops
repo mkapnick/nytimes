@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/db/!svn/ver/10906/trunk/oracle/migrations/EC/core_owner/22.2-create-offers-SAR-247
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/db/!svn/ver/10857/trunk/oracle/migrations/EC/core_owner/22.2-create-offers-SAR-247/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/db/!svn/ver/10648/trunk/oracle/migrations/EC/core_owner/22.2-create-offers-SAR-247/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/10626/trunk/oracle/migrations/EC/core_owner/22.2-create-offers-SAR-247/rollback.sql
+END

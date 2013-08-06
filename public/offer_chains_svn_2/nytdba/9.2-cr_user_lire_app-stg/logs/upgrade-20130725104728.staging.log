@@ -1,0 +1,44 @@
+10:47:31 SQL> @/dbbackups/ECST/migrations/nytdba/9.2-cr_user_lire_app-stg/upgrade.sql
+10:47:31 SQL> create user lire_app identified by values 'S:027A01BD86D3C23BF33A7A64A70F732EFCDA56E7853F21B1A748177125CC' default tablespace users temporary tablespace temp profile default account unlock;
+
+User created.
+
+Elapsed: 00:00:00.02
+10:47:31 SQL> 
+10:47:31 SQL> alter user lire_app quota 0 on users;
+
+User altered.
+
+Elapsed: 00:00:00.00
+10:47:31 SQL> 
+10:47:31 SQL> grant create session to lire_app;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.01
+10:47:31 SQL> 
+10:47:31 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:47:31 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <db.alert@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: primary
+        Database: ECST
+        Schema: nytdba
+        Migration: 9.2-cr_user_lire_app-stg
+        SVN Revision: 13746
+        Duration: 0 sec.
+        DBA: apathrose
+        

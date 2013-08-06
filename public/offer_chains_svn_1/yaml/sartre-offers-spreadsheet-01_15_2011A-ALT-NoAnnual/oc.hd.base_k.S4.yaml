@@ -1,0 +1,131 @@
+offer_chains:
+  - name: 'The New York Times Home Delivery'
+    description: "Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone."
+    start_date: 01-JAN-2011
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 1
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 1
+      - key: BUNDLE
+        value: 'The New York Times Home Delivery'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: TBD
+      - key: OFFER_TYPE
+        value: Complimentary
+      - key: BILLING_CYCLE
+        value: Monthly
+      - key: PRICE_DESCRIPTION
+        value: "Complimentary Access for Home Delivery Subscribers"
+      - key: SUBSCRIBER_TYPE
+        value: HD
+      - key: REFUND_POLICY
+        value: "Complimentary Access: No refund.  Access removed within 6 hours if cancelled."
+      - key: BUNDLE_EXPLANATION
+        value: 'W+SP+Replica Edition (HD complimentary access)'
+      - key: CIS_PRD_ID
+        value: S4
+    offerings:
+      - duration: 28
+        index: 0
+        recurrences: -1
+        price: 0
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .2}'
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .2}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .2}'
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .2}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .2}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .2}'
+          - name: Replica
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/rpl/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .2}'
+          - name: Crosswords
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/crosswords/:id:.json
+              - key: capability
+                value: XWD

@@ -1,0 +1,6 @@
+BEGIN
+  UPDATE OFFER_CHAIN SET NAME = 'Annual Crosswords Complimentary Subscription', UPDATE_DATE=SYSDATE, UPDATED_BY='CASE_45531' WHERE ID = 7;
+  COMMIT;
+END;
+/
+EXIT

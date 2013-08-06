@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/db/!svn/ver/9661/trunk/oracle/migrations/EC/ops_owner/1.1-release-1.9.0-add-notification_type-for-cc-updater
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/db/!svn/ver/9658/trunk/oracle/migrations/EC/ops_owner/1.1-release-1.9.0-add-notification_type-for-cc-updater/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/9651/trunk/oracle/migrations/EC/ops_owner/1.1-release-1.9.0-add-notification_type-for-cc-updater/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/db/!svn/ver/9634/trunk/oracle/migrations/EC/ops_owner/1.1-release-1.9.0-add-notification_type-for-cc-updater/rollback.sql
+END

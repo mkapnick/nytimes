@@ -16,6 +16,10 @@ Nytimes::Application.routes.draw do
   match '/execute', :to => 'upload#execute_python'
   match '/offers.auto.yaml', :to => 'upload#download_yaml_file' 
   match '/offers.auto.sql', :to => 'upload#download_sql_file' 
+  match '/inject', :to => 'upload#inject_into_db'
+  match '/file.xls', :to => 'upload#download_excel_file'
+  match '/svn', :to => 'upload#update_svn_repo'
+  match '/jira', :to => 'upload#generate_jira_ticket'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

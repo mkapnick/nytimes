@@ -1,0 +1,209 @@
+10:52:42 SQL> @/dbbackups/ECST2/migrations/nytdba/11-cr_role_core_owner_readonly/upgrade.sql
+10:52:42 SQL> -- code to create a role with read only privileges on <object_owner>'s objects and then grant that role to <grantee>
+10:52:42 SQL> 
+10:52:42 SQL> set serveroutput on termout on verify off
+10:52:42 SQL> -- since nomad turns off define before calling sql scripts, you need to explicitly turn define back on, as done in the command below
+10:52:42 SQL> set define on
+10:52:42 SQL> define rol=CORE_OWNER_READONLY
+10:52:42 SQL> WHENEVER OSERROR EXIT
+10:52:42 SQL> WHENEVER SQLERROR CONTINUE
+10:52:42 SQL> 
+10:52:42 SQL> /* drop  role */
+10:52:42 SQL> drop role &rol;
+
+Role dropped.
+
+Elapsed: 00:00:01.07
+10:52:43 SQL> 
+10:52:43 SQL> WHENEVER SQLERROR EXIT ROLLBACK
+10:52:43 SQL> 
+10:52:43 SQL> declare
+10:52:43   2  
+10:52:43   3  	    role varchar2(30) := '&rol';
+10:52:43   4  	    object_owner varchar2(30) := 'CORE_OWNER';
+10:52:43   5  
+10:52:43   6  begin
+10:52:43   7  	  /* create role */
+10:52:43   8  	  dbms_output.put_line ('create role '||role);
+10:52:43   9  	  execute immediate 'create role '||role;
+10:52:43  10  
+10:52:43  11  	  /* grant select privileges on object_owner's tables to role */
+10:52:43  12  	  for x in (select table_name from dba_tables  where owner = object_owner and table_name not like 'RUPD$_%' and table_name not like 'MLOG$_%')
+10:52:43  13  	  loop
+10:52:43  14  
+10:52:43  15  	      /* enclose the table_name in double quotes, as some tables such as schema_version in ecdv6 are stored in the db in lower case, instead of using the standard uppercase convention! */
+10:52:43  16  	       dbms_output.put_line ('grant select on ' ||object_owner||'.'||'"'||x.table_name||'"'||' to '||role);
+10:52:43  17  	       execute immediate 'grant select on ' ||object_owner||'.'||'"'||x.table_name||'"'||' to '||role;
+10:52:43  18  	  end loop;
+10:52:43  19  
+10:52:43  20  	  /* grant select privileges on object_owner's views to role */
+10:52:43  21  	  for x in (select view_name from dba_views  where owner = object_owner )
+10:52:43  22  	  loop
+10:52:43  23  	       dbms_output.put_line ('grant select on ' ||object_owner||'.'||'"'|| x.view_name ||'"'|| ' to '||role);
+10:52:43  24  	       execute immediate 'grant select on ' ||object_owner||'.'||'"'||x.view_name||'"'||' to '||role;
+10:52:43  25  	  end loop;
+10:52:43  26  
+10:52:43  27  end;
+10:52:43  28  /
+create role CORE_OWNER_READONLY                                                 
+grant select on CORE_OWNER."ACCOUNT" to CORE_OWNER_READONLY                     
+grant select on CORE_OWNER."ACCOUNT_LOCK" to CORE_OWNER_READONLY                
+grant select on CORE_OWNER."ACCOUNT_NOTE" to CORE_OWNER_READONLY                
+grant select on CORE_OWNER."ACCOUNT_STATUS" to CORE_OWNER_READONLY              
+grant select on CORE_OWNER."CHARGE" to CORE_OWNER_READONLY                      
+grant select on CORE_OWNER."CHARGE_STATUS" to CORE_OWNER_READONLY               
+grant select on CORE_OWNER."CREDIT_CARD" to CORE_OWNER_READONLY                 
+grant select on CORE_OWNER."CREDIT_CARD_STATUS" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."CREDIT_CARD_TYPE" to CORE_OWNER_READONLY            
+grant select on CORE_OWNER."DISCOUNT" to CORE_OWNER_READONLY                    
+grant select on CORE_OWNER."DISCOUNT_PRODUCT_OFFERING" to CORE_OWNER_READONLY   
+grant select on CORE_OWNER."DISCOUNT_TYPE" to CORE_OWNER_READONLY               
+grant select on CORE_OWNER."GIFT_CERTIFICATE" to CORE_OWNER_READONLY            
+grant select on CORE_OWNER."GIFT_CERTIFICATE_STATUS" to CORE_OWNER_READONLY     
+grant select on CORE_OWNER."INSTRUMENT_TYPE" to CORE_OWNER_READONLY             
+grant select on CORE_OWNER."INVOICE" to CORE_OWNER_READONLY                     
+grant select on CORE_OWNER."INVOICE_STATUS" to CORE_OWNER_READONLY              
+grant select on CORE_OWNER."JURISDICTION_LEVEL" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."LEGACY_CREDIT_MEMO" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."LEGACY_CREDIT_MEMO_NOTE" to CORE_OWNER_READONLY     
+grant select on CORE_OWNER."LEGACY_CREDIT_MEMO_STATUS" to CORE_OWNER_READONLY   
+grant select on CORE_OWNER."LEGACY_REFUND" to CORE_OWNER_READONLY               
+grant select on CORE_OWNER."LEGACY_REFUND_NOTE" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."LEGACY_REFUND_STATUS" to CORE_OWNER_READONLY        
+grant select on CORE_OWNER."LEGACY_REFUND_TRN" to CORE_OWNER_READONLY           
+grant select on CORE_OWNER."LEGACY_REFUND_TRN_ATTEMPT" to CORE_OWNER_READONLY   
+grant select on CORE_OWNER."LEGACY_REFUND_TRN_STATUS" to CORE_OWNER_READONLY    
+grant select on CORE_OWNER."LICENSE" to CORE_OWNER_READONLY                     
+grant select on CORE_OWNER."LICENSE_STATUS" to CORE_OWNER_READONLY              
+grant select on CORE_OWNER."LINE_ITEM" to CORE_OWNER_READONLY                   
+grant select on CORE_OWNER."MIGRATION_STATUS" to CORE_OWNER_READONLY            
+grant select on CORE_OWNER."OFFER" to CORE_OWNER_READONLY                       
+grant select on CORE_OWNER."OFFER_CHAIN" to CORE_OWNER_READONLY                 
+grant select on CORE_OWNER."OFFER_CHAIN_ELIGIBILITY" to CORE_OWNER_READONLY     
+grant select on CORE_OWNER."OFFER_CHAIN_META_DATA" to CORE_OWNER_READONLY       
+grant select on CORE_OWNER."OFFER_CHAIN_STATUS" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."OFFER_OFFER_CHAIN" to CORE_OWNER_READONLY           
+grant select on CORE_OWNER."OFFER_PRODUCT_OFFERING" to CORE_OWNER_READONLY      
+grant select on CORE_OWNER."OFFER_STATUS" to CORE_OWNER_READONLY                
+grant select on CORE_OWNER."PAYPAL_STATUS" to CORE_OWNER_READONLY               
+grant select on CORE_OWNER."PRODUCT" to CORE_OWNER_READONLY                     
+grant select on CORE_OWNER."PRODUCT_OFFERING" to CORE_OWNER_READONLY            
+grant select on CORE_OWNER."SUBSCRIPTION" to CORE_OWNER_READONLY                
+grant select on CORE_OWNER."SUBSCRIPTION_CANCEL_REASON" to CORE_OWNER_READONLY  
+grant select on CORE_OWNER."SUBSCRIPTION_CANC_TYPE_STATUS" to                   
+CORE_OWNER_READONLY                                                             
+grant select on CORE_OWNER."SUBSCRIPTION_NOTE" to CORE_OWNER_READONLY           
+grant select on CORE_OWNER."SUBSCRIPTION_STATUS" to CORE_OWNER_READONLY         
+grant select on CORE_OWNER."SYSTEM_CATEGORY" to CORE_OWNER_READONLY             
+grant select on CORE_OWNER."SYS_VERSION" to CORE_OWNER_READONLY                 
+grant select on CORE_OWNER."TAX_CATEGORY" to CORE_OWNER_READONLY                
+grant select on CORE_OWNER."TAX_POLICY_TYPE" to CORE_OWNER_READONLY             
+grant select on CORE_OWNER."TAX_TYPE" to CORE_OWNER_READONLY                    
+grant select on CORE_OWNER."TRANSACTION" to CORE_OWNER_READONLY                 
+grant select on CORE_OWNER."TRANSACTION_ATTEMPT" to CORE_OWNER_READONLY         
+grant select on CORE_OWNER."TRANSACTION_ATTEMPT_STATUS" to CORE_OWNER_READONLY  
+grant select on CORE_OWNER."TRANSACTION_STATUS" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."ACCOUNT_WARNING_FLAG" to CORE_OWNER_READONLY        
+grant select on CORE_OWNER."BILLING_ACTIVITY_LOG" to CORE_OWNER_READONLY        
+grant select on CORE_OWNER."CHARGEBACK" to CORE_OWNER_READONLY                  
+grant select on CORE_OWNER."DISCOUNT_LINE_ITEM" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."TAX_COUNTRY_EXCLUSION_LIST" to CORE_OWNER_READONLY  
+grant select on CORE_OWNER."FLAGGED_ACCOUNTS" to CORE_OWNER_READONLY            
+grant select on CORE_OWNER."INVOICE_NOTE" to CORE_OWNER_READONLY                
+grant select on CORE_OWNER."PAYPAL" to CORE_OWNER_READONLY                      
+grant select on CORE_OWNER."SUBSCRIPTION_META_DATA" to CORE_OWNER_READONLY      
+grant select on CORE_OWNER."SYSTEM_ACTIVITY_REASONS" to CORE_OWNER_READONLY     
+grant select on CORE_OWNER."TAX" to CORE_OWNER_READONLY                         
+grant select on CORE_OWNER."TEMP_OFFER" to CORE_OWNER_READONLY                  
+grant select on CORE_OWNER."TEMP_REPAIR_CASE_36A" to CORE_OWNER_READONLY        
+grant select on CORE_OWNER."TEMP_B22_SUBQUERY" to CORE_OWNER_READONLY           
+grant select on CORE_OWNER."TEMP_REPAIR_CASE_9" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."TEMP_JT_LICENSES" to CORE_OWNER_READONLY            
+grant select on CORE_OWNER."INVOICE_ADJUSTMENT_REASON" to CORE_OWNER_READONLY   
+grant select on CORE_OWNER."INVOICE_ADJUSTMENT" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."LINE_ITEM_ADJUSTMENT" to CORE_OWNER_READONLY        
+grant select on CORE_OWNER."TAX_ADJUSTMENT" to CORE_OWNER_READONLY              
+grant select on CORE_OWNER."DISCOUNT_LINEITEM_ADJUSTMENT" to CORE_OWNER_READONLY
+grant select on CORE_OWNER."TEMP_CASE_45280" to CORE_OWNER_READONLY             
+grant select on CORE_OWNER."TMP_CASE_47636" to CORE_OWNER_READONLY              
+grant select on CORE_OWNER."OFFER_CHAIN_NOTIFICATION_TYPE" to                   
+CORE_OWNER_READONLY                                                             
+grant select on CORE_OWNER."POLLING_SYNC" to CORE_OWNER_READONLY                
+grant select on CORE_OWNER."POLLING_SYNC_LASTRUN" to CORE_OWNER_READONLY        
+grant select on CORE_OWNER."RCN_EXT_SOURCE_LOG" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."RCN_CPT_SERVICE_CHARGE_DETAIL" to                   
+CORE_OWNER_READONLY                                                             
+grant select on CORE_OWNER."RCN_CPT_EXCEPTION_DETAIL" to CORE_OWNER_READONLY    
+grant select on CORE_OWNER."RCN_CPT_DEPOSIT_DETAIL" to CORE_OWNER_READONLY      
+grant select on CORE_OWNER."RCN_CPT_CHARGEBACK_ACT_DETAIL" to                   
+CORE_OWNER_READONLY                                                             
+grant select on CORE_OWNER."RCN_PP_SETTLEMENT" to CORE_OWNER_READONLY           
+grant select on CORE_OWNER."RCN_PP_DISPUTE" to CORE_OWNER_READONLY              
+grant select on CORE_OWNER."RCN_PP_TRANS_DETAIL" to CORE_OWNER_READONLY         
+grant select on CORE_OWNER."ACTION" to CORE_OWNER_READONLY                      
+grant select on CORE_OWNER."TEMP_CASE_42168" to CORE_OWNER_READONLY             
+grant select on CORE_OWNER."TEMP_CASE_48832" to CORE_OWNER_READONLY             
+grant select on CORE_OWNER."LICENSE_TEMP_20110311" to CORE_OWNER_READONLY       
+grant select on CORE_OWNER."ITUNES_RECEIPT" to CORE_OWNER_READONLY              
+grant select on CORE_OWNER."BILLING_SOURCE" to CORE_OWNER_READONLY              
+grant select on CORE_OWNER."AMAZON_SUB" to CORE_OWNER_READONLY                  
+grant select on CORE_OWNER."VENDOR_SOURCE" to CORE_OWNER_READONLY               
+grant select on CORE_OWNER."ADDRESS" to CORE_OWNER_READONLY                     
+grant select on CORE_OWNER."GROUP_ACCOUNT" to CORE_OWNER_READONLY               
+grant select on CORE_OWNER."GROUP_ACCOUNT_TYPE" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."GROUP_ACC_IP_RNG_STATUS" to CORE_OWNER_READONLY     
+grant select on CORE_OWNER."GROUP_ACCOUNT_IP_RANGE" to CORE_OWNER_READONLY      
+grant select on CORE_OWNER."SUBSCRIPTION_SHARE" to CORE_OWNER_READONLY          
+grant select on CORE_OWNER."GROUP_ACCOUNT_EMAIL_DOMAIN" to CORE_OWNER_READONLY  
+grant select on CORE_OWNER."CC_REQUEST_FILE_STATUS" to CORE_OWNER_READONLY      
+grant select on CORE_OWNER."CC_REQUEST_FILE" to CORE_OWNER_READONLY             
+grant select on CORE_OWNER."CC_UPDATE_STATUS" to CORE_OWNER_READONLY            
+grant select on CORE_OWNER."CC_UPDATE_REASON" to CORE_OWNER_READONLY            
+grant select on CORE_OWNER."CC_UPDATE_ACTION" to CORE_OWNER_READONLY            
+grant select on CORE_OWNER."CC_UPDATE" to CORE_OWNER_READONLY                   
+grant select on CORE_OWNER."NOMAD_MIGRATION" to CORE_OWNER_READONLY             
+grant select on CORE_OWNER."NOMAD_ACTION" to CORE_OWNER_READONLY                
+grant select on CORE_OWNER."NOTIFICATION_STATUS" to CORE_OWNER_READONLY         
+grant select on CORE_OWNER."NOTIFICATION_TYPE" to CORE_OWNER_READONLY           
+grant select on CORE_OWNER."NOTIFICATION_FAILURE" to CORE_OWNER_READONLY        
+grant select on CORE_OWNER."PROCESS_RETRY_THROTTLE" to CORE_OWNER_READONLY      
+grant select on CORE_OWNER."NOMAD_VERSION" to CORE_OWNER_READONLY               
+grant select on CORE_OWNER."TRANSACTION_TYPE" to CORE_OWNER_READONLY            
+grant select on CORE_OWNER."NOTIFICATION" to CORE_OWNER_READONLY                
+grant select on CORE_OWNER."GC_CAMPAIGN_AND_REF" to CORE_OWNER_READONLY         
+grant select on CORE_OWNER."PRODUCT_STATUS" to CORE_OWNER_READONLY              
+grant select on CORE_OWNER."SBAO" to CORE_OWNER_READONLY                        
+grant select on CORE_OWNER."AMAZON_APPSTORE_RECEIPT_TYPE" to CORE_OWNER_READONLY
+grant select on CORE_OWNER."AMAZON_APPSTORE_RECEIPT" to CORE_OWNER_READONLY     
+grant select on CORE_OWNER."SUBSCRIPTION_SHARE_OLD" to CORE_OWNER_READONLY      
+grant select on CORE_OWNER."RCN_AMEX_CHARGEBACK" to CORE_OWNER_READONLY         
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:01.27
+10:52:44 SQL> 
+10:52:44 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:52:44 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST2@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <db.alert@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: primary
+        Database: ECST2
+        Schema: nytdba
+        Migration: 11-cr_role_core_owner_readonly
+        SVN Revision: 13837
+        Duration: 2 sec.
+        DBA: apathrose
+        

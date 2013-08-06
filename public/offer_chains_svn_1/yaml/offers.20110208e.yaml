@@ -1,0 +1,660 @@
+offer_chains:
+  ##############################################################################
+  ##   Offer column: G
+  ##############################################################################
+  
+  - name: "NYTimes: Web+Tablet"
+    description: "Unlimited access to The New York Times on the web, and access to the full app for your tablet ."
+    start_date: 01-Jan-2011
+    end_date: 01-Jan-2999
+    gift_certificate: 0
+    product_uri:
+    id: 229869
+    status: 1
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: "REQUIRES_EMAIL_DOMAIN"
+        value: ""
+      - key: "REQUIRES_CURRENT_SUBSCRIPTION_TO_OFFER_CHAIN"
+        value: ""
+      - key: "GIFT CERTIFICATE REQUIRED"
+        value: ""
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: "BUNDLE_EXPLANATION"
+        value: "Special promo offer setup for Times Reader monthly migration"
+      - key: "PRICE_DESCRIPTION"
+        value: "Web+Tablet App
+First 4 Weeks: FREE
+Thereafter: $20.00 every 4 weeks"
+      - key: "OFFER_TYPE"
+        value: "Free Trial for 4 Weeks"
+      - key: "PRODUCT_MARKETING_IMAGE"
+        value: ""
+      - key: "PRODUCT_MARKETING_DESCRIPTOR"
+        value: ""
+      - key: "OFFER_PRICE_DESCRIPTOR"
+        value: "N/A"
+      - key: "OFFER_PRICE"
+        value: "N/A"
+      - key: "OFFER_PRICE_DETAIL"
+        value: "($5.00 / week thereafter)"
+      - key: "OFFER_PRICE_DESCRIPTOR_INTERNATIONAL"
+        value: ""
+      - key: "OFFER_PRICE_INTERNATIONAL"
+        value: ""
+      - key: "OFFER_PRICE_DETAIL_INTERNATIONAL"
+        value: ""
+      - key: "PROMO_PRICE_FOOTER_LABEL"
+        value: "First 4 Weeks"
+      - key: "ACTUAL_PRICE_FOOTER_LABEL"
+        value: "Thereafter"
+      - key: "BILLING_CYCLE"
+        value: "every 4 weeks*"
+      - key: "SUBSCRIBER_TYPE"
+        value: "Regular"
+      - key: "REFUND_POLICY"
+        value: "Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle."
+      - key: "REQUIRES_EMAIL_DOMAIN"
+        value: ""
+      - key: "REDEMPTION OFFER CHAIN ID"
+        value: ""
+      - key: "CANCELABLE"
+        value: "1"
+      - key: "REFUNDABLE"
+        value: ""
+      - key: "UPGRADABLE_OFFER_CHAIN_IDS"
+        value: "37,38,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,1000000060,1000000061,1000000063,1000000064,1000000066,1000000067,1000000068,1000000070,1000000071,1000000072,1000000073,1000000074,1000000075,121,122,123,124,125,126"
+      - key: "DOWNGRADABLE_OFFER_CHAIN_ID"
+        value: ""
+      - key: "OPEN_TO_ANONYMOUS"
+        value: ""
+      - key: "BUNDLE"
+        value: "Bundle B"
+      - key: "ADX_BUNDLE"
+        value: ""
+      - key: "CIS_PRD_ID"
+        value: ""
+      - key: "SIEBEL_CAMPAIGN_CODE"
+        value: "SIEBELDEFAULT"
+      - key: "ANNUAL_PRICE"
+        value: "260.00"
+    offerings:
+      - duration: 28
+        index: 0
+        recurrences: 1
+        price: 0.0
+        products:          
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            production_cost: 0
+            unit_price: 0.357143
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+              - key: CAPABILITY
+                value: MM
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+              - key: capability
+                value: MOW
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0.357143
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+              - key: capability
+                value: MTD
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+          - name: IHTReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+      - duration: 28
+        index: 1
+        recurrences: -1
+        price: 20.0
+        products:          
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            production_cost: 0
+            unit_price: 0.357143
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+              - key: CAPABILITY
+                value: MM
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+              - key: capability
+                value: MOW
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0.357143
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+              - key: capability
+                value: MTD
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+          - name: IHTReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+  ##############################################################################
+  ##   Offer column: H
+  ##############################################################################
+  
+  - name: "NYTimes: Web+Tablet"
+    description: "Unlimited access to The New York Times on the web, and access to the full app for your tablet ."
+    start_date: 01-Jan-2011
+    end_date: 01-Jan-2999
+    gift_certificate: 0
+    product_uri:
+    id: 455308
+    status: 1
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: "REQUIRES_EMAIL_DOMAIN"
+        value: ""
+      - key: "REQUIRES_CURRENT_SUBSCRIPTION_TO_OFFER_CHAIN"
+        value: ""
+      - key: "GIFT CERTIFICATE REQUIRED"
+        value: ""
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: "BUNDLE_EXPLANATION"
+        value: "Special promo offer setup for Times Reader annual migration"
+      - key: "PRICE_DESCRIPTION"
+        value: "Web+Tablet App
+First 4 Weeks: FREE
+Thereafter: $20.00 every 4 weeks"
+      - key: "OFFER_TYPE"
+        value: "Free Trial for 4 Weeks"
+      - key: "PRODUCT_MARKETING_IMAGE"
+        value: ""
+      - key: "PRODUCT_MARKETING_DESCRIPTOR"
+        value: ""
+      - key: "OFFER_PRICE_DESCRIPTOR"
+        value: "N/A"
+      - key: "OFFER_PRICE"
+        value: "N/A"
+      - key: "OFFER_PRICE_DETAIL"
+        value: "($5.00 / week thereafter)"
+      - key: "OFFER_PRICE_DESCRIPTOR_INTERNATIONAL"
+        value: ""
+      - key: "OFFER_PRICE_INTERNATIONAL"
+        value: ""
+      - key: "OFFER_PRICE_DETAIL_INTERNATIONAL"
+        value: ""
+      - key: "PROMO_PRICE_FOOTER_LABEL"
+        value: "First 4 Weeks"
+      - key: "ACTUAL_PRICE_FOOTER_LABEL"
+        value: "Thereafter"
+      - key: "BILLING_CYCLE"
+        value: "every 4 weeks*"
+      - key: "SUBSCRIBER_TYPE"
+        value: "Regular"
+      - key: "REFUND_POLICY"
+        value: "Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle."
+      - key: "REQUIRES_EMAIL_DOMAIN"
+        value: ""
+      - key: "REDEMPTION OFFER CHAIN ID"
+        value: ""
+      - key: "CANCELABLE"
+        value: "1"
+      - key: "REFUNDABLE"
+        value: ""
+      - key: "UPGRADABLE_OFFER_CHAIN_IDS"
+        value: "37,38,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,1000000060,1000000061,1000000063,1000000064,1000000066,1000000067,1000000068,1000000070,1000000071,1000000072,1000000073,1000000074,1000000075,121,122,123,124,125,126"
+      - key: "DOWNGRADABLE_OFFER_CHAIN_ID"
+        value: ""
+      - key: "OPEN_TO_ANONYMOUS"
+        value: ""
+      - key: "BUNDLE"
+        value: "Bundle B"
+      - key: "ADX_BUNDLE"
+        value: ""
+      - key: "CIS_PRD_ID"
+        value: ""
+      - key: "SIEBEL_CAMPAIGN_CODE"
+        value: "SIEBELDEFAULT"
+      - key: "ANNUAL_PRICE"
+        value: "260.00"
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 289.88
+        products:          
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            production_cost: 0
+            unit_price: 0.357143
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+              - key: CAPABILITY
+                value: MM
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+              - key: capability
+                value: MOW
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0.357143
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+              - key: capability
+                value: MTD
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+          - name: IHTReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+  ##############################################################################
+  ##   Offer column: I
+  ##############################################################################
+  
+  - name: "NYTimes: Web+Tablet"
+    description: "Unlimited access to The New York Times on the web, and access to the full app for your tablet ."
+    start_date: 01-Jan-2011
+    end_date: 01-Jan-2999
+    gift_certificate: 0
+    product_uri:
+    id: 851767
+    status: 1
+    eligibility:
+      - key: IS_COMP
+        value: 1
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: "REQUIRES_EMAIL_DOMAIN"
+        value: ""
+      - key: "REQUIRES_CURRENT_SUBSCRIPTION_TO_OFFER_CHAIN"
+        value: ""
+      - key: "GIFT CERTIFICATE REQUIRED"
+        value: ""
+    metadata:
+      - key: IS_COMP
+        value: 1
+      - key: "BUNDLE_EXPLANATION"
+        value: "Special promo offer setup for Times Reader trial/edu migration"
+      - key: "PRICE_DESCRIPTION"
+        value: "Web+Tablet App
+First 4 Weeks: FREE
+Thereafter: $20.00 every 4 weeks"
+      - key: "OFFER_TYPE"
+        value: "Free Trial for 4 Weeks"
+      - key: "PRODUCT_MARKETING_IMAGE"
+        value: ""
+      - key: "PRODUCT_MARKETING_DESCRIPTOR"
+        value: ""
+      - key: "OFFER_PRICE_DESCRIPTOR"
+        value: "N/A"
+      - key: "OFFER_PRICE"
+        value: "N/A"
+      - key: "OFFER_PRICE_DETAIL"
+        value: "($5.00 / week thereafter)"
+      - key: "OFFER_PRICE_DESCRIPTOR_INTERNATIONAL"
+        value: ""
+      - key: "OFFER_PRICE_INTERNATIONAL"
+        value: ""
+      - key: "OFFER_PRICE_DETAIL_INTERNATIONAL"
+        value: ""
+      - key: "PROMO_PRICE_FOOTER_LABEL"
+        value: "First 4 Weeks"
+      - key: "ACTUAL_PRICE_FOOTER_LABEL"
+        value: "Thereafter"
+      - key: "BILLING_CYCLE"
+        value: "every 4 weeks*"
+      - key: "SUBSCRIBER_TYPE"
+        value: "Regular"
+      - key: "REFUND_POLICY"
+        value: "Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle."
+      - key: "REQUIRES_EMAIL_DOMAIN"
+        value: ""
+      - key: "REDEMPTION OFFER CHAIN ID"
+        value: ""
+      - key: "CANCELABLE"
+        value: "1"
+      - key: "REFUNDABLE"
+        value: ""
+      - key: "UPGRADABLE_OFFER_CHAIN_IDS"
+        value: "37,38,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,1000000060,1000000061,1000000063,1000000064,1000000066,1000000067,1000000068,1000000070,1000000071,1000000072,1000000073,1000000074,1000000075,121,122,123,124,125,126"
+      - key: "DOWNGRADABLE_OFFER_CHAIN_ID"
+        value: ""
+      - key: "OPEN_TO_ANONYMOUS"
+        value: ""
+      - key: "BUNDLE"
+        value: "Bundle B"
+      - key: "ADX_BUNDLE"
+        value: ""
+      - key: "CIS_PRD_ID"
+        value: ""
+      - key: "SIEBEL_CAMPAIGN_CODE"
+        value: "SIEBELDEFAULT"
+      - key: "ANNUAL_PRICE"
+        value: "260.00"
+    offerings:
+      - duration: 28
+        index: 0
+        recurrences: -1
+        price: 0.0
+        products:          
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            production_cost: 0
+            unit_price: 0.357143
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": }'
+              - key: CAPABILITY
+                value: MM
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": }'
+              - key: capability
+                value: MOW
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": }'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": }'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0.357143
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": }'
+              - key: capability
+                value: MTD
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": }'
+          - name: IHTReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            unit_price: 0
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": }'

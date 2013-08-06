@@ -1,0 +1,65 @@
+14:50:28 SQL> @/dbbackups/ECST/migrations/core_owner/35.0-fix-transaction-type-for-gift-certificate/upgrade.sql
+14:50:28 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+14:50:28 SQL> 
+14:50:28 SQL> UPDATE
+14:50:28   2  	CORE_OWNER.TRANSACTION
+14:50:28   3  SET
+14:50:28   4  	TRANSACTION_TYPE_CODE = 'GIFT_CERTIFICATE_PURCHASE',
+14:50:28   5  	UPDATED_BY = 'JIRA-SAR-434',
+14:50:28   6  	UPDATE_DATE = SYSDATE
+14:50:28   7  WHERE
+14:50:28   8  	ID IN
+14:50:28   9  	(
+14:50:28  10  	  SELECT
+14:50:28  11  	    CORE_OWNER.TRANSACTION.ID
+14:50:28  12  	  FROM
+14:50:28  13  	    CORE_OWNER.GIFT_CERTIFICATE
+14:50:28  14  	  INNER JOIN CORE_OWNER.CHARGE
+14:50:28  15  	  ON
+14:50:28  16  	    CORE_OWNER.GIFT_CERTIFICATE.PURCHASE_INVOICE_ID =
+14:50:28  17  	    CORE_OWNER.CHARGE.INVOICE_ID
+14:50:28  18  	  INNER JOIN CORE_OWNER.TRANSACTION
+14:50:28  19  	  ON
+14:50:28  20  	    CORE_OWNER.CHARGE.TRANSACTION_ID = CORE_OWNER.TRANSACTION.ID
+14:50:28  21  	  WHERE
+14:50:28  22  	    Core_Owner.Transaction.Transaction_Type_Code LIKE 'RECURRING_%'
+14:50:28  23  	);
+
+0 rows updated.
+
+Elapsed: 00:00:40.07
+14:51:08 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+14:51:08 SQL> 
+14:51:08 SQL> 
+14:51:08 SQL> 
+14:51:08 SQL> 
+14:51:08 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+14:51:08 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 35.0-fix-transaction-type-for-gift-certificate
+        SVN Revision: 11813
+        Duration: 40 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-586

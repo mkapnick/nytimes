@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/db/!svn/ver/13891/trunk/oracle/migrations/EC/core_owner/78-Update-Hulu-Care-Expiration/logs
+END
+upgrade-20130725110059.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/db/!svn/ver/13890/trunk/oracle/migrations/EC/core_owner/78-Update-Hulu-Care-Expiration/logs/upgrade-20130725110059.staging.log
+END
+upgrade-20130725110942.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/db/!svn/ver/13891/trunk/oracle/migrations/EC/core_owner/78-Update-Hulu-Care-Expiration/logs/upgrade-20130725110942.production.log
+END

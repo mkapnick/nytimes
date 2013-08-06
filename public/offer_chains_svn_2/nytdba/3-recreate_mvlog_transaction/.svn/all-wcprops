@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/db/!svn/ver/11741/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/db/!svn/ver/11700/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/db/!svn/ver/11667/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/db/!svn/ver/11667/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/rollback.sql
+END

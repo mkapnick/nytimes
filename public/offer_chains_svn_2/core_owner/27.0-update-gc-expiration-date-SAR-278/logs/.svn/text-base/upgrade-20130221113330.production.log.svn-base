@@ -1,0 +1,67 @@
+11:33:43 SQL> @/dbbackups/ECPR/migrations/core_owner/27.0-update-gc-expiration-date-SAR-278/upgrade.sql
+11:33:43 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK
+11:33:43 SQL> 
+11:33:43 SQL> DECLARE
+11:33:43   2  cnt  NUMBER(1,-2);
+11:33:43   3  today DATE :=sysdate;
+11:33:43   4  BEGIN
+11:33:43   5  	 cnt := 0;
+11:33:43   6  
+11:33:43   7  	 FOR f_row IN (
+11:33:43   8  	    SELECT code as "CODE"
+11:33:43   9  	    FROM
+11:33:43  10  	       GIFT_CERTIFICATE
+11:33:43  11  	    WHERE
+11:33:43  12  	       offer_chain_id = 5801360120
+11:33:43  13  	       AND PURCHASER_GROUP_ID=67310183
+11:33:43  14  	       AND gift_certificate_status_id = 1
+11:33:43  15  	      )
+11:33:43  16  	 LOOP
+11:33:43  17  	    UPDATE GIFT_CERTIFICATE
+11:33:43  18  	    SET EXPIRATION_DATE = add_months(create_date,60),
+11:33:43  19  	       UPDATE_DATE = today,
+11:33:43  20  	       UPDATED_BY = 'JIRA-SAR-278'
+11:33:43  21  	    WHERE OFFER_CHAIN_ID = 5801360120
+11:33:43  22  	       AND CODE = f_row.CODE
+11:33:43  23  	       AND gift_certificate_status_id = 1
+11:33:43  24  	       AND PURCHASER_GROUP_ID=67310183;
+11:33:43  25  
+11:33:43  26  	    cnt := cnt + 1;
+11:33:43  27  	    IF mod(cnt, 2000) = 0 THEN
+11:33:43  28  	       COMMIT;
+11:33:43  29  	    END IF;
+11:33:43  30  	 END LOOP;
+11:33:43  31  	 COMMIT;
+11:33:43  32  END;
+11:33:43  33  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:42.21
+11:34:26 SQL> 
+11:34:26 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+11:34:26 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 27.0-update-gc-expiration-date-SAR-278
+        SVN Revision: 11028
+        Duration: 42 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-469

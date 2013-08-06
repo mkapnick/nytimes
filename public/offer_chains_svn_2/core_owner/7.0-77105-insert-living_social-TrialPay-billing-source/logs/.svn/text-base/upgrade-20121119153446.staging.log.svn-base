@@ -1,0 +1,65 @@
+15:34:47 SQL> @/dbbackups/ECST/migrations/core_owner/7.0-77105-insert-living_social-TrialPay-billing-source/upgrade.sql
+15:34:47 SQL> -- Bugzilla ticket:  76067 & 77105
+15:34:47 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+15:34:47 SQL> 
+15:34:47 SQL> BEGIN
+15:34:47   2  	INSERT INTO billing_source (id, name) VALUES (14,'DD-LivingSocial');
+15:34:47   3  EXCEPTION
+15:34:47   4  	WHEN dup_val_on_index
+15:34:47   5  	  THEN
+15:34:47   6  	    NULL; -- Intentionally ignore duplicates
+15:34:47   7  END;
+15:34:47   8  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+15:34:47 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:34:47 SQL> 
+15:34:47 SQL> BEGIN
+15:34:47   2  	INSERT INTO billing_source (id, name) VALUES (15,'DD-TrialPay');
+15:34:47   3  EXCEPTION
+15:34:47   4  	WHEN dup_val_on_index
+15:34:47   5  	  THEN
+15:34:47   6  	    NULL; -- Intentionally ignore duplicates
+15:34:47   7  END;
+15:34:47   8  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:34:47 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+15:34:47 SQL> 
+15:34:47 SQL> 
+15:34:47 SQL> 
+15:34:47 SQL> 
+15:34:47 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:34:47 SQL> spool off;
+
+
+Subject: Nomad upgrade success: ECST@rac01.stg.sea1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_oracledba@nytimes.com
+Cc: steven.nedlin@nytimes.com
+Nomad upgrade operation success. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.sea1.nytimes.com
+        SID: ECST
+        Schema: core_owner
+        Migration: 7.0-77105-insert-living_social-TrialPay-billing-source
+        SVN Revision: 9590
+        Duration: 0

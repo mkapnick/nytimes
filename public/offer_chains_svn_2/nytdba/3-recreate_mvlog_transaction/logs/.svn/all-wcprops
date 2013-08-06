@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/db/!svn/ver/11741/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/logs
+END
+upgrade-20130314133920.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/11685/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/logs/upgrade-20130314133920.staging.log
+END
+upgrade-20130314142157.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/11692/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/logs/upgrade-20130314142157.staging.log
+END
+upgrade-20130315101638.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/11741/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/logs/upgrade-20130315101638.staging.log
+END
+upgrade-20130314133658.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/11684/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/logs/upgrade-20130314133658.staging.log
+END
+upgrade-20130314161810.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/db/!svn/ver/11727/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/logs/upgrade-20130314161810.production.log
+END
+upgrade-20130314130209.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/11674/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/logs/upgrade-20130314130209.staging.log
+END
+upgrade-20130314142404.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/11693/trunk/oracle/migrations/EC/nytdba/3-recreate_mvlog_transaction/logs/upgrade-20130314142404.staging.log
+END

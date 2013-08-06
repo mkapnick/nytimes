@@ -1,0 +1,296 @@
+offer_chains:
+  -
+    name: Gift Subscription to Crosswords - Annual
+    id: 100001
+    gift_certificate: 1
+    start_date: 29-OCT-2010
+    end_date: 29-OCT-2110
+    status: 1
+    description: Purchase an Annual Crosswords gift subscription
+    product_uri:
+    metadata:
+      -
+        key: IS_COMP
+        value: 0
+      -
+        key: redemption offer chain id
+        value: 100002
+    eligibility:
+      -
+        key: IS_COMP
+        value: 0
+    offerings:
+      -
+        duration: 365
+        index: 0
+        recurrences: 1
+        quantity: 365
+        price: 39.95
+        products:
+          - name: Crosswords
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            quantity: 365
+            unit_price: 0.24
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/crosswords/:id:.json
+              - key: capability
+                value: XWD
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+  -
+    name: Redeem Gift Subscription to Crosswords - Annual
+    id: 100002
+    gift_certificate: 0
+    start_date: 29-OCT-2010
+    end_date: 29-OCT-2110
+    status: 1
+    description: Redeem an Annual Crosswords gift subscription
+    product_uri:
+    metadata:
+      -
+        key: IS_COMP
+        value: 0
+    eligibility:
+      -
+        key: gift certificate required
+        value: true
+    offerings:
+      -
+        duration: 365
+        index: 0
+        recurrences: 1
+        quantity: 365
+        price: 39.95
+        products:
+          - name: Crosswords
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            quantity: 365
+            unit_price: 0.24
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/crosswords/:id:.json
+              - key: capability
+                value: XWD
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+  -
+    name: Crosswords - Annual
+    id: 100201
+    gift_certificate: 0
+    start_date: 29-OCT-2010
+    end_date: 29-OCT-2110
+    status: 1
+    description: Subscription to Crosswords
+    product_uri:
+    metadata:
+      -
+        key: IS_COMP
+        value: 0
+      -
+        key: CANCELABLE
+        value: 1
+      -
+        key: REFUNDABLE
+        value: 1
+      -
+        key: FULL_REFUND_DAYS_LIMIT
+        value: 30
+      -
+        key: PRORATED_REFUND_DAYS_LIMIT
+        value: 335
+      -
+        key: OPEN_TO_ANONYMOUS
+        value: 1
+    eligibility:
+      -
+        key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    offerings:
+      -
+        duration: 365
+        index: 0
+        recurrences: 1
+        quantity: 365
+        price: 39.95
+        products:
+          - name: Crosswords
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            quantity: 365
+            unit_price: 0.24
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/crosswords/:id:.json
+              - key: capability
+                value: XWD
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+  -
+    name: Crosswords - Monthly
+    id: 100202
+    gift_certificate: 0
+    start_date: 29-OCT-2010
+    end_date: 29-OCT-2110
+    status: 1
+    description: Subscription to Crosswords
+    product_uri:
+    metadata:
+      -
+        key: IS_COMP
+        value: 0
+      -
+        key: CANCELABLE
+        value: 1
+      -
+        key: REFUNDABLE
+        value: 0
+      -
+        key: OPEN_TO_ANONYMOUS
+        value: 1
+    eligibility:
+      -
+        key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    offerings:
+      -
+        duration: 30
+        index: 0
+        recurrences: 1
+        quantity: 30
+        price: 6.95
+        products:
+          - name: Crosswords
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            quantity: 365
+            unit_price: 0.24
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/crosswords/:id:.json
+              - key: capability
+                value: XWD
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+  -
+    name: Single Article
+    id: 100101
+    gift_certificate: 0
+    start_date: 29-OCT-2010
+    end_date: 29-OCT-2110
+    status: 1
+    description: Access a single archive article
+    product_uri:
+    metadata:
+      -
+        key: IS_COMP
+        value: 0
+      -
+        key: CANCELABLE
+        value: 0
+      -
+        key: REFUNDABLE
+        value: 0
+      -
+        key: OPEN_TO_ANONYMOUS
+        value: 1
+    eligibility:
+      -
+        key: IS_COMP
+        value: 0
+      -
+        key: MAX_CONCURRENT_SUBS
+        value: UNLIMITED
+      -
+        key: requires_unexpired_unused_articles
+        value: 'http://:hostname:/svc/user/entitlements/archive_bundle/:id:.json'
+    offerings:
+      -
+        duration: 30
+        index: 0
+        recurrences: 1
+        quantity: 1
+        price: 3.95
+        products:
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            quantity: 1
+            unit_price: 3.95
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'
+  -
+    name: 10-Article Pack
+    id: 100102
+    gift_certificate: 0
+    start_date: 29-OCT-2010
+    end_date: 29-OCT-2110
+    status: 1
+    description: 10 Pack of Archive article access
+    product_uri:
+    metadata:
+      -
+        key: IS_COMP
+        value: 0
+      -
+        key: CANCELABLE
+        value: 0
+      -
+        key: REFUNDABLE
+        value: 0
+      -
+        key: OPEN_TO_ANONYMOUS
+        value: 1
+    eligibility:
+      -
+        key: IS_COMP
+        value: 0
+      -
+        key: MAX_CONCURRENT_SUBS
+        value: UNLIMITED
+      -
+        key: requires_unexpired_unused_articles
+        value: 'http://:hostname:/svc/user/entitlements/archive_bundle/:id:.json'
+    offerings:
+      -
+        duration: 30
+        index: 0
+        recurrences: 1
+        quantity: 10
+        price: 15.95
+        products:
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            production_cost: 0
+            quantity: 10
+            unit_price: 3.95
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/10/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": 0.0}'

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/sartre/!svn/ver/10452/offer_maker/trunk/bin
+END
+offerextractor.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/bin/offerextractor.py
+END
+offermaker_plato_phase_1.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/sartre/!svn/ver/10422/offer_maker/trunk/bin/offermaker_plato_phase_1.py
+END
+offersxls2yaml.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sartre/!svn/ver/10430/offer_maker/trunk/bin/offersxls2yaml.py
+END
+offermaker.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sartre/!svn/ver/10417/offer_maker/trunk/bin/offermaker.py
+END
+template-based-offer-maker.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/sartre/!svn/ver/10452/offer_maker/trunk/bin/template-based-offer-maker.py
+END
+create_sql.sh
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/bin/create_sql.sh
+END
+offer_compare.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sartre/!svn/ver/8951/offer_maker/trunk/bin/offer_compare.py
+END

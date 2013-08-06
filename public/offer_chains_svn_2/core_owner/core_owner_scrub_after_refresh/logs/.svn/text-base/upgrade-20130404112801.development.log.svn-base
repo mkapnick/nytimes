@@ -1,0 +1,20 @@
+
+
+Subject: Nomad upgrade completed successfully: ECDV8@rac01.qprvt.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.qprvt.nytimes.com
+        DB Role: PRIMARY
+        SID: ECDV8
+        Schema: core_owner
+        Migration: core_owner_scrub_after_refresh
+        SVN Revision: 10780
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-657

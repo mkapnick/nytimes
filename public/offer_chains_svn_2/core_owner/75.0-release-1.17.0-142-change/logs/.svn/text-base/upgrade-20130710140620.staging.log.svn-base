@@ -1,0 +1,73 @@
+14:06:33 SQL> @/dbbackups/ECST/migrations/core_owner/75.0-release-1.17.0-142-change/upgrade.sql
+14:06:33 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+14:06:33 SQL> 
+14:06:33 SQL> variable is_current_version_fine NUMBER;
+14:06:33 SQL> variable change_version NUMBER;
+14:06:33 SQL> variable bad_current_version VARCHAR2(1024);
+14:06:33 SQL> 
+14:06:33 SQL> exec :change_version := 142;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+14:06:33 SQL> exec PROCS_SYSTEM_V20.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.10
+14:06:34 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.02
+14:06:34 SQL> 
+14:06:34 SQL> BEGIN
+14:06:34   2  	IF (:is_current_version_fine != 0) THEN
+14:06:34   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+14:06:34   4  	END IF;
+14:06:34   5  END;
+14:06:34   6  
+14:06:34   7  CREATE TABLE dbdeploy_changelog (
+14:06:34   8  	change_number NUMBER(22,0) NOT NULL,
+14:06:34   9  	complete_dt TIMESTAMP NOT NULL,
+14:06:34  10  	applied_by VARCHAR2(100) NOT NULL,
+14:06:34  11  	description VARCHAR2(500) NOT NULL
+14:06:34  12  );
+14:06:34  13  
+14:06:34  14  ALTER TABLE dbdeploy_changelog ADD CONSTRAINT dbdeploy_changelog_pk PRIMARY KEY (change_number);
+14:06:34  15  
+14:06:34  16  EXEC PROCS_SYSTEM_V20.INCREMENT_VERSION();
+14:06:34  17  
+14:06:34  18  /
+CREATE TABLE dbdeploy_changelog (
+*
+ERROR at line 7:
+ORA-06550: line 7, column 1: 
+PLS-00103: Encountered the symbol "CREATE"  
+
+
+
+
+Subject: Nomad upgrade completed with errors: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation has errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 75.0-release-1.17.0-142-change
+        SVN Revision: 13437
+        Duration: 0 sec.
+        DBA: apathrose
+                
+        
+        Error Detail
+        ------------
+        
+        ERROR at line 7: ORA-06550: line 7, column 1:

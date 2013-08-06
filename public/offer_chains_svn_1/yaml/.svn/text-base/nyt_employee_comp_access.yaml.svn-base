@@ -1,0 +1,131 @@
+offer_chains:
+  - name: All Digital Access-Complimentary-Monthly-Complimentary - Employee
+    description: Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.
+    start_date: 01-JAN-2011
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 1
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: REQUIRES_EMAIL_DOMAIN
+        value: "@nytimes.com"
+    metadata:
+      - key: IS_COMP
+        value: 1
+      - key: BUNDLE
+        value: All Digital Access
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: TBD
+      - key: OFFER_TYPE
+        value: Complimentary
+      - key: BILLING_CYCLE
+        value: Monthly
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Complimentary - Employee
+      - key: REFUND_POLICY
+        value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.
+'
+    offerings:
+      - duration: 28
+        index: 0
+        recurrences: 12
+        price: 0
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 100% Off
+                description: 100% Off
+                percent: 100
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:

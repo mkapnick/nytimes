@@ -1,0 +1,77 @@
+15:55:21 SQL> @/dbbackups/ECPR/migrations/core_owner/50-release-1.14.1-paypal-hard-decline-notification-type/upgrade.sql
+15:55:21 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+15:55:21 SQL> 
+15:55:21 SQL> variable is_current_version_fine NUMBER;
+15:55:21 SQL> variable change_version NUMBER;
+15:55:21 SQL> variable bad_current_version VARCHAR2(1024);
+15:55:21 SQL> 
+15:55:21 SQL> exec :change_version := 138;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:55:21 SQL> exec PROCS_SYSTEM_V20.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.15
+15:55:21 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.03
+15:55:21 SQL> 
+15:55:21 SQL> BEGIN
+15:55:21   2  	IF (:is_current_version_fine != 0) THEN
+15:55:21   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+15:55:21   4  	END IF;
+15:55:21   5  END;
+15:55:21   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:55:21 SQL> 
+15:55:21 SQL> INSERT INTO NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (NOTTID_SEQ.NEXTVAL, 'sartre-pre-dunning-hard-decline-paypal', 'N/A');
+
+1 row created.
+
+Elapsed: 00:00:00.06
+15:55:21 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+15:55:21 SQL> 
+15:55:21 SQL> EXEC PROCS_SYSTEM_V20.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:55:21 SQL> 
+15:55:21 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:55:21 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 50-release-1.14.1-paypal-hard-decline-notification-type
+        SVN Revision: 12586
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-789

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/db/!svn/ver/13548/trunk/oracle/migrations/EC/core_owner/76-Hulu-Update-Email-Template/logs
+END
+upgrade-20130715122342.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/13548/trunk/oracle/migrations/EC/core_owner/76-Hulu-Update-Email-Template/logs/upgrade-20130715122342.production.log
+END
+upgrade-20130711122308.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13508/trunk/oracle/migrations/EC/core_owner/76-Hulu-Update-Email-Template/logs/upgrade-20130711122308.staging.log
+END

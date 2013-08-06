@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/db/!svn/ver/13909/trunk/oracle/migrations/EC/core_owner/79-Starbucks-8-Week/logs
+END
+upgrade-20130725164824.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/db/!svn/ver/13908/trunk/oracle/migrations/EC/core_owner/79-Starbucks-8-Week/logs/upgrade-20130725164824.staging.log
+END
+upgrade-20130725172501.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/db/!svn/ver/13909/trunk/oracle/migrations/EC/core_owner/79-Starbucks-8-Week/logs/upgrade-20130725172501.production.log
+END

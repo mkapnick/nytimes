@@ -1,0 +1,45 @@
+18:15:38 SQL> @/dbbackups/ECPR/migrations/core_owner/23.0-extend-expiration-date-SAR-261/upgrade.sql
+18:15:38 SQL> -- SAR-261: Extend expiration of all generated gift codes for Offer Chain ID 5801360120
+18:15:38 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+18:15:38 SQL> UPDATE
+18:15:38   2  	Gift_Certificate
+18:15:38   3  SET
+18:15:38   4  	Expiration_Date = Add_Months(Create_Date, 60),
+18:15:38   5  	Updated_By	= 'SAR-261',
+18:15:38   6  	Update_Date	= Sysdate
+18:15:38   7  WHERE
+18:15:38   8  	Offer_Chain_Id		     = 5801360120
+18:15:38   9  AND Gift_Certificate_Status_Id = 1;
+
+1994 rows updated.
+
+Elapsed: 00:00:01.33
+18:15:39 SQL> 
+18:15:39 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+18:15:39 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+18:15:39 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        SID: ECPR
+        Schema: core_owner
+        Migration: 23.0-extend-expiration-date-SAR-261
+        SVN Revision: 10702
+        Duration: 1 sec.
+        Service Request: https://jira.em.nytimes.com/browse/ORA-406

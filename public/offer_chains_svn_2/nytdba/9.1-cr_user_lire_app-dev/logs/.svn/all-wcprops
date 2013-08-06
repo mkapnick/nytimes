@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/db/!svn/ver/13850/trunk/oracle/migrations/EC/nytdba/9.1-cr_user_lire_app-dev/logs
+END
+upgrade-20130723233629.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/13849/trunk/oracle/migrations/EC/nytdba/9.1-cr_user_lire_app-dev/logs/upgrade-20130723233629.development.log
+END
+upgrade-20130723171006.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/13801/trunk/oracle/migrations/EC/nytdba/9.1-cr_user_lire_app-dev/logs/upgrade-20130723171006.development.log
+END
+upgrade-20130723195300.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/13826/trunk/oracle/migrations/EC/nytdba/9.1-cr_user_lire_app-dev/logs/upgrade-20130723195300.development.log
+END
+upgrade-20130723232128.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/13845/trunk/oracle/migrations/EC/nytdba/9.1-cr_user_lire_app-dev/logs/upgrade-20130723232128.development.log
+END
+upgrade-20130723233726.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/13850/trunk/oracle/migrations/EC/nytdba/9.1-cr_user_lire_app-dev/logs/upgrade-20130723233726.development.log
+END

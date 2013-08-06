@@ -1,0 +1,147 @@
+offer_chains:
+  - name: Web + Smartphone + Tablet - 100% discount for HD users
+    description: Web + Smartphone + Tabletpackage with 100% discount for HD users
+    start_date: 01-DEC-2010
+    end_date: 01-JAN-2020
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 1
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 1
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone+Tablet'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Complementary
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: HD
+      - key: REFUND_POLICY
+        value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 120
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.065753425
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 100% off for HD users
+                description: 100% off for HD users
+                percent: 100
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.065753425
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 100% off for HD users
+                description: 100% off for HD users
+                percent: 100
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.065753425
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 100% off for HD users
+                description: 100% off for HD users
+                percent: 100
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.065753425
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 100% off for HD users
+                description: 100% off for HD users
+                percent: 100
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.065753425
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 100% off for HD users
+                description: 100% off for HD users
+                percent: 100
+                fixed:
+
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.065753425
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+            discounts:
+              - name: 100% off for HD users
+                description: 100% off for HD users
+                percent: 100
+                fixed:
+
+          - name: Crosswords
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.24
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/crosswords/:id:.json
+              - key: capability
+                value: XWD
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/db/!svn/ver/12755/trunk/oracle/migrations/EC/core_owner/53-update-seat-ttl-ivanhoe/logs
+END
+upgrade-20130517150436.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/12755/trunk/oracle/migrations/EC/core_owner/53-update-seat-ttl-ivanhoe/logs/upgrade-20130517150436.production.log
+END
+upgrade-20130517135714.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/db/!svn/ver/12754/trunk/oracle/migrations/EC/core_owner/53-update-seat-ttl-ivanhoe/logs/upgrade-20130517135714.staging.log
+END

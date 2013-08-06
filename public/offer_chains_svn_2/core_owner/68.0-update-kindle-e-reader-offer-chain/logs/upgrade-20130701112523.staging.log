@@ -1,0 +1,41 @@
+11:25:36 SQL> @/dbbackups/ECST/migrations/core_owner/68.0-update-kindle-e-reader-offer-chain/upgrade.sql
+11:25:36 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK
+11:25:36 SQL> 
+11:25:36 SQL> Insert Into Offer_Chain_Meta_Data (Id,Offer_Chain_Id,Name,Value,Create_Date,Created_By)
+11:25:36   2  Values (Submd_Id_Seq.Nextval,2691330666,'IS_COMP','1',Sysdate,'JIRA-SAR-538');
+
+1 row created.
+
+Elapsed: 00:00:00.01
+11:25:36 SQL> 
+11:25:36 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+11:25:36 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+11:25:36 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 68.0-update-kindle-e-reader-offer-chain
+        SVN Revision: 13268
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-1013

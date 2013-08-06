@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG_ACCOUNT
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG_ACCOUNT/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG_ACCOUNT/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG_ACCOUNT/rollback.sql
+END

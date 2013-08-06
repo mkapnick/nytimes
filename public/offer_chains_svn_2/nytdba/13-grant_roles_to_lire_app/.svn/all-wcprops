@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/db/!svn/ver/13887/trunk/oracle/migrations/EC/nytdba/13-grant_roles_to_lire_app
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/db/!svn/ver/13812/trunk/oracle/migrations/EC/nytdba/13-grant_roles_to_lire_app/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/db/!svn/ver/13811/trunk/oracle/migrations/EC/nytdba/13-grant_roles_to_lire_app/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/db/!svn/ver/13811/trunk/oracle/migrations/EC/nytdba/13-grant_roles_to_lire_app/rollback.sql
+END

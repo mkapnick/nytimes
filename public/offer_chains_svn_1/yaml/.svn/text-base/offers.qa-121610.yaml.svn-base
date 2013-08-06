@@ -1,0 +1,91 @@
+offer_chains:
+  - name: Billing Failure $502
+    description: Force a $502 offer to ensure specific billing failure
+    start_date: 16-DEC-2010
+    end_date: 
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 502
+        products:
+          - name: ProductFail
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 16.766666667
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+
+  - name: Billing Failure $591
+    description: Force a $591 offer to ensure specific billing failure
+    start_date: 16-DEC-2010
+    end_date: 
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 591
+        products:
+          - name: ProductFail
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 19.7
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+ 
+  - name: Billing Failure $813
+    description: Force a $813 offer to ensure specific billing failure
+    start_date: 16-DEC-2010
+    end_date: 
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 813
+        products:
+          - name: ProductFail
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 27.1
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+ 

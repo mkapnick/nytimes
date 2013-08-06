@@ -1,0 +1,65 @@
+17:20:06 SQL> @/dbbackups/ECDV8/migrations/nytdba/12-cr_role_core_owner_execute/upgrade.sql
+17:20:06 SQL> -- code to create a role with read only privileges on <object_owner>'s objects and then grant that role to <grantee>
+17:20:06 SQL> 
+17:20:06 SQL> set serveroutput on termout off
+17:20:06 SQL> 
+17:20:06 SQL> declare
+17:20:06   2  
+17:20:06   3  	    role varchar2(30) := 'CORE_OWNER_EXECUTE';
+17:20:06   4  	    object_owner varchar2(30) := 'CORE_OWNER';
+17:20:06   5  
+17:20:06   6  begin
+17:20:06   7  
+17:20:06   8  	  /* drop  role */
+17:20:06   9  	  execute immediate 'drop role '||role;
+17:20:06  10  	  /* create role */
+17:20:06  11  	  execute immediate 'create role '||role;
+17:20:06  12  
+17:20:06  13  	  /* grant execute  privileges on object_owner's tables to role */
+17:20:06  14  	  for x in (select object_name from dba_objects  where object_type = 'PACKAGE' and owner = object_owner)
+17:20:06  15  	  loop
+17:20:06  16  	       execute immediate 'grant  execute on ' ||object_owner||'.'|| x.object_name || ' to '||role;
+17:20:06  17  	       dbms_output.put_line ('grant execute on ' ||object_owner||'.'|| x.object_name || ' to '||role);
+17:20:06  18  	  end loop;
+17:20:06  19  
+17:20:06  20  end;
+17:20:06  21  /
+declare
+*
+ERROR at line 1:
+ORA-01919: role 'CORE_OWNER_EXECUTE' does not exist 
+ORA-06512: at line 9 
+
+
+Elapsed: 00:00:00.15
+17:20:06 SQL> 
+17:20:06 SQL> 17:20:06 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+17:20:06 SQL> spool off;
+
+
+Subject: Nomad upgrade completed with errors: ECDV8@rac01.qprvt.nytimes.com
+From: Nomad for Oracle <db.alert@nytimes.com>
+To: steven.nedlin@nytimes.com
+
+Nomad upgrade operation has errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.qprvt.nytimes.com
+        DB Role: primary
+        Database: ECDV8
+        Schema: nytdba
+        Migration: 12-cr_role_core_owner_execute
+        SVN Revision: 13802
+        Duration: 0 sec.
+        DBA: apathrose
+                
+        
+        Error Detail
+        ------------
+        
+        ERROR at line 1: ORA-01919: role 'CORE_OWNER_EXECUTE' does not exist

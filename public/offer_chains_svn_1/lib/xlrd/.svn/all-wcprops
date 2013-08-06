@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/sartre/!svn/ver/5973/offer_maker/trunk/lib/xlrd
+END
+sheet.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/lib/xlrd/sheet.py
+END
+formatting.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/lib/xlrd/formatting.py
+END
+biffh.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/lib/xlrd/biffh.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/lib/xlrd/__init__.py
+END
+xldate.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/lib/xlrd/xldate.py
+END
+timemachine.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/lib/xlrd/timemachine.py
+END
+compdoc.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/lib/xlrd/compdoc.py
+END
+formula.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/lib/xlrd/formula.py
+END
+licences.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/lib/xlrd/licences.py
+END

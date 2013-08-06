@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/db/!svn/ver/9618/trunk/oracle/migrations/EC/core_owner/10-bugzilla-77226-academic-pass-insert/logs
+END
+upgrade-201211211043.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/db/!svn/ver/9618/trunk/oracle/migrations/EC/core_owner/10-bugzilla-77226-academic-pass-insert/logs/upgrade-201211211043.production.log
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/db/!svn/ver/9821/trunk/oracle/migrations/EC/core_owner/15.0-bugzilla-77434-new_trial_pay_offer_chains-notifications
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/db/!svn/ver/9807/trunk/oracle/migrations/EC/core_owner/15.0-bugzilla-77434-new_trial_pay_offer_chains-notifications/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/db/!svn/ver/9728/trunk/oracle/migrations/EC/core_owner/15.0-bugzilla-77434-new_trial_pay_offer_chains-notifications/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/9727/trunk/oracle/migrations/EC/core_owner/15.0-bugzilla-77434-new_trial_pay_offer_chains-notifications/rollback.sql
+END

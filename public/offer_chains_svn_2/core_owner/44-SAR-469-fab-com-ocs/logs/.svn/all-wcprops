@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/db/!svn/ver/12225/trunk/oracle/migrations/EC/core_owner/44-SAR-469-fab-com-ocs/logs
+END
+upgrade-20130409165607.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/db/!svn/ver/12225/trunk/oracle/migrations/EC/core_owner/44-SAR-469-fab-com-ocs/logs/upgrade-20130409165607.production.log
+END
+upgrade-20130405155548.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/db/!svn/ver/12178/trunk/oracle/migrations/EC/core_owner/44-SAR-469-fab-com-ocs/logs/upgrade-20130405155548.staging.log
+END

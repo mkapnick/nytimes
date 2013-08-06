@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/db/!svn/ver/10109/trunk/oracle/migrations/EC/core_owner/18-trigger_offer_chain_update
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/db/!svn/ver/10106/trunk/oracle/migrations/EC/core_owner/18-trigger_offer_chain_update/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/db/!svn/ver/10102/trunk/oracle/migrations/EC/core_owner/18-trigger_offer_chain_update/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/db/!svn/ver/10102/trunk/oracle/migrations/EC/core_owner/18-trigger_offer_chain_update/rollback.sql
+END

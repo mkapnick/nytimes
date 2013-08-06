@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/db/!svn/ver/12376/trunk/oracle/migrations/EC/core_owner/25.0-comp-offer-newsroon-SAR-260
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/db/!svn/ver/11589/trunk/oracle/migrations/EC/core_owner/25.0-comp-offer-newsroon-SAR-260/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/db/!svn/ver/10910/trunk/oracle/migrations/EC/core_owner/25.0-comp-offer-newsroon-SAR-260/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/db/!svn/ver/10910/trunk/oracle/migrations/EC/core_owner/25.0-comp-offer-newsroon-SAR-260/rollback.sql
+END

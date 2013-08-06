@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/db/!svn/ver/11610/trunk/oracle/migrations/EC/core_owner/24.0-SAR-247-remove-ops-constraints/logs
+END
+upgrade-20130213140404.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/db/!svn/ver/10900/trunk/oracle/migrations/EC/core_owner/24.0-SAR-247-remove-ops-constraints/logs/upgrade-20130213140404.production.log
+END
+upgrade-20130311155222.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/db/!svn/ver/11610/trunk/oracle/migrations/EC/core_owner/24.0-SAR-247-remove-ops-constraints/logs/upgrade-20130311155222.staging.log
+END
+upgrade-20130213113246.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/db/!svn/ver/10888/trunk/oracle/migrations/EC/core_owner/24.0-SAR-247-remove-ops-constraints/logs/upgrade-20130213113246.staging.log
+END

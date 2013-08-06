@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/db/!svn/ver/12458/trunk/oracle/migrations/EC/nytdba/6-cr_user_core_qa_auto-stg/logs
+END
+upgrade-20130424171901.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/db/!svn/ver/12455/trunk/oracle/migrations/EC/nytdba/6-cr_user_core_qa_auto-stg/logs/upgrade-20130424171901.staging.log
+END
+upgrade-20130424172126.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/db/!svn/ver/12458/trunk/oracle/migrations/EC/nytdba/6-cr_user_core_qa_auto-stg/logs/upgrade-20130424172126.staging.log
+END
+upgrade-20130424170651.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/db/!svn/ver/12446/trunk/oracle/migrations/EC/nytdba/6-cr_user_core_qa_auto-stg/logs/upgrade-20130424170651.staging.log
+END
+upgrade-20130424164248.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/db/!svn/ver/12435/trunk/oracle/migrations/EC/nytdba/6-cr_user_core_qa_auto-stg/logs/upgrade-20130424164248.development.log
+END

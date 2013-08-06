@@ -1,0 +1,34 @@
+18:39:25 SQL> @/dbbackups/ECPR/migrations/core_owner/76-update-kindle-ereader-metadata-create-dates/upgrade.sql
+18:39:25 SQL> whenever sqlerror exit rollback
+18:39:25 SQL> 
+18:39:25 SQL> update offer_chain_meta_data set create_date = sysdate, created_by = 'SAR-800' where offer_chain_id = 2691330666;
+
+12 rows updated.
+
+Elapsed: 00:00:00.39
+18:39:26 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+18:39:26 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 76-update-kindle-ereader-metadata-create-dates
+        SVN Revision: 13515
+        Duration: 0 sec.
+        DBA: apathrose
+        

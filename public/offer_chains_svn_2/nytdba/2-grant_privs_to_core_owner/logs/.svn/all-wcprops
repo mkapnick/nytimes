@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/db/!svn/ver/11066/trunk/oracle/migrations/EC/nytdba/2-grant_privs_to_core_owner/logs
+END
+upgrade-20130215131414.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/db/!svn/ver/10960/trunk/oracle/migrations/EC/nytdba/2-grant_privs_to_core_owner/logs/upgrade-20130215131414.development.log
+END
+upgrade-20130215131652.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/db/!svn/ver/10961/trunk/oracle/migrations/EC/nytdba/2-grant_privs_to_core_owner/logs/upgrade-20130215131652.development.log
+END
+upgrade-20130225154320.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/db/!svn/ver/11066/trunk/oracle/migrations/EC/nytdba/2-grant_privs_to_core_owner/logs/upgrade-20130225154320.production.log
+END
+upgrade-20130215140025.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/db/!svn/ver/10967/trunk/oracle/migrations/EC/nytdba/2-grant_privs_to_core_owner/logs/upgrade-20130215140025.staging.log
+END
+upgrade-20130215140731.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/db/!svn/ver/10969/trunk/oracle/migrations/EC/nytdba/2-grant_privs_to_core_owner/logs/upgrade-20130215140731.staging.log
+END
+upgrade-20130215131105.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/db/!svn/ver/10959/trunk/oracle/migrations/EC/nytdba/2-grant_privs_to_core_owner/logs/upgrade-20130215131105.development.log
+END
+upgrade-20130215140354.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/db/!svn/ver/10968/trunk/oracle/migrations/EC/nytdba/2-grant_privs_to_core_owner/logs/upgrade-20130215140354.staging.log
+END

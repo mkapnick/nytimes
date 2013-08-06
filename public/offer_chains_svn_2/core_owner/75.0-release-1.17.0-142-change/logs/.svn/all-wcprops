@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/db/!svn/ver/13607/trunk/oracle/migrations/EC/core_owner/75.0-release-1.17.0-142-change/logs
+END
+upgrade-20130717141417.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/db/!svn/ver/13607/trunk/oracle/migrations/EC/core_owner/75.0-release-1.17.0-142-change/logs/upgrade-20130717141417.production.log
+END
+upgrade-20130710145000.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/db/!svn/ver/13456/trunk/oracle/migrations/EC/core_owner/75.0-release-1.17.0-142-change/logs/upgrade-20130710145000.staging.log
+END
+upgrade-20130710140620.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/db/!svn/ver/13451/trunk/oracle/migrations/EC/core_owner/75.0-release-1.17.0-142-change/logs/upgrade-20130710140620.staging.log
+END
+upgrade-20130710150252.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/db/!svn/ver/13457/trunk/oracle/migrations/EC/core_owner/75.0-release-1.17.0-142-change/logs/upgrade-20130710150252.staging.log
+END

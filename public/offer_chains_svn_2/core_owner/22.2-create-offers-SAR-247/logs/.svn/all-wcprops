@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/db/!svn/ver/10906/trunk/oracle/migrations/EC/core_owner/22.2-create-offers-SAR-247/logs
+END
+upgrade-20130213141942.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/db/!svn/ver/10904/trunk/oracle/migrations/EC/core_owner/22.2-create-offers-SAR-247/logs/upgrade-20130213141942.staging.log
+END
+upgrade-20130212133730.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/10860/trunk/oracle/migrations/EC/core_owner/22.2-create-offers-SAR-247/logs/upgrade-20130212133730.production.log
+END
+upgrade-20130213142616.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/10906/trunk/oracle/migrations/EC/core_owner/22.2-create-offers-SAR-247/logs/upgrade-20130213142616.production.log
+END
+upgrade-20130212133408.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/db/!svn/ver/10859/trunk/oracle/migrations/EC/core_owner/22.2-create-offers-SAR-247/logs/upgrade-20130212133408.staging.log
+END

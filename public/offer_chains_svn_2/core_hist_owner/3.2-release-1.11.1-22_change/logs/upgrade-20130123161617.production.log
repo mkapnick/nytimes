@@ -1,0 +1,78 @@
+16:16:28 SQL> @/dbbackups/ECPR/migrations/core_hist_owner/3.2-release-1.11.1-22_change/upgrade.sql
+16:16:28 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+16:16:28 SQL> 
+16:16:28 SQL> variable is_current_version_fine NUMBER;
+16:16:28 SQL> variable change_version NUMBER;
+16:16:28 SQL> variable bad_current_version VARCHAR2(1024);
+16:16:28 SQL> 
+16:16:28 SQL> exec :change_version := 22;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+16:16:28 SQL> exec PROCS_SYSTEM_V9.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+16:16:28 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+16:16:28 SQL> 
+16:16:28 SQL> BEGIN
+16:16:28   2  	IF (:is_current_version_fine != 0) THEN
+16:16:28   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+16:16:28   4  	END IF;
+16:16:28   5  END;
+16:16:28   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+16:16:28 SQL> 
+16:16:28 SQL> insert into core_hist_owner.NOTIFICATION_FAILURE_HISTORY select * from ops_hist_owner.NOTIFICATION_FAILURE_HISTORY;
+
+10681 rows created.
+
+Elapsed: 00:00:00.16
+16:16:29 SQL> insert into core_hist_owner.NOTIFICATION_HISTORY select * from ops_hist_owner.NOTIFICATION_HISTORY;
+
+6302176 rows created.
+
+Elapsed: 00:03:20.63
+16:19:49 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.08
+16:19:49 SQL> 
+16:19:49 SQL> exec PROCS_SYSTEM_V9.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+16:19:49 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:19:49 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        SID: ECPR
+        Schema: core_hist_owner
+        Migration: 3.2-release-1.11.1-22_change
+        SVN Revision: 10382
+        Duration: 201 sec.
+        Service Request: https://jira.em.nytimes.com/browse/ORA-348

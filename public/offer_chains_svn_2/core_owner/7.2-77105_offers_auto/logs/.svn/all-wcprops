@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/db/!svn/ver/9616/trunk/oracle/migrations/EC/core_owner/7.2-77105_offers_auto/logs
+END
+upgrade-201211201449.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/db/!svn/ver/9616/trunk/oracle/migrations/EC/core_owner/7.2-77105_offers_auto/logs/upgrade-201211201449.production.log
+END
+upgrade-20121119153850.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/db/!svn/ver/9602/trunk/oracle/migrations/EC/core_owner/7.2-77105_offers_auto/logs/upgrade-20121119153850.staging.log
+END

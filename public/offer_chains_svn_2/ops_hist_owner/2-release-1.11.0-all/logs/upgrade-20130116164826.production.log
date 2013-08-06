@@ -1,0 +1,442 @@
+16:48:38 SQL> @/dbbackups/ECPR/migrations/ops_hist_owner/2-release-1.11.0-all/upgrade.sql
+16:48:38 SQL> --------------------------------------------------------------------------------
+16:48:38 SQL> -- DDL for package PROCS_HISTORY
+16:48:38 SQL> --------------------------------------------------------------------------------
+16:48:38 SQL> 
+16:48:38 SQL> CREATE OR REPLACE PACKAGE "PROCS_HISTORY_V16" AS
+16:48:38   2  
+16:48:38   3  PROCEDURE CREATE_NOTIFICATION_HISTORY (
+16:48:38   4  /*
+16:48:38   5  Throws exceptions:
+16:48:38   6  APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR
+16:48:38   7  */
+16:48:38   8  	in_notification_id	      IN NUMBER,
+16:48:38   9  	in_account_id		      IN NUMBER,
+16:48:38  10  	in_group_id		      IN NUMBER,
+16:48:38  11  	notification_reason_type_id   IN NUMBER,
+16:48:38  12  	notification_status_id	      IN NUMBER,
+16:48:38  13  	email_template_params	      IN CLOB,
+16:48:38  14  	in_create_date		      IN DATE,
+16:48:38  15  	in_date_to_notify	      IN DATE
+16:48:38  16  );
+16:48:38  17  
+16:48:38  18  PROCEDURE CREATE_NOTIF_FAILURE_HISTORY (
+16:48:38  19  /*
+16:48:38  20  Throws exceptions:
+16:48:38  21  APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR
+16:48:38  22  */
+16:48:38  23  	in_error_messgae	 IN VARCHAR2,
+16:48:38  24  	in_notification_id	 IN NUMBER,
+16:48:38  25  	in_create_date		 IN DATE
+16:48:38  26  );
+16:48:38  27  
+16:48:38  28  END PROCS_HISTORY_V16;
+16:48:38  29  .
+16:48:38 SQL> /
+
+Package created.
+
+Elapsed: 00:00:00.04
+16:48:38 SQL> 
+16:48:38 SQL> CREATE OR REPLACE PACKAGE BODY "PROCS_HISTORY_V16" AS
+16:48:38   2  
+16:48:38   3  PROCEDURE CREATE_NOTIFICATION_HISTORY (
+16:48:38   4  /*
+16:48:38   5  Throws exceptions:
+16:48:38   6  APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR
+16:48:38   7  */
+16:48:38   8  	in_notification_id	      IN NUMBER,
+16:48:38   9  	in_account_id		      IN NUMBER,
+16:48:38  10  	in_group_id		      IN NUMBER,
+16:48:38  11  	notification_reason_type_id   IN NUMBER,
+16:48:38  12  	notification_status_id	      IN NUMBER,
+16:48:38  13  	email_template_params	      IN CLOB,
+16:48:38  14  	in_create_date		      IN DATE,
+16:48:38  15  	in_date_to_notify	      IN DATE
+16:48:38  16  ) AS
+16:48:38  17  SPROC_NAME CONSTANT VARCHAR2(27) := 'CREATE_NOTIFICATION_HISTORY';
+16:48:38  18  BEGIN
+16:48:38  19  
+16:48:38  20  	INSERT INTO NOTIFICATION_HISTORY (
+16:48:38  21  	  NOTIFICATION_ID,
+16:48:38  22  	  ACCOUNT_ID,
+16:48:38  23  	  GROUP_ID,
+16:48:38  24  	  NOTIFICATION_REASON_TYPE_ID,
+16:48:38  25  	  NOTIFICATION_STATUS_ID,
+16:48:38  26  	  EMAIL_TEMPLATE_PARAMS,
+16:48:38  27  	  CREATE_DATE,
+16:48:38  28  	  UPDATE_DATE,
+16:48:38  29  	  DATE_TO_NOTIFY
+16:48:38  30  	) VALUES (
+16:48:38  31  	  in_notification_id,
+16:48:38  32  	  in_account_id,
+16:48:38  33  	  in_group_id,
+16:48:38  34  	  notification_reason_type_id,
+16:48:38  35  	  notification_status_id,
+16:48:38  36  	  email_template_params,
+16:48:38  37  	  in_create_date,
+16:48:38  38  	  sysdate,
+16:48:38  39  	  in_date_to_notify
+16:48:38  40  	);
+16:48:38  41  
+16:48:38  42  EXCEPTION
+16:48:38  43  WHEN OTHERS THEN
+16:48:38  44  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR,
+16:48:38  45  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+16:48:38  46  END CREATE_NOTIFICATION_HISTORY;
+16:48:38  47  
+16:48:38  48  /******************************************************************************/
+16:48:38  49  
+16:48:38  50  PROCEDURE CREATE_NOTIF_FAILURE_HISTORY (
+16:48:38  51  /*
+16:48:38  52  Throws exceptions:
+16:48:38  53  APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR
+16:48:38  54  */
+16:48:38  55  	in_error_messgae	 IN VARCHAR2,
+16:48:38  56  	in_notification_id IN NUMBER,
+16:48:38  57  	in_create_date		 IN DATE
+16:48:38  58  ) AS
+16:48:38  59  SPROC_NAME CONSTANT VARCHAR2(28) := 'CREATE_NOTIF_FAILURE_HISTORY';
+16:48:38  60  BEGIN
+16:48:38  61  
+16:48:38  62  	INSERT INTO NOTIFICATION_FAILURE_HISTORY (
+16:48:38  63  	  ERROR_MESSAGE,
+16:48:38  64  	  NOTIFICATION_ID,
+16:48:38  65  	  CREATE_DATE,
+16:48:38  66  	  UPDATE_DATE
+16:48:38  67  	) VALUES (
+16:48:38  68  	  in_error_messgae,
+16:48:38  69  	  in_notification_id,
+16:48:38  70  	  in_create_date,
+16:48:38  71  	  sysdate
+16:48:38  72  	);
+16:48:38  73  
+16:48:38  74  EXCEPTION
+16:48:38  75  WHEN OTHERS THEN
+16:48:38  76  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR,
+16:48:38  77  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+16:48:38  78  END CREATE_NOTIF_FAILURE_HISTORY;
+16:48:38  79  
+16:48:38  80  END PROCS_HISTORY_V16;
+16:48:38  81  .
+16:48:38 SQL> /
+
+Package body created.
+
+Elapsed: 00:00:00.06
+16:48:38 SQL> 
+16:48:38 SQL> --------------------------------------------------------------------------------
+16:48:38 SQL> -- DDL for package PROCS_PARTITIONS
+16:48:38 SQL> --------------------------------------------------------------------------------
+16:48:38 SQL> 
+16:48:38 SQL> CREATE OR REPLACE PACKAGE "PROCS_PARTITIONS_V16" AS
+16:48:38   2  
+16:48:38   3  PROCEDURE GET_PARTITION_YEAR_MONTH (
+16:48:38   4  	in_year   IN NUMBER,
+16:48:38   5  	in_month  IN NUMBER,
+16:48:38   6  	out_year  OUT NUMBER,
+16:48:38   7  	out_month OUT NUMBER
+16:48:38   8  );
+16:48:38   9  
+16:48:38  10  PROCEDURE ADD_TABLE_PARTITION (
+16:48:38  11  	in_tablename	   IN VARCHAR2,
+16:48:38  12  	in_partitionprefix IN VARCHAR2,
+16:48:38  13  	in_year 	   IN NUMBER,
+16:48:38  14  	in_month	   IN NUMBER
+16:48:38  15  );
+16:48:38  16  
+16:48:38  17  PROCEDURE ADD_NOTIFICATION_PARTITION(
+16:48:38  18  	in_year  IN NUMBER,
+16:48:38  19  	in_month IN NUMBER
+16:48:38  20  );
+16:48:38  21  
+16:48:38  22  PROCEDURE ADD_NOTIF_FAILURE_PARTITION(
+16:48:38  23  	in_year  IN NUMBER,
+16:48:38  24  	in_month IN NUMBER
+16:48:38  25  );
+16:48:38  26  
+16:48:38  27  END PROCS_PARTITIONS_V16;
+16:48:38  28  .
+16:48:38 SQL> /
+
+Package created.
+
+Elapsed: 00:00:00.04
+16:48:38 SQL> 
+16:48:38 SQL> CREATE OR REPLACE PACKAGE BODY "PROCS_PARTITIONS_V16" AS
+16:48:38   2  
+16:48:38   3  PROCEDURE GET_PARTITION_YEAR_MONTH (
+16:48:38   4  	in_year   IN NUMBER,
+16:48:38   5  	in_month  IN NUMBER,
+16:48:38   6  	out_year  OUT NUMBER,
+16:48:38   7  	out_month OUT NUMBER
+16:48:38   8  ) AS
+16:48:38   9  BEGIN
+16:48:38  10  	IF in_month < 12 THEN
+16:48:38  11  	  out_month := in_month + 1;
+16:48:38  12  	  out_year  := in_year;
+16:48:38  13  	ELSIF in_month = 12 THEN
+16:48:38  14  	  out_month := 1;
+16:48:38  15  	  out_year  := in_year + 1;
+16:48:38  16  	ELSE
+16:48:38  17  	  out_month := in_month;
+16:48:38  18  	  out_year  := in_year;
+16:48:38  19  	END IF;
+16:48:38  20  END;
+16:48:38  21  
+16:48:38  22  /**************************************************************/
+16:48:38  23  
+16:48:38  24  PROCEDURE ADD_TABLE_PARTITION (
+16:48:38  25  	in_tablename	   IN VARCHAR2,
+16:48:38  26  	in_partitionprefix IN VARCHAR2,
+16:48:38  27  	in_year 	   IN NUMBER,
+16:48:38  28  	in_month	   IN NUMBER
+16:48:38  29  ) AS
+16:48:38  30  -- VARIABLES
+16:48:38  31  partision_year  NUMBER;
+16:48:38  32  partision_month NUMBER;
+16:48:38  33  -- CONSTANTS
+16:48:38  34  const_max_prefix CONSTANT VARCHAR(3) := 'max';
+16:48:38  35  BEGIN
+16:48:38  36  	GET_PARTITION_YEAR_MONTH(in_year, in_month, partision_year, partision_month);
+16:48:38  37  	EXECUTE IMMEDIATE 'ALTER TABLE '||in_tablename||' SPLIT PARTITION '||in_partitionprefix||'_'||const_max_prefix||' AT (date '''||partision_year||'-'||partision_month||'-01'') INTO (PARTITION '||in_partitionprefix||'_y'||in_year||'m'||in_month||', PARTITION '||in_partitionprefix||'_'||const_max_prefix||')';
+16:48:38  38  END;
+16:48:38  39  
+16:48:38  40  /**************************************************************/
+16:48:38  41  
+16:48:38  42  PROCEDURE ADD_NOTIFICATION_PARTITION(
+16:48:38  43  	in_year  IN NUMBER,
+16:48:38  44  	in_month IN NUMBER
+16:48:38  45  ) AS
+16:48:38  46  -- CONSTANTS
+16:48:38  47  CONST_TABLE_NAME	     CONSTANT VARCHAR2(20) := 'NOTIFICATION_HISTORY';
+16:48:38  48  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(12)  := 'notification';
+16:48:38  49  BEGIN
+16:48:38  50  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+16:48:38  51  END ADD_NOTIFICATION_PARTITION;
+16:48:38  52  
+16:48:38  53  /**************************************************************/
+16:48:38  54  
+16:48:38  55  PROCEDURE ADD_NOTIF_FAILURE_PARTITION(
+16:48:38  56  	in_year  IN NUMBER,
+16:48:38  57  	in_month IN NUMBER
+16:48:38  58  ) AS
+16:48:38  59  -- CONSTANTS
+16:48:38  60  CONST_TABLE_NAME	     CONSTANT VARCHAR2(28) := 'NOTIFICATION_FAILURE_HISTORY';
+16:48:38  61  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(20) := 'notification_failure';
+16:48:38  62  BEGIN
+16:48:38  63  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+16:48:38  64  END ADD_NOTIF_FAILURE_PARTITION;
+16:48:38  65  
+16:48:38  66  END PROCS_PARTITIONS_V16;
+16:48:38  67  .
+16:48:38 SQL> /
+
+Package body created.
+
+Elapsed: 00:00:00.02
+16:48:38 SQL> 
+16:48:38 SQL> --------------------------------------------------------------------------------
+16:48:38 SQL> -- DDL for package PROCS_SYSTEM
+16:48:38 SQL> --------------------------------------------------------------------------------
+16:48:38 SQL> 
+16:48:38 SQL> CREATE OR REPLACE PACKAGE "PROCS_SYSTEM_V16" AS
+16:48:38   2  
+16:48:38   3  PROCEDURE INCREMENT_VERSION;
+16:48:38   4  
+16:48:38   5  PROCEDURE CHECK_VERSION(
+16:48:38   6  	  in_vers    IN NUMBER,
+16:48:38   7  	  out_result OUT NUMBER
+16:48:38   8  );
+16:48:38   9  
+16:48:38  10  END PROCS_SYSTEM_V16;
+16:48:38  11  .
+16:48:38 SQL> /
+
+Package created.
+
+Elapsed: 00:00:00.02
+16:48:38 SQL> 
+16:48:38 SQL> CREATE OR REPLACE PACKAGE BODY "PROCS_SYSTEM_V16" AS
+16:48:38   2  
+16:48:38   3  PROCEDURE INCREMENT_VERSION
+16:48:38   4  /*
+16:48:38   5  Throws exceptions:
+16:48:38   6  CORE_OWNER.APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR
+16:48:38   7  */
+16:48:38   8  AS
+16:48:38   9  BEGIN
+16:48:38  10  
+16:48:38  11  	UPDATE SYS_VERSION SET version=version+1;
+16:48:38  12  
+16:48:38  13  EXCEPTION
+16:48:38  14  WHEN OTHERS THEN
+16:48:38  15  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR,
+16:48:38  16  	  'Unknown error');
+16:48:38  17  END INCREMENT_VERSION;
+16:48:38  18  
+16:48:38  19  /*************************************************************/
+16:48:38  20  
+16:48:38  21  PROCEDURE CHECK_VERSION(
+16:48:38  22  	  in_vers    IN NUMBER,
+16:48:38  23  	  out_result OUT NUMBER
+16:48:38  24  ) AS
+16:48:38  25  	current_version NUMBER;
+16:48:38  26  BEGIN
+16:48:38  27  	SELECT version INTO current_version FROM SYS_VERSION;
+16:48:38  28  	IF(current_version != in_vers) THEN
+16:48:38  29  	  out_result := 1;
+16:48:38  30  	ELSE
+16:48:38  31  	  out_result := 0;
+16:48:38  32  	END IF;
+16:48:38  33  	EXCEPTION
+16:48:38  34  	      WHEN OTHERS THEN
+16:48:38  35  	      NULL;
+16:48:38  36  END CHECK_VERSION;
+16:48:38  37  
+16:48:38  38  END PROCS_SYSTEM_V16;
+16:48:38  39  .
+16:48:38 SQL> /
+
+Package body created.
+
+Elapsed: 00:00:00.02
+16:48:38 SQL> 
+16:48:38 SQL> --------------------------------------------------------------------------------
+16:48:38 SQL> -- DDL for package PUBLIC_PROCS_OPS
+16:48:38 SQL> --------------------------------------------------------------------------------
+16:48:38 SQL> 
+16:48:38 SQL> CREATE OR REPLACE PACKAGE "PUBLIC_PROCS_OPS_V16" AS
+16:48:38   2  
+16:48:38   3  PROCEDURE CREATE_NOTIFICATION_HISTORY (
+16:48:38   4  /*
+16:48:38   5  Throws exceptions:
+16:48:38   6  APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR
+16:48:38   7  */
+16:48:38   8  	in_notification_id	      IN NUMBER,
+16:48:38   9  	in_account_id		      IN NUMBER,
+16:48:38  10  	in_group_id		      IN NUMBER,
+16:48:38  11  	notification_reason_type_id   IN NUMBER,
+16:48:38  12  	notification_status_id	      IN NUMBER,
+16:48:38  13  	email_template_params	      IN CLOB,
+16:48:38  14  	in_create_date		      IN DATE,
+16:48:38  15  	in_date_to_notify	      IN DATE
+16:48:38  16  );
+16:48:38  17  
+16:48:38  18  PROCEDURE CREATE_NOTIF_FAILURE_HISTORY (
+16:48:38  19  /*
+16:48:38  20  Throws exceptions:
+16:48:38  21  APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR
+16:48:38  22  */
+16:48:38  23  	in_error_message	 IN VARCHAR2,
+16:48:38  24  	in_notification_id	 IN NUMBER,
+16:48:38  25  	in_create_date		 IN DATE
+16:48:38  26  );
+16:48:38  27  
+16:48:38  28  END PUBLIC_PROCS_OPS_V16;
+16:48:38  29  .
+16:48:38 SQL> /
+
+Package created.
+
+Elapsed: 00:00:00.10
+16:48:38 SQL> 
+16:48:38 SQL> CREATE OR REPLACE PACKAGE BODY "PUBLIC_PROCS_OPS_V16" AS
+16:48:38   2  
+16:48:38   3  PROCEDURE CREATE_NOTIFICATION_HISTORY (
+16:48:38   4  /*
+16:48:38   5  Throws exceptions:
+16:48:38   6  APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR
+16:48:38   7  */
+16:48:38   8  	in_notification_id	      IN NUMBER,
+16:48:38   9  	in_account_id		      IN NUMBER,
+16:48:38  10  	in_group_id		      IN NUMBER,
+16:48:38  11  	notification_reason_type_id   IN NUMBER,
+16:48:38  12  	notification_status_id	      IN NUMBER,
+16:48:38  13  	email_template_params	      IN CLOB,
+16:48:38  14  	in_create_date		      IN DATE,
+16:48:38  15  	in_date_to_notify	      IN DATE
+16:48:38  16  ) AS
+16:48:38  17  BEGIN
+16:48:38  18  	PROCS_HISTORY_V16.CREATE_NOTIFICATION_HISTORY(
+16:48:38  19  	  in_notification_id,
+16:48:38  20  	  in_account_id,
+16:48:38  21  	  in_group_id,
+16:48:38  22  	  notification_reason_type_id,
+16:48:38  23  	  notification_status_id,
+16:48:38  24  	  email_template_params,
+16:48:38  25  	  in_create_date,
+16:48:38  26  	  in_date_to_notify
+16:48:38  27  	);
+16:48:38  28  END CREATE_NOTIFICATION_HISTORY;
+16:48:38  29  
+16:48:38  30  /******************************************************/
+16:48:38  31  
+16:48:38  32  PROCEDURE CREATE_NOTIF_FAILURE_HISTORY (
+16:48:38  33  /*
+16:48:38  34  Throws exceptions:
+16:48:38  35  APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR
+16:48:38  36  */
+16:48:38  37  	in_error_message	 IN VARCHAR2,
+16:48:38  38  	in_notification_id	 IN NUMBER,
+16:48:38  39  	in_create_date		 IN DATE
+16:48:38  40  ) AS
+16:48:38  41  BEGIN
+16:48:38  42  	PROCS_HISTORY_V16.CREATE_NOTIF_FAILURE_HISTORY(
+16:48:38  43  	  in_error_message,
+16:48:38  44  	  in_notification_id,
+16:48:38  45  	  in_create_date
+16:48:38  46  	);
+16:48:38  47  END CREATE_NOTIF_FAILURE_HISTORY;
+16:48:38  48  
+16:48:38  49  END PUBLIC_PROCS_OPS_V16;
+16:48:38  50  .
+16:48:38 SQL> /
+
+Package body created.
+
+Elapsed: 00:00:00.03
+16:48:38 SQL> 
+16:48:38 SQL> GRANT EXECUTE ON PUBLIC_PROCS_OPS_V16 TO ops_owner;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.01
+16:48:38 SQL> GRANT EXECUTE ON PUBLIC_PROCS_OPS_V16 TO ops_aaa_app;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.00
+16:48:38 SQL> GRANT EXECUTE ON PUBLIC_PROCS_OPS_V16 TO ops_payment_app;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.00
+16:48:38 SQL> GRANT EXECUTE ON PUBLIC_PROCS_OPS_V16 TO ops_notif_app;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.05
+16:48:38 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:48:38 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        SID: ECPR
+        Schema: ops_hist_owner
+        Migration: 2-release-1.11.0-all
+        SVN Revision: 10148
+        Duration: 0 sec.
+        

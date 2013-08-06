@@ -1,0 +1,2466 @@
+10:48:08 SQL> @/dbbackups/ECST/migrations/core_hist_owner/51.3-release-1.15.0-2-CORE_HIST-all.sql/upgrade.sql
+10:48:08 SQL> --------------------------------------------------------------------------------
+10:48:08 SQL> -- DDL for package PROCS_HISTORY
+10:48:08 SQL> --------------------------------------------------------------------------------
+10:48:08 SQL> 
+10:48:08 SQL> CREATE OR REPLACE PACKAGE "PROCS_HISTORY_V21" AS
+10:48:08   2  
+10:48:08   3  PROCEDURE CREATE_ADDRESS_HISTORY (
+10:48:08   4  /*
+10:48:08   5  Throws exceptions:
+10:48:08   6  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08   7  */
+10:48:08   8  	in_address_id		      IN ADDRESS_HISTORY.ADDRESS_ID%TYPE,
+10:48:08   9  	in_system_activity_reason_id  IN ADDRESS_HISTORY.SYSTEM_ACTIVITY_REASON_ID%TYPE,
+10:48:08  10  	in_address1		      IN ADDRESS_HISTORY.ADDRESS1%TYPE,
+10:48:08  11  	in_address2		      IN ADDRESS_HISTORY.ADDRESS2%TYPE,
+10:48:08  12  	in_city 		      IN ADDRESS_HISTORY.CITY%TYPE,
+10:48:08  13  	in_state		      IN ADDRESS_HISTORY.STATE%TYPE,
+10:48:08  14  	in_postal_code		      IN ADDRESS_HISTORY.POSTAL_CODE%TYPE,
+10:48:08  15  	in_country		      IN ADDRESS_HISTORY.COUNTRY%TYPE,
+10:48:08  16  	in_created_by		      IN ADDRESS_HISTORY.CREATED_BY%TYPE,
+10:48:08  17  	in_create_date		      IN ADDRESS_HISTORY.CREATE_DATE%TYPE,
+10:48:08  18  	in_updated_by		      IN ADDRESS_HISTORY.UPDATED_BY%TYPE,
+10:48:08  19  	in_update_date		      IN ADDRESS_HISTORY.UPDATE_DATE%TYPE
+10:48:08  20  );
+10:48:08  21  
+10:48:08  22  PROCEDURE CREATE_ACCOUNT_HISTORY (
+10:48:08  23  /*
+10:48:08  24  Throws exceptions:
+10:48:08  25  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08  26  */
+10:48:08  27  	in_account_id		      IN NUMBER,
+10:48:08  28  	in_suspend_date 	      IN DATE,
+10:48:08  29  	in_group_id		      IN NUMBER,
+10:48:08  30  	in_created_by		      IN VARCHAR2,
+10:48:08  31  	in_create_date		      IN DATE,
+10:48:08  32  	in_system_activity_reason_id  IN NUMBER,
+10:48:08  33  	in_account_status_id	      IN NUMBER,
+10:48:08  34  	in_instrument_type_id	      IN NUMBER,
+10:48:08  35  	in_instrument_id	      IN NUMBER
+10:48:08  36  );
+10:48:08  37  
+10:48:08  38  PROCEDURE CREATE_SUBSCRIPTION_HISTORY (
+10:48:08  39  /*
+10:48:08  40  Throws exceptions:
+10:48:08  41  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08  42  */
+10:48:08  43  	in_subscription_id	     IN  NUMBER,
+10:48:08  44  	in_account_id		     IN NUMBER,
+10:48:08  45  	in_purchase_date	     IN DATE,
+10:48:08  46  	in_offer_chain_id	     IN NUMBER,
+10:48:08  47  	in_suspend_date 	     IN DATE,
+10:48:08  48  	in_termination_date	     IN DATE,
+10:48:08  49  	in_days_remaining_adjustment IN NUMBER,
+10:48:08  50  	in_cancellation_type_id      IN NUMBER,
+10:48:08  51  	in_created_by		     IN  VARCHAR2,
+10:48:08  52  	in_create_date		     IN DATE,
+10:48:08  53  	in_system_activity_reason_id IN  NUMBER
+10:48:08  54  );
+10:48:08  55  
+10:48:08  56  PROCEDURE CREATE_CREDIT_CARD_HISTORY (
+10:48:08  57  /*
+10:48:08  58  Throws exceptions:
+10:48:08  59  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08  60  */
+10:48:08  61  	in_credit_card_id	      IN  NUMBER,
+10:48:08  62  	in_account_id		      IN NUMBER,
+10:48:08  63  	in_instrument_name	      IN VARCHAR2,
+10:48:08  64  	in_private_card_holder_name   IN VARCHAR2,
+10:48:08  65  	in_private_street_address     IN VARCHAR2,
+10:48:08  66  	in_private_street_address2    IN VARCHAR2,
+10:48:08  67  	in_state		      IN VARCHAR2,
+10:48:08  68  	in_city 		      IN VARCHAR2,
+10:48:08  69  	in_postal_code		      IN VARCHAR2,
+10:48:08  70  	in_country		      IN CHAR,
+10:48:08  71  	in_last_four_cc 	      IN VARCHAR2,
+10:48:08  72  	in_expiration_date	      IN DATE,
+10:48:08  73  	in_credit_card_type_id	      IN NUMBER,
+10:48:08  74  	in_secret_token 	      IN VARCHAR2,
+10:48:08  75  	in_chase_profile_id	      IN VARCHAR2,
+10:48:08  76  	in_credit_card_status_id      IN NUMBER,
+10:48:08  77  	in_created_by		      IN  VARCHAR2,
+10:48:08  78  	in_create_date		      IN DATE,
+10:48:08  79  	in_system_activity_reason_id  IN  NUMBER
+10:48:08  80  );
+10:48:08  81  
+10:48:08  82  PROCEDURE CREATE_PAYPAL_HISTORY (
+10:48:08  83  /*
+10:48:08  84  Throws exceptions:
+10:48:08  85  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08  86  */
+10:48:08  87  	in_paypal_id			IN NUMBER,
+10:48:08  88  	in_account_id			IN NUMBER,
+10:48:08  89  	in_instrument_name		IN VARCHAR2,
+10:48:08  90  	in_private_email_address	IN VARCHAR2,
+10:48:08  91  	in_created_by			IN VARCHAR2,
+10:48:08  92  	in_create_date			IN DATE,
+10:48:08  93  	in_paypal_status_id		IN NUMBER,
+10:48:08  94  	in_paypal_prvt_street_address	IN VARCHAR2,
+10:48:08  95  	in_paypal_prvt_street_address2	IN VARCHAR2,
+10:48:08  96  	in_state			IN VARCHAR2,
+10:48:08  97  	in_city 			IN VARCHAR2,
+10:48:08  98  	in_postal_code			IN VARCHAR2,
+10:48:08  99  	in_country			IN CHAR,
+10:48:08 100  	in_expiration_date		IN DATE,
+10:48:08 101  	in_system_activity_reason_id	IN NUMBER,
+10:48:08 102  	in_secret_token 		IN VARCHAR2
+10:48:08 103  );
+10:48:08 104  
+10:48:08 105  PROCEDURE CREATE_TRANSACTION_HISTORY (
+10:48:08 106  /*
+10:48:08 107  Throws exceptions:
+10:48:08 108  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08 109  */
+10:48:08 110  	in_transaction_id	     IN TRANSACTION_HISTORY.TRANSACTION_ID%TYPE,
+10:48:08 111  	in_transaction_status_id     IN TRANSACTION_HISTORY.TRANSACTION_STATUS_ID%TYPE,
+10:48:08 112  	in_transaction_amount	     IN TRANSACTION_HISTORY.TRANSACTION_AMOUNT%TYPE,
+10:48:08 113  	in_created_by		     IN TRANSACTION_HISTORY.CREATED_BY%TYPE,
+10:48:08 114  	in_create_date		     IN TRANSACTION_HISTORY.CREATE_DATE%TYPE,
+10:48:08 115  	in_system_activity_reason_id IN TRANSACTION_HISTORY.SYSTEM_ACTIVITY_REASON_ID%TYPE,
+10:48:08 116  	in_order_id		     IN TRANSACTION_HISTORY.ORDER_ID%TYPE DEFAULT NULL,
+10:48:08 117  	in_charge_id		     IN TRANSACTION_HISTORY.CHARGE_ID%TYPE DEFAULT NULL,
+10:48:08 118  	in_is_refund		     IN TRANSACTION_HISTORY.IS_REFUND%TYPE DEFAULT NULL,
+10:48:08 119  	in_is_settled		     IN TRANSACTION_HISTORY.IS_SETTLED%TYPE DEFAULT NULL,
+10:48:08 120  	in_transaction_type_code     IN TRANSACTION_HISTORY.TRANSACTION_TYPE_CODE%TYPE DEFAULT NULL
+10:48:08 121  );
+10:48:08 122  
+10:48:08 123  PROCEDURE CREATE_GIFT_CERT_HISTORY (
+10:48:08 124  /*
+10:48:08 125  Throws exceptions:
+10:48:08 126  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08 127  */
+10:48:08 128  	in_gift_certificate_id	      IN NUMBER,
+10:48:08 129  	in_purchaser_group_id	      IN NUMBER,
+10:48:08 130  	in_purchase_invoice_id	      IN NUMBER,
+10:48:08 131  	in_offer_chain_id	      IN NUMBER,
+10:48:08 132  	in_expiration_date	      IN DATE,
+10:48:08 133  	in_purchase_date	      IN DATE,
+10:48:08 134  	in_gift_certificate_status_id IN NUMBER,
+10:48:08 135  	in_code 		      IN VARCHAR2,
+10:48:08 136  	in_created_by		      IN VARCHAR2,
+10:48:08 137  	in_create_date		      IN DATE,
+10:48:08 138  	in_system_activity_reason_id  IN NUMBER,
+10:48:08 139  	in_recipient_name	      IN VARCHAR2,
+10:48:08 140  	in_gift_message 	      IN VARCHAR2,
+10:48:08 141  	in_recipient_email	      IN VARCHAR2,
+10:48:08 142  	in_finalized_invoice_id       IN NUMBER,
+10:48:08 143  	in_sender_email 	      IN VARCHAR2,
+10:48:08 144  	in_sender_name		      IN VARCHAR2,
+10:48:08 145  	in_redemption_date	      IN DATE,
+10:48:08 146  	in_redeemer_group_id	      IN NUMBER,
+10:48:08 147  	in_cancelation_date	      IN DATE,
+10:48:08 148  	in_recipient_address_id       IN NUMBER,
+10:48:08 149  	in_redeemer_address_id	      IN NUMBER,
+10:48:08 150  	in_recipient_notify_date      IN DATE
+10:48:08 151  );
+10:48:08 152  
+10:48:08 153  PROCEDURE CREATE_INVOICE_HISTORY (
+10:48:08 154  /*
+10:48:08 155  Throws exceptions:
+10:48:08 156  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08 157  */
+10:48:08 158  	in_invoice_id		     IN NUMBER,
+10:48:08 159  	in_invoice_status_id	     IN NUMBER,
+10:48:08 160  	in_created_by		     IN VARCHAR2,
+10:48:08 161  	in_create_date		     IN DATE,
+10:48:08 162  	in_system_activity_reason_id IN NUMBER
+10:48:08 163  );
+10:48:08 164  
+10:48:08 165  PROCEDURE CREATE_LICENSE_HISTORY (
+10:48:08 166  /*
+10:48:08 167  Throws exceptions:
+10:48:08 168  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08 169  */
+10:48:08 170  	in_license_id		     IN NUMBER,
+10:48:08 171  	in_license_status_id	     IN NUMBER,
+10:48:08 172  	in_needs_entitlements	     IN NUMBER,
+10:48:08 173  	in_start_date		     IN DATE,
+10:48:08 174  	in_offer_id		     IN NUMBER,
+10:48:08 175  	in_subscription_id	     IN NUMBER,
+10:48:08 176  	in_invoice_id		     IN NUMBER,
+10:48:08 177  	in_end_date		     IN DATE,
+10:48:08 178  	in_created_by		     IN VARCHAR2,
+10:48:08 179  	in_create_date		     IN DATE,
+10:48:08 180  	in_is_extension 	     IN NUMBER,
+10:48:08 181  	in_current_offer_index	     IN NUMBER,
+10:48:08 182  	in_current_offer_recurr_num  IN NUMBER,
+10:48:08 183  	in_system_activity_reason_id IN NUMBER,
+10:48:08 184  	in_entitlement_end_date      IN DATE,
+10:48:08 185  	in_grace_start_date	     IN DATE,
+10:48:08 186  	in_grace_end_date	     IN DATE
+10:48:08 187  );
+10:48:08 188  
+10:48:08 189  PROCEDURE CREATE_CHARGE_HISTORY (
+10:48:08 190  /*
+10:48:08 191  Throws exceptions:
+10:48:08 192  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08 193  */
+10:48:08 194  	in_charge_id		     IN NUMBER,
+10:48:08 195  	in_invoice_id		     IN NUMBER,
+10:48:08 196  	in_transaction_id	     IN NUMBER,
+10:48:08 197  	in_instrument_type_id	     IN NUMBER,
+10:48:08 198  	in_instrument_id	     IN NUMBER,
+10:48:08 199  	in_charge_amount	     IN NUMBER,
+10:48:08 200  	in_created_by		     IN VARCHAR2,
+10:48:08 201  	in_create_date		     IN DATE,
+10:48:08 202  	in_charge_status_id	     IN NUMBER,
+10:48:08 203  	in_system_activity_reason_id IN NUMBER
+10:48:08 204  );
+10:48:08 205  
+10:48:08 206  PROCEDURE CREATE_ITUNES_RECEIPT_HISTORY (
+10:48:08 207  /*
+10:48:08 208  Throws exceptions:
+10:48:08 209  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08 210  */
+10:48:08 211  /*
+10:48:08 212  CREATE TABLE ITUNES_RECEIPT (
+10:48:08 213  	id NUMBER NOT NULL ENABLE,
+10:48:08 214  	subscription_id NUMBER NOT NULL ENABLE,
+10:48:08 215  	receipt VARCHAR(1024) NOT NULL ENABLE,
+10:48:08 216  	status NUMBER,
+10:48:08 217  	quantity NUMBER,
+10:48:08 218  	product_id VARCHAR(1024),
+10:48:08 219  	transaction_id VARCHAR(1024),
+10:48:08 220  	purchase_date TIMESTAMP,
+10:48:08 221  	original_transaction_id VARCHAR(1024),
+10:48:08 222  	original_purchase_date TIMESTAMP,
+10:48:08 223  	app_item_id VARCHAR(1024),
+10:48:08 224  	version_external_id NUMBER,
+10:48:08 225  	bid VARCHAR(1024),
+10:48:08 226  	bvrs VARCHAR(255),
+10:48:08 227  	expires_date TIMESTAMP,
+10:48:08 228  	create_date DATE NOT NULL,
+10:48:08 229  	created_by VARCHAR(255) NOT NULL,
+10:48:08 230  	update_date DATE NOT NULL,
+10:48:08 231  	updated_by VARCHAR(255) NOT NULL,
+10:48:08 232  	last_check_date DATE NOT NULL,
+10:48:08 233  	CONSTRAINT "ITUNESRECEIPT_PK" PRIMARY KEY ("ID") USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:08 234  	CONSTRAINT "ITUNESRECEIPT_SUBID_FK" FOREIGN KEY ("SUBSCRIPTION_ID") REFERENCES SUBSCRIPTION(ID) USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:08 235  	CONSTRAINT "ITUNESRECEIPT_RECEIPT_UK" UNIQUE(receipt) USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:08 236  	CONSTRAINT "ITUNESRECEIPT_SUBID_UK" UNIQUE(subscription_id) USING INDEX TABLESPACE "CORE_IDX" ENABLE
+10:48:08 237  )
+10:48:08 238  TABLESPACE CORE;
+10:48:08 239  */
+10:48:08 240  	in_id		    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ID%TYPE,
+10:48:08 241  	in_subscription_id  IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.SUBSCRIPTION_ID%TYPE,
+10:48:08 242  	in_receipt	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.RECEIPT%TYPE,
+10:48:08 243  	in_status	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.STATUS%TYPE,
+10:48:08 244  	in_quantity	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.QUANTITY%TYPE,
+10:48:08 245  	in_product_id	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.PRODUCT_ID%TYPE,
+10:48:08 246  	in_transaction_id   IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.TRANSACTION_ID%TYPE,
+10:48:08 247  	in_purchase_date    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.PURCHASE_DATE%TYPE,
+10:48:08 248  	in_original_transaction_id IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ORIGINAL_TRANSACTION_ID%TYPE,
+10:48:08 249  	in_original_purchase_date IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ORIGINAL_PURCHASE_DATE%TYPE,
+10:48:08 250  	in_app_item_id	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.APP_ITEM_ID%TYPE,
+10:48:08 251  	in_version_external_id IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.VERSION_EXTERNAL_ID%TYPE,
+10:48:08 252  	in_bid		    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.BID%TYPE,
+10:48:08 253  	in_bvrs 	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.BVRS%TYPE,
+10:48:08 254  	in_expires_date     IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.EXPIRES_DATE%TYPE,
+10:48:08 255  	in_create_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CREATE_DATE%TYPE,
+10:48:08 256  	in_created_by	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CREATED_BY%TYPE,
+10:48:08 257  	in_update_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.UPDATE_DATE%TYPE,
+10:48:08 258  	in_updated_by	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.UPDATED_BY%TYPE,
+10:48:08 259  	in_last_check_date  IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.LAST_CHECK_DATE%TYPE,
+10:48:08 260  	in_cancel_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CANCEL_DATE%TYPE
+10:48:08 261  );
+10:48:08 262  
+10:48:08 263  PROCEDURE CREATE_INVOICE_ADJ_HISTORY (
+10:48:08 264  /*
+10:48:08 265  Throws exceptions:
+10:48:08 266  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08 267  */
+10:48:08 268  	in_invoice_adjustment_id     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ADJUSTMENT_ID%TYPE,
+10:48:08 269  	in_invoice_id		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ID%TYPE,
+10:48:08 270  	in_is_credit		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.IS_CREDIT%TYPE,
+10:48:08 271  	in_charge_id		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CHARGE_ID%TYPE,
+10:48:08 272  	in_adjustment_date	     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.ADJUSTMENT_DATE%TYPE,
+10:48:08 273  	in_create_date		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CREATE_DATE%TYPE,
+10:48:08 274  	in_created_by		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CREATED_BY%TYPE,
+10:48:08 275  	in_invoice_adj_reason_id     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ADJUSTMENT_REASON_ID%TYPE,
+10:48:08 276  	in_update_date		      IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.UPDATE_DATE%TYPE,
+10:48:08 277  	in_updated_by		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.UPDATED_BY%TYPE
+10:48:08 278  );
+10:48:08 279  
+10:48:08 280  PROCEDURE CREATE_NOTIFICATION_HISTORY (
+10:48:08 281  	/*
+10:48:08 282  	Throws exceptions:
+10:48:08 283  	APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08 284  	*/
+10:48:08 285  	in_notification_id	      IN NUMBER,
+10:48:08 286  	in_account_id		      IN NUMBER,
+10:48:08 287  	in_group_id		      IN NUMBER,
+10:48:08 288  	notification_reason_type_id   IN NUMBER,
+10:48:08 289  	notification_status_id	      IN NUMBER,
+10:48:08 290  	email_template_params	      IN CLOB,
+10:48:08 291  	in_create_date		      IN DATE,
+10:48:08 292  	in_date_to_notify	      IN DATE
+10:48:08 293  );
+10:48:08 294  
+10:48:08 295  PROCEDURE CREATE_NOTIF_FAILURE_HISTORY (
+10:48:08 296  	/*
+10:48:08 297  	Throws exceptions:
+10:48:08 298  	APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:08 299  	*/
+10:48:08 300  	in_error_messgae	 IN VARCHAR2,
+10:48:08 301  	in_notification_id	 IN NUMBER,
+10:48:08 302  	in_create_date		 IN DATE
+10:48:08 303  );
+10:48:08 304  
+10:48:08 305  END PROCS_HISTORY_V21;
+10:48:08 306  .
+10:48:08 SQL> /
+
+Package created.
+
+Elapsed: 00:00:01.06
+10:48:09 SQL> 
+10:48:09 SQL> CREATE OR REPLACE PACKAGE BODY "PROCS_HISTORY_V21" AS
+10:48:09   2  
+10:48:09   3  PROCEDURE CREATE_ADDRESS_HISTORY (
+10:48:09   4  /*
+10:48:09   5  Throws exceptions:
+10:48:09   6  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09   7  */
+10:48:09   8  	in_address_id		      IN ADDRESS_HISTORY.ADDRESS_ID%TYPE,
+10:48:09   9  	in_system_activity_reason_id  IN ADDRESS_HISTORY.SYSTEM_ACTIVITY_REASON_ID%TYPE,
+10:48:09  10  	in_address1		      IN ADDRESS_HISTORY.ADDRESS1%TYPE,
+10:48:09  11  	in_address2		      IN ADDRESS_HISTORY.ADDRESS2%TYPE,
+10:48:09  12  	in_city 		      IN ADDRESS_HISTORY.CITY%TYPE,
+10:48:09  13  	in_state		      IN ADDRESS_HISTORY.STATE%TYPE,
+10:48:09  14  	in_postal_code		      IN ADDRESS_HISTORY.POSTAL_CODE%TYPE,
+10:48:09  15  	in_country		      IN ADDRESS_HISTORY.COUNTRY%TYPE,
+10:48:09  16  	in_created_by		      IN ADDRESS_HISTORY.CREATED_BY%TYPE,
+10:48:09  17  	in_create_date		      IN ADDRESS_HISTORY.CREATE_DATE%TYPE,
+10:48:09  18  	in_updated_by		      IN ADDRESS_HISTORY.UPDATED_BY%TYPE,
+10:48:09  19  	in_update_date		      IN ADDRESS_HISTORY.UPDATE_DATE%TYPE
+10:48:09  20  ) AS
+10:48:09  21  SPROC_NAME CONSTANT VARCHAR2(22) := 'CREATE_ADDRESS_HISTORY';
+10:48:09  22  BEGIN
+10:48:09  23  
+10:48:09  24  	INSERT INTO
+10:48:09  25  	  ADDRESS_HISTORY (
+10:48:09  26  	  ADDRESS_ID,
+10:48:09  27  	  SYSTEM_ACTIVITY_REASON_ID,
+10:48:09  28  	  ADDRESS1,
+10:48:09  29  	  ADDRESS2,
+10:48:09  30  	  CITY,
+10:48:09  31  	  STATE,
+10:48:09  32  	  POSTAL_CODE,
+10:48:09  33  	  COUNTRY,
+10:48:09  34  	  CREATED_BY,
+10:48:09  35  	  CREATE_DATE,
+10:48:09  36  	  UPDATED_BY,
+10:48:09  37  	  UPDATE_DATE
+10:48:09  38  	) VALUES (
+10:48:09  39  	  in_address_id,
+10:48:09  40  	  in_system_activity_reason_id,
+10:48:09  41  	  in_address1,
+10:48:09  42  	  in_address2,
+10:48:09  43  	  in_city,
+10:48:09  44  	  in_state,
+10:48:09  45  	  in_postal_code,
+10:48:09  46  	  in_country,
+10:48:09  47  	  in_created_by,
+10:48:09  48  	  in_create_date,
+10:48:09  49  	  in_updated_by,
+10:48:09  50  	  in_update_date
+10:48:09  51  	);
+10:48:09  52  
+10:48:09  53  EXCEPTION
+10:48:09  54  WHEN OTHERS THEN
+10:48:09  55  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09  56  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09  57  END CREATE_ADDRESS_HISTORY;
+10:48:09  58  
+10:48:09  59  /******************************************************************************/
+10:48:09  60  
+10:48:09  61  PROCEDURE CREATE_ACCOUNT_HISTORY (
+10:48:09  62  /*
+10:48:09  63  Throws exceptions:
+10:48:09  64  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09  65  */
+10:48:09  66  	in_account_id		      IN NUMBER,
+10:48:09  67  	in_suspend_date 	      IN DATE,
+10:48:09  68  	in_group_id		      IN NUMBER,
+10:48:09  69  	in_created_by		      IN VARCHAR2,
+10:48:09  70  	in_create_date		      IN DATE,
+10:48:09  71  	in_system_activity_reason_id  IN NUMBER,
+10:48:09  72  	in_account_status_id	      IN NUMBER,
+10:48:09  73  	in_instrument_type_id	      IN NUMBER,
+10:48:09  74  	in_instrument_id	      IN NUMBER
+10:48:09  75  ) AS
+10:48:09  76  SPROC_NAME CONSTANT VARCHAR2(22) := 'CREATE_ACCOUNT_HISTORY';
+10:48:09  77  BEGIN
+10:48:09  78  
+10:48:09  79  	INSERT INTO
+10:48:09  80  	  ACCOUNT_HISTORY (
+10:48:09  81  	  ACCOUNT_ID,
+10:48:09  82  	  SUSPEND_DATE,
+10:48:09  83  	  GROUP_ID,
+10:48:09  84  	  CREATE_DATE,
+10:48:09  85  	  CREATED_BY,
+10:48:09  86  	  SYSTEM_ACTIVITY_REASON_ID,
+10:48:09  87  	  ACCOUNT_STATUS_ID,
+10:48:09  88  	  INSTRUMENT_TYPE_ID,
+10:48:09  89  	  INSTRUMENT_ID
+10:48:09  90  	) VALUES (
+10:48:09  91  	  in_account_id,
+10:48:09  92  	  in_suspend_date,
+10:48:09  93  	  in_group_id,
+10:48:09  94  	  in_create_date,
+10:48:09  95  	  in_created_by,
+10:48:09  96  	  in_system_activity_reason_id,
+10:48:09  97  	  in_account_status_id,
+10:48:09  98  	  in_instrument_type_id,
+10:48:09  99  	  in_instrument_id
+10:48:09 100  	);
+10:48:09 101  
+10:48:09 102  EXCEPTION
+10:48:09 103  WHEN OTHERS THEN
+10:48:09 104  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 105  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 106  END CREATE_ACCOUNT_HISTORY;
+10:48:09 107  
+10:48:09 108  /******************************************************************************/
+10:48:09 109  
+10:48:09 110  PROCEDURE CREATE_SUBSCRIPTION_HISTORY (
+10:48:09 111  /*
+10:48:09 112  Throws exceptions:
+10:48:09 113  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09 114  */
+10:48:09 115  	in_subscription_id	     IN  NUMBER,
+10:48:09 116  	in_account_id		     IN NUMBER,
+10:48:09 117  	in_purchase_date	     IN DATE,
+10:48:09 118  	in_offer_chain_id	     IN NUMBER,
+10:48:09 119  	in_suspend_date 	     IN DATE,
+10:48:09 120  	in_termination_date	     IN DATE,
+10:48:09 121  	in_days_remaining_adjustment IN NUMBER,
+10:48:09 122  	in_cancellation_type_id      IN NUMBER,
+10:48:09 123  	in_created_by		     IN  VARCHAR2,
+10:48:09 124  	in_create_date		     IN DATE,
+10:48:09 125  	in_system_activity_reason_id IN  NUMBER
+10:48:09 126  ) AS
+10:48:09 127  SPROC_NAME CONSTANT VARCHAR2(27) := 'CREATE_SUBSCRIPTION_HISTORY';
+10:48:09 128  BEGIN
+10:48:09 129  
+10:48:09 130  	INSERT INTO SUBSCRIPTION_HISTORY (
+10:48:09 131  	  SUBSCRIPTION_ID,
+10:48:09 132  	  ACCOUNT_ID,
+10:48:09 133  	  PURCHASE_DATE,
+10:48:09 134  	  OFFER_CHAIN_ID,
+10:48:09 135  	  SUSPEND_DATE,
+10:48:09 136  	  TERMINATION_DATE,
+10:48:09 137  	  DAYS_REMAINING_ADJUSTMENT,
+10:48:09 138  	  CANCELLATION_TYPE_ID,
+10:48:09 139  	  CREATE_DATE,
+10:48:09 140  	  CREATED_BY,
+10:48:09 141  	  SYSTEM_ACTIVITY_REASON_ID
+10:48:09 142  	) VALUES (
+10:48:09 143  	  in_subscription_id,
+10:48:09 144  	  in_account_id,
+10:48:09 145  	  in_purchase_date,
+10:48:09 146  	  in_offer_chain_id,
+10:48:09 147  	  in_suspend_date,
+10:48:09 148  	  in_termination_date,
+10:48:09 149  	  in_days_remaining_adjustment,
+10:48:09 150  	  in_cancellation_type_id,
+10:48:09 151  	  in_create_date,
+10:48:09 152  	  in_created_by,
+10:48:09 153  	  in_system_activity_reason_id
+10:48:09 154  	);
+10:48:09 155  
+10:48:09 156  EXCEPTION
+10:48:09 157  WHEN OTHERS THEN
+10:48:09 158  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 159  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 160  END CREATE_SUBSCRIPTION_HISTORY;
+10:48:09 161  
+10:48:09 162  /******************************************************************************/
+10:48:09 163  
+10:48:09 164  PROCEDURE CREATE_CREDIT_CARD_HISTORY (
+10:48:09 165  /*
+10:48:09 166  Throws exceptions:
+10:48:09 167  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09 168  */
+10:48:09 169  	in_credit_card_id	      IN  NUMBER,
+10:48:09 170  	in_account_id		      IN NUMBER,
+10:48:09 171  	in_instrument_name	      IN VARCHAR2,
+10:48:09 172  	in_private_card_holder_name   IN VARCHAR2,
+10:48:09 173  	in_private_street_address     IN VARCHAR2,
+10:48:09 174  	in_private_street_address2    IN VARCHAR2,
+10:48:09 175  	in_state		      IN VARCHAR2,
+10:48:09 176  	in_city 		      IN VARCHAR2,
+10:48:09 177  	in_postal_code		      IN VARCHAR2,
+10:48:09 178  	in_country		      IN CHAR,
+10:48:09 179  	in_last_four_cc 	      IN VARCHAR2,
+10:48:09 180  	in_expiration_date	      IN DATE,
+10:48:09 181  	in_credit_card_type_id	      IN NUMBER,
+10:48:09 182  	in_secret_token 	      IN VARCHAR2,
+10:48:09 183  	in_chase_profile_id	      IN VARCHAR2,
+10:48:09 184  	in_credit_card_status_id      IN NUMBER,
+10:48:09 185  	in_created_by		      IN  VARCHAR2,
+10:48:09 186  	in_create_date		      IN DATE,
+10:48:09 187  	in_system_activity_reason_id  IN  NUMBER
+10:48:09 188  ) AS
+10:48:09 189  SPROC_NAME CONSTANT VARCHAR2(26) := 'CREATE_CREDIT_CARD_HISTORY';
+10:48:09 190  BEGIN
+10:48:09 191  
+10:48:09 192  	INSERT INTO CREDIT_CARD_HISTORY (
+10:48:09 193  	  CREDIT_CARD_ID,
+10:48:09 194  	  ACCOUNT_ID,
+10:48:09 195  	  INSTRUMENT_NAME,
+10:48:09 196  	  PRIVATE_CARD_HOLDER_NAME,
+10:48:09 197  	  PRIVATE_STREET_ADDRESS,
+10:48:09 198  	  PRIVATE_STREET_ADDRESS2,
+10:48:09 199  	  STATE,
+10:48:09 200  	  CITY,
+10:48:09 201  	  POSTAL_CODE,
+10:48:09 202  	  COUNTRY,
+10:48:09 203  	  LAST_FOUR_CC,
+10:48:09 204  	  EXPIRATION_DATE,
+10:48:09 205  	  CREDIT_CARD_TYPE_ID,
+10:48:09 206  	  SECRET_TOKEN,
+10:48:09 207  	  CHASE_PROFILE_ID,
+10:48:09 208  	  CREATE_DATE,
+10:48:09 209  	  CREATED_BY,
+10:48:09 210  	  SYSTEM_ACTIVITY_REASON_ID,
+10:48:09 211  	  CREDIT_CARD_STATUS_ID
+10:48:09 212  	) VALUES (
+10:48:09 213  	  in_credit_card_id,
+10:48:09 214  	  in_account_id,
+10:48:09 215  	  in_instrument_name,
+10:48:09 216  	  in_private_card_holder_name,
+10:48:09 217  	  in_private_street_address,
+10:48:09 218  	  in_private_street_address2,
+10:48:09 219  	  in_state,
+10:48:09 220  	  in_city,
+10:48:09 221  	  in_postal_code,
+10:48:09 222  	  in_country,
+10:48:09 223  	  in_last_four_cc,
+10:48:09 224  	  in_expiration_date,
+10:48:09 225  	  in_credit_card_type_id,
+10:48:09 226  	  in_secret_token,
+10:48:09 227  	  in_chase_profile_id,
+10:48:09 228  	  in_create_date,
+10:48:09 229  	  in_created_by,
+10:48:09 230  	  in_system_activity_reason_id,
+10:48:09 231  	  in_credit_card_status_id
+10:48:09 232  	);
+10:48:09 233  
+10:48:09 234  EXCEPTION
+10:48:09 235  WHEN OTHERS THEN
+10:48:09 236  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 237  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 238  END CREATE_CREDIT_CARD_HISTORY;
+10:48:09 239  
+10:48:09 240  /******************************************************************************/
+10:48:09 241  
+10:48:09 242  PROCEDURE CREATE_PAYPAL_HISTORY (
+10:48:09 243  /*
+10:48:09 244  Throws exceptions:
+10:48:09 245  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09 246  */
+10:48:09 247  	in_paypal_id			IN NUMBER,
+10:48:09 248  	in_account_id			IN NUMBER,
+10:48:09 249  	in_instrument_name		IN VARCHAR2,
+10:48:09 250  	in_private_email_address	IN VARCHAR2,
+10:48:09 251  	in_created_by			IN VARCHAR2,
+10:48:09 252  	in_create_date			IN DATE,
+10:48:09 253  	in_paypal_status_id		IN NUMBER,
+10:48:09 254  	in_paypal_prvt_street_address	IN VARCHAR2,
+10:48:09 255  	in_paypal_prvt_street_address2	IN VARCHAR2,
+10:48:09 256  	in_state			IN VARCHAR2,
+10:48:09 257  	in_city 			IN VARCHAR2,
+10:48:09 258  	in_postal_code			IN VARCHAR2,
+10:48:09 259  	in_country			IN CHAR,
+10:48:09 260  	in_expiration_date		IN DATE,
+10:48:09 261  	in_system_activity_reason_id	IN NUMBER,
+10:48:09 262  	in_secret_token 		IN VARCHAR2
+10:48:09 263  ) AS
+10:48:09 264  SPROC_NAME CONSTANT VARCHAR2(21) := 'CREATE_PAYPAL_HISTORY';
+10:48:09 265  BEGIN
+10:48:09 266  
+10:48:09 267  	INSERT INTO PAYPAL_HISTORY(
+10:48:09 268  	    PAYPAL_ID,
+10:48:09 269  	    ACCOUNT_ID,
+10:48:09 270  	    INSTRUMENT_NAME,
+10:48:09 271  	    PRIVATE_EMAIL_ADDRESS,
+10:48:09 272  	    CREATE_DATE,
+10:48:09 273  	    CREATED_BY,
+10:48:09 274  	    PAYPAL_STATUS_ID,
+10:48:09 275  	    PRIVATE_STREET_ADDRESS,
+10:48:09 276  	    PRIVATE_STREET_ADDRESS2,
+10:48:09 277  	    STATE,
+10:48:09 278  	    CITY,
+10:48:09 279  	    POSTAL_CODE,
+10:48:09 280  	    COUNTRY,
+10:48:09 281  	    EXPIRATION_DATE,
+10:48:09 282  	    SYSTEM_ACTIVITY_REASON_ID,
+10:48:09 283  	    SECRET_TOKEN
+10:48:09 284  	  ) VALUES (
+10:48:09 285  	    in_paypal_id,
+10:48:09 286  	    in_account_id,
+10:48:09 287  	    in_instrument_name,
+10:48:09 288  	    in_private_email_address,
+10:48:09 289  	    in_create_date,
+10:48:09 290  	    in_created_by,
+10:48:09 291  	    in_paypal_status_id,
+10:48:09 292  	    in_paypal_prvt_street_address,
+10:48:09 293  	    in_paypal_prvt_street_address2,
+10:48:09 294  	    in_state,
+10:48:09 295  	    in_city,
+10:48:09 296  	    in_postal_code,
+10:48:09 297  	    in_country,
+10:48:09 298  	    in_expiration_date,
+10:48:09 299  	    in_system_activity_reason_id,
+10:48:09 300  	    in_secret_token
+10:48:09 301  	  );
+10:48:09 302  
+10:48:09 303  EXCEPTION
+10:48:09 304  WHEN OTHERS THEN
+10:48:09 305  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 306  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 307  END;
+10:48:09 308  
+10:48:09 309  /******************************************************************************/
+10:48:09 310  
+10:48:09 311  PROCEDURE CREATE_TRANSACTION_HISTORY (
+10:48:09 312  /*
+10:48:09 313  Throws exceptions:
+10:48:09 314  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09 315  */
+10:48:09 316  	in_transaction_id	     IN TRANSACTION_HISTORY.TRANSACTION_ID%TYPE,
+10:48:09 317  	in_transaction_status_id     IN TRANSACTION_HISTORY.TRANSACTION_STATUS_ID%TYPE,
+10:48:09 318  	in_transaction_amount	     IN TRANSACTION_HISTORY.TRANSACTION_AMOUNT%TYPE,
+10:48:09 319  	in_created_by		     IN TRANSACTION_HISTORY.CREATED_BY%TYPE,
+10:48:09 320  	in_create_date		     IN TRANSACTION_HISTORY.CREATE_DATE%TYPE,
+10:48:09 321  	in_system_activity_reason_id IN TRANSACTION_HISTORY.SYSTEM_ACTIVITY_REASON_ID%TYPE,
+10:48:09 322  	in_order_id		     IN TRANSACTION_HISTORY.ORDER_ID%TYPE DEFAULT NULL,
+10:48:09 323  	in_charge_id		     IN TRANSACTION_HISTORY.CHARGE_ID%TYPE DEFAULT NULL,
+10:48:09 324  	in_is_refund		     IN TRANSACTION_HISTORY.IS_REFUND%TYPE DEFAULT NULL,
+10:48:09 325  	in_is_settled		     IN TRANSACTION_HISTORY.IS_SETTLED%TYPE DEFAULT NULL,
+10:48:09 326  	in_transaction_type_code     IN TRANSACTION_HISTORY.TRANSACTION_TYPE_CODE%TYPE DEFAULT NULL
+10:48:09 327  ) AS
+10:48:09 328  SPROC_NAME CONSTANT VARCHAR2(26) := 'CREATE_TRANSACTION_HISTORY';
+10:48:09 329  BEGIN
+10:48:09 330  
+10:48:09 331  	INSERT INTO TRANSACTION_HISTORY (
+10:48:09 332  	  TRANSACTION_ID,
+10:48:09 333  	  TRANSACTION_STATUS_ID,
+10:48:09 334  	  TRANSACTION_AMOUNT,
+10:48:09 335  	  CREATE_DATE,
+10:48:09 336  	  CREATED_BY,
+10:48:09 337  	  ORDER_ID,
+10:48:09 338  	  CHARGE_ID,
+10:48:09 339  	  IS_REFUND,
+10:48:09 340  	  IS_SETTLED,
+10:48:09 341  	  TRANSACTION_TYPE_CODE,
+10:48:09 342  	  SYSTEM_ACTIVITY_REASON_ID
+10:48:09 343  	) VALUES (
+10:48:09 344  	  in_transaction_id,
+10:48:09 345  	  in_transaction_status_id,
+10:48:09 346  	  in_transaction_amount,
+10:48:09 347  	  in_create_date,
+10:48:09 348  	  in_created_by,
+10:48:09 349  	  in_order_id,
+10:48:09 350  	  in_charge_id,
+10:48:09 351  	  in_is_refund,
+10:48:09 352  	  in_is_settled,
+10:48:09 353  	  in_transaction_type_code,
+10:48:09 354  	  in_system_activity_reason_id
+10:48:09 355  	);
+10:48:09 356  
+10:48:09 357  EXCEPTION
+10:48:09 358  WHEN OTHERS THEN
+10:48:09 359  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 360  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 361  END CREATE_TRANSACTION_HISTORY;
+10:48:09 362  
+10:48:09 363  /******************************************************************************/
+10:48:09 364  
+10:48:09 365  PROCEDURE CREATE_GIFT_CERT_HISTORY (
+10:48:09 366  	in_gift_certificate_id	      IN NUMBER,
+10:48:09 367  	in_purchaser_group_id	      IN NUMBER,
+10:48:09 368  	in_purchase_invoice_id	      IN NUMBER,
+10:48:09 369  	in_offer_chain_id	      IN NUMBER,
+10:48:09 370  	in_expiration_date	      IN DATE,
+10:48:09 371  	in_purchase_date	      IN DATE,
+10:48:09 372  	in_gift_certificate_status_id IN NUMBER,
+10:48:09 373  	in_code 		      IN VARCHAR2,
+10:48:09 374  	in_created_by		      IN VARCHAR2,
+10:48:09 375  	in_create_date		      IN DATE,
+10:48:09 376  	in_system_activity_reason_id  IN NUMBER,
+10:48:09 377  	in_recipient_name	      IN VARCHAR2,
+10:48:09 378  	in_gift_message 	      IN VARCHAR2,
+10:48:09 379  	in_recipient_email	      IN VARCHAR2,
+10:48:09 380  	in_finalized_invoice_id       IN NUMBER,
+10:48:09 381  	in_sender_email 	      IN VARCHAR2,
+10:48:09 382  	in_sender_name		      IN VARCHAR2,
+10:48:09 383  	in_redemption_date	      IN DATE,
+10:48:09 384  	in_redeemer_group_id	      IN NUMBER,
+10:48:09 385  	in_cancelation_date	      IN DATE,
+10:48:09 386  	in_recipient_address_id       IN NUMBER,
+10:48:09 387  	in_redeemer_address_id	      IN NUMBER,
+10:48:09 388  	in_recipient_notify_date      IN DATE
+10:48:09 389  ) AS
+10:48:09 390  SPROC_NAME CONSTANT VARCHAR2(24) := 'CREATE_GIFT_CERT_HISTORY';
+10:48:09 391  BEGIN
+10:48:09 392  
+10:48:09 393  	INSERT INTO GIFT_CERTIFICATE_HISTORY (
+10:48:09 394  	  GIFT_CERTIFICATE_ID,
+10:48:09 395  	  PURCHASER_GROUP_ID,
+10:48:09 396  	  PURCHASE_INVOICE_ID,
+10:48:09 397  	  OFFER_CHAIN_ID,
+10:48:09 398  	  EXPIRATION_DATE,
+10:48:09 399  	  PURCHASE_DATE,
+10:48:09 400  	  GIFT_CERTIFICATE_STATUS_ID,
+10:48:09 401  	  CODE,
+10:48:09 402  	  CREATE_DATE,
+10:48:09 403  	  CREATED_BY,
+10:48:09 404  	  SYSTEM_ACTIVITY_REASON_ID,
+10:48:09 405  	  RECIPIENT_NAME,
+10:48:09 406  	  GIFT_MESSAGE,
+10:48:09 407  	  RECIPIENT_EMAIL,
+10:48:09 408  	  FINALIZED_INVOICE_ID,
+10:48:09 409  	  SENDER_EMAIL,
+10:48:09 410  	  SENDER_NAME,
+10:48:09 411  	  REDEMPTION_DATE,
+10:48:09 412  	  REDEEMER_GROUP_ID,
+10:48:09 413  	  CANCELATION_DATE,
+10:48:09 414  	  RECIPIENT_ADDRESS_ID,
+10:48:09 415  	  REDEEMER_ADDRESS_ID,
+10:48:09 416  	  RECIPIENT_NOTIFY_DATE
+10:48:09 417  	) VALUES (
+10:48:09 418  	  in_gift_certificate_id,
+10:48:09 419  	  in_purchaser_group_id,
+10:48:09 420  	  in_purchase_invoice_id,
+10:48:09 421  	  in_offer_chain_id,
+10:48:09 422  	  in_expiration_date,
+10:48:09 423  	  in_purchase_date,
+10:48:09 424  	  in_gift_certificate_status_id,
+10:48:09 425  	  in_code,
+10:48:09 426  	  in_create_date,
+10:48:09 427  	  in_created_by,
+10:48:09 428  	  in_system_activity_reason_id,
+10:48:09 429  	  in_recipient_name,
+10:48:09 430  	  in_gift_message,
+10:48:09 431  	  in_recipient_email,
+10:48:09 432  	  in_finalized_invoice_id,
+10:48:09 433  	  in_sender_email,
+10:48:09 434  	  in_sender_name,
+10:48:09 435  	  in_redemption_date,
+10:48:09 436  	  in_redeemer_group_id,
+10:48:09 437  	  in_cancelation_date,
+10:48:09 438  	  in_recipient_address_id,
+10:48:09 439  	  in_redeemer_address_id,
+10:48:09 440  	  in_recipient_notify_date
+10:48:09 441  	);
+10:48:09 442  
+10:48:09 443  EXCEPTION
+10:48:09 444  WHEN OTHERS THEN
+10:48:09 445  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 446  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 447  END CREATE_GIFT_CERT_HISTORY;
+10:48:09 448  
+10:48:09 449  /******************************************************************************/
+10:48:09 450  
+10:48:09 451  PROCEDURE CREATE_INVOICE_HISTORY (
+10:48:09 452  	in_invoice_id		     IN NUMBER,
+10:48:09 453  	in_invoice_status_id	     IN NUMBER,
+10:48:09 454  	in_created_by		     IN VARCHAR2,
+10:48:09 455  	in_create_date		     IN DATE,
+10:48:09 456  	in_system_activity_reason_id IN NUMBER
+10:48:09 457  ) AS
+10:48:09 458  SPROC_NAME CONSTANT VARCHAR2(22) := 'CREATE_INVOICE_HISTORY';
+10:48:09 459  BEGIN
+10:48:09 460  
+10:48:09 461  	INSERT INTO INVOICE_HISTORY (
+10:48:09 462  	  INVOICE_ID,
+10:48:09 463  	  INVOICE_STATUS_ID,
+10:48:09 464  	  CREATE_DATE,
+10:48:09 465  	  CREATED_BY,
+10:48:09 466  	  SYSTEM_ACTIVITY_REASON_ID
+10:48:09 467  	) VALUES (
+10:48:09 468  	  in_invoice_id,
+10:48:09 469  	  in_invoice_status_id,
+10:48:09 470  	  in_create_date,
+10:48:09 471  	  in_created_by,
+10:48:09 472  	  in_system_activity_reason_id
+10:48:09 473  	);
+10:48:09 474  
+10:48:09 475  EXCEPTION
+10:48:09 476  WHEN OTHERS THEN
+10:48:09 477  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 478  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 479  END CREATE_INVOICE_HISTORY;
+10:48:09 480  
+10:48:09 481  /******************************************************************************/
+10:48:09 482  
+10:48:09 483  PROCEDURE CREATE_LICENSE_HISTORY (
+10:48:09 484  /*
+10:48:09 485  Throws exceptions:
+10:48:09 486  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09 487  */
+10:48:09 488  	in_license_id		     IN NUMBER,
+10:48:09 489  	in_license_status_id	     IN NUMBER,
+10:48:09 490  	in_needs_entitlements	     IN NUMBER,
+10:48:09 491  	in_start_date		     IN DATE,
+10:48:09 492  	in_offer_id		     IN NUMBER,
+10:48:09 493  	in_subscription_id	     IN NUMBER,
+10:48:09 494  	in_invoice_id		     IN NUMBER,
+10:48:09 495  	in_end_date		     IN DATE,
+10:48:09 496  	in_created_by		     IN VARCHAR2,
+10:48:09 497  	in_create_date		     IN DATE,
+10:48:09 498  	in_is_extension 	     IN NUMBER,
+10:48:09 499  	in_current_offer_index	     IN NUMBER,
+10:48:09 500  	in_current_offer_recurr_num  IN NUMBER,
+10:48:09 501  	in_system_activity_reason_id IN NUMBER,
+10:48:09 502  	in_entitlement_end_date      IN DATE,
+10:48:09 503  	in_grace_start_date	     IN DATE,
+10:48:09 504  	in_grace_end_date	     IN DATE
+10:48:09 505  ) AS
+10:48:09 506  SPROC_NAME CONSTANT VARCHAR2(22) := 'CREATE_LICENSE_HISTORY';
+10:48:09 507  BEGIN
+10:48:09 508  
+10:48:09 509  	INSERT INTO LICENSE_HISTORY (
+10:48:09 510  	  LICENSE_ID,
+10:48:09 511  	  LICENSE_STATUS_ID,
+10:48:09 512  	  START_DATE,
+10:48:09 513  	  OFFER_ID,
+10:48:09 514  	  SUBSCRIPTION_ID,
+10:48:09 515  	  INVOICE_ID,
+10:48:09 516  	  END_DATE,
+10:48:09 517  	  CREATE_DATE,
+10:48:09 518  	  CREATED_BY,
+10:48:09 519  	  IS_EXTENSION,
+10:48:09 520  	  CURRENT_OFFER_INDEX,
+10:48:09 521  	  CURRENT_OFFER_RECURR_NUM,
+10:48:09 522  	  SYSTEM_ACTIVITY_REASON_ID,
+10:48:09 523  	  NEEDS_ENTITLEMENTS,
+10:48:09 524  	  ENTITLEMENT_END_DATE,
+10:48:09 525  	  GRACE_START_DATE,
+10:48:09 526  	  GRACE_END_DATE
+10:48:09 527  	) VALUES (
+10:48:09 528  	  in_license_id,
+10:48:09 529  	  in_license_status_id,
+10:48:09 530  	  in_start_date,
+10:48:09 531  	  in_offer_id,
+10:48:09 532  	  in_subscription_id,
+10:48:09 533  	  in_invoice_id,
+10:48:09 534  	  in_end_date,
+10:48:09 535  	  in_create_date,
+10:48:09 536  	  in_created_by,
+10:48:09 537  	  in_is_extension,
+10:48:09 538  	  in_current_offer_index,
+10:48:09 539  	  in_current_offer_recurr_num,
+10:48:09 540  	  in_system_activity_reason_id,
+10:48:09 541  	  in_needs_entitlements,
+10:48:09 542  	  in_entitlement_end_date,
+10:48:09 543  	  in_grace_start_date,
+10:48:09 544  	  in_grace_end_date
+10:48:09 545  	);
+10:48:09 546  
+10:48:09 547  EXCEPTION
+10:48:09 548  WHEN OTHERS THEN
+10:48:09 549  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 550  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 551  END CREATE_LICENSE_HISTORY;
+10:48:09 552  
+10:48:09 553  /******************************************************************************/
+10:48:09 554  
+10:48:09 555  PROCEDURE CREATE_CHARGE_HISTORY (
+10:48:09 556  /*
+10:48:09 557  Throws exceptions:
+10:48:09 558  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09 559  */
+10:48:09 560  	in_charge_id		     IN NUMBER,
+10:48:09 561  	in_invoice_id		     IN NUMBER,
+10:48:09 562  	in_transaction_id	     IN NUMBER,
+10:48:09 563  	in_instrument_type_id	     IN NUMBER,
+10:48:09 564  	in_instrument_id	     IN NUMBER,
+10:48:09 565  	in_charge_amount	     IN NUMBER,
+10:48:09 566  	in_created_by		     IN VARCHAR2,
+10:48:09 567  	in_create_date		     IN DATE,
+10:48:09 568  	in_charge_status_id	     IN NUMBER,
+10:48:09 569  	in_system_activity_reason_id IN NUMBER
+10:48:09 570  ) AS
+10:48:09 571  SPROC_NAME CONSTANT VARCHAR2(21) := 'CREATE_CHARGE_HISTORY';
+10:48:09 572  BEGIN
+10:48:09 573  
+10:48:09 574  	INSERT INTO CHARGE_HISTORY (
+10:48:09 575  	  CHARGE_ID,
+10:48:09 576  	  INVOICE_ID,
+10:48:09 577  	  TRANSACTION_ID,
+10:48:09 578  	  INSTRUMENT_TYPE_ID,
+10:48:09 579  	  INSTRUMENT_ID,
+10:48:09 580  	  CHARGE_AMOUNT,
+10:48:09 581  	  CREATE_DATE,
+10:48:09 582  	  CREATED_BY,
+10:48:09 583  	  CHARGE_STATUS_ID,
+10:48:09 584  	  SYSTEM_ACTIVITY_REASON_ID
+10:48:09 585  	) VALUES (
+10:48:09 586  	  in_charge_id,
+10:48:09 587  	  in_invoice_id,
+10:48:09 588  	  in_transaction_id,
+10:48:09 589  	  in_instrument_type_id,
+10:48:09 590  	  in_instrument_id,
+10:48:09 591  	  in_charge_amount,
+10:48:09 592  	  in_create_date,
+10:48:09 593  	  in_created_by,
+10:48:09 594  	  in_charge_status_id,
+10:48:09 595  	  in_system_activity_reason_id
+10:48:09 596  	);
+10:48:09 597  
+10:48:09 598  EXCEPTION
+10:48:09 599  WHEN OTHERS THEN
+10:48:09 600  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 601  	  SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 602  END;
+10:48:09 603  
+10:48:09 604  
+10:48:09 605  PROCEDURE CREATE_ITUNES_RECEIPT_HISTORY (
+10:48:09 606  /*
+10:48:09 607  Throws exceptions:
+10:48:09 608  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09 609  */
+10:48:09 610  /*
+10:48:09 611  CREATE TABLE ITUNES_RECEIPT (
+10:48:09 612  	id NUMBER NOT NULL ENABLE,
+10:48:09 613  	subscription_id NUMBER NOT NULL ENABLE,
+10:48:09 614  	receipt VARCHAR(1024) NOT NULL ENABLE,
+10:48:09 615  	status NUMBER,
+10:48:09 616  	quantity NUMBER,
+10:48:09 617  	product_id VARCHAR(1024),
+10:48:09 618  	transaction_id VARCHAR(1024),
+10:48:09 619  	purchase_date TIMESTAMP,
+10:48:09 620  	original_transaction_id VARCHAR(1024),
+10:48:09 621  	app_item_id VARCHAR(1024),
+10:48:09 622  	version_external_id NUMBER,
+10:48:09 623  	bid VARCHAR(1024),
+10:48:09 624  	bvrs VARCHAR(255),
+10:48:09 625  	expires_date TIMESTAMP,
+10:48:09 626  	create_date DATE NOT NULL,
+10:48:09 627  	created_by VARCHAR(255) NOT NULL,
+10:48:09 628  	update_date DATE NOT NULL,
+10:48:09 629  	updated_by VARCHAR(255) NOT NULL,
+10:48:09 630  	last_check_date DATE NOT NULL,
+10:48:09 631  	CONSTRAINT "ITUNESRECEIPT_PK" PRIMARY KEY ("ID") USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:09 632  	CONSTRAINT "ITUNESRECEIPT_SUBID_FK" FOREIGN KEY ("SUBSCRIPTION_ID") REFERENCES SUBSCRIPTION(ID) USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:09 633  	CONSTRAINT "ITUNESRECEIPT_RECEIPT_UK" UNIQUE(receipt) USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:09 634  	CONSTRAINT "ITUNESRECEIPT_SUBID_UK" UNIQUE(subscription_id) USING INDEX TABLESPACE "CORE_IDX" ENABLE
+10:48:09 635  )
+10:48:09 636  TABLESPACE CORE;
+10:48:09 637  */
+10:48:09 638  	in_id		    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ID%TYPE,
+10:48:09 639  	in_subscription_id  IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.SUBSCRIPTION_ID%TYPE,
+10:48:09 640  	in_receipt	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.RECEIPT%TYPE,
+10:48:09 641  	in_status	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.STATUS%TYPE,
+10:48:09 642  	in_quantity	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.QUANTITY%TYPE,
+10:48:09 643  	in_product_id	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.PRODUCT_ID%TYPE,
+10:48:09 644  	in_transaction_id   IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.TRANSACTION_ID%TYPE,
+10:48:09 645  	in_purchase_date    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.PURCHASE_DATE%TYPE,
+10:48:09 646  	in_original_transaction_id IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ORIGINAL_TRANSACTION_ID%TYPE,
+10:48:09 647  	in_original_purchase_date IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ORIGINAL_PURCHASE_DATE%TYPE,
+10:48:09 648  	in_app_item_id	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.APP_ITEM_ID%TYPE,
+10:48:09 649  	in_version_external_id IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.VERSION_EXTERNAL_ID%TYPE,
+10:48:09 650  	in_bid		    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.BID%TYPE,
+10:48:09 651  	in_bvrs 	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.BVRS%TYPE,
+10:48:09 652  	in_expires_date     IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.EXPIRES_DATE%TYPE,
+10:48:09 653  	in_create_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CREATE_DATE%TYPE,
+10:48:09 654  	in_created_by	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CREATED_BY%TYPE,
+10:48:09 655  	in_update_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.UPDATE_DATE%TYPE,
+10:48:09 656  	in_updated_by	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.UPDATED_BY%TYPE,
+10:48:09 657  	in_last_check_date  IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.LAST_CHECK_DATE%TYPE,
+10:48:09 658  	in_cancel_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CANCEL_DATE%TYPE
+10:48:09 659  ) AS
+10:48:09 660  BEGIN
+10:48:09 661  	INSERT INTO CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY
+10:48:09 662  	(
+10:48:09 663  	      id,
+10:48:09 664  	      subscription_id,
+10:48:09 665  	      receipt,
+10:48:09 666  	      status,
+10:48:09 667  	      quantity,
+10:48:09 668  	      product_id,
+10:48:09 669  	      transaction_id,
+10:48:09 670  	      purchase_date,
+10:48:09 671  	      original_transaction_id,
+10:48:09 672  	      original_purchase_date,
+10:48:09 673  	      app_item_id,
+10:48:09 674  	      version_external_id,
+10:48:09 675  	      bid,
+10:48:09 676  	      bvrs,
+10:48:09 677  	      expires_date,
+10:48:09 678  	      create_date,
+10:48:09 679  	      created_by,
+10:48:09 680  	      update_date,
+10:48:09 681  	      updated_by,
+10:48:09 682  	      last_check_date,
+10:48:09 683  	      cancel_date,
+10:48:09 684  	      history_date
+10:48:09 685  	)
+10:48:09 686  	VALUES
+10:48:09 687  	(
+10:48:09 688  	      in_id,
+10:48:09 689  	      in_subscription_id,
+10:48:09 690  	      in_receipt,
+10:48:09 691  	      in_status,
+10:48:09 692  	      in_quantity,
+10:48:09 693  	      in_product_id,
+10:48:09 694  	      in_transaction_id,
+10:48:09 695  	      in_purchase_date,
+10:48:09 696  	      in_original_transaction_id,
+10:48:09 697  	      in_original_purchase_date,
+10:48:09 698  	      in_app_item_id,
+10:48:09 699  	      in_version_external_id,
+10:48:09 700  	      in_bid,
+10:48:09 701  	      in_bvrs,
+10:48:09 702  	      in_expires_date,
+10:48:09 703  	      in_create_date,
+10:48:09 704  	      in_created_by,
+10:48:09 705  	      in_update_date,
+10:48:09 706  	      in_updated_by,
+10:48:09 707  	      in_last_check_date,
+10:48:09 708  	      in_cancel_date,
+10:48:09 709  	      sysdate
+10:48:09 710  	);
+10:48:09 711  END CREATE_ITUNES_RECEIPT_HISTORY;
+10:48:09 712  
+10:48:09 713  PROCEDURE CREATE_NOTIFICATION_HISTORY (
+10:48:09 714  /*
+10:48:09 715  Throws exceptions:
+10:48:09 716  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09 717  */
+10:48:09 718  	in_notification_id	      IN NUMBER,
+10:48:09 719  	in_account_id		      IN NUMBER,
+10:48:09 720  	in_group_id		      IN NUMBER,
+10:48:09 721  	notification_reason_type_id   IN NUMBER,
+10:48:09 722  	notification_status_id	      IN NUMBER,
+10:48:09 723  	email_template_params	      IN CLOB,
+10:48:09 724  	in_create_date		      IN DATE,
+10:48:09 725  	in_date_to_notify	      IN DATE
+10:48:09 726  ) AS
+10:48:09 727  	SPROC_NAME CONSTANT VARCHAR2(27) := 'CREATE_NOTIFICATION_HISTORY';
+10:48:09 728  BEGIN
+10:48:09 729  
+10:48:09 730  	 INSERT INTO NOTIFICATION_HISTORY (
+10:48:09 731  		ID,
+10:48:09 732  		NOTIFICATION_ID,
+10:48:09 733  		ACCOUNT_ID,
+10:48:09 734  		GROUP_ID,
+10:48:09 735  		NOTIFICATION_REASON_TYPE_ID,
+10:48:09 736  		NOTIFICATION_STATUS_ID,
+10:48:09 737  		EMAIL_TEMPLATE_PARAMS,
+10:48:09 738  		CREATE_DATE,
+10:48:09 739  		UPDATE_DATE,
+10:48:09 740  		DATE_TO_NOTIFY
+10:48:09 741  	) VALUES (
+10:48:09 742  		not_hist_pk_seq.nextval,
+10:48:09 743  		in_notification_id,
+10:48:09 744  		in_account_id,
+10:48:09 745  		in_group_id,
+10:48:09 746  		notification_reason_type_id,
+10:48:09 747  		notification_status_id,
+10:48:09 748  		email_template_params,
+10:48:09 749  		in_create_date,
+10:48:09 750  		sysdate,
+10:48:09 751  		in_date_to_notify
+10:48:09 752  	);
+10:48:09 753  
+10:48:09 754  EXCEPTION
+10:48:09 755  WHEN OTHERS THEN
+10:48:09 756  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 757  		SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 758  END CREATE_NOTIFICATION_HISTORY;
+10:48:09 759  
+10:48:09 760  /******************************************************************************/
+10:48:09 761  
+10:48:09 762  PROCEDURE CREATE_NOTIF_FAILURE_HISTORY (
+10:48:09 763  /*
+10:48:09 764  Throws exceptions:
+10:48:09 765  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09 766  */
+10:48:09 767  	in_error_messgae	 IN VARCHAR2,
+10:48:09 768  	in_notification_id IN NUMBER,
+10:48:09 769  	in_create_date		 IN DATE
+10:48:09 770  ) AS
+10:48:09 771  	SPROC_NAME CONSTANT VARCHAR2(28) := 'CREATE_NOTIF_FAILURE_HISTORY';
+10:48:09 772  BEGIN
+10:48:09 773  
+10:48:09 774  	INSERT INTO NOTIFICATION_FAILURE_HISTORY (
+10:48:09 775  		ERROR_MESSAGE,
+10:48:09 776  		NOTIFICATION_ID,
+10:48:09 777  		CREATE_DATE,
+10:48:09 778  		UPDATE_DATE
+10:48:09 779  	) VALUES (
+10:48:09 780  		in_error_messgae,
+10:48:09 781  		in_notification_id,
+10:48:09 782  		in_create_date,
+10:48:09 783  		sysdate
+10:48:09 784  	);
+10:48:09 785  
+10:48:09 786  EXCEPTION
+10:48:09 787  WHEN OTHERS THEN
+10:48:09 788  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 789  		SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 790  END CREATE_NOTIF_FAILURE_HISTORY;
+10:48:09 791  
+10:48:09 792  PROCEDURE CREATE_INVOICE_ADJ_HISTORY (
+10:48:09 793  /*
+10:48:09 794  Throws exceptions:
+10:48:09 795  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:09 796  */
+10:48:09 797  	in_invoice_adjustment_id     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ADJUSTMENT_ID%TYPE,
+10:48:09 798  	in_invoice_id		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ID%TYPE,
+10:48:09 799  	in_is_credit		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.IS_CREDIT%TYPE,
+10:48:09 800  	in_charge_id		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CHARGE_ID%TYPE,
+10:48:09 801  	in_adjustment_date	     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.ADJUSTMENT_DATE%TYPE,
+10:48:09 802  	in_create_date		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CREATE_DATE%TYPE,
+10:48:09 803  	in_created_by		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CREATED_BY%TYPE,
+10:48:09 804  	in_invoice_adj_reason_id	       IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ADJUSTMENT_REASON_ID%TYPE,
+10:48:09 805  	in_update_date		      IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.UPDATE_DATE%TYPE,
+10:48:09 806  	in_updated_by		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.UPDATED_BY%TYPE
+10:48:09 807  )
+10:48:09 808  AS
+10:48:09 809  SPROC_NAME CONSTANT VARCHAR2(32) := 'CREATE_INVOICE_ADJ_HISTORY';
+10:48:09 810  BEGIN
+10:48:09 811  	INSERT INTO CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY
+10:48:09 812  	(
+10:48:09 813  	   INVOICE_ADJUSTMENT_ID,
+10:48:09 814  	   INVOICE_ID,
+10:48:09 815  	   IS_CREDIT,
+10:48:09 816  	   CHARGE_ID,
+10:48:09 817  	   ADJUSTMENT_DATE,
+10:48:09 818  	   CREATE_DATE,
+10:48:09 819  	   CREATED_BY,
+10:48:09 820  	   INVOICE_ADJUSTMENT_REASON_ID,
+10:48:09 821  	   UPDATE_DATE,
+10:48:09 822  	   UPDATED_BY
+10:48:09 823  	)
+10:48:09 824  	VALUES
+10:48:09 825  	(
+10:48:09 826  	    in_invoice_adjustment_id,
+10:48:09 827  	    in_invoice_id,
+10:48:09 828  	    in_is_credit,
+10:48:09 829  	    in_charge_id,
+10:48:09 830  	    in_adjustment_date,
+10:48:09 831  	    in_create_date,
+10:48:09 832  	    in_created_by,
+10:48:09 833  	    in_invoice_adj_reason_id,
+10:48:09 834  	    in_update_date,
+10:48:09 835  	    in_updated_by
+10:48:09 836  	);
+10:48:09 837  
+10:48:09 838  EXCEPTION
+10:48:09 839  	WHEN OTHERS THEN
+10:48:09 840  	  RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:09 841  	    SPROC_NAME||': Unknown error: '||SQLERRM);
+10:48:09 842  END CREATE_INVOICE_ADJ_HISTORY;
+10:48:09 843  
+10:48:09 844  END PROCS_HISTORY_V21;
+10:48:09 845  .
+10:48:09 SQL> /
+
+Package body created.
+
+Elapsed: 00:00:01.26
+10:48:11 SQL> 
+10:48:11 SQL> --------------------------------------------------------------------------------
+10:48:11 SQL> -- DDL for package PUBLIC_PROCS_CORE
+10:48:11 SQL> --------------------------------------------------------------------------------
+10:48:11 SQL> 
+10:48:11 SQL> CREATE OR REPLACE PACKAGE "PUBLIC_PROCS_CORE_V21" AS
+10:48:11   2  
+10:48:11   3  PROCEDURE CREATE_ADDRESS_HISTORY (
+10:48:11   4  /*
+10:48:11   5  Throws exceptions:
+10:48:11   6  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11   7  */
+10:48:11   8  	in_address_id		      IN ADDRESS_HISTORY.ADDRESS_ID%TYPE,
+10:48:11   9  	in_system_activity_reason_id  IN ADDRESS_HISTORY.SYSTEM_ACTIVITY_REASON_ID%TYPE,
+10:48:11  10  	in_address1		      IN ADDRESS_HISTORY.ADDRESS1%TYPE,
+10:48:11  11  	in_address2		      IN ADDRESS_HISTORY.ADDRESS2%TYPE,
+10:48:11  12  	in_city 		      IN ADDRESS_HISTORY.CITY%TYPE,
+10:48:11  13  	in_state		      IN ADDRESS_HISTORY.STATE%TYPE,
+10:48:11  14  	in_postal_code		      IN ADDRESS_HISTORY.POSTAL_CODE%TYPE,
+10:48:11  15  	in_country		      IN ADDRESS_HISTORY.COUNTRY%TYPE,
+10:48:11  16  	in_created_by		      IN ADDRESS_HISTORY.CREATED_BY%TYPE,
+10:48:11  17  	in_create_date		      IN ADDRESS_HISTORY.CREATE_DATE%TYPE,
+10:48:11  18  	in_updated_by		      IN ADDRESS_HISTORY.UPDATED_BY%TYPE,
+10:48:11  19  	in_update_date		      IN ADDRESS_HISTORY.UPDATE_DATE%TYPE
+10:48:11  20  );
+10:48:11  21  
+10:48:11  22  PROCEDURE CREATE_ACCOUNT_HISTORY (
+10:48:11  23  /*
+10:48:11  24  Throws exceptions:
+10:48:11  25  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11  26  */
+10:48:11  27  	in_account_id		      IN NUMBER,
+10:48:11  28  	in_suspend_date 	      IN DATE,
+10:48:11  29  	in_group_id		      IN NUMBER,
+10:48:11  30  	in_created_by		      IN VARCHAR2,
+10:48:11  31  	in_create_date		      IN DATE,
+10:48:11  32  	in_system_activity_reason_id  IN NUMBER,
+10:48:11  33  	in_account_status_id	      IN NUMBER,
+10:48:11  34  	in_instrument_type_id	      IN NUMBER,
+10:48:11  35  	in_instrument_id	      IN NUMBER
+10:48:11  36  );
+10:48:11  37  
+10:48:11  38  PROCEDURE CREATE_SUBSCRIPTION_HISTORY (
+10:48:11  39  /*
+10:48:11  40  Throws exceptions:
+10:48:11  41  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11  42  */
+10:48:11  43  	in_subscription_id	     IN  NUMBER,
+10:48:11  44  	in_account_id		     IN NUMBER,
+10:48:11  45  	in_purchase_date	     IN DATE,
+10:48:11  46  	in_offer_chain_id	     IN NUMBER,
+10:48:11  47  	in_suspend_date 	     IN DATE,
+10:48:11  48  	in_termination_date	     IN DATE,
+10:48:11  49  	in_days_remaining_adjustment IN NUMBER,
+10:48:11  50  	in_cancellation_type_id      IN NUMBER,
+10:48:11  51  	in_created_by		     IN  VARCHAR2,
+10:48:11  52  	in_create_date		     IN DATE,
+10:48:11  53  	in_system_activity_reason_id IN  NUMBER
+10:48:11  54  );
+10:48:11  55  
+10:48:11  56  PROCEDURE CREATE_CREDIT_CARD_HISTORY (
+10:48:11  57  /*
+10:48:11  58  Throws exceptions:
+10:48:11  59  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11  60  */
+10:48:11  61  	in_credit_card_id	      IN  NUMBER,
+10:48:11  62  	in_account_id		      IN NUMBER,
+10:48:11  63  	in_instrument_name	      IN VARCHAR2,
+10:48:11  64  	in_private_card_holder_name   IN VARCHAR2,
+10:48:11  65  	in_private_street_address     IN VARCHAR2,
+10:48:11  66  	in_private_street_address2    IN VARCHAR2,
+10:48:11  67  	in_state		      IN VARCHAR2,
+10:48:11  68  	in_city 		      IN VARCHAR2,
+10:48:11  69  	in_postal_code		      IN VARCHAR2,
+10:48:11  70  	in_country		      IN CHAR,
+10:48:11  71  	in_last_four_cc 	      IN VARCHAR2,
+10:48:11  72  	in_expiration_date	      IN DATE,
+10:48:11  73  	in_credit_card_type_id	      IN NUMBER,
+10:48:11  74  	in_secret_token 	      IN VARCHAR2,
+10:48:11  75  	in_chase_profile_id	      IN VARCHAR2,
+10:48:11  76  	in_credit_card_status_id      IN NUMBER,
+10:48:11  77  	in_created_by		      IN  VARCHAR2,
+10:48:11  78  	in_create_date		      IN DATE,
+10:48:11  79  	in_system_activity_reason_id  IN  NUMBER
+10:48:11  80  );
+10:48:11  81  
+10:48:11  82  PROCEDURE CREATE_PAYPAL_HISTORY (
+10:48:11  83  /*
+10:48:11  84  Throws exceptions:
+10:48:11  85  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11  86  */
+10:48:11  87  	in_paypal_id			IN NUMBER,
+10:48:11  88  	in_account_id			IN NUMBER,
+10:48:11  89  	in_instrument_name		IN VARCHAR2,
+10:48:11  90  	in_private_email_address	IN VARCHAR2,
+10:48:11  91  	in_created_by			IN VARCHAR2,
+10:48:11  92  	in_create_date			IN DATE,
+10:48:11  93  	in_paypal_status_id		IN NUMBER,
+10:48:11  94  	in_paypal_prvt_street_address	IN VARCHAR2,
+10:48:11  95  	in_paypal_prvt_street_address2	IN VARCHAR2,
+10:48:11  96  	in_state			IN VARCHAR2,
+10:48:11  97  	in_city 			IN VARCHAR2,
+10:48:11  98  	in_postal_code			IN VARCHAR2,
+10:48:11  99  	in_country			IN CHAR,
+10:48:11 100  	in_expiration_date		IN DATE,
+10:48:11 101  	in_system_activity_reason_id	IN NUMBER,
+10:48:11 102  	in_secret_token 		IN VARCHAR2
+10:48:11 103  );
+10:48:11 104  
+10:48:11 105  PROCEDURE CREATE_TRANSACTION_HISTORY (
+10:48:11 106  /*
+10:48:11 107  Throws exceptions:
+10:48:11 108  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 109  */
+10:48:11 110  	in_transaction_id	     IN TRANSACTION_HISTORY.TRANSACTION_ID%TYPE,
+10:48:11 111  	in_transaction_status_id     IN TRANSACTION_HISTORY.TRANSACTION_STATUS_ID%TYPE,
+10:48:11 112  	in_transaction_amount	     IN TRANSACTION_HISTORY.TRANSACTION_AMOUNT%TYPE,
+10:48:11 113  	in_created_by		     IN TRANSACTION_HISTORY.CREATED_BY%TYPE,
+10:48:11 114  	in_create_date		     IN TRANSACTION_HISTORY.CREATE_DATE%TYPE,
+10:48:11 115  	in_order_id		     IN TRANSACTION_HISTORY.ORDER_ID%TYPE,
+10:48:11 116  	in_charge_id		     IN TRANSACTION_HISTORY.CHARGE_ID%TYPE,
+10:48:11 117  	in_is_refund		     IN TRANSACTION_HISTORY.IS_REFUND%TYPE,
+10:48:11 118  	in_is_settled		     IN TRANSACTION_HISTORY.IS_SETTLED%TYPE,
+10:48:11 119  	in_transaction_type_code     IN TRANSACTION_HISTORY.TRANSACTION_TYPE_CODE%TYPE,
+10:48:11 120  	in_system_activity_reason_id IN NUMBER
+10:48:11 121  );
+10:48:11 122  
+10:48:11 123  PROCEDURE CREATE_GIFT_CERT_HISTORY (
+10:48:11 124  	in_gift_certificate_id	      IN NUMBER,
+10:48:11 125  	in_purchaser_group_id	      IN NUMBER,
+10:48:11 126  	in_purchase_invoice_id	      IN NUMBER,
+10:48:11 127  	in_offer_chain_id	      IN NUMBER,
+10:48:11 128  	in_expiration_date	      IN DATE,
+10:48:11 129  	in_purchase_date	      IN DATE,
+10:48:11 130  	in_gift_certificate_status_id IN NUMBER,
+10:48:11 131  	in_code 		      IN VARCHAR2,
+10:48:11 132  	in_created_by		      IN VARCHAR2,
+10:48:11 133  	in_create_date		      IN DATE,
+10:48:11 134  	in_system_activity_reason_id  IN NUMBER,
+10:48:11 135  	in_recipient_name	      IN VARCHAR2,
+10:48:11 136  	in_gift_message 	      IN VARCHAR2,
+10:48:11 137  	in_recipient_email	      IN VARCHAR2,
+10:48:11 138  	in_finalized_invoice_id       IN NUMBER,
+10:48:11 139  	in_sender_email 	      IN VARCHAR2,
+10:48:11 140  	in_sender_name		      IN VARCHAR2,
+10:48:11 141  	in_redemption_date	      IN DATE,
+10:48:11 142  	in_redeemer_group_id	      IN NUMBER,
+10:48:11 143  	in_cancelation_date	      IN DATE,
+10:48:11 144  	in_recipient_address_id       IN NUMBER,
+10:48:11 145  	in_redeemer_address_id	      IN NUMBER,
+10:48:11 146  	in_recipient_notify_date      IN DATE
+10:48:11 147  );
+10:48:11 148  
+10:48:11 149  PROCEDURE CREATE_INVOICE_HISTORY (
+10:48:11 150  /*
+10:48:11 151  Throws exceptions:
+10:48:11 152  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 153  */
+10:48:11 154  	in_invoice_id		     IN NUMBER,
+10:48:11 155  	in_invoice_status_id	     IN NUMBER,
+10:48:11 156  	in_created_by		     IN VARCHAR2,
+10:48:11 157  	in_create_date		     IN DATE,
+10:48:11 158  	in_system_activity_reason_id IN NUMBER
+10:48:11 159  );
+10:48:11 160  
+10:48:11 161  PROCEDURE CREATE_LICENSE_HISTORY (
+10:48:11 162  /*
+10:48:11 163  Throws exceptions:
+10:48:11 164  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 165  */
+10:48:11 166  	in_license_id		    IN NUMBER,
+10:48:11 167  	in_license_status_id	    IN NUMBER,
+10:48:11 168  	in_needs_entitlements	    IN NUMBER,
+10:48:11 169  	in_start_date		    IN DATE,
+10:48:11 170  	in_offer_id		    IN NUMBER,
+10:48:11 171  	in_subscription_id	    IN NUMBER,
+10:48:11 172  	in_invoice_id		    IN NUMBER,
+10:48:11 173  	in_end_date		    IN DATE,
+10:48:11 174  	in_created_by		    IN VARCHAR2,
+10:48:11 175  	in_create_date		    IN DATE,
+10:48:11 176  	in_is_extension 	    IN NUMBER,
+10:48:11 177  	in_current_offer_index	    IN NUMBER,
+10:48:11 178  	in_current_offer_recurr_num IN NUMBER,
+10:48:11 179  	in_system_activity_reason_id IN NUMBER,
+10:48:11 180  	in_entitlement_end_date      IN DATE,
+10:48:11 181  	in_grace_start_date	    IN DATE,
+10:48:11 182  	in_grace_end_date	    IN DATE
+10:48:11 183  );
+10:48:11 184  
+10:48:11 185  PROCEDURE CREATE_CHARGE_HISTORY (
+10:48:11 186  /*
+10:48:11 187  Throws exceptions:
+10:48:11 188  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 189  */
+10:48:11 190  	in_charge_id		     IN NUMBER,
+10:48:11 191  	in_invoice_id		     IN NUMBER,
+10:48:11 192  	in_transaction_id	     IN NUMBER,
+10:48:11 193  	in_instrument_type_id	     IN NUMBER,
+10:48:11 194  	in_instrument_id	     IN NUMBER,
+10:48:11 195  	in_charge_amount	     IN NUMBER,
+10:48:11 196  	in_created_by		     IN VARCHAR2,
+10:48:11 197  	in_create_date		     IN DATE,
+10:48:11 198  	in_charge_status_id	     IN NUMBER,
+10:48:11 199  	in_system_activity_reason_id IN NUMBER
+10:48:11 200  );
+10:48:11 201  
+10:48:11 202  PROCEDURE CREATE_ITUNES_RECEIPT_HISTORY (
+10:48:11 203  /*
+10:48:11 204  Throws exceptions:
+10:48:11 205  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 206  */
+10:48:11 207  /*
+10:48:11 208  CREATE TABLE ITUNES_RECEIPT (
+10:48:11 209  	id NUMBER NOT NULL ENABLE,
+10:48:11 210  	subscription_id NUMBER NOT NULL ENABLE,
+10:48:11 211  	receipt VARCHAR(1024) NOT NULL ENABLE,
+10:48:11 212  	status NUMBER,
+10:48:11 213  	quantity NUMBER,
+10:48:11 214  	product_id VARCHAR(1024),
+10:48:11 215  	transaction_id VARCHAR(1024),
+10:48:11 216  	purchase_date TIMESTAMP,
+10:48:11 217  	original_transaction_id VARCHAR(1024),
+10:48:11 218  	original_purchase_date TIMESTAMP,
+10:48:11 219  	app_item_id VARCHAR(1024),
+10:48:11 220  	version_external_id NUMBER,
+10:48:11 221  	bid VARCHAR(1024),
+10:48:11 222  	bvrs VARCHAR(255),
+10:48:11 223  	expires_date TIMESTAMP,
+10:48:11 224  	create_date DATE NOT NULL,
+10:48:11 225  	created_by VARCHAR(255) NOT NULL,
+10:48:11 226  	update_date DATE NOT NULL,
+10:48:11 227  	updated_by VARCHAR(255) NOT NULL,
+10:48:11 228  	last_check_date DATE NOT NULL,
+10:48:11 229  	CONSTRAINT "ITUNESRECEIPT_PK" PRIMARY KEY ("ID") USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:11 230  	CONSTRAINT "ITUNESRECEIPT_SUBID_FK" FOREIGN KEY ("SUBSCRIPTION_ID") REFERENCES SUBSCRIPTION(ID) USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:11 231  	CONSTRAINT "ITUNESRECEIPT_RECEIPT_UK" UNIQUE(receipt) USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:11 232  	CONSTRAINT "ITUNESRECEIPT_SUBID_UK" UNIQUE(subscription_id) USING INDEX TABLESPACE "CORE_IDX" ENABLE
+10:48:11 233  )
+10:48:11 234  TABLESPACE CORE;
+10:48:11 235  */
+10:48:11 236  	in_id		    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ID%TYPE,
+10:48:11 237  	in_subscription_id  IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.SUBSCRIPTION_ID%TYPE,
+10:48:11 238  	in_receipt	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.RECEIPT%TYPE,
+10:48:11 239  	in_status	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.STATUS%TYPE,
+10:48:11 240  	in_quantity	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.QUANTITY%TYPE,
+10:48:11 241  	in_product_id	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.PRODUCT_ID%TYPE,
+10:48:11 242  	in_transaction_id   IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.TRANSACTION_ID%TYPE,
+10:48:11 243  	in_purchase_date    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.PURCHASE_DATE%TYPE,
+10:48:11 244  	in_original_transaction_id IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ORIGINAL_TRANSACTION_ID%TYPE,
+10:48:11 245  	in_original_purchase_date IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ORIGINAL_PURCHASE_DATE%TYPE,
+10:48:11 246  	in_app_item_id	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.APP_ITEM_ID%TYPE,
+10:48:11 247  	in_version_external_id IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.VERSION_EXTERNAL_ID%TYPE,
+10:48:11 248  	in_bid		    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.BID%TYPE,
+10:48:11 249  	in_bvrs 	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.BVRS%TYPE,
+10:48:11 250  	in_expires_date     IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.EXPIRES_DATE%TYPE,
+10:48:11 251  	in_create_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CREATE_DATE%TYPE,
+10:48:11 252  	in_created_by	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CREATED_BY%TYPE,
+10:48:11 253  	in_update_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.UPDATE_DATE%TYPE,
+10:48:11 254  	in_updated_by	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.UPDATED_BY%TYPE,
+10:48:11 255  	in_last_check_date  IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.LAST_CHECK_DATE%TYPE,
+10:48:11 256  	in_cancel_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CANCEL_DATE%TYPE
+10:48:11 257  );
+10:48:11 258  
+10:48:11 259  PROCEDURE CREATE_INVOICE_ADJ_HISTORY (
+10:48:11 260  /*
+10:48:11 261  Throws exceptions:
+10:48:11 262  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 263  */
+10:48:11 264  	in_invoice_adjustment_id     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ADJUSTMENT_ID%TYPE,
+10:48:11 265  	in_invoice_id		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ID%TYPE,
+10:48:11 266  	in_is_credit		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.IS_CREDIT%TYPE,
+10:48:11 267  	in_charge_id		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CHARGE_ID%TYPE,
+10:48:11 268  	in_adjustment_date	     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.ADJUSTMENT_DATE%TYPE,
+10:48:11 269  	in_create_date		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CREATE_DATE%TYPE,
+10:48:11 270  	in_created_by		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CREATED_BY%TYPE,
+10:48:11 271  	in_invoice_adj_reason_id     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ADJUSTMENT_REASON_ID%TYPE,
+10:48:11 272  	in_update_date		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.UPDATE_DATE%TYPE,
+10:48:11 273  	in_updated_by		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.UPDATED_BY%TYPE
+10:48:11 274  );
+10:48:11 275  
+10:48:11 276  PROCEDURE CREATE_NOTIFICATION_HISTORY (
+10:48:11 277  /*
+10:48:11 278  Throws exceptions:
+10:48:11 279  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 280  */
+10:48:11 281  	in_notification_id	      IN NUMBER,
+10:48:11 282  	in_account_id		      IN NUMBER,
+10:48:11 283  	in_group_id		      IN NUMBER,
+10:48:11 284  	notification_reason_type_id   IN NUMBER,
+10:48:11 285  	notification_status_id	      IN NUMBER,
+10:48:11 286  	email_template_params	      IN CLOB,
+10:48:11 287  	in_create_date		      IN DATE,
+10:48:11 288  	in_date_to_notify	      IN DATE
+10:48:11 289  );
+10:48:11 290  
+10:48:11 291  PROCEDURE CREATE_NOTIF_FAILURE_HISTORY (
+10:48:11 292  /*
+10:48:11 293  Throws exceptions:
+10:48:11 294  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 295  */
+10:48:11 296  	in_error_message	 IN VARCHAR2,
+10:48:11 297  	in_notification_id	 IN NUMBER,
+10:48:11 298  	in_create_date		 IN DATE
+10:48:11 299  );
+10:48:11 300  
+10:48:11 301  END PUBLIC_PROCS_CORE_V21;
+10:48:11 302  .
+10:48:11 SQL> /
+
+Package created.
+
+Elapsed: 00:00:00.45
+10:48:11 SQL> 
+10:48:11 SQL> CREATE OR REPLACE PACKAGE BODY "PUBLIC_PROCS_CORE_V21" AS
+10:48:11   2  
+10:48:11   3  PROCEDURE CREATE_ADDRESS_HISTORY (
+10:48:11   4  /*
+10:48:11   5  Throws exceptions:
+10:48:11   6  APP_EXCEPTION_CODES_V21.NOT_FOUND
+10:48:11   7  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11   8  */
+10:48:11   9  	in_address_id		      IN ADDRESS_HISTORY.ADDRESS_ID%TYPE,
+10:48:11  10  	in_system_activity_reason_id  IN ADDRESS_HISTORY.SYSTEM_ACTIVITY_REASON_ID%TYPE,
+10:48:11  11  	in_address1		      IN ADDRESS_HISTORY.ADDRESS1%TYPE,
+10:48:11  12  	in_address2		      IN ADDRESS_HISTORY.ADDRESS2%TYPE,
+10:48:11  13  	in_city 		      IN ADDRESS_HISTORY.CITY%TYPE,
+10:48:11  14  	in_state		      IN ADDRESS_HISTORY.STATE%TYPE,
+10:48:11  15  	in_postal_code		      IN ADDRESS_HISTORY.POSTAL_CODE%TYPE,
+10:48:11  16  	in_country		      IN ADDRESS_HISTORY.COUNTRY%TYPE,
+10:48:11  17  	in_created_by		      IN ADDRESS_HISTORY.CREATED_BY%TYPE,
+10:48:11  18  	in_create_date		      IN ADDRESS_HISTORY.CREATE_DATE%TYPE,
+10:48:11  19  	in_updated_by		      IN ADDRESS_HISTORY.UPDATED_BY%TYPE,
+10:48:11  20  	in_update_date		      IN ADDRESS_HISTORY.UPDATE_DATE%TYPE
+10:48:11  21  ) AS
+10:48:11  22  BEGIN
+10:48:11  23  	PROCS_HISTORY_V21.CREATE_ADDRESS_HISTORY(
+10:48:11  24  	in_address_id,
+10:48:11  25  	in_system_activity_reason_id,
+10:48:11  26  	in_address1,
+10:48:11  27  	in_address2,
+10:48:11  28  	in_city,
+10:48:11  29  	in_state,
+10:48:11  30  	in_postal_code,
+10:48:11  31  	in_country,
+10:48:11  32  	in_created_by,
+10:48:11  33  	in_create_date,
+10:48:11  34  	in_updated_by,
+10:48:11  35  	in_update_date
+10:48:11  36  	);
+10:48:11  37  END CREATE_ADDRESS_HISTORY;
+10:48:11  38  
+10:48:11  39  PROCEDURE CREATE_ACCOUNT_HISTORY (
+10:48:11  40  /*
+10:48:11  41  Throws exceptions:
+10:48:11  42  APP_EXCEPTION_CODES_V21.NOT_FOUND
+10:48:11  43  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11  44  */
+10:48:11  45  	in_account_id		      IN NUMBER,
+10:48:11  46  	in_suspend_date 	      IN DATE,
+10:48:11  47  	in_group_id		      IN NUMBER,
+10:48:11  48  	in_created_by		      IN VARCHAR2,
+10:48:11  49  	in_create_date		      IN DATE,
+10:48:11  50  	in_system_activity_reason_id  IN NUMBER,
+10:48:11  51  	in_account_status_id	      IN NUMBER,
+10:48:11  52  	in_instrument_type_id	      IN NUMBER,
+10:48:11  53  	in_instrument_id	      IN NUMBER
+10:48:11  54  ) AS
+10:48:11  55  BEGIN
+10:48:11  56  	PROCS_HISTORY_V21.CREATE_ACCOUNT_HISTORY(
+10:48:11  57  	  in_account_id,
+10:48:11  58  	  in_suspend_date,
+10:48:11  59  	  in_group_id,
+10:48:11  60  	  in_created_by,
+10:48:11  61  	  in_create_date,
+10:48:11  62  	  in_system_activity_reason_id,
+10:48:11  63  	  in_account_status_id,
+10:48:11  64  	  in_instrument_type_id,
+10:48:11  65  	  in_instrument_id
+10:48:11  66  	);
+10:48:11  67  END CREATE_ACCOUNT_HISTORY;
+10:48:11  68  
+10:48:11  69  PROCEDURE CREATE_SUBSCRIPTION_HISTORY (
+10:48:11  70  /*
+10:48:11  71  Throws exceptions:
+10:48:11  72  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11  73  */
+10:48:11  74  	in_subscription_id	     IN  NUMBER,
+10:48:11  75  	in_account_id		     IN NUMBER,
+10:48:11  76  	in_purchase_date	     IN DATE,
+10:48:11  77  	in_offer_chain_id	     IN NUMBER,
+10:48:11  78  	in_suspend_date 	     IN DATE,
+10:48:11  79  	in_termination_date	     IN DATE,
+10:48:11  80  	in_days_remaining_adjustment IN NUMBER,
+10:48:11  81  	in_cancellation_type_id      IN NUMBER,
+10:48:11  82  	in_created_by		     IN  VARCHAR2,
+10:48:11  83  	in_create_date		     IN DATE,
+10:48:11  84  	in_system_activity_reason_id IN  NUMBER
+10:48:11  85  ) AS
+10:48:11  86  BEGIN
+10:48:11  87  	PROCS_HISTORY_V21.CREATE_SUBSCRIPTION_HISTORY(
+10:48:11  88  	  in_subscription_id,
+10:48:11  89  	  in_account_id,
+10:48:11  90  	  in_purchase_date,
+10:48:11  91  	  in_offer_chain_id,
+10:48:11  92  	  in_suspend_date,
+10:48:11  93  	  in_termination_date,
+10:48:11  94  	  in_days_remaining_adjustment,
+10:48:11  95  	  in_cancellation_type_id,
+10:48:11  96  	  in_created_by,
+10:48:11  97  	  in_create_date,
+10:48:11  98  	  in_system_activity_reason_id
+10:48:11  99  	);
+10:48:11 100  END CREATE_SUBSCRIPTION_HISTORY;
+10:48:11 101  
+10:48:11 102  PROCEDURE CREATE_CREDIT_CARD_HISTORY (
+10:48:11 103  /*
+10:48:11 104  Throws exceptions:
+10:48:11 105  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 106  */
+10:48:11 107  	in_credit_card_id	      IN  NUMBER,
+10:48:11 108  	in_account_id		      IN NUMBER,
+10:48:11 109  	in_instrument_name	      IN VARCHAR2,
+10:48:11 110  	in_private_card_holder_name   IN VARCHAR2,
+10:48:11 111  	in_private_street_address     IN VARCHAR2,
+10:48:11 112  	in_private_street_address2    IN VARCHAR2,
+10:48:11 113  	in_state		      IN VARCHAR2,
+10:48:11 114  	in_city 		      IN VARCHAR2,
+10:48:11 115  	in_postal_code		      IN VARCHAR2,
+10:48:11 116  	in_country		      IN CHAR,
+10:48:11 117  	in_last_four_cc 	      IN VARCHAR2,
+10:48:11 118  	in_expiration_date	      IN DATE,
+10:48:11 119  	in_credit_card_type_id	      IN NUMBER,
+10:48:11 120  	in_secret_token 	      IN VARCHAR2,
+10:48:11 121  	in_chase_profile_id	      IN VARCHAR2,
+10:48:11 122  	in_credit_card_status_id      IN NUMBER,
+10:48:11 123  	in_created_by		      IN  VARCHAR2,
+10:48:11 124  	in_create_date		      IN DATE,
+10:48:11 125  	in_system_activity_reason_id  IN  NUMBER
+10:48:11 126  ) AS
+10:48:11 127  BEGIN
+10:48:11 128  	PROCS_HISTORY_V21.CREATE_CREDIT_CARD_HISTORY(
+10:48:11 129  	  in_credit_card_id,
+10:48:11 130  	  in_account_id,
+10:48:11 131  	  in_instrument_name,
+10:48:11 132  	  in_private_card_holder_name,
+10:48:11 133  	  in_private_street_address,
+10:48:11 134  	  in_private_street_address2,
+10:48:11 135  	  in_state,
+10:48:11 136  	  in_city,
+10:48:11 137  	  in_postal_code,
+10:48:11 138  	  in_country,
+10:48:11 139  	  in_last_four_cc,
+10:48:11 140  	  in_expiration_date,
+10:48:11 141  	  in_credit_card_type_id,
+10:48:11 142  	  in_secret_token,
+10:48:11 143  	  in_chase_profile_id,
+10:48:11 144  	  in_credit_card_status_id,
+10:48:11 145  	  in_created_by,
+10:48:11 146  	  in_create_date,
+10:48:11 147  	  in_system_activity_reason_id
+10:48:11 148  );
+10:48:11 149  END CREATE_CREDIT_CARD_HISTORY;
+10:48:11 150  
+10:48:11 151  /***************************************************************/
+10:48:11 152  
+10:48:11 153  PROCEDURE CREATE_PAYPAL_HISTORY (
+10:48:11 154  /*
+10:48:11 155  Throws exceptions:
+10:48:11 156  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 157  */
+10:48:11 158  	in_paypal_id			IN NUMBER,
+10:48:11 159  	in_account_id			IN NUMBER,
+10:48:11 160  	in_instrument_name		IN VARCHAR2,
+10:48:11 161  	in_private_email_address	IN VARCHAR2,
+10:48:11 162  	in_created_by			IN VARCHAR2,
+10:48:11 163  	in_create_date			IN DATE,
+10:48:11 164  	in_paypal_status_id		IN NUMBER,
+10:48:11 165  	in_paypal_prvt_street_address	IN VARCHAR2,
+10:48:11 166  	in_paypal_prvt_street_address2	IN VARCHAR2,
+10:48:11 167  	in_state			IN VARCHAR2,
+10:48:11 168  	in_city 			IN VARCHAR2,
+10:48:11 169  	in_postal_code			IN VARCHAR2,
+10:48:11 170  	in_country			IN CHAR,
+10:48:11 171  	in_expiration_date		IN DATE,
+10:48:11 172  	in_system_activity_reason_id	IN NUMBER,
+10:48:11 173  	in_secret_token 		IN VARCHAR2
+10:48:11 174  ) AS
+10:48:11 175  BEGIN
+10:48:11 176  	PROCS_HISTORY_V21.CREATE_PAYPAL_HISTORY(
+10:48:11 177  	  in_paypal_id,
+10:48:11 178  	  in_account_id,
+10:48:11 179  	  in_instrument_name,
+10:48:11 180  	  in_private_email_address,
+10:48:11 181  	  in_created_by,
+10:48:11 182  	  in_create_date,
+10:48:11 183  	  in_paypal_status_id,
+10:48:11 184  	  in_paypal_prvt_street_address,
+10:48:11 185  	  in_paypal_prvt_street_address2,
+10:48:11 186  	  in_state,
+10:48:11 187  	  in_city,
+10:48:11 188  	  in_postal_code,
+10:48:11 189  	  in_country,
+10:48:11 190  	  in_expiration_date,
+10:48:11 191  	  in_system_activity_reason_id,
+10:48:11 192  	  in_secret_token
+10:48:11 193  	);
+10:48:11 194  END;
+10:48:11 195  
+10:48:11 196  /***************************************************************/
+10:48:11 197  
+10:48:11 198  PROCEDURE CREATE_TRANSACTION_HISTORY (
+10:48:11 199  /*
+10:48:11 200  Throws exceptions:
+10:48:11 201  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 202  */
+10:48:11 203  	in_transaction_id	     IN TRANSACTION_HISTORY.TRANSACTION_ID%TYPE,
+10:48:11 204  	in_transaction_status_id     IN TRANSACTION_HISTORY.TRANSACTION_STATUS_ID%TYPE,
+10:48:11 205  	in_transaction_amount	     IN TRANSACTION_HISTORY.TRANSACTION_AMOUNT%TYPE,
+10:48:11 206  	in_created_by		     IN TRANSACTION_HISTORY.CREATED_BY%TYPE,
+10:48:11 207  	in_create_date		     IN TRANSACTION_HISTORY.CREATE_DATE%TYPE,
+10:48:11 208  	in_order_id		     IN TRANSACTION_HISTORY.ORDER_ID%TYPE,
+10:48:11 209  	in_charge_id		     IN TRANSACTION_HISTORY.CHARGE_ID%TYPE,
+10:48:11 210  	in_is_refund		     IN TRANSACTION_HISTORY.IS_REFUND%TYPE,
+10:48:11 211  	in_is_settled		     IN TRANSACTION_HISTORY.IS_SETTLED%TYPE,
+10:48:11 212  	in_transaction_type_code     IN TRANSACTION_HISTORY.TRANSACTION_TYPE_CODE%TYPE,
+10:48:11 213  	in_system_activity_reason_id IN NUMBER
+10:48:11 214  ) AS
+10:48:11 215  BEGIN
+10:48:11 216  	PROCS_HISTORY_V21.CREATE_TRANSACTION_HISTORY(
+10:48:11 217  	  in_transaction_id,
+10:48:11 218  	  in_transaction_status_id,
+10:48:11 219  	  in_transaction_amount,
+10:48:11 220  	  in_created_by,
+10:48:11 221  	  in_create_date,
+10:48:11 222  	  in_system_activity_reason_id,
+10:48:11 223  	  in_order_id,
+10:48:11 224  	  in_charge_id,
+10:48:11 225  	  in_is_refund,
+10:48:11 226  	  in_is_settled,
+10:48:11 227  	  in_transaction_type_code
+10:48:11 228  	);
+10:48:11 229  END CREATE_TRANSACTION_HISTORY;
+10:48:11 230  
+10:48:11 231  /***************************************************************/
+10:48:11 232  
+10:48:11 233  PROCEDURE CREATE_GIFT_CERT_HISTORY (
+10:48:11 234  	in_gift_certificate_id	      IN NUMBER,
+10:48:11 235  	in_purchaser_group_id	      IN NUMBER,
+10:48:11 236  	in_purchase_invoice_id	      IN NUMBER,
+10:48:11 237  	in_offer_chain_id	      IN NUMBER,
+10:48:11 238  	in_expiration_date	      IN DATE,
+10:48:11 239  	in_purchase_date	      IN DATE,
+10:48:11 240  	in_gift_certificate_status_id IN NUMBER,
+10:48:11 241  	in_code 		      IN VARCHAR2,
+10:48:11 242  	in_created_by		      IN VARCHAR2,
+10:48:11 243  	in_create_date		      IN DATE,
+10:48:11 244  	in_system_activity_reason_id  IN NUMBER,
+10:48:11 245  	in_recipient_name	      IN VARCHAR2,
+10:48:11 246  	in_gift_message 	      IN VARCHAR2,
+10:48:11 247  	in_recipient_email	      IN VARCHAR2,
+10:48:11 248  	in_finalized_invoice_id       IN NUMBER,
+10:48:11 249  	in_sender_email 	      IN VARCHAR2,
+10:48:11 250  	in_sender_name		      IN VARCHAR2,
+10:48:11 251  	in_redemption_date	      IN DATE,
+10:48:11 252  	in_redeemer_group_id	      IN NUMBER,
+10:48:11 253  	in_cancelation_date	      IN DATE,
+10:48:11 254  	in_recipient_address_id       IN NUMBER,
+10:48:11 255  	in_redeemer_address_id	      IN NUMBER,
+10:48:11 256  	in_recipient_notify_date      IN DATE
+10:48:11 257  ) AS
+10:48:11 258  BEGIN
+10:48:11 259  	PROCS_HISTORY_V21.CREATE_GIFT_CERT_HISTORY(
+10:48:11 260  	  in_gift_certificate_id,
+10:48:11 261  	  in_purchaser_group_id,
+10:48:11 262  	  in_purchase_invoice_id,
+10:48:11 263  	  in_offer_chain_id,
+10:48:11 264  	  in_expiration_date,
+10:48:11 265  	  in_purchase_date,
+10:48:11 266  	  in_gift_certificate_status_id,
+10:48:11 267  	  in_code,
+10:48:11 268  	  in_created_by,
+10:48:11 269  	  in_create_date,
+10:48:11 270  	  in_system_activity_reason_id,
+10:48:11 271  	  in_recipient_name,
+10:48:11 272  	  in_gift_message,
+10:48:11 273  	  in_recipient_email,
+10:48:11 274  	  in_finalized_invoice_id,
+10:48:11 275  	  in_sender_email,
+10:48:11 276  	  in_sender_name,
+10:48:11 277  	  in_redemption_date,
+10:48:11 278  	  in_redeemer_group_id,
+10:48:11 279  	  in_cancelation_date,
+10:48:11 280  	  in_recipient_address_id,
+10:48:11 281  	  in_redeemer_address_id,
+10:48:11 282  	  in_recipient_notify_date
+10:48:11 283  	);
+10:48:11 284  END CREATE_GIFT_CERT_HISTORY;
+10:48:11 285  
+10:48:11 286  /***************************************************************/
+10:48:11 287  
+10:48:11 288  PROCEDURE CREATE_INVOICE_HISTORY (
+10:48:11 289  	in_invoice_id		     IN NUMBER,
+10:48:11 290  	in_invoice_status_id	     IN NUMBER,
+10:48:11 291  	in_created_by		     IN VARCHAR2,
+10:48:11 292  	in_create_date		     IN DATE,
+10:48:11 293  	in_system_activity_reason_id IN NUMBER
+10:48:11 294  ) AS
+10:48:11 295  BEGIN
+10:48:11 296  	PROCS_HISTORY_V21.CREATE_INVOICE_HISTORY (
+10:48:11 297  	  in_invoice_id,
+10:48:11 298  	  in_invoice_status_id,
+10:48:11 299  	  in_created_by,
+10:48:11 300  	  in_create_date,
+10:48:11 301  	  in_system_activity_reason_id
+10:48:11 302  	);
+10:48:11 303  END CREATE_INVOICE_HISTORY;
+10:48:11 304  
+10:48:11 305  /***************************************************************/
+10:48:11 306  
+10:48:11 307  PROCEDURE CREATE_LICENSE_HISTORY (
+10:48:11 308  /*
+10:48:11 309  Throws exceptions:
+10:48:11 310  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 311  */
+10:48:11 312  	in_license_id		    IN NUMBER,
+10:48:11 313  	in_license_status_id	    IN NUMBER,
+10:48:11 314  	in_needs_entitlements	    IN NUMBER,
+10:48:11 315  	in_start_date		    IN DATE,
+10:48:11 316  	in_offer_id		    IN NUMBER,
+10:48:11 317  	in_subscription_id	    IN NUMBER,
+10:48:11 318  	in_invoice_id		    IN NUMBER,
+10:48:11 319  	in_end_date		    IN DATE,
+10:48:11 320  	in_created_by		    IN VARCHAR2,
+10:48:11 321  	in_create_date		    IN DATE,
+10:48:11 322  	in_is_extension 	    IN NUMBER,
+10:48:11 323  	in_current_offer_index	    IN NUMBER,
+10:48:11 324  	in_current_offer_recurr_num IN NUMBER,
+10:48:11 325  	in_system_activity_reason_id IN NUMBER,
+10:48:11 326  	in_entitlement_end_date      IN DATE,
+10:48:11 327  	in_grace_start_date	    IN DATE,
+10:48:11 328  	in_grace_end_date	    IN DATE
+10:48:11 329  ) AS
+10:48:11 330  BEGIN
+10:48:11 331  	PROCS_HISTORY_V21.CREATE_LICENSE_HISTORY (
+10:48:11 332  	  in_license_id,
+10:48:11 333  	  in_license_status_id,
+10:48:11 334  	  in_needs_entitlements,
+10:48:11 335  	  in_start_date,
+10:48:11 336  	  in_offer_id,
+10:48:11 337  	  in_subscription_id,
+10:48:11 338  	  in_invoice_id,
+10:48:11 339  	  in_end_date,
+10:48:11 340  	  in_created_by,
+10:48:11 341  	  in_create_date,
+10:48:11 342  	  in_is_extension,
+10:48:11 343  	  in_current_offer_index,
+10:48:11 344  	  in_current_offer_recurr_num,
+10:48:11 345  	  in_system_activity_reason_id,
+10:48:11 346  	  in_entitlement_end_date,
+10:48:11 347  	  in_grace_start_date,
+10:48:11 348  	  in_grace_end_date
+10:48:11 349  	);
+10:48:11 350  END CREATE_LICENSE_HISTORY;
+10:48:11 351  
+10:48:11 352  /***************************************************************/
+10:48:11 353  
+10:48:11 354  PROCEDURE CREATE_CHARGE_HISTORY (
+10:48:11 355  /*
+10:48:11 356  Throws exceptions:
+10:48:11 357  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 358  */
+10:48:11 359  	in_charge_id		     IN NUMBER,
+10:48:11 360  	in_invoice_id		     IN NUMBER,
+10:48:11 361  	in_transaction_id	     IN NUMBER,
+10:48:11 362  	in_instrument_type_id	     IN NUMBER,
+10:48:11 363  	in_instrument_id	     IN NUMBER,
+10:48:11 364  	in_charge_amount	     IN NUMBER,
+10:48:11 365  	in_created_by		     IN VARCHAR2,
+10:48:11 366  	in_create_date		     IN DATE,
+10:48:11 367  	in_charge_status_id	     IN NUMBER,
+10:48:11 368  	in_system_activity_reason_id IN NUMBER
+10:48:11 369  ) AS
+10:48:11 370  BEGIN
+10:48:11 371  	PROCS_HISTORY_V21.CREATE_CHARGE_HISTORY (
+10:48:11 372  	  in_charge_id,
+10:48:11 373  	  in_invoice_id,
+10:48:11 374  	  in_transaction_id,
+10:48:11 375  	  in_instrument_type_id,
+10:48:11 376  	  in_instrument_id,
+10:48:11 377  	  in_charge_amount,
+10:48:11 378  	  in_created_by,
+10:48:11 379  	  in_create_date,
+10:48:11 380  	  in_charge_status_id,
+10:48:11 381  	  in_system_activity_reason_id
+10:48:11 382  	);
+10:48:11 383  END;
+10:48:11 384  
+10:48:11 385  PROCEDURE CREATE_ITUNES_RECEIPT_HISTORY (
+10:48:11 386  /*
+10:48:11 387  Throws exceptions:
+10:48:11 388  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 389  */
+10:48:11 390  /*
+10:48:11 391  CREATE TABLE ITUNES_RECEIPT (
+10:48:11 392  	id NUMBER NOT NULL ENABLE,
+10:48:11 393  	subscription_id NUMBER NOT NULL ENABLE,
+10:48:11 394  	receipt VARCHAR(1024) NOT NULL ENABLE,
+10:48:11 395  	status NUMBER,
+10:48:11 396  	quantity NUMBER,
+10:48:11 397  	product_id VARCHAR(1024),
+10:48:11 398  	transaction_id VARCHAR(1024),
+10:48:11 399  	purchase_date TIMESTAMP,
+10:48:11 400  	original_transaction_id VARCHAR(1024),
+10:48:11 401  	original_purchase_date TIMESTAMP,
+10:48:11 402  	app_item_id VARCHAR(1024),
+10:48:11 403  	version_external_id NUMBER,
+10:48:11 404  	bid VARCHAR(1024),
+10:48:11 405  	bvrs VARCHAR(255),
+10:48:11 406  	expires_date TIMESTAMP,
+10:48:11 407  	create_date DATE NOT NULL,
+10:48:11 408  	created_by VARCHAR(255) NOT NULL,
+10:48:11 409  	update_date DATE NOT NULL,
+10:48:11 410  	updated_by VARCHAR(255) NOT NULL,
+10:48:11 411  	last_check_date DATE NOT NULL,
+10:48:11 412  	CONSTRAINT "ITUNESRECEIPT_PK" PRIMARY KEY ("ID") USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:11 413  	CONSTRAINT "ITUNESRECEIPT_SUBID_FK" FOREIGN KEY ("SUBSCRIPTION_ID") REFERENCES SUBSCRIPTION(ID) USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:11 414  	CONSTRAINT "ITUNESRECEIPT_RECEIPT_UK" UNIQUE(receipt) USING INDEX TABLESPACE "CORE_IDX" ENABLE,
+10:48:11 415  	CONSTRAINT "ITUNESRECEIPT_SUBID_UK" UNIQUE(subscription_id) USING INDEX TABLESPACE "CORE_IDX" ENABLE
+10:48:11 416  )
+10:48:11 417  TABLESPACE CORE;
+10:48:11 418  */
+10:48:11 419  	in_id		    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ID%TYPE,
+10:48:11 420  	in_subscription_id  IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.SUBSCRIPTION_ID%TYPE,
+10:48:11 421  	in_receipt	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.RECEIPT%TYPE,
+10:48:11 422  	in_status	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.STATUS%TYPE,
+10:48:11 423  	in_quantity	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.QUANTITY%TYPE,
+10:48:11 424  	in_product_id	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.PRODUCT_ID%TYPE,
+10:48:11 425  	in_transaction_id   IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.TRANSACTION_ID%TYPE,
+10:48:11 426  	in_purchase_date    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.PURCHASE_DATE%TYPE,
+10:48:11 427  	in_original_transaction_id IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ORIGINAL_TRANSACTION_ID%TYPE,
+10:48:11 428  	in_original_purchase_date IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.ORIGINAL_PURCHASE_DATE%TYPE,
+10:48:11 429  	in_app_item_id	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.APP_ITEM_ID%TYPE,
+10:48:11 430  	in_version_external_id IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.VERSION_EXTERNAL_ID%TYPE,
+10:48:11 431  	in_bid		    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.BID%TYPE,
+10:48:11 432  	in_bvrs 	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.BVRS%TYPE,
+10:48:11 433  	in_expires_date     IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.EXPIRES_DATE%TYPE,
+10:48:11 434  	in_create_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CREATE_DATE%TYPE,
+10:48:11 435  	in_created_by	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CREATED_BY%TYPE,
+10:48:11 436  	in_update_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.UPDATE_DATE%TYPE,
+10:48:11 437  	in_updated_by	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.UPDATED_BY%TYPE,
+10:48:11 438  	in_last_check_date  IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.LAST_CHECK_DATE%TYPE,
+10:48:11 439  	in_cancel_date	    IN CORE_HIST_OWNER.ITUNES_RECEIPT_HISTORY.CANCEL_DATE%TYPE
+10:48:11 440  ) AS
+10:48:11 441  BEGIN
+10:48:11 442  	PROCS_HISTORY_V21.CREATE_ITUNES_RECEIPT_HISTORY (
+10:48:11 443  	  in_id => in_id,
+10:48:11 444  	  in_subscription_id => in_subscription_id,
+10:48:11 445  	  in_receipt => in_receipt,
+10:48:11 446  	  in_status => in_status,
+10:48:11 447  	  in_quantity => in_quantity,
+10:48:11 448  	  in_product_id => in_product_id,
+10:48:11 449  	  in_transaction_id => in_transaction_id,
+10:48:11 450  	  in_purchase_date => in_purchase_date,
+10:48:11 451  	  in_original_transaction_id => in_original_transaction_id,
+10:48:11 452  	  in_original_purchase_date => in_original_purchase_date,
+10:48:11 453  	  in_app_item_id => in_app_item_id,
+10:48:11 454  	  in_version_external_id => in_version_external_id,
+10:48:11 455  	  in_bid => in_bid,
+10:48:11 456  	  in_bvrs => in_bvrs,
+10:48:11 457  	  in_expires_date => in_expires_date,
+10:48:11 458  	  in_create_date => in_create_date,
+10:48:11 459  	  in_created_by => in_created_by,
+10:48:11 460  	  in_update_date => in_update_date,
+10:48:11 461  	  in_updated_by => in_updated_by,
+10:48:11 462  	  in_last_check_date => in_last_check_date,
+10:48:11 463  	  in_cancel_date => in_cancel_date
+10:48:11 464  	);
+10:48:11 465  END;
+10:48:11 466  
+10:48:11 467  PROCEDURE CREATE_INVOICE_ADJ_HISTORY (
+10:48:11 468  /*
+10:48:11 469  Throws exceptions:
+10:48:11 470  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 471  */
+10:48:11 472  	in_invoice_adjustment_id     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ADJUSTMENT_ID%TYPE,
+10:48:11 473  	in_invoice_id		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ID%TYPE,
+10:48:11 474  	in_is_credit		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.IS_CREDIT%TYPE,
+10:48:11 475  	in_charge_id		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CHARGE_ID%TYPE,
+10:48:11 476  	in_adjustment_date	     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.ADJUSTMENT_DATE%TYPE,
+10:48:11 477  	in_create_date		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CREATE_DATE%TYPE,
+10:48:11 478  	in_created_by		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.CREATED_BY%TYPE,
+10:48:11 479  	in_invoice_adj_reason_id	       IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.INVOICE_ADJUSTMENT_REASON_ID%TYPE,
+10:48:11 480  	in_update_date		      IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.UPDATE_DATE%TYPE,
+10:48:11 481  	in_updated_by		     IN CORE_HIST_OWNER.INVOICE_ADJUSTMENT_HISTORY.UPDATED_BY%TYPE
+10:48:11 482  )  AS
+10:48:11 483  	BEGIN
+10:48:11 484  	  PROCS_HISTORY_V21.CREATE_INVOICE_ADJ_HISTORY(
+10:48:11 485  	    in_invoice_adjustment_id => in_invoice_adjustment_id,
+10:48:11 486  	    in_invoice_id => in_invoice_id,
+10:48:11 487  	    in_is_credit => in_is_credit,
+10:48:11 488  	    in_charge_id => in_charge_id,
+10:48:11 489  	    in_adjustment_date => in_adjustment_date,
+10:48:11 490  	    in_create_date => in_create_date,
+10:48:11 491  	    in_created_by => in_created_by,
+10:48:11 492  	    in_invoice_adj_reason_id => in_invoice_adj_reason_id,
+10:48:11 493  	    in_update_date => in_update_date,
+10:48:11 494  	    in_updated_by => in_updated_by
+10:48:11 495  	  );
+10:48:11 496  END;
+10:48:11 497  
+10:48:11 498  PROCEDURE CREATE_NOTIFICATION_HISTORY (
+10:48:11 499  /*
+10:48:11 500  Throws exceptions:
+10:48:11 501  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 502  */
+10:48:11 503  	in_notification_id	      IN NUMBER,
+10:48:11 504  	in_account_id		      IN NUMBER,
+10:48:11 505  	in_group_id		      IN NUMBER,
+10:48:11 506  	notification_reason_type_id   IN NUMBER,
+10:48:11 507  	notification_status_id	      IN NUMBER,
+10:48:11 508  	email_template_params	      IN CLOB,
+10:48:11 509  	in_create_date		      IN DATE,
+10:48:11 510  	in_date_to_notify	      IN DATE
+10:48:11 511  ) AS
+10:48:11 512  BEGIN
+10:48:11 513  	PROCS_HISTORY_V21.CREATE_NOTIFICATION_HISTORY(
+10:48:11 514  	  in_notification_id,
+10:48:11 515  	  in_account_id,
+10:48:11 516  	  in_group_id,
+10:48:11 517  	  notification_reason_type_id,
+10:48:11 518  	  notification_status_id,
+10:48:11 519  	  email_template_params,
+10:48:11 520  	  in_create_date,
+10:48:11 521  	  in_date_to_notify
+10:48:11 522  );
+10:48:11 523  END CREATE_NOTIFICATION_HISTORY;
+10:48:11 524  
+10:48:11 525  /******************************************************/
+10:48:11 526  
+10:48:11 527  PROCEDURE CREATE_NOTIF_FAILURE_HISTORY (
+10:48:11 528  /*
+10:48:11 529  Throws exceptions:
+10:48:11 530  APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:11 531  */
+10:48:11 532  	in_error_message	 IN VARCHAR2,
+10:48:11 533  	in_notification_id	 IN NUMBER,
+10:48:11 534  	in_create_date		 IN DATE
+10:48:11 535  ) AS
+10:48:11 536  BEGIN
+10:48:11 537  	PROCS_HISTORY_V21.CREATE_NOTIF_FAILURE_HISTORY(
+10:48:11 538  	  in_error_message,
+10:48:11 539  	  in_notification_id,
+10:48:11 540  	  in_create_date
+10:48:11 541  );
+10:48:11 542  END CREATE_NOTIF_FAILURE_HISTORY;
+10:48:11 543  
+10:48:11 544  END PUBLIC_PROCS_CORE_V21;
+10:48:11 545  .
+10:48:11 SQL> /
+
+Package body created.
+
+Elapsed: 00:00:00.31
+10:48:11 SQL> 
+10:48:11 SQL> --------------------------------------------------------------------------------
+10:48:11 SQL> -- DDL for package PROCS_PARTITIONS
+10:48:11 SQL> --------------------------------------------------------------------------------
+10:48:11 SQL> 
+10:48:11 SQL> CREATE OR REPLACE PACKAGE "PROCS_PARTITIONS_V21" AS
+10:48:11   2  
+10:48:11   3  PROCEDURE GET_PARTITION_YEAR_MONTH (
+10:48:11   4  	in_year   IN NUMBER,
+10:48:11   5  	in_month  IN NUMBER,
+10:48:11   6  	out_year  OUT NUMBER,
+10:48:11   7  	out_month OUT NUMBER
+10:48:11   8  );
+10:48:11   9  
+10:48:11  10  PROCEDURE ADD_TABLE_PARTITION (
+10:48:11  11  	in_tablename	   IN VARCHAR2,
+10:48:11  12  	in_partitionprefix IN VARCHAR2,
+10:48:11  13  	in_year 	   IN NUMBER,
+10:48:11  14  	in_month	   IN NUMBER
+10:48:11  15  );
+10:48:11  16  
+10:48:11  17  PROCEDURE ADD_ACCOUNT_PARTITION(
+10:48:11  18  	in_year  IN NUMBER,
+10:48:11  19  	in_month IN NUMBER
+10:48:11  20  );
+10:48:11  21  
+10:48:11  22  PROCEDURE ADD_BILLING_LOG_PARTITION(
+10:48:11  23  	in_year  IN NUMBER,
+10:48:11  24  	in_month IN NUMBER
+10:48:11  25  );
+10:48:11  26  
+10:48:11  27  PROCEDURE ADD_CREDIT_CARD_PARTITION(
+10:48:11  28  	in_year  IN NUMBER,
+10:48:11  29  	in_month IN NUMBER
+10:48:11  30  );
+10:48:11  31  
+10:48:11  32  PROCEDURE ADD_GCERTIFICATE_PARTITION(
+10:48:11  33  	in_year  IN NUMBER,
+10:48:11  34  	in_month IN NUMBER
+10:48:11  35  );
+10:48:11  36  
+10:48:11  37  PROCEDURE ADD_OFFER_CHAIN_PARTITION(
+10:48:11  38  	in_year  IN NUMBER,
+10:48:11  39  	in_month IN NUMBER
+10:48:11  40  );
+10:48:11  41  
+10:48:11  42  PROCEDURE ADD_OFF_OFFER_CHAIN_PARTITION(
+10:48:11  43  	in_year  IN NUMBER,
+10:48:11  44  	in_month IN NUMBER
+10:48:11  45  );
+10:48:11  46  
+10:48:11  47  PROCEDURE ADD_PAYPAL_PARTITION(
+10:48:11  48  	in_year  IN NUMBER,
+10:48:11  49  	in_month IN NUMBER
+10:48:11  50  );
+10:48:11  51  
+10:48:11  52  PROCEDURE ADD_SUBSCRIPTION_PARTITION(
+10:48:11  53  	in_year  IN NUMBER,
+10:48:11  54  	in_month IN NUMBER
+10:48:11  55  );
+10:48:11  56  
+10:48:11  57  PROCEDURE ADD_TRANSACTION_PARTITION(
+10:48:11  58  	in_year  IN NUMBER,
+10:48:11  59  	in_month IN NUMBER
+10:48:11  60  );
+10:48:11  61  
+10:48:11  62  PROCEDURE ADD_INVOICE_PARTITION(
+10:48:11  63  	in_year  IN NUMBER,
+10:48:11  64  	in_month IN NUMBER
+10:48:11  65  );
+10:48:11  66  
+10:48:11  67  PROCEDURE ADD_LICENSE_PARTITION(
+10:48:11  68  	in_year  IN NUMBER,
+10:48:11  69  	in_month IN NUMBER
+10:48:11  70  );
+10:48:11  71  
+10:48:11  72  PROCEDURE ADD_CHARGE_PARTITION(
+10:48:11  73  	in_year  IN NUMBER,
+10:48:11  74  	in_month IN NUMBER
+10:48:11  75  );
+10:48:11  76  
+10:48:11  77  PROCEDURE ADD_NOTIFICATION_PARTITION(
+10:48:11  78  	in_year  IN NUMBER,
+10:48:11  79  	in_month IN NUMBER
+10:48:11  80  );
+10:48:11  81  
+10:48:11  82  PROCEDURE ADD_NOTIF_FAILURE_PARTITION(
+10:48:11  83  	in_year  IN NUMBER,
+10:48:11  84  	in_month IN NUMBER
+10:48:11  85  );
+10:48:11  86  
+10:48:11  87  END PROCS_PARTITIONS_V21;
+10:48:11  88  .
+10:48:11 SQL> /
+
+Package created.
+
+Elapsed: 00:00:00.11
+10:48:11 SQL> 
+10:48:11 SQL> CREATE OR REPLACE PACKAGE BODY "PROCS_PARTITIONS_V21" AS
+10:48:11   2  
+10:48:11   3  PROCEDURE GET_PARTITION_YEAR_MONTH (
+10:48:11   4  	in_year   IN NUMBER,
+10:48:11   5  	in_month  IN NUMBER,
+10:48:11   6  	out_year  OUT NUMBER,
+10:48:11   7  	out_month OUT NUMBER
+10:48:11   8  ) AS
+10:48:11   9  BEGIN
+10:48:11  10  	IF in_month < 12 THEN
+10:48:11  11  	  out_month := in_month + 1;
+10:48:11  12  	  out_year  := in_year;
+10:48:11  13  	ELSIF in_month = 12 THEN
+10:48:11  14  	  out_month := 1;
+10:48:11  15  	  out_year  := in_year + 1;
+10:48:11  16  	ELSE
+10:48:11  17  	  out_month := in_month;
+10:48:11  18  	  out_year  := in_year;
+10:48:11  19  	END IF;
+10:48:11  20  END;
+10:48:11  21  
+10:48:11  22  /**************************************************************/
+10:48:11  23  
+10:48:11  24  PROCEDURE ADD_TABLE_PARTITION (
+10:48:11  25  	in_tablename	   IN VARCHAR2,
+10:48:11  26  	in_partitionprefix IN VARCHAR2,
+10:48:11  27  	in_year 	   IN NUMBER,
+10:48:11  28  	in_month	   IN NUMBER
+10:48:11  29  ) AS
+10:48:11  30  -- VARIABLES
+10:48:11  31  partision_year  NUMBER;
+10:48:11  32  partision_month NUMBER;
+10:48:11  33  -- CONSTANTS
+10:48:11  34  const_max_prefix CONSTANT VARCHAR(3) := 'max';
+10:48:11  35  BEGIN
+10:48:11  36  	GET_PARTITION_YEAR_MONTH(in_year, in_month, partision_year, partision_month);
+10:48:11  37  	EXECUTE IMMEDIATE 'ALTER TABLE '||in_tablename||' SPLIT PARTITION '||in_partitionprefix||'_'||const_max_prefix||' AT (date '''||partision_year||'-'||partision_month||'-01'') INTO (PARTITION '||in_partitionprefix||'_y'||in_year||'m'||in_month||', PARTITION '||in_partitionprefix||'_'||const_max_prefix||')';
+10:48:11  38  END;
+10:48:11  39  
+10:48:11  40  /**************************************************************/
+10:48:11  41  
+10:48:11  42  PROCEDURE ADD_ACCOUNT_PARTITION(
+10:48:11  43  	in_year  IN NUMBER,
+10:48:11  44  	in_month IN NUMBER
+10:48:11  45  ) AS
+10:48:11  46  -- CONSTANTS
+10:48:11  47  CONST_TABLE_NAME	     CONSTANT VARCHAR2(15) := 'ACCOUNT_HISTORY';
+10:48:11  48  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(7)  := 'account';
+10:48:11  49  BEGIN
+10:48:11  50  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11  51  END ADD_ACCOUNT_PARTITION;
+10:48:11  52  
+10:48:11  53  /**************************************************************/
+10:48:11  54  
+10:48:11  55  PROCEDURE ADD_BILLING_LOG_PARTITION(
+10:48:11  56  	in_year  IN NUMBER,
+10:48:11  57  	in_month IN NUMBER
+10:48:11  58  ) AS
+10:48:11  59  -- CONSTANTS
+10:48:11  60  CONST_TABLE_NAME	     CONSTANT VARCHAR2(28) := 'BILLING_ACTIVITY_LOG_HISTORY';
+10:48:11  61  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(15) := 'billing_act_log';
+10:48:11  62  BEGIN
+10:48:11  63  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11  64  END ADD_BILLING_LOG_PARTITION;
+10:48:11  65  
+10:48:11  66  /**************************************************************/
+10:48:11  67  
+10:48:11  68  PROCEDURE ADD_CREDIT_CARD_PARTITION(
+10:48:11  69  	in_year  IN NUMBER,
+10:48:11  70  	in_month IN NUMBER
+10:48:11  71  ) AS
+10:48:11  72  -- CONSTANTS
+10:48:11  73  CONST_TABLE_NAME	     CONSTANT VARCHAR2(19) := 'CREDIT_CARD_HISTORY';
+10:48:11  74  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(11) := 'credit_card';
+10:48:11  75  BEGIN
+10:48:11  76  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11  77  END ADD_CREDIT_CARD_PARTITION;
+10:48:11  78  
+10:48:11  79  /**************************************************************/
+10:48:11  80  
+10:48:11  81  PROCEDURE ADD_GCERTIFICATE_PARTITION(
+10:48:11  82  	in_year  IN NUMBER,
+10:48:11  83  	in_month IN NUMBER
+10:48:11  84  ) AS
+10:48:11  85  -- CONSTANTS
+10:48:11  86  CONST_TABLE_NAME	     CONSTANT VARCHAR2(24) := 'GIFT_CERTIFICATE_HISTORY';
+10:48:11  87  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(16) := 'gift_certificate';
+10:48:11  88  BEGIN
+10:48:11  89  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11  90  END ADD_GCERTIFICATE_PARTITION;
+10:48:11  91  
+10:48:11  92  /**************************************************************/
+10:48:11  93  
+10:48:11  94  PROCEDURE ADD_OFFER_CHAIN_PARTITION(
+10:48:11  95  	in_year  IN NUMBER,
+10:48:11  96  	in_month IN NUMBER
+10:48:11  97  ) AS
+10:48:11  98  -- CONSTANTS
+10:48:11  99  CONST_TABLE_NAME	     CONSTANT VARCHAR2(19) := 'OFFER_CHAIN_HISTORY';
+10:48:11 100  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(11) := 'offer_chain';
+10:48:11 101  BEGIN
+10:48:11 102  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11 103  END ADD_OFFER_CHAIN_PARTITION;
+10:48:11 104  
+10:48:11 105  /**************************************************************/
+10:48:11 106  
+10:48:11 107  PROCEDURE ADD_OFF_OFFER_CHAIN_PARTITION(
+10:48:11 108  	in_year  IN NUMBER,
+10:48:11 109  	in_month IN NUMBER
+10:48:11 110  ) AS
+10:48:11 111  -- CONSTANTS
+10:48:11 112  CONST_TABLE_NAME	     CONSTANT VARCHAR2(25) := 'OFFER_OFFER_CHAIN_HISTORY';
+10:48:11 113  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(17) := 'offer_offer_chain';
+10:48:11 114  BEGIN
+10:48:11 115  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11 116  END ADD_OFF_OFFER_CHAIN_PARTITION;
+10:48:11 117  
+10:48:11 118  /**************************************************************/
+10:48:11 119  
+10:48:11 120  PROCEDURE ADD_PAYPAL_PARTITION(
+10:48:11 121  	in_year  IN NUMBER,
+10:48:11 122  	in_month IN NUMBER
+10:48:11 123  ) AS
+10:48:11 124  -- CONSTANTS
+10:48:11 125  CONST_TABLE_NAME	     CONSTANT VARCHAR2(14) := 'PAYPAL_HISTORY';
+10:48:11 126  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(6)  := 'paypal';
+10:48:11 127  BEGIN
+10:48:11 128  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11 129  END ADD_PAYPAL_PARTITION;
+10:48:11 130  
+10:48:11 131  /**************************************************************/
+10:48:11 132  
+10:48:11 133  PROCEDURE ADD_SUBSCRIPTION_PARTITION(
+10:48:11 134  	in_year  IN NUMBER,
+10:48:11 135  	in_month IN NUMBER
+10:48:11 136  ) AS
+10:48:11 137  -- CONSTANTS
+10:48:11 138  CONST_TABLE_NAME	     CONSTANT VARCHAR2(20) := 'SUBSCRIPTION_HISTORY';
+10:48:11 139  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(12) := 'subscription';
+10:48:11 140  BEGIN
+10:48:11 141  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11 142  END ADD_SUBSCRIPTION_PARTITION;
+10:48:11 143  
+10:48:11 144  /**************************************************************/
+10:48:11 145  
+10:48:11 146  PROCEDURE ADD_TRANSACTION_PARTITION(
+10:48:11 147  	in_year  IN NUMBER,
+10:48:11 148  	in_month IN NUMBER
+10:48:11 149  ) AS
+10:48:11 150  -- CONSTANTS
+10:48:11 151  CONST_TABLE_NAME	     CONSTANT VARCHAR2(19) := 'TRANSACTION_HISTORY';
+10:48:11 152  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(11) := 'transaction';
+10:48:11 153  BEGIN
+10:48:11 154  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11 155  END ADD_TRANSACTION_PARTITION;
+10:48:11 156  
+10:48:11 157  /**************************************************************/
+10:48:11 158  
+10:48:11 159  PROCEDURE ADD_INVOICE_PARTITION(
+10:48:11 160  	in_year  IN NUMBER,
+10:48:11 161  	in_month IN NUMBER
+10:48:11 162  ) AS
+10:48:11 163  -- CONSTANTS
+10:48:11 164  CONST_TABLE_NAME	     CONSTANT VARCHAR2(15) := 'INVOICE_HISTORY';
+10:48:11 165  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(7) := 'invoice';
+10:48:11 166  BEGIN
+10:48:11 167  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11 168  END ADD_INVOICE_PARTITION;
+10:48:11 169  
+10:48:11 170  /**************************************************************/
+10:48:11 171  
+10:48:11 172  PROCEDURE ADD_LICENSE_PARTITION(
+10:48:11 173  	in_year  IN NUMBER,
+10:48:11 174  	in_month IN NUMBER
+10:48:11 175  ) AS
+10:48:11 176  -- CONSTANTS
+10:48:11 177  CONST_TABLE_NAME	     CONSTANT VARCHAR2(15) := 'LICENSE_HISTORY';
+10:48:11 178  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(7) := 'license';
+10:48:11 179  BEGIN
+10:48:11 180  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11 181  END ADD_LICENSE_PARTITION;
+10:48:11 182  
+10:48:11 183  /**************************************************************/
+10:48:11 184  
+10:48:11 185  PROCEDURE ADD_CHARGE_PARTITION(
+10:48:11 186  	in_year  IN NUMBER,
+10:48:11 187  	in_month IN NUMBER
+10:48:11 188  ) AS
+10:48:11 189  -- CONSTANTS
+10:48:11 190  CONST_TABLE_NAME	     CONSTANT VARCHAR2(15) := 'CHARGE_HISTORY';
+10:48:11 191  CONST_PARTITION_PREFIX CONSTANT VARCHAR2(7) := 'charge';
+10:48:11 192  BEGIN
+10:48:11 193  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11 194  END ADD_CHARGE_PARTITION;
+10:48:11 195  
+10:48:11 196  /**************************************************************/
+10:48:11 197  
+10:48:11 198  PROCEDURE ADD_NOTIFICATION_PARTITION(
+10:48:11 199  	in_year  IN NUMBER,
+10:48:11 200  	in_month IN NUMBER
+10:48:11 201  ) AS
+10:48:11 202  -- CONSTANTS
+10:48:11 203  	CONST_TABLE_NAME       CONSTANT VARCHAR2(20) := 'NOTIFICATION_HISTORY';
+10:48:11 204  	CONST_PARTITION_PREFIX CONSTANT VARCHAR2(12)  := 'notification';
+10:48:11 205  BEGIN
+10:48:11 206  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11 207  END ADD_NOTIFICATION_PARTITION;
+10:48:11 208  
+10:48:11 209  /**************************************************************/
+10:48:11 210  
+10:48:11 211  PROCEDURE ADD_NOTIF_FAILURE_PARTITION(
+10:48:11 212  	in_year  IN NUMBER,
+10:48:11 213  	in_month IN NUMBER
+10:48:11 214  ) AS
+10:48:11 215  -- CONSTANTS
+10:48:11 216  	CONST_TABLE_NAME       CONSTANT VARCHAR2(28) := 'NOTIFICATION_FAILURE_HISTORY';
+10:48:11 217  	CONST_PARTITION_PREFIX CONSTANT VARCHAR2(20) := 'notification_failure';
+10:48:11 218  BEGIN
+10:48:11 219  	ADD_TABLE_PARTITION(CONST_TABLE_NAME, CONST_PARTITION_PREFIX, in_year, in_month);
+10:48:11 220  END ADD_NOTIF_FAILURE_PARTITION;
+10:48:11 221  
+10:48:11 222  END PROCS_PARTITIONS_V21;
+10:48:11 223  .
+10:48:11 SQL> /
+
+Package body created.
+
+Elapsed: 00:00:00.16
+10:48:12 SQL> 
+10:48:12 SQL> --------------------------------------------------------------------------------
+10:48:12 SQL> -- DDL for package PROCS_SYSTEM
+10:48:12 SQL> --------------------------------------------------------------------------------
+10:48:12 SQL> 
+10:48:12 SQL> CREATE OR REPLACE PACKAGE "PROCS_SYSTEM_V21" AS
+10:48:12   2  
+10:48:12   3  PROCEDURE INCREMENT_VERSION;
+10:48:12   4  
+10:48:12   5  PROCEDURE CHECK_VERSION(
+10:48:12   6  	  in_vers    IN NUMBER,
+10:48:12   7  	  out_result OUT NUMBER
+10:48:12   8  );
+10:48:12   9  
+10:48:12  10  END PROCS_SYSTEM_V21;
+10:48:12  11  .
+10:48:12 SQL> /
+
+Package created.
+
+Elapsed: 00:00:00.02
+10:48:12 SQL> 
+10:48:12 SQL> CREATE OR REPLACE PACKAGE BODY "PROCS_SYSTEM_V21" AS
+10:48:12   2  
+10:48:12   3  PROCEDURE INCREMENT_VERSION
+10:48:12   4  /*
+10:48:12   5  Throws exceptions:
+10:48:12   6  CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR
+10:48:12   7  */
+10:48:12   8  AS
+10:48:12   9  BEGIN
+10:48:12  10  
+10:48:12  11  	UPDATE SYS_VERSION SET version=version+1;
+10:48:12  12  
+10:48:12  13  EXCEPTION
+10:48:12  14  WHEN OTHERS THEN
+10:48:12  15  	RAISE_APPLICATION_ERROR(CORE_OWNER.APP_EXCEPTION_CODES_V21.UNKNOWN_ERROR,
+10:48:12  16  	  'Unknown error');
+10:48:12  17  END INCREMENT_VERSION;
+10:48:12  18  
+10:48:12  19  /*************************************************************/
+10:48:12  20  
+10:48:12  21  PROCEDURE CHECK_VERSION(
+10:48:12  22  	  in_vers    IN NUMBER,
+10:48:12  23  	  out_result OUT NUMBER
+10:48:12  24  ) AS
+10:48:12  25  	current_version NUMBER;
+10:48:12  26  BEGIN
+10:48:12  27  	SELECT version INTO current_version FROM SYS_VERSION;
+10:48:12  28  	IF(current_version != in_vers) THEN
+10:48:12  29  	  out_result := 1;
+10:48:12  30  	ELSE
+10:48:12  31  	  out_result := 0;
+10:48:12  32  	END IF;
+10:48:12  33  	EXCEPTION
+10:48:12  34  	      WHEN OTHERS THEN
+10:48:12  35  	      NULL;
+10:48:12  36  END CHECK_VERSION;
+10:48:12  37  
+10:48:12  38  END PROCS_SYSTEM_V21;
+10:48:12  39  .
+10:48:12 SQL> /
+
+Package body created.
+
+Elapsed: 00:00:00.03
+10:48:12 SQL> 
+10:48:12 SQL> grant execute on PUBLIC_PROCS_CORE_V21 to core_owner;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.02
+10:48:12 SQL> grant execute on PUBLIC_PROCS_CORE_V21 to core_app;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.01
+10:48:12 SQL> grant execute on PUBLIC_PROCS_CORE_V21 to ops_notif_app;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.00
+10:48:12 SQL> 
+10:48:12 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:48:12 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_hist_owner
+        Migration: 51.3-release-1.15.0-2-CORE_HIST-all.sql
+        SVN Revision: 12671
+        Duration: 3 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-805

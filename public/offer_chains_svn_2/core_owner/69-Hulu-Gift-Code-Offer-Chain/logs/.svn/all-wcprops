@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/db/!svn/ver/13387/trunk/oracle/migrations/EC/core_owner/69-Hulu-Gift-Code-Offer-Chain/logs
+END
+upgrade-20130709141126.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13386/trunk/oracle/migrations/EC/core_owner/69-Hulu-Gift-Code-Offer-Chain/logs/upgrade-20130709141126.staging.log
+END
+upgrade-20130628162216.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13273/trunk/oracle/migrations/EC/core_owner/69-Hulu-Gift-Code-Offer-Chain/logs/upgrade-20130628162216.staging.log
+END
+upgrade-20130709110718.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13380/trunk/oracle/migrations/EC/core_owner/69-Hulu-Gift-Code-Offer-Chain/logs/upgrade-20130709110718.staging.log
+END
+upgrade-20130709134658.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/13383/trunk/oracle/migrations/EC/core_owner/69-Hulu-Gift-Code-Offer-Chain/logs/upgrade-20130709134658.production.log
+END
+upgrade-20130709141432.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/13387/trunk/oracle/migrations/EC/core_owner/69-Hulu-Gift-Code-Offer-Chain/logs/upgrade-20130709141432.production.log
+END

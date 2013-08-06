@@ -1,0 +1,3523 @@
+offer_chains:
+  - name: 'NYTimes: Web+Smartphone'
+    description: 'Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Regular Price
+US = $20.00 every 4 weeks, International = $22.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Full Price'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '$5.00 / week'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: '$5.50 / week'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Regular'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: 'TBD'
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '260.0'
+    offerings:
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Free Trail
+First 4 Weeks: FREE
+Thereafter: US = $20.00 every 4 weeks, International = $22.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Free Trial for 4 Weeks'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: 'FREE TRIAL - LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '4 Week FREE Trial'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: '($5.00 / week thereafter)'
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: 'FREE TRIAL - LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: '4 Week FREE Trial'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: '($5.50 / week thereafter)'
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'First 4 weeks'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: 'Thereafter'
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Regular'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: 'TBD'
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: 'TBD'
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: ''
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '260.0'
+    offerings:
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Free Trail
+First 3 days: FREE
+Thereafter: US = $20.00 every 4 weeks, International = $22.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Free Trial for 3 Days'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: 'FREE TRIAL - LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '3 day free trial'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: '($5.00 / week thereafter)'
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: 'FREE TRIAL - LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: '3 Day FREE Trial'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: '($5.50 / week thereafter)'
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'First 3 days'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: 'Thereafter'
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 1 day for 3 days, then every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Regular'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: 'TBD'
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: 'TBD'
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: ''
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '260.0'
+    offerings:
+      - duration: 28.0
+        index: 0
+        recurrences: -1
+        price: 20.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28.0
+        index: 1
+        recurrences: 1.0
+        price: 0.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28.0
+        index: 2
+        recurrences: -1
+        price: 20.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'NYTimes: Web+Smartphone'
+    description: 'Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Regular Price
+US = $24.00 every 4 weeks, International = $26.40 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Full Price'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '$6.00 / week'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: '$6.60 / week'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Regular'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '312.0'
+    offerings:
+      - key: 'PRICE_DESCRIPTION'
+        value: '$0.99 Offer
+First 4 Weeks: $0.99 every 4 weeks
+Thereafter: US = $20.00 every 4 weeks, International = $22.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: '$0.99 for first 4 Weeks'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: 'LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: 'Only $0.99 for the first 4 weeks'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: '($5.00 / week thereafter)'
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: 'LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: 'Only $0.99 for the first 4 weeks'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: '($5.50 / week thereafter)'
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'First 4 weeks'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: 'Thereafter'
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Regular'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: 'TBD'
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: ''
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '260.0'
+    offerings:
+      - key: 'PRICE_DESCRIPTION'
+        value: '$0.99 Offer
+First 3 Days: $0.99/day
+Thereafter: US = $20.00 every 4 weeks, International = $22.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: '$0.99 for first 3 days'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: 'LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: 'Only $0.99 for the first 3 days'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: '($5.00 / week thereafter)'
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: 'LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: 'Only $0.99 for the first 3 days'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: '($5.50 / week thereafter)'
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'First 3 days'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: 'Thereafter'
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 1 day for 3 days, then every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Regular'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: 'TBD'
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: ''
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '260.0'
+    offerings:
+      - duration: 28.0
+        index: 0
+        recurrences: -1
+        price: 24.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28.0
+        index: 1
+        recurrences: 1.0
+        price: 0.99
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28.0
+        index: 2
+        recurrences: -1
+        price: 20.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'All Digital Access'
+    description: 'Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Regular Price
+US = $40.00 every 4 weeks, International = $44.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Full Price'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '$10.00 / week'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: '$11.00 / week'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Regular'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '520.0'
+    offerings:
+      - key: 'PRICE_DESCRIPTION'
+        value: '50% OFF Offer
+First 26 Weeks: US = $10.00 every 4 weeks, International = $11.00 every 4 weeks
+Thereafter: US = $20.00 every 4 weeks, International = $22.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: '50% OFF for the first 12 Weeks'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: '50% OFF - LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: 'Pay only $2.50 / week for the first 12 weeks'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: '($5.00 / week thereafter)'
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: '50% OFF - LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: 'Pay only $2.75 / week for the first 12 weeks'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: '($5.50 / week thereafter)'
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'First 12 Weeks'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: 'Thereafter'
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Regular'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: 'TBD'
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: 'TBD'
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: ''
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '260.0'
+    offerings:
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Complimentary Access for Employees for 3 days'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Complimentary'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '3 days Complimentary Access'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Complimentary - Employee'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '0.0'
+    offerings:
+      - duration: 28.0
+        index: 0
+        recurrences: -1
+        price: 40.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.20
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28.0
+        index: 1
+        recurrences: 3.0
+        price: 10.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.20
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28.0
+        index: 2
+        recurrences: -1
+        price: 20.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.20
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'NYTimes: Web+Smartphone'
+    description: 'Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Complimentary Access for Home Delivery Subscribers'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Complimentary'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '1 Year Complimentary Access'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'Annual'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'HD'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'N/A'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '0.0'
+    offerings:
+      - key: 'PRICE_DESCRIPTION'
+        value: '30% OFF Offer
+First 26 Weeks: US = $16.80 every 4 weeks, International = $18.48 every 4 weeks
+Thereafter: US = $24.00 every 4 weeks, International = $26.40 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: '30% OFF for the first 26 Weeks'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: '30% OFF - LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: 'Pay only $4.20 / week for the first 26 weeks'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: '($6.00 / week thereafter)'
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: '30% OFF - LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: 'Pay only $4.62 / week for the first 26 weeks'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: '($11.00 / week thereafter)'
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'First 26 Weeks'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: 'Thereafter'
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Regular'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: 'TBD'
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: 'TBD'
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: ''
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '312.0'
+    offerings:
+      - key: 'PRICE_DESCRIPTION'
+        value: '75% OFF EDU lOffer
+US = $5.00 every 1 day'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: '75% OFF for the Year'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: '75% OFF - SPECIAL DEAL'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: 'Pay only $1.25 / day'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 1 day'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Readership - Tier 1'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '65.0'
+    offerings:
+      - duration: 365.0
+        index: 0
+        recurrences: -1
+        price: 0.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28.0
+        index: 1
+        recurrences: 6.0
+        price: 16.8
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28.0
+        index: 2
+        recurrences: 1.0
+        price: 20.4
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28.0
+        index: 3
+        recurrences: -1
+        price: 24.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 1.0
+        index: 4
+        recurrences: 3.0
+        price: 5.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 1.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 1.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'All Digital Access'
+    description: 'Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Complimentary Access for Home Delivery Subscribers'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Complimentary'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '1 Year Complimentary Access'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'Annual'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'IHD'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'N/A'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '0.0'
+    offerings:
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Free Trial
+First 2 Weeks: FREE
+Thereafter: US = $40.00 every 4 weeks, International = $44.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Free Trial for 2 Weeks'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: 'FREE TRIAL - LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '2 Week FREE Trial'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: '($10.00 / week thereafter)'
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: 'FREE TRIAL - LIMITED TIME OFFER'
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: '2 Week FREE Trial'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: '($11.00 / week thereafter)'
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'First 2 Weeks'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: 'Thereafter'
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Regular'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: 'TBD'
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: 'TBD'
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: ''
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '520.0'
+    offerings:
+      - duration: 365.0
+        index: 0
+        recurrences: -1
+        price: 0.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.20
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 14.0
+        index: 1
+        recurrences: 1.0
+        price: 0.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 14.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 14.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 14.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 14.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.20
+            quantity: 14.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28.0
+        index: 2
+        recurrences: -1
+        price: 40.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.20
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'The International Herald Tribune'
+    description: 'Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Complimentary Access for International Herald Tribune Subscribers'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Complimentary'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '1 Year Complimentary Access'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'Annual'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'IHT'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: '344HX'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '0.0'
+    offerings:
+      - duration: 365.0
+        index: 0
+        recurrences: -1
+        price: 0.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'The New York Times Home Delivery + All Digital Access'
+    description: 'Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Special $60 annual price for Home Delivery Subscribers'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'HD Discounted'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '60.0'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'Annual'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'HD'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: '344HY'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '60.0'
+    offerings:
+      - duration: 365.0
+        index: 0
+        recurrences: -1
+        price: 60.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Replica
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/rpl/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Crosswords
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/crosswords/:id:.json
+              - key: capability
+                value: XWD
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'The New York Times Home Delivery + All Digital Access'
+    description: 'Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Special $60 annual price for Home Delivery Subscribers'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'HD Discounted'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '60.0'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'Annual'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'HD'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '60.0'
+    offerings:
+      - duration: 365.0
+        index: 0
+        recurrences: -1
+        price: 60.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Replica
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/rpl/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Crosswords
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 365.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/crosswords/:id:.json
+              - key: capability
+                value: XWD
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'NYTimes: Web+Smartphone'
+    description: 'Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: '25% OFF EDU lOffer
+US = $15.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: '25% OFF for the Year'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: '25% OFF - SPECIAL DEAL'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: 'Pay only $3.75 / week'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Readership - Tier 3'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '195.0'
+    offerings:
+      - duration: 28.0
+        index: 0
+        recurrences: 12.0
+        price: 15.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'NYTimes: Web+Smartphone'
+    description: 'Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: '50% OFF EDU lOffer
+US = $10.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: '50% OFF for the Year'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: '50% OFF - SPECIAL DEAL'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: 'Pay only $2.50 / week'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Readership - Tier 2'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '130.0'
+    offerings:
+      - duration: 28.0
+        index: 0
+        recurrences: 12.0
+        price: 10.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'NYTimes: Web+Smartphone'
+    description: 'Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: '75% OFF EDU lOffer
+US = $5.00 every 4 weeks'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: '75% OFF for the Year'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: '75% OFF - SPECIAL DEAL'
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: 'Pay only $1.25 / week'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Readership - Tier 1'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '65.0'
+    offerings:
+      - duration: 28.0
+        index: 0
+        recurrences: 12.0
+        price: 5.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'NYTimes: Tablet'
+    description: 'Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Special $60 annual price for Home Delivery Subscribers'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'HD Discounted'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '60.0'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'Annual'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'IHD'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '60.0'
+    offerings:
+      - duration: 28.0
+        index: 0
+        recurrences: -1
+        price: 60.0
+        products:
+                    
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.20
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'NYTimes: Tablet'
+    description: 'Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Special $60 annual price for Home Delivery Subscribers'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Complimentary'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '60.0'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'Annual'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'HD'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '60.0'
+    offerings:
+      - duration: 28.0
+        index: 0
+        recurrences: -1
+        price: 60.0
+        products:
+                    
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.20
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'NYTimes: Web+Smartphone'
+    description: 'Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: '30 Day free access for NSS subscriber waiting for linking.'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Complimentary'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '30 Day Complimentary Access'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Complimentary - Other'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '0.0'
+    offerings:
+      - duration: 28.0
+        index: 0
+        recurrences: 1.0
+        price: 0.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+  - name: 'All Digital Access'
+    description: 'Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.'
+    start_date: 01/01/2011
+    end_date: 01/01/2999
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: 'PRICE_DESCRIPTION'
+        value: 'Complimentary Access for Employees'
+    offerings:
+      - key: 'OFFER_TYPE'
+        value: 'Complimentary'
+    offerings:
+      - key: 'PRODUCT_MARKETING_IMAGE'
+        value: ''
+    offerings:
+      - key: 'PRODUCT_MARKETING_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE'
+        value: '1 Year Complimentary Access'
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DESCRIPTOR_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'OFFER_PRICE_DETAIL_INTERNATIONAL'
+        value: ''
+    offerings:
+      - key: 'PROMO_PRICE_FOOTER_LABEL'
+        value: 'Billing Cycle'
+    offerings:
+      - key: 'ACTUAL_PRICE_FOOTER_LABEL'
+        value: ''
+    offerings:
+      - key: 'BILLING_CYCLE'
+        value: 'every 4 weeks'
+    offerings:
+      - key: 'SUBSCRIBER_TYPE'
+        value: 'Complimentary - Employee'
+    offerings:
+      - key: 'REFUND_POLICY'
+        value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+    offerings:
+      - key: 'ADX_BUNDLE'
+        value: ''
+    offerings:
+      - key: 'CIS_PRD_ID'
+        value: ''
+    offerings:
+      - key: 'SIEBEL_CAMPAIGN_CODE'
+        value: 'TBD'
+    offerings:
+      - key: 'ANNUAL_PRICE'
+        value: '0.0'
+    offerings:
+      - duration: 28.0
+        index: 0
+        recurrences: 12.0
+        price: 0.0
+        products:
+                    
+          - name: Web
+            tax_category_id: 2
+            production_code:
+            uri:
+            unit_price: 0.330
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: 'http://:hostname:/svc/user/entitlements/mm/:id:.json'
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+              - key: CAPABILITY
+                value: WEB
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.25
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: TimesReader
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.20
+            quantity: 28.0
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/tr/:id:.json
+              - key: capability
+                value: TR
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'

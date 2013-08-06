@@ -1,0 +1,40 @@
+16:18:23 SQL> @/dbbackups/ECPR/migrations/nytdba/3-recreate_mvlog_transaction/upgrade.sql
+16:18:23 SQL> 
+16:18:23 SQL> Drop MATERIALIZED VIEW LOG ON "CORE_OWNER"."TRANSACTION";
+
+Materialized view log dropped.
+
+Elapsed: 00:00:01.09
+16:18:24 SQL> 
+16:18:24 SQL> CREATE MATERIALIZED VIEW LOG ON "CORE_OWNER"."TRANSACTION" PCTFREE 10 PCTUSED 30 INITRANS 1 MAXTRANS 255 LOGGING STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645 PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT) TABLESPACE "CORE"
+16:18:24   2  WITH PRIMARY KEY EXCLUDING NEW VALUES;
+
+Materialized view log created.
+
+Elapsed: 00:00:00.31
+16:18:25 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:18:25 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: nytdba
+        Migration: 3-recreate_mvlog_transaction
+        SVN Revision: 11667
+        Duration: 1 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-562

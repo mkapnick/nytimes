@@ -1,0 +1,663 @@
+offer_chains:
+  - name: Billing Failure $502
+    description: Force a $502 offer to ensure specific billing failure
+    start_date: 16-DEC-2010
+    end_date: 
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 502
+        products:
+          - name: ProductFail
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 16.766666667
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+
+  - name: Billing Failure $591
+    description: Force a $591 offer to ensure specific billing failure
+    start_date: 16-DEC-2010
+    end_date: 
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 591
+        products:
+          - name: ProductFail
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 19.7
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+ 
+  - name: Billing Failure $813
+    description: Force a $813 offer to ensure specific billing failure
+    start_date: 16-DEC-2010
+    end_date: 
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 813
+        products:
+          - name: ProductFail
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 27.1
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+
+  - name: 'NYTimes: Web+Smartphone'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 01-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: TBD
+      - key: OFFER_TYPE
+        value: Free Trial for 3 Days
+      - key: BILLING_CYCLE
+        value: every 1 day for 3 days, then every 4 weeks
+      - key: PRICE_DESCRIPTION
+        value: 'Free Trail
+First 3 days: FREE
+Thereafter: US = $20.00 every 4 weeks, International = $22.00 every 4 weeks'
+      - key: SUBSCRIBER_TYPE
+        value: Regular
+      - key: REFUND_POLICY
+        value: 'Test - no refunds allowed'
+      - key: PRODUCT_MARKETING_IMAGE
+        value:
+      - key: PRODUCT_MARKETING_DESCRIPTOR
+        value:
+      - key: OFFER_PRICE_DESCRIPTOR
+        value: FREE TRIAL - LIMITED TIME OFFER
+      - key: OFFER_PRICE
+        value: 3 day free trial
+      - key: OFFER_PRICE_DETAIL
+        value: ($5.00 / week thereafter)
+      - key: OFFER_PRICE_DESCRIPTOR_INTERNATIONAL
+        value: FREE TRIAL - LIMITED TIME OFFER
+      - key: OFFER_PRICE_INTERNATIONAL
+        value: 3 Day FREE Trial
+      - key: OFFER_PRICE_DETAIL_INTERNATIONAL
+        value: ($5.50 / week thereafter)
+      - key: PROMO_PRICE_FOOTER_LABEL
+        value: First 3 days
+      - key: ACTUAL_PRICE_FOOTER_LABEL
+        value: Thereafter
+      - key: ADX_BUNDLE
+        value: TBD
+      - key: CIS_PRD_ID
+        value: TBD
+      - key: ANNUAL_PRICE
+        value: $260.00
+
+    offerings:
+      - duration: 1
+        index: 0
+        recurrences: 3
+        price: 0
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 10
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 1
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 10
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 1
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 1
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28
+        index: 1
+        recurrences: -1
+        products:
+        price: 20
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 28
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+
+  - name: 'NYTimes: Web+Smartphone'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 01-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: TBD
+      - key: OFFER_TYPE
+        value: $0.99 for first 3 days
+      - key: BILLING_CYCLE
+        value: every 1 day for 3 days, then every 4 weeks
+      - key: PRICE_DESCRIPTION
+        value: '$0.99 Offer
+First 3 Days: $0.99/day
+Thereafter: US = $20.00 every 4 weeks, International = $22.00 every 4 weeks'
+      - key: SUBSCRIBER_TYPE
+        value: Regular
+      - key: REFUND_POLICY
+        value: 'Test - no refunds allowed'
+      - key: PRODUCT_MARKETING_IMAGE
+        value:
+      - key: PRODUCT_MARKETING_DESCRIPTOR
+        value:
+      - key: OFFER_PRICE_DESCRIPTOR
+        value: FREE TRIAL - LIMITED TIME OFFER
+      - key: OFFER_PRICE
+        value: 3 day free trial
+      - key: OFFER_PRICE_DETAIL
+        value: ($5.00 / week thereafter)
+      - key: OFFER_PRICE_DESCRIPTOR_INTERNATIONAL
+        value: FREE TRIAL - LIMITED TIME OFFER
+      - key: OFFER_PRICE_INTERNATIONAL
+        value: 3 Day FREE Trial
+      - key: OFFER_PRICE_DETAIL_INTERNATIONAL
+        value: ($5.50 / week thereafter)
+      - key: PROMO_PRICE_FOOTER_LABEL
+        value: First 3 days
+      - key: ACTUAL_PRICE_FOOTER_LABEL
+        value: Thereafter
+      - key: ADX_BUNDLE
+        value: TBD
+      - key: CIS_PRD_ID
+        value: TBD
+      - key: ANNUAL_PRICE
+        value: $260.00
+    offerings:
+      - duration: 1
+        index: 0
+        recurrences: 3
+        price: 0.99
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 10
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 1
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+      - duration: 28
+        index: 1
+        recurrences: -1
+        price: 20
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+
+  - name: All Digital Access
+    description: Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.
+    start_date: 01-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'All Digital Access'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: TBD
+      - key: OFFER_TYPE
+        value: Complimentary
+      - key: BILLING_CYCLE
+        value: every 4 weeks
+      - key: PRICE_DESCRIPTION
+        value: 'Complimentary Access for Employees for 3 days'
+      - key: SUBSCRIBER_TYPE
+        value: Complimentary - Employee
+      - key: REFUND_POLICY
+        value: 'Test - no refunds allowed'
+    offerings:
+      - duration: 1
+        index: 0
+        recurrences: 3
+        price: 0
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+
+  - name: 'NYTimes: Web+Smartphone'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 01-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: TBD
+      - key: OFFER_TYPE
+        value: 75% OFF for the Year
+      - key: BILLING_CYCLE
+        value: every 1 day
+      - key: PRICE_DESCRIPTION
+        value: '75% OFF EDU lOffer
+US = $5.00 every 1 day'
+      - key: SUBSCRIBER_TYPE
+        value: Readership - Tier 1
+      - key: REFUND_POLICY
+        value: 'Test - no refunds allowed'
+    offerings:
+      - duration: 1
+        index: 0
+        recurrences: 3
+        price: 5
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 10
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 1
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .1}'

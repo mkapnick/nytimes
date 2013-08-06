@@ -1,0 +1,38 @@
+13:50:20 SQL> @/dbbackups/ECST/migrations/core_owner/58.1-release-1.16.0-141-change-recreate-amazon-tables.sql/upgrade.sql
+13:50:20 SQL> CREATE TABLE "CORE_OWNER"."AMAZON_APPSTORE_ITEM_TYPE" ( id number );
+
+Table created.
+
+Elapsed: 00:00:00.07
+13:50:20 SQL> CREATE SEQUENCE "CORE_OWNER"."AAS_ID_SEQ";
+
+Sequence created.
+
+Elapsed: 00:00:00.02
+13:50:21 SQL> 
+13:50:21 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:50:21 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 58.1-release-1.16.0-141-change-recreate-amazon-tables.sql
+        SVN Revision: 13066
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-898

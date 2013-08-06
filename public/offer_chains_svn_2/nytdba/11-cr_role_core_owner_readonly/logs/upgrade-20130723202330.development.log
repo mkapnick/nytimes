@@ -1,0 +1,80 @@
+20:23:33 SQL> @/dbbackups/ECDV6/migrations/nytdba/11-cr_role_core_owner_readonly/upgrade.sql
+20:23:33 SQL> -- code to create a role with read only privileges on <object_owner>'s objects and then grant that role to <grantee>
+20:23:33 SQL> 
+20:23:33 SQL> set serveroutput on termout on verify off
+20:23:33 SQL> -- since nomad turns off define before calling sql scripts, you need to explicitly turn define back on, as done in the command below
+20:23:33 SQL> set define on
+20:23:33 SQL> define rol=CORE_OWNER_READONLY
+20:23:33 SQL> WHENEVER OSERROR EXIT
+20:23:33 SQL> WHENEVER SQLERROR CONTINUE
+20:23:33 SQL> 
+20:23:33 SQL> /* drop  role */
+20:23:33 SQL> drop role &rol;
+
+Role dropped.
+
+Elapsed: 00:00:00.64
+20:23:33 SQL> 
+20:23:33 SQL> WHENEVER SQLERROR EXIT ROLLBACK
+20:23:33 SQL> 
+20:23:33 SQL> declare
+20:23:33   2  
+20:23:33   3  	    role varchar2(30) := '&rol';
+20:23:33   4  	    object_owner varchar2(30) := 'CORE_OWNER';
+20:23:33   5  
+20:23:33   6  begin
+20:23:33   7  	  /* create role */
+20:23:33   8  	  dbms_output.put_line ('create role '||role);
+20:23:33   9  	  execute immediate 'create role '||role;
+20:23:33  10  
+20:23:33  11  	  /* grant select privileges on object_owner's tables to role */
+20:23:33  12  	  for x in (select table_name from dba_tables  where owner = object_owner and table_name not like 'RUPD$_%' and table_name not like 'MLOG$_%')
+20:23:33  13  	  loop
+20:23:33  14  
+20:23:33  15  	      /* enclose the table_name in double quotes, as some tables such as schema_version in ecdv6 are stored in the db in lower case, instead of using the standard uppercase convention! */
+20:23:33  16  	       dbms_output.put_line ('grant select on ' ||object_owner||'.'||'"'||x.table_name||'"'||' to '||role);
+20:23:33  17  	       execute immediate 'grant select on ' ||object_owner||'.'|| x.table_name || ' to'||role;
+20:23:33  18  	  end loop;
+20:23:33  19  
+20:23:33  20  	  /* grant select privileges on object_owner's views to role */
+20:23:33  21  	  for x in (select view_name from dba_views  where owner = object_owner )
+20:23:33  22  	  loop
+20:23:33  23  	       dbms_output.put_line ('grant select on ' ||object_owner||'.'||'"'|| x.view_name ||'"'|| ' to '||role);
+20:23:33  24  	       execute immediate 'grant select on ' ||object_owner||'.'|| x.view_name || ' to '||role;
+20:23:33  25  	  end loop;
+20:23:33  26  
+20:23:33  27  end;
+20:23:33  28  /
+create role CORE_OWNER_READONLY                                                 
+grant select on CORE_OWNER."TMP_PRODUCT" to CORE_OWNER_READONLY                 
+declare
+*
+ERROR at line 1:
+ORA-00905: missing keyword 
+ORA-06512: at line 17 
+
+
+
+
+Subject: Nomad upgrade completed with errors: ECDV6@rac01.qprvt.nytimes.com
+From: Nomad for Oracle <db.alert@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+
+Nomad upgrade operation has errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.qprvt.nytimes.com
+        DB Role: primary
+        Database: ECDV6
+        Schema: nytdba
+        Migration: 11-cr_role_core_owner_readonly
+        SVN Revision: 13834
+        Duration: 1 sec.
+        DBA: apathrose
+                
+        
+        Error Detail
+        ------------
+        
+        ERROR at line 1: ORA-00905: missing keyword

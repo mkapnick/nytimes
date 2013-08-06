@@ -1,0 +1,42 @@
+11:09:45 SQL> @/dbbackups/ECPR/migrations/core_owner/78-Update-Hulu-Care-Expiration/upgrade.sql
+11:09:45 SQL> -- Hulu Customer care gift codes need to have an expiration of Nov 1, 2013.  As per Nimpee Kaul.
+11:09:45 SQL> UPDATE GIFT_CERTIFICATE
+11:09:45   2  SET     EXPIRATION_DATE = to_date('2013-Nov-01', 'yyyy-mon-dd'),
+11:09:45   3  	      UPDATED_BY = 'PMOM-47',
+11:09:45   4  	      UPDATE_DATE = SYSDATE
+11:09:45   5  WHERE SENDER_EMAIL = 'hulu_bun_b_care_300@nyt.net';
+
+300 rows updated.
+
+Elapsed: 00:00:19.94
+11:10:05 SQL> 
+11:10:05 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+11:10:05 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+11:10:05 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <db.alert@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_install@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: primary
+        Database: ECPR
+        Schema: core_owner
+        Migration: 78-Update-Hulu-Care-Expiration
+        SVN Revision: 13868
+        Duration: 20 sec.
+        DBA: apathrose
+        

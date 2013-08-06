@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/db/!svn/ver/10647/trunk/oracle/migrations/EC/core_owner/21.1-update-3-offer-chain-end-date
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/db/!svn/ver/10615/trunk/oracle/migrations/EC/core_owner/21.1-update-3-offer-chain-end-date/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/db/!svn/ver/10612/trunk/oracle/migrations/EC/core_owner/21.1-update-3-offer-chain-end-date/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/db/!svn/ver/10612/trunk/oracle/migrations/EC/core_owner/21.1-update-3-offer-chain-end-date/rollback.sql
+END

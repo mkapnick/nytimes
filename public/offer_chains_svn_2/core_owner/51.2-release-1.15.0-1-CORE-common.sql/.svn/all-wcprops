@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/db/!svn/ver/12763/trunk/oracle/migrations/EC/core_owner/51.2-release-1.15.0-1-CORE-common.sql
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/db/!svn/ver/12660/trunk/oracle/migrations/EC/core_owner/51.2-release-1.15.0-1-CORE-common.sql/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/db/!svn/ver/12649/trunk/oracle/migrations/EC/core_owner/51.2-release-1.15.0-1-CORE-common.sql/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/db/!svn/ver/12649/trunk/oracle/migrations/EC/core_owner/51.2-release-1.15.0-1-CORE-common.sql/rollback.sql
+END

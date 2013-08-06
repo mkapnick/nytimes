@@ -1,0 +1,145 @@
+ 
+  .textBox {
+    position:absolute;
+    width: 400px;
+    left: 15%;
+  }
+  #textBox2 {
+    position:absolute;
+    width: 400px;
+    left: 15%;
+  }
+    #excelDiv {
+    position:relative;
+    top:35px; 
+
+  }
+ input[type='file']
+ {
+    opacity:0; 
+    position:absolute;
+    background-color: #DDF;
+    left: 15%;
+    padding-right: 144px; 
+ }
+
+ span {
+  font-family: "proxima-nova", "Proxima Nova", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+ }
+
+ #chooseFileButton {
+  position:relative;
+  top: 40px;
+  left: 15%;
+ }
+
+ #updateRepoButton {
+  position:absolute;
+  left: 15%;
+  margin-top: 40px;
+ }
+
+ #dbinjectButton {
+  position:relative;
+  top: 40px;
+  left: 15%;
+ }
+ #svnText {
+   position:relative;
+
+ }
+
+ #svnCommitText {
+   position:absolute;
+   left: 600px;
+   font-size: 20px;
+   font-weight: 300;
+
+ }
+
+ .textStep1 {
+    display: inline-block;
+    line-height: 56px;
+    font-size: 29px;
+    padding: 0px 40px;
+    color: white;
+    font-weight: 300;
+    position:relative;
+    margin-top:20px;
+    background: #FAA226;
+ }
+
+  .textStep2 {
+    display: inline-block;
+    padding: 0px 40px;
+    margin-top: 120px;
+    font-size: 29px;
+    color: white;
+    font-weight: 300;
+    line-height: 56px;
+    background: #00ACEE;
+    position:relative;
+ }
+
+     .textStep3 {
+    display: inline-block;
+    padding: 0px 40px;
+    margin-top: 120px;
+    font-size: 29px;
+    color: white;
+    font-weight: 300;
+    line-height: 56px;
+    background:  #49bf68;
+    position:relative;
+  }
+
+.textStep4 {
+    display: inline-block;
+    padding: 0px 40px;
+    margin-top: 120px;
+    font-size: 29px;
+    color: white;
+    font-weight: 300;
+    line-height: 56px;
+    background: #f4503e;
+    position:relative;
+  }
+
+  .textStep5 {
+    display: inline-block;
+    padding: 0px 40px;
+    margin-top: 120px;
+    font-size: 29px;
+    color: white;
+    font-weight: 300;
+    line-height: 56px;
+    background: #9464e2;
+    position:relative;
+  }
+
+  #yaml{
+    position: absolute;
+    left: 600px;
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  #sql {
+
+    position: absolute;
+    left: 850px;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  #excel {
+    position: absolute;
+    left: 600px;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  #dbtext {
+    position: absolute;
+    left: 600px;
+    font-size: 20px;
+    font-weight: 300;
+  }

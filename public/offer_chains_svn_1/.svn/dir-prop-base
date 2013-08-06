@@ -1,0 +1,16 @@
+K 10
+svn:ignore
+V 70
+notifications.auto.sql
+
+*.iml
+
+offers.auto.sql
+.idea
+offers.auto.yaml
+
+K 13
+svn:mergeinfo
+V 49
+/offer_maker/branches/comp-rounding-fix:8918-8924
+END

@@ -1,0 +1,21 @@
+10:42:41 SQL> 
+10:42:42 SQL> show user
+USER is "CORE_OWNER"
+10:42:44 SQL> @upgrade.sql
+10:42:54 SQL> whenever sqlerror exit rollback;
+10:42:54 SQL> 
+10:42:54 SQL> insert into group_account_email_domain
+10:42:54   2  (id, group_account_id, email_domain, is_active, created_by, create_date, updated_by, update_date)
+10:42:54   3  values
+10:42:54   4  (groupaccountemaildomain_seq.nextval, 77923, 'lehigh.edu', 1, 'bugzilla-77226', sysdate, 'bugzilla-77226', sysdate);
+
+1 row created.
+
+Elapsed: 00:00:00.04
+10:42:54 SQL> 
+10:42:54 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+10:42:54 SQL> spool off;

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/db/!svn/ver/11738/trunk/oracle/migrations/EC/core_owner/30.4-release-1.13.0-update-transaction-type
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/db/!svn/ver/11737/trunk/oracle/migrations/EC/core_owner/30.4-release-1.13.0-update-transaction-type/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/db/!svn/ver/11733/trunk/oracle/migrations/EC/core_owner/30.4-release-1.13.0-update-transaction-type/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/db/!svn/ver/11732/trunk/oracle/migrations/EC/core_owner/30.4-release-1.13.0-update-transaction-type/rollback.sql
+END

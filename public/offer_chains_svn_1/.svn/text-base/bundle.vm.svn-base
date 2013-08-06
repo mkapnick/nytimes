@@ -1,0 +1,127 @@
+whenever sqlerror exit sql.sqlcode rollback
+set scan off
+set define off
+declare
+    var_offer_chain_id number;
+    var_offer_id number;
+    var_bundle_id number;
+    var_product_id number;
+    var_discount_id number;
+
+    TMP_VAR number;
+begin
+#foreach ($offerChain in $offerChains)
+  select max(id) into var_offer_chain_id from offer_chain where id = $offerChain.id;
+  if var_offer_chain_id is null then
+    insert into offer_chain (id, name, description, adoptability_window_start_date, adoptability_window_end_date, is_gift_certificate, product_uri, offer_chain_status_id, revoke_entitlements, vendor_source_id, billing_source_id, is_seat_license, group_account_type_id, is_address_required, amazon_appstore_sku, created_by, create_date, updated_by, update_date, offer_chain_type)
+      values ($offerChain.id, '$offerChain.name', '$offerChain.description', $offerChain.start_date, $offerChain.end_date, '$offerChain.gift_certificate',#if($offerChain.product_uri) '$offerChain.product_uri'#else NULL#end, '$offerChain.status', '$offerChain.revoke_entitlements', '$offerChain.vendor_source_id', (SELECT ID FROM BILLING_SOURCE BS WHERE BS.NAME='$offerChain.billing_source'), decode('$offerChain.group_account_type_id','IL',1,0), '$offerChain.group_account_type_id', '$offerChain.is_address_required',#if($offerChain.amazon_appstore_sku)null#else '$offerChain.amazon_appstore_sku'#end, 'OFFERMAKER', sysdate, 'OFFERMAKER', sysdate, '$offerChain.type')
+    returning id into var_offer_chain_id;
+  else
+    update offer_chain set name='$offerChain.name', description='$offerChain.description', product_uri='#if($offerChain.product_uri)$offerChain.product_uri#end', vendor_source_id='$offerChain.vendor_source_id', billing_source_id=(select id from billing_source bs where bs.name='$offerChain.billing_source'), is_seat_license#if($offerChain.group_account_type_id == 'IL')=1 #else=0#end, group_account_type_id='$offerChain.group_account_type_id',is_address_required=$offerChain.is_address_required, offer_chain_status_id = $offerChain.status, update_date = sysdate, updated_by = 'OFFERMAKER', is_gift_certificate='$offerChain.gift_certificate', revoke_entitlements = '$offerChain.revoke_entitlements', adoptability_window_start_date = $offerChain.start_date, adoptability_window_end_date = $offerChain.end_date, amazon_appstore_sku=#if(!$offerChain.amazon_appstore_sku || $offerChain.amazon_appstore_sku == "")NULL#else '$offerChain.amazon_appstore_sku' #end where id = $offerChain.id;
+  end if;
+
+DELETE FROM OFFER_CHAIN_ELIGIBILITY WHERE offer_chain_id = $offerChain.id;
+    #foreach($elig in $offerChain.eligibility)
+        #if(!(!$elig.value || $elig.value == ""))
+INSERT INTO OFFER_CHAIN_ELIGIBILITY (ID, OFFER_CHAIN_ID, NAME, VALUE, CREATED_BY, CREATE_DATE) VALUES (ELG_ID_SEQ.NEXTVAL, $offerChain.id, '$elig.key', '$elig.value', 'OFFERMAKER', sysdate);
+        #end
+    #end
+DELETE FROM OFFER_CHAIN_META_DATA WHERE offer_chain_id = $offerChain.id;
+    #foreach($meta in $offerChain.metadata)
+        #if(!(!$meta.value || $meta.value == ""))
+INSERT INTO OFFER_CHAIN_META_DATA (ID, OFFER_CHAIN_ID, NAME, VALUE, CREATED_BY, CREATE_DATE) VALUES (OCMD_ID_SEQ.NEXTVAL, $offerChain.id, '$meta.key', '$meta.value', 'OFFERMAKER', sysdate);
+        #end
+    #end
+DELETE FROM OFFER_CHAIN_NOTIFICATION_TYPE WHERE offer_chain_id = $offerChain.id;
+    #foreach($notif in $offerChain.notifications)
+BEGIN
+  SELECT 1 INTO TMP_VAR FROM ACTION WHERE NAME = '$notif.action';
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    INSERT INTO ACTION (ID, NAME, CREATE_DATE, CREATED_BY) VALUES (ACTION_ID_SEQ.NEXTVAL, '$notif.action', sysdate, 'OFFERMAKER');
+END;
+BEGIN
+  SELECT 1 INTO TMP_VAR FROM CORE_OWNER.NOTIFICATION_TYPE WHERE VALUE = '$notif.type';
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN NULL;
+    INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, '$notif.type', 'N/A');
+END;
+    #end
+    #foreach($notif in $offerChain.notifications)
+INSERT INTO OFFER_CHAIN_NOTIFICATION_TYPE (ID, OFFER_CHAIN_ID, NOTIFICATION_TYPE_ID, ACTION_ID, CREATED_BY, CREATE_DATE) VALUES (OCET_ID_SEQ.NEXTVAL, $offerChain.id, (SELECT ID FROM CORE_OWNER.NOTIFICATION_TYPE WHERE VALUE = '$notif.type'), (SELECT ID FROM ACTION WHERE NAME = '$notif.action'), 'OFFERMAKER', sysdate);
+    #end
+
+    #foreach($offering in $offerChain.offerings)
+        select max(offer_id) into var_offer_id from offer_offer_chain where offer_chain_id = $offerChain.id and index_value = $offering.index;
+        if var_offer_id is null then
+          insert into offer (id, offer_status_id, entitlement_duration, created_by, create_date, updated_by, update_date) values (ofr_id_seq.nextval, 1, 'P0Y0M${offering.duration}DT0H0M', 'OFFERMAKER', sysdate, 'OFFERMAKER', sysdate) returning id into var_offer_id;
+          insert into offer_offer_chain (offer_id, offer_chain_id, index_value, num_recurrences, created_by, create_date, updated_by, update_date) values (ofr_id_seq.currval, $offerChain.id, '$offering.index', '$offering.recurrences', 'OFFERMAKER', sysdate, 'OFFERMAKER', sysdate);
+        end if;
+
+        #set($bundle = $offerChain.bundle)##
+    select max(id) into var_bundle_id from bundle where regexp_like(display_name, '$bundle.name_regex');
+    if var_bundle_id is null then
+        raise_application_error(-20000, 'Bundle with name like ''$bundle.name'' not found');
+
+/*
+        -- comment the exception above and uncomment the following block, if you really need to insert the bundle
+        -- do this only if you're certain
+
+        insert into bundle (id, display_name, unit_price, quantity_type, is_active, create_date, created_by)
+          values(bundle_seq.nextval, '$bundle.name', $bundle.unit_price, 'DAY', 'Y', sysdate, 'OFFERMAKER')
+        returning id into var_bundle_id;
+
+        #foreach($product in $bundle.products)
+        select max(id) into var_product_id from product where name = '$product.name';
+        if var_product_id is null then
+            insert into product (id, name, default_vat_rate, tax_category_id, created_by, create_date) values (prd_id_seq.nextval, '$product.name', '{"*": 0.0}', $product.tax_category_id, 'OFFERMAKER', sysdate)
+              returning id into var_product_id;
+        end if;
+        insert into product_bundle values(product_bundle_seq.nextval, var_bundle_id, var_product_id, $product.allocation);
+        #end
+
+        update bundle
+            set bundle_key =
+                (select listagg(product_id) within group(order by product_id)
+                   from product_bundle
+                  where bundle_id = var_bundle_id
+                  group by bundle_id)
+         where id = var_bundle_id;
+
+        -- end of uncomment block
+*/
+    end if;
+
+        #foreach($product in $offering.products)
+            #if ($product.fixed_discount)
+    insert into discount (id, name, description, fixed_amount, percent_amount, discount_type_id, created_by, create_date) values
+      (dsc_id_seq.nextval, 'Discount', '$product.discount_text', '$product.fixed_discount', '0', 1, 'OFFERMAKER', sysdate) returning id into var_discount_id;
+            #else
+    var_discount_id := null;
+            #end
+
+    insert into offer_product_bundle
+        select offer_product_bundle_seq.nextval id,
+               var_offer_id offer_id,
+               pb.id product_bundle_id,
+               $product.quantity quantity,
+               $product.tax_policy_type_id tax_policy_type_id,
+               var_discount_id,
+               sysdate,
+               'OFFERMAKER'
+          from product p
+          join product_bundle pb
+            on p.id = pb.product_id
+         where pb.bundle_id = var_bundle_id
+           and p.name = '$product.name';
+
+        #end
+    #end
+  commit;
+#end
+end;
+
+/
+
+
+exit

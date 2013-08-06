@@ -1,0 +1,80 @@
+14:18:05 SQL> @/dbbackups/ECPR/migrations/core_owner/75.5-post-release-1.17.0-145-change-drop-tables/upgrade.sql
+14:18:05 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+14:18:05 SQL> 
+14:18:05 SQL> variable is_current_version_fine NUMBER;
+14:18:05 SQL> variable change_version NUMBER;
+14:18:05 SQL> variable bad_current_version VARCHAR2(1024);
+14:18:05 SQL> 
+14:18:05 SQL> exec :change_version := 145;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+14:18:05 SQL> exec PROCS_SYSTEM_V16.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.14
+14:18:05 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+14:18:05 SQL> 
+14:18:05 SQL> alter table product drop (production_cost, product_uri, unit_price);
+
+Table altered.
+
+Elapsed: 00:00:02.03
+14:18:08 SQL> alter table product_offering drop (tax_category_id, capability_id);
+
+Table altered.
+
+Elapsed: 00:00:00.71
+14:18:08 SQL> drop table product_eligibility;
+
+Table dropped.
+
+Elapsed: 00:00:01.52
+14:18:10 SQL> drop table product_offering_meta_data;
+
+Table dropped.
+
+Elapsed: 00:00:00.27
+14:18:10 SQL> drop table capability;
+
+Table dropped.
+
+Elapsed: 00:00:00.38
+14:18:10 SQL> 
+14:18:10 SQL> EXEC PROCS_SYSTEM_V16.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+14:18:10 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+14:18:10 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 75.5-post-release-1.17.0-145-change-drop-tables
+        SVN Revision: 13556
+        Duration: 5 sec.
+        DBA: apathrose
+        

@@ -1,0 +1,1998 @@
+offer_chains:
+  - name: 'NYTimes: Web+Smartphone-Full Price-Annual-Regular'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Full Price
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Regular
+      - key: REFUND_POLICY
+        #value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 120
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 80% off
+                description: 80% off
+                percent: 80
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 80% off
+                description: 80% off
+                percent: 80
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 80% Off
+                description: 80% Off
+                percent: 80
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 80% off
+                description: 80% off
+                percent: 80
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 80% off
+                description: 80% off
+                percent: 80
+                fixed:
+
+  - name: 'NYTimes: Web+Smartphone-Full Price-Monthly-Regular'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Full Price
+      - key: BILLING_CYCLE
+        value: Monthly
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Regular
+      - key: REFUND_POLICY
+        #value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Us'
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 120
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 80% off
+                description: 80% off
+                percent: 80
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 80% off
+                description: 80% off
+                percent: 80
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 80% Off
+                description: 80% Off
+                percent: 80
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .33
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 80% off
+                description: 80% off
+                percent: 80
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 80% off
+                description: 80% off
+                percent: 80
+                fixed:
+
+
+  - name: 'NYTimes: Web+Tablet-Full Price-Annual-Regular'
+    description: Unlimited access to The New York Times on the web, and access to the full app for your tablet .
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Tablet'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Full Price
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Regular
+      - key: REFUND_POLICY
+        #value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 240
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 64% off
+                description: 64% off
+                percent: 64
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 64% off
+                description: 64% off
+                percent: 64
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 64% Off
+                description: 64% Off
+                percent: 64
+                fixed:
+
+          - name: Tablet
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.49
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+            discounts:
+              - name: 64% off
+                description: 64% off
+                percent: 64
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 64% off
+                description: 64% off
+                percent: 64
+                fixed:
+
+  - name: 'NYTimes: Web+Tablet-Full Price-Monthly-Regular'
+    description: Unlimited access to The New York Times on the web, and access to the full app for your tablet .
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Tablet'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Full Price
+      - key: BILLING_CYCLE
+        value: Monthly
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Regular
+      - key: REFUND_POLICY
+        #value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Us'
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 240
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 64% off
+                description: 64% off
+                percent: 64
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 64% off
+                description: 64% off
+                percent: 64
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 64% Off
+                description: 64% Off
+                percent: 64
+                fixed:
+
+          - name: Tablet
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.49
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+            discounts:
+              - name: 64% off
+                description: 64% off
+                percent: 64
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 64% off
+                description: 64% off
+                percent: 64
+                fixed:
+
+  - name: All Digital Access-Full Price-Annual-Regular
+    description: Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: All Digital Access
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Full Price
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Regular
+      - key: REFUND_POLICY
+        #value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 240
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 66% off
+                description: 66% off
+                percent: 66
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 66% off
+                description: 66% off
+                percent: 66
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/1200/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 66% Off
+                description: 66% Off
+                percent: 66
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 66% off
+                description: 66% off
+                percent: 66
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 66% off
+                description: 66% off
+                percent: 66
+                fixed:
+
+          - name: Tablet
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.49
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+            discounts:
+              - name: 66% off
+                description: 66% off
+                percent: 66
+                fixed:
+
+  - name: All Digital Access-Full Price-Monthly-Regular
+    description: Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: All Digital Access
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Full Price
+      - key: BILLING_CYCLE
+        value: Monthly
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Regular
+      - key: REFUND_POLICY
+        #value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Us'
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 264
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 66% off
+                description: 66% off
+                percent: 66
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 66% off
+                description: 66% off
+                percent: 66
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 66% Off
+                description: 66% Off
+                percent: 66
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 66% off
+                description: 66% off
+                percent: 66
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 66% off
+                description: 66% off
+                percent: 66
+                fixed:
+
+          - name: Tablet
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.49
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+            discounts:
+              - name: 66% off
+                description: 66% off
+                percent: 66
+                fixed:
+
+  - name: The New York Times Home Delivery-Complimentary-Annual-HD
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 1
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 1
+      - key: BUNDLE
+        value: The New York Times Home Delivery
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Complimentary
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: HD
+      - key: REFUND_POLICY
+        #value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+        value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 0
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 100% Off
+                description: 100% Off
+                percent: 100
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Crosswords
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.24
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/crosswords/:id:.json
+              - key: capability
+                value: XWD
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+  - name: The New York Times Home Delivery-Complimentary-Annual-IHD
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 1
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 1
+      - key: BUNDLE
+        value: The New York Times Home Delivery
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Complimentary
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: IHD
+      - key: REFUND_POLICY
+        #value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+        value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 0
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 100% Off
+                description: 100% Off
+                percent: 100
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+  - name: The New York Times Home Delivery-Complimentary-Annual-IHT
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 1
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 1
+      - key: BUNDLE
+        value: The New York Times Home Delivery
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Complimentary
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: IHT
+      - key: REFUND_POLICY
+        #value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+        value: 'Complimentary Access: No refund.  Access removed within 6 hours if cancelled.'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 0
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 100% Off
+                description: 100% Off
+                percent: 100
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 100% off
+                description: 100% off
+                percent: 100
+                fixed:
+
+  - name: The New York Times Home Delivery + All Digital Access-Full Price-Annual-HD
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: The New York Times Home Delivery + All Digital Access
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Full Price
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: HD
+      - key: REFUND_POLICY
+        #value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 60
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 93% off
+                description: 93% off
+                percent: 93
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 93% off
+                description: 93% off
+                percent: 93
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/93/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 93% Off
+                description: 93% Off
+                percent: 93
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 93% off
+                description: 93% off
+                percent: 93
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 93% off
+                description: 93% off
+                percent: 93
+                fixed:
+
+  - name: The New York Times Home Delivery + All Digital Access-Full Price-Annual-IHD
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: The New York Times Home Delivery + All Digital Access
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: Full Price
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: IHD
+      - key: REFUND_POLICY
+        #value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 60
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 93% off
+                description: 93% off
+                percent: 93
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 93% off
+                description: 93% off
+                percent: 93
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/93/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 93% Off
+                description: 93% Off
+                percent: 93
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 93% off
+                description: 93% off
+                percent: 93
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 93% off
+                description: 93% off
+                percent: 93
+                fixed:
+
+  - name: 'NYTimes: Web+Smartphone-25% off for the year-Annual-Readership - Tier 3'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: REQUIRES_EMAIL_DOMAIN
+        value: '.edu'
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: 25% off for the year
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Readership - Tier 3
+      - key: REFUND_POLICY
+        #value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 90
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 85% off
+                description: 85% off
+                percent: 85
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 85% off
+                description: 85% off
+                percent: 85
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 85% Off
+                description: 85% Off
+                percent: 85
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 85% off
+                description: 85% off
+                percent: 85
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 85% off
+                description: 85% off
+                percent: 85
+                fixed:
+
+  - name: 'NYTimes: Web+Smartphone-25% off for the year-Monthly-Readership - Tier 3'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: REQUIRES_EMAIL_DOMAIN
+        value: '.edu'
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: 25% off for the year
+      - key: BILLING_CYCLE
+        value: Monthly
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Readership - Tier 3
+      - key: REFUND_POLICY
+        #value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Us'
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 90
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 85% off
+                description: 85% off
+                percent: 85
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 85% off
+                description: 85% off
+                percent: 85
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 85% Off
+                description: 85% Off
+                percent: 85
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 85% off
+                description: 85% off
+                percent: 85
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 85% off
+                description: 85% off
+                percent: 85
+                fixed:
+
+  - name: 'NYTimes: Web+Smartphone-50% off for the year-Annual-Readership - Tier 2'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: REQUIRES_EMAIL_DOMAIN
+        value: '.edu'
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: 50% off for the year
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Readership - Tier 2
+      - key: REFUND_POLICY
+        #value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 60
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 90% off
+                description: 90% off
+                percent: 90
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 90% off
+                description: 90% off
+                percent: 90
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 90% Off
+                description: 90% Off
+                percent: 90
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 90% off
+                description: 90% off
+                percent: 90
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 90% off
+                description: 90% off
+                percent: 90
+                fixed:
+
+  - name: 'NYTimes: Web+Smartphone-50% off for the year-Monthly-Readership - Tier 2'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: REQUIRES_EMAIL_DOMAIN
+        value: '.edu'
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: 50% off for the year
+      - key: BILLING_CYCLE
+        value: Monthly
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Readership - Tier 2
+      - key: REFUND_POLICY
+        #value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Us'
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 60
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 90% off
+                description: 90% off
+                percent: 90
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 90% off
+                description: 90% off
+                percent: 90
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 90% Off
+                description: 90% Off
+                percent: 90
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 90% off
+                description: 90% off
+                percent: 90
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 90% off
+                description: 90% off
+                percent: 90
+                fixed:
+
+  - name: 'NYTimes: Web+Smartphone-75% off for the year-Annual-Readership - Tier 1'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: REQUIRES_EMAIL_DOMAIN
+        value: '.edu'
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: 75% off for the year
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Readership - Tier 1
+      - key: REFUND_POLICY
+        #value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the period.  Otherwise, pro-rated refund and access removed within 6 hours.'
+        value: 'Annual Billing: No refund if cancelled in the last 30 days and access remains through the end of the'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 30
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 95% off
+                description: 95% off
+                percent: 95
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 95% off
+                description: 95% off
+                percent: 95
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 1200
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 95% Off
+                description: 95% Off
+                percent: 95
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 95% off
+                description: 95% off
+                percent: 95
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 95% off
+                description: 95% off
+                percent: 95
+                fixed:
+
+  - name: 'NYTimes: Web+Smartphone-75% off for the year-Monthly-Readership - Tier 1'
+    description: Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+    start_date: 31-JAN-2010
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: REQUIRES_EMAIL_DOMAIN
+        value: '.edu'
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Web+Smartphone'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: SIEBEL needs to be populated
+      - key: OFFER_TYPE
+        value: 75% off for the year
+      - key: BILLING_CYCLE
+        value: Monthly
+      - key: PRICE_DESCRIPTION
+        value: price description needs to be populated
+      - key: SUBSCRIBER_TYPE
+        value: Readership - Tier 1
+      - key: REFUND_POLICY
+        #value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.'
+        value: 'Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Us'
+    offerings:
+      - duration: 30
+        index: 0
+        recurrences: -1
+        price: 30
+        products:
+          - name: TimesMachine
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+            discounts:
+              - name: 95% off
+                description: 95% off
+                percent: 95
+                fixed:
+
+          - name: Web
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mm/:id:.json
+              - key: capability
+                value: WEB
+            discounts:
+              - name: 95% off
+                description: 95% off
+                percent: 95
+                fixed:
+
+          - name: Archive Article
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: .10
+            quantity: 100
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/archive/size/100/:id:.json
+              - key: capability
+                value: AAA
+            discounts:
+              - name: 95% Off
+                description: 95% Off
+                percent: 95
+                fixed:
+
+          - name: Smartphone
+            tax_category_id: 2
+            production_cost: .49
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/msd/:id:.json
+            discounts:
+              - name: 95% off
+                description: 95% off
+                percent: 95
+                fixed:
+
+          - name: Mobile
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.33
+            quantity: 30
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mow/:id:.json
+            discounts:
+              - name: 95% off
+                description: 95% off
+                percent: 95
+                fixed:

@@ -1,0 +1,24 @@
+import sys
+import pprint
+import re
+import csv
+
+pairs = []
+csv = csv.reader(sys.stdin, dialect='excel')
+for line_num, line in enumerate(csv):
+  if line_num < 8:
+    continue
+
+  key, type = line[2], line[4]
+  if type not in ('Meta Data', 'Actual'):
+    continue
+
+  for i, rec in enumerate(line[6:]):
+    if type == 'Actual':
+      print pairs
+      pairs[i][key] = rec
+
+    elif type == 'Meta Data':
+      pairs[i].setdefault('meta_data', []).append( (key, rec) )
+
+pprint.pprint(pairs)

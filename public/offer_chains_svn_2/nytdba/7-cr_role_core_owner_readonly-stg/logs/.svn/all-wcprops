@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/db/!svn/ver/12461/trunk/oracle/migrations/EC/nytdba/7-cr_role_core_owner_readonly-stg/logs
+END
+upgrade-20130424171941.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/12456/trunk/oracle/migrations/EC/nytdba/7-cr_role_core_owner_readonly-stg/logs/upgrade-20130424171941.staging.log
+END
+upgrade-20130424173149.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/12461/trunk/oracle/migrations/EC/nytdba/7-cr_role_core_owner_readonly-stg/logs/upgrade-20130424173149.staging.log
+END
+upgrade-20130424165215.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/db/!svn/ver/12438/trunk/oracle/migrations/EC/nytdba/7-cr_role_core_owner_readonly-stg/logs/upgrade-20130424165215.development.log
+END
+upgrade-20130424170936.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/12448/trunk/oracle/migrations/EC/nytdba/7-cr_role_core_owner_readonly-stg/logs/upgrade-20130424170936.staging.log
+END

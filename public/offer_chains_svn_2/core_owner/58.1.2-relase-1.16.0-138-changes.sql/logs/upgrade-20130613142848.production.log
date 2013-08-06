@@ -1,0 +1,39 @@
+14:29:00 SQL> @/dbbackups/ECPR/migrations/core_owner/58.1.2-relase-1.16.0-138-changes.sql/upgrade.sql
+14:29:00 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+14:29:00 SQL> 
+14:29:00 SQL> CREATE TABLE GC_CAMPAIGN_AND_REF (
+14:29:00   2  	GC_ID NUMBER REFERENCES GIFT_CERTIFICATE(ID) ON DELETE CASCADE,
+14:29:00   3  	CAMPAIGN VARCHAR2(255) NOT NULL,
+14:29:00   4  	REFERENCE_CODE VARCHAR2(255) PRIMARY KEY
+14:29:00   5  );
+
+Table created.
+
+Elapsed: 00:00:00.06
+14:29:00 SQL> 
+14:29:00 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+14:29:00 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 58.1.2-relase-1.16.0-138-changes.sql
+        SVN Revision: 13061
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-899

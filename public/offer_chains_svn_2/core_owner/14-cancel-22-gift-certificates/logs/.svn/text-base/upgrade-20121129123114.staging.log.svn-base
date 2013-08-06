@@ -1,0 +1,72 @@
+12:31:15 SQL> @/dbbackups/ECST/migrations/core_owner/14-cancel-22-gift-certificates/upgrade.sql
+12:31:15 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK
+12:31:15 SQL> 
+12:31:15 SQL> UPDATE
+12:31:15   2  	 GIFT_CERTIFICATE
+12:31:15   3   SET
+12:31:15   4  	 EXPIRATION_DATE = CREATE_DATE -1,
+12:31:15   5  	 CANCELATION_DATE = sysdate,
+12:31:15   6  	 UPDATED_BY = 'bugzilla_75915',
+12:31:15   7  	 UPDATE_DATE = sysdate,
+12:31:15   8  	 GIFT_CERTIFICATE_STATUS_ID = 3
+12:31:15   9  WHERE
+12:31:15  10  	 EXPIRATION_DATE > sysdate
+12:31:15  11  	 and CANCELATION_DATE is NULL
+12:31:15  12  	 and REDEMPTION_DATE is NULL
+12:31:15  13  	 and CODE in (
+12:31:15  14  	 '1a04d4f6c8a910',
+12:31:15  15  	 '858db48b30ca9d',
+12:31:15  16  	 '1be7ae8ebe3be8',
+12:31:15  17  	 '73ef2baed09223',
+12:31:15  18  	 '24f57842ecc7f3',
+12:31:15  19  	 '5ebf2111b74367',
+12:31:15  20  	 'c2da0b887bbb2e',
+12:31:15  21  	 'bbe01dced4ee46',
+12:31:15  22  	 'a01fa3747dc7a0',
+12:31:15  23  	 'afe2b8bc713b18',
+12:31:15  24  	 '09659c7bd8a372',
+12:31:15  25  	 '68e8d948954fd3',
+12:31:15  26  	 '975d6d3b906d37',
+12:31:15  27  	 '2ff09d4fd6696f',
+12:31:15  28  	 '5ba6ae8ca4115d',
+12:31:15  29  	 '5a6cf750212f8d',
+12:31:15  30  	 'd4703985b2fade',
+12:31:15  31  	 '41dc4ef91e446c',
+12:31:15  32  	 'fdf238964a947b',
+12:31:15  33  	 'd84634acba8973',
+12:31:15  34  	 '7b44db94d2cfb6',
+12:31:15  35  	 '853a9fd0eeba12'
+12:31:15  36  );
+
+19 rows updated.
+
+Elapsed: 00:00:00.41
+12:31:15 SQL> 
+12:31:15 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.02
+12:31:15 SQL> 
+12:31:15 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+12:31:15 SQL> spool off;
+
+
+Subject: Nomad upgrade success: ECST@rac01.stg.sea1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: steven.nedlin@nytimes.com
+Nomad upgrade operation success. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.sea1.nytimes.com
+        SID: ECST
+        Schema: core_owner
+        Migration: 14-cancel-22-gift-certificates
+        SVN Revision: 9701
+        Duration: 0

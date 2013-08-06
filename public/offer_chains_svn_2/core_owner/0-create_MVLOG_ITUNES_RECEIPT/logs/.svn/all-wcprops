@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create_MVLOG_ITUNES_RECEIPT/logs
+END
+upgrade-20130227153042.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create_MVLOG_ITUNES_RECEIPT/logs/upgrade-20130227153042.staging.log
+END

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/sartre/!svn/ver/10452/offer_maker/trunk
+END
+offers.prod.sql
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/sartre/!svn/ver/5676/offer_maker/trunk/offers.prod.sql
+END
+update_non_comp_offer_chain_start_date.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/sartre/!svn/ver/5444/offer_maker/trunk/update_non_comp_offer_chain_start_date.sql
+END
+bulkGenerateGC.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sartre/!svn/ver/10310/offer_maker/trunk/bulkGenerateGC.py
+END
+bundle.vm
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/sartre/!svn/ver/10452/offer_maker/trunk/bundle.vm
+END
+notifications.prod.sql
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sartre/!svn/ver/5676/offer_maker/trunk/notifications.prod.sql
+END
+plato_offers.sh
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/sartre/!svn/ver/10174/offer_maker/trunk/plato_offers.sh
+END
+offers.sh
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/sartre/!svn/ver/10120/offer_maker/trunk/offers.sh
+END

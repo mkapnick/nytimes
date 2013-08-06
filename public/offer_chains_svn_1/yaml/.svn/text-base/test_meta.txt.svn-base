@@ -1,0 +1,71 @@
+NAME	Offer Chain Name / Product Name	Actual	Dux/Sartre/DW/Siebel		NYTimes: Web+Smartphone	NYTimes: Web+Smartphone	All Digital Access	NYTimes: Web+Smartphone
+Explanation	An explanation of what this Offer Chain is for	N/A	For Business Only		TESTING: Web and Smartphone, for non HD/IHD customers. Free for first 3 days. Can be used to verify date of first billing in feeds	TESTING: Web and Smartphone, for non HD/IHD customers. $0.99 a day for first 3 days. Can be used to test change in billing amount	TESTING: Web, smartphone and tablet, for NYTCO employees validated by email domain. Valid for 3 days	TESTING: W+SP (EDU Tier 1 readership 75% discounted offer). Good for 3 days. Used for testing.
+Product Bundle	Used to map product set in "Products & MSRP" tab.	N/A	For this XLS only		1	1	3	1
+PRICE_DESCRIPTION	Details for CSR to sell to customers. Should include price details on all offers that are part of chain	Meta Data	Siebel		Free Trail
+First 3 days: FREE
+Thereafter: US = $20.00 every 4 weeks, International = $22.00 every 4 weeks	$0.99 Offer
+First 3 Days: $0.99/day
+Thereafter: US = $20.00 every 4 weeks, International = $22.00 every 4 weeks	Complimentary Access for Employees for 3 days	75% OFF EDU lOffer
+US = $5.00 every 1 day
+OFFER_TYPE		Meta Data	Sartre/DW/Siebel		Free Trial for 3 Days	$0.99 for first 3 days	Complimentary	75% OFF for the Year
+PRODUCT_MARKETING_IMAGE	This will be a reference to an image file. The image is displayed on the Order form and is optional	Meta Data	Dux					
+PRODUCT_MARKETING_DESCRIPTOR	This is used to describe the bundle on the order form. For example "Most Popular Bundle". Optional again	Meta Data	Dux					
+DESCRIPTION	Description of this offer chain	Actual	Dux/Sartre	The Date when the promotion should expire for Customers	Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.	Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.	Unlimited access to The New York Times on all your devices, including the web and apps on your computer, smartphone and tablet devices.	Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone.
+OFFER_PRICE_DESCRIPTOR	For display only  (below offer price and detail - in callout)	Meta Data	Dux	Defines the # of successful payments before which customer is not allowed to claim a refund.	FREE TRIAL - LIMITED TIME OFFER	LIMITED TIME OFFER		75% OFF - SPECIAL DEAL
+OFFER_PRICE	This describes the price displayed in the top right had corner of the order form. For example "$1.50/per week for the first 12 weeks*". Mandatory	Meta Data	Dux		3 day free trial	Only $0.99 for the first 3 days	3 days Complimentary Access	Pay only $1.25 / day
+OFFER_PRICE_DETAIL	This describes the secondary offer price	Meta Data	Dux		($5.00 / week thereafter)	($5.00 / week thereafter)		
+OFFER_PRICE_DESCRIPTOR_INTERNATIONAL	This describes the marketing descriptor for the offer	Meta Data	Dux		FREE TRIAL - LIMITED TIME OFFER	LIMITED TIME OFFER		
+OFFER_PRICE_INTERNATIONAL	this is the international price replacing OFFER_PRICE where it is an international purchase	Meta Data	Dux		3 Day FREE Trial	Only $0.99 for the first 3 days		
+OFFER_PRICE_DETAIL_INTERNATIONAL	this is the international price replacing OFFER_PRICE_DETAIL where it is an international purchase	Meta Data	Dux		($5.50 / week thereafter)	($5.50 / week thereafter)		
+PROMO_PRICE_FOOTER_LABEL	field for the  about your subscription section. 	Meta Data	Dux		First 3 days	First 3 days	Billing Cycle	Billing Cycle
+ACTUAL_PRICE_FOOTER_LABEL	field for the  about your subscription section. 	Meta Data	Dux		Thereafter	Thereafter		
+BILLING_CYCLE	For display only	Meta Data	Dux/Sartre/DW		every 1 day for 3 days, then every 4 weeks	every 1 day for 3 days, then every 4 weeks	every 4 weeks	every 1 day
+SUBSCRIBER_TYPE		Meta Data	Sartre/DW		Regular	Regular	Complimentary - Employee	Readership - Tier 1
+REFUND_POLICY	Does this need be meta data?	Meta Data	For Business Only		Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.	Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.	Complimentary Access: No refund.  Access removed within 6 hours if cancelled.	Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle.
+Siebel_Unique_Name	This is for reference. Actual is created in Siebel and is mashup	N/A	For Business Only		NYTimes: Web+Smartphone-Free Trial for 3 Days-Regular	NYTimes: Web+Smartphone-$0.99 for first 3 days-Regular	All Digital Access-Complimentary-Complimentary - Employee	NYTimes: Web+Smartphone-75% OFF for the Year-Readership - Tier 1
+ELIGIBILITY	Can be complex set of rules	Rules to be Applied	Sartre		All	All	nytimes.com	name.edu
+TAX_CATEGORY	Tax category to be applied across all products in offer chain	Rules to be Applied	Sartre		Information Service (Web Products) - "InfoService"	Information Service (Web Products) - "InfoService"	Information Service (Web Products) - "InfoService"	Information Service (Web Products) - "InfoService"
+STATUS		Actual	Sartre		Active	Active	Active	Active
+ADOPTABILITY_WINDOW_START_DATE	When offer chain is available to subscribe to	Actual	Sartre		1/1/2011	1/1/2011	1/1/2011	1/1/2011
+ADOPTABILITY_WINDOW_END_DATE	After which offer chain is no longer available to subscribe to	Actual	Sartre		1/1/2999	1/1/2999	1/1/2999	1/1/2999
+ADX_BUNDLE	Used for AdX targetting	Meta Data	Sartre, AdX	The Date from which the promotion is effective.	TBD	TBD		
+CIS_PRD_ID	Proposed to hold CIS product ID to support put offer by mtea using CIS Prod ID	Meta Data	Siebel		TBD			
+SIEBEL_CAMPAIGN_CODE	Default campaign code associated with offer chain	Meta Data	Sartre				TBD	TBD
+ANNUAL_PRICE	Used for display purposes	Meta Data	Sartre/DW		$260.00 	$260.00 	$0.00 	$65.00 
+								
+Offer Order (For Offer Offer Chain)	Position of this offer in the chain	Actual	Sartre	Order of this offer relative to others (same number if simultaneous)	1	1	1	1
+Billing Cycle		N/A	For Business Only		every 4 weeks	every 4 weeks	every 4 weeks	every 4 weeks
+Number of Recurrences	How many times can this repeat (in period increments)	Actual	Sartre	# of Billing Cycles	3	3	3	3
+Offer Status		Actual	Sartre		Active	Active	Active	Active
+Entitlement Duration	How many days is the period	N/A	For Business Only	Monthly = 30
+Yearly = 365	1	1	1	1
+					U.S. & Canada	U.S. & Canada	U.S. & Canada	U.S. & Canada
+MONTHLY_PRICE		N/A	For Business Only	Calculated	$0.00 	$0.99 	$0.00 	$5.00 
+					International	International	International	International
+International Mark Up		N/A	For Business Only	Based on "Products & MSRP" worksheet	10%	10%	10%	10%
+Market Facing Full Term Offer Price - International		N/A	For Business Only	Based on "Products & MSRP" worksheet	$0.00 	$0.99 	$0.00 	$5.50 
+								
+Offer Order (For Offer Offer Chain)	Position of this offer in the chain	Actual	Sartre	Order of this offer relative to others (same number if simultaneous)	2	2		
+Billing Cycle		N/A	For Business Only		every 4 weeks	every 4 weeks		
+Number of Recurrences	How many times can this repeat (in period increments)	Actual	Sartre	# of Billing Cycles	Tilforbid	Tilforbid		
+Offer Status		Actual	Sartre		Active	Active		
+Entitlement Duration	How many days is the period	N/A	For Business Only	Monthly = 30
+Yearly = 365	28	28		
+					U.S. & Canada	U.S. & Canada		
+MONTHLY_PRICE		N/A	For Business Only	Calculated	$20.00 	$20.00 		
+					International	International		
+International Mark Up		N/A	For Business Only	Based on "Products & MSRP" worksheet	10%	10%		
+Market Facing Full Term Offer Price - International		N/A	For Business Only	Based on "Products & MSRP" worksheet	$22.00 	$22.00 		
+								
+Offer Order (For Offer Offer Chain)	Position of this offer in the chain	Actual	Sartre	Order of this offer relative to others (same number if simultaneous)	N/A	N/A		
+Billing Cycle		N/A	For Business Only		every 4 weeks	every 4 weeks		
+Number of Recurrences	How many times can this repeat (in period increments)	Actual	Sartre	# of Billing Cycles	Tilforbid	Tilforbid		
+Offer Status		Actual	Sartre		Inactive	Inactive		
+Entitlement Duration	How many days is the period	N/A	For Business Only	Monthly = 30
+Yearly = 365	28	28		
+					U.S. & Canada	U.S. & Canada		
+MONTHLY_PRICE		N/A	For Business Only	Calculated	N/A	N/A		
+					International	International		
+International Mark Up		N/A	For Business Only	Based on "Products & MSRP" worksheet	10%	10%		
+Market Facing Full Term Offer Price - International		N/A	For Business Only	Based on "Products & MSRP" worksheet	#VALUE!	#VALUE!		
+

@@ -1,0 +1,50 @@
+offer_chains:
+  - name: 'NYTimes: Tablet'
+    description: "Unlimited access to The New York Times on the web, and access to the full apps on your iPhone, Blackberry or Android-powered phone."
+    start_date: 01-JAN-2011
+    end_date: 01-JAN-2099
+    gift_certificate:
+    product_uri:
+    eligibility:
+      - key: IS_COMP
+        value: 0
+      - key: MAX_CONCURRENT_SUBS
+        value: 1
+      - key: REQUIRES_CURRENT_SUBSCRIPTION_TO_OFFER_CHAIN
+        value: 865111,465141
+    metadata:
+      - key: IS_COMP
+        value: 0
+      - key: BUNDLE
+        value: 'NYTimes: Tablet'
+      - key: SIEBEL_CAMPAIGN_CODE
+        value: TBD
+      - key: OFFER_TYPE
+        value: HD Discounted
+      - key: BILLING_CYCLE
+        value: Annual
+      - key: PRICE_DESCRIPTION
+        value: "Special $60 annual price for Home Delivery Subscribers"
+      - key: SUBSCRIBER_TYPE
+        value: IHD
+      - key: REFUND_POLICY
+        value: "Monthly Billing: No refund.  Users will maintain access for the remainder of the billing period.  Users will not be billed in the next billing cycle."
+      - key: BUNDLE_EXPLANATION
+        value: 'This tablet only offer chain is for IHD subscribers purchasing superbundle. This OC will be granted to customer in addition to the IHD free access OC. Sartre will bill these.'
+    offerings:
+      - duration: 365
+        index: 0
+        recurrences: -1
+        price: 60
+        products:
+          - name: Tablet
+            tax_category_id: 2
+            production_cost:
+            uri:
+            unit_price: 0.49
+            quantity: 365
+            metadata:
+              - key: entitlement_uri
+                value: http://:hostname:/svc/user/entitlements/mtd/:id:.json
+              - key: DEFAULT_VAT_RATE
+                value: '{"*": .2}'

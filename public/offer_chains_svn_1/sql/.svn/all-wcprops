@@ -1,0 +1,323 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/sartre/!svn/ver/7808/offer_maker/trunk/sql
+END
+nyt_employee_comp_access.stmts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/sql/nyt_employee_comp_access.stmts.sql
+END
+offers.20110225B.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110225B.sql
+END
+offers.tr_migration.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.tr_migration.sql
+END
+offers.20110217B.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110217B.sql
+END
+offers.sql
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.sql
+END
+offers.qa-121610.stmts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/sql/offers.qa-121610.stmts.sql
+END
+NOTIFICATIONS_WTF.sql
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sartre/!svn/ver/7808/offer_maker/trunk/sql/NOTIFICATIONS_WTF.sql
+END
+notification_type_inserts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/notification_type_inserts.sql
+END
+sartre-offers-spreadsheet.12_09_2010.alt-discount.stmts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/sql/sartre-offers-spreadsheet.12_09_2010.alt-discount.stmts.sql
+END
+update_zaggmate.sql
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sartre/!svn/ver/5972/offer_maker/trunk/sql/update_zaggmate.sql
+END
+bundle_a_employee_access.stmts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/sql/bundle_a_employee_access.stmts.sql
+END
+case_53420.sql
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sartre/!svn/ver/6202/offer_maker/trunk/sql/case_53420.sql
+END
+offers.20110301A.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110301A.sql
+END
+offers.20110212A.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110212A.sql
+END
+hd-tablet.stmts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/sql/hd-tablet.stmts.sql
+END
+offers.20110301C.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110301C.sql
+END
+enable_constraints.sql
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/enable_constraints.sql
+END
+offers.20110223a.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110223a.sql
+END
+offers.20110124a.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110124a.sql
+END
+offers.20110301D.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110301D.sql
+END
+offers.20110222C.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110222C.sql
+END
+offers.20110218-2.sql
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110218-2.sql
+END
+offers.20110206B.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110206B.sql
+END
+case_52339.sql
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sartre/!svn/ver/6205/offer_maker/trunk/sql/case_52339.sql
+END
+domain_specific_offers.sql
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/domain_specific_offers.sql
+END
+offers.20110224B.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110224B.sql
+END
+offers.20110218.sql
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110218.sql
+END
+offers.20110216B.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110216B.sql
+END
+offers.20110224D.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110224D.sql
+END
+offers.20110225c.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110225c.sql
+END
+offers.qa-011411.stmts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/sql/offers.qa-011411.stmts.sql
+END
+offers.20110208C.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110208C.sql
+END
+offers.20110224E.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110224E.sql
+END
+offers.20110218D.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110218D.sql
+END
+out.test.sql
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/out.test.sql
+END
+ADD_VENDOR_SOURCE_AND_BILLING_SOURCE.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/sartre/!svn/ver/6492/offer_maker/trunk/sql/ADD_VENDOR_SOURCE_AND_BILLING_SOURCE.sql
+END
+offers.prod.sql
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.prod.sql
+END
+clear_offers.sql
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/clear_offers.sql
+END
+offers.stmts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/sql/offers.stmts.sql
+END
+REFUNDABLENESS.sql
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/REFUNDABLENESS.sql
+END
+superbundle.stmts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/sql/superbundle.stmts.sql
+END
+single_article_comp.sql
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/single_article_comp.sql
+END
+hd-products.stmts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/sql/hd-products.stmts.sql
+END
+legacy_offers.sql
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/legacy_offers.sql
+END
+notifications.sql
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/sartre/!svn/ver/5972/offer_maker/trunk/sql/notifications.sql
+END
+case_45531.sql
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sartre/!svn/ver/6203/offer_maker/trunk/sql/case_45531.sql
+END
+notifications.prod.sql
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/notifications.prod.sql
+END
+offers.20110211C.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110211C.sql
+END
+offers.20110211D.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110211D.sql
+END
+sartre-offers-spreadsheet-01_13C_2011-ALT-NoAnnual.stmts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/sartre/!svn/ver/5024/offer_maker/trunk/sql/sartre-offers-spreadsheet-01_13C_2011-ALT-NoAnnual.stmts.sql
+END
+EXTRA_META_FIELDS.sql
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/EXTRA_META_FIELDS.sql
+END
+offers.20110207A.sql
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sartre/!svn/ver/5176/offer_maker/trunk/sql/offers.20110207A.sql
+END
+update_zaggmate_billing_cycle.sql
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/sartre/!svn/ver/6201/offer_maker/trunk/sql/update_zaggmate_billing_cycle.sql
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/db/!svn/ver/13977/trunk/oracle/migrations/EC/core_owner/80-Samsung-bundle-a-b-d-12-week-offer-chains
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/db/!svn/ver/13977/trunk/oracle/migrations/EC/core_owner/80-Samsung-bundle-a-b-d-12-week-offer-chains/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/db/!svn/ver/13892/trunk/oracle/migrations/EC/core_owner/80-Samsung-bundle-a-b-d-12-week-offer-chains/rollback.sql
+END

@@ -1,0 +1,62 @@
+16:01:43 SQL> @/dbbackups/ECPR/migrations/core_owner/60.0-update-gift-certicates-expiration-date/upgrade.sql
+16:01:43 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK
+16:01:43 SQL> 
+16:01:43 SQL> UPDATE
+16:01:43   2  	Gift_Certificate
+16:01:43   3  SET
+16:01:43   4  	Expiration_Date = Add_Months(Create_Date, 60),
+16:01:43   5  	Updated_By	= 'JIRA-SAR-692',
+16:01:43   6  	Update_Date	= SYSDATE
+16:01:43   7  WHERE
+16:01:43   8  	ID IN
+16:01:43   9  	(
+16:01:43  10  	  SELECT
+16:01:43  11  	    gc.id
+16:01:43  12  	  FROM
+16:01:43  13  	    core_owner.gift_certificate gc
+16:01:43  14  	  WHERE
+16:01:43  15  	    gift_certificate_status_id = 1
+16:01:43  16  	  AND purchase_date	       > '01-NOV-11'
+16:01:43  17  	  AND expiration_date	       < SYSDATE + 7
+16:01:43  18  	  AND expiration_date	       > purchase_date
+16:01:43  19  	  AND expiration_date	       < add_months(purchase_date, 12 * 5)
+16:01:43  20  	  AND finalized_invoice_id    IS NULL
+16:01:43  21  	  AND offer_chain_id	      IN(1001513, 1001523, 1001533, 1001543, 1001553,
+16:01:43  22  	    1001563, 1005710, 1005720, 1005730, 1005740, 1005750, 1005760, 100001)
+16:01:43  23  	);
+
+20 rows updated.
+
+Elapsed: 00:00:06.93
+16:01:50 SQL> 
+16:01:50 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:01:50 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:01:50 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 60.0-update-gift-certicates-expiration-date
+        SVN Revision: 12984
+        Duration: 7 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-914
