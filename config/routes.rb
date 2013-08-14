@@ -1,5 +1,4 @@
 Nytimes::Application.routes.draw do
-  resources :nyt_efiles
 
 
   resources :tickets

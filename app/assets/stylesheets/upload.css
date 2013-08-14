@@ -1,13 +1,50 @@
- 
+   #success1 {
+    position:absolute;
+    left: 710px;
+    top: 5px;
+  }
+  #success2 {
+    position: absolute;
+    margin-top: 30px;
+    left: 710px;
+
+  } 
+
+  #success2B {
+    position: absolute;
+    margin-top: 30px;
+    left: 850px;
+  }
+  #success3 {
+    position: absolute;
+    left: 910px;
+    margin-top: -35px;
+  } 
+
+  #success4 {
+    position: absolute;
+    left: 710px;
+    margin-top: 30px;
+  }
+
+    #success5 {
+    left: 580px;
+    position: absolute;
+    top: 364px;
+    
+  }
+
   .textBox {
     position:absolute;
     width: 400px;
     left: 15%;
   }
-  #textBox2 {
+  #textBox2{
     position:absolute;
     width: 400px;
     left: 15%;
+    margin-top: 30px;
+
   }
     #excelDiv {
     position:relative;
@@ -36,7 +73,7 @@
  #updateRepoButton {
   position:absolute;
   left: 15%;
-  margin-top: 40px;
+  margin-top: 70px;
  }
 
  #dbinjectButton {
@@ -52,94 +89,228 @@
  #svnCommitText {
    position:absolute;
    left: 600px;
-   font-size: 20px;
+   font-size: 12px;
    font-weight: 300;
+   margin-top: 50px;
 
  }
 
  .textStep1 {
-    display: inline-block;
-    line-height: 56px;
-    font-size: 29px;
+    display: block;
+    line-height: 40px;
+    font-size: 25px;
     padding: 0px 40px;
     color: white;
     font-weight: 300;
     position:relative;
-    margin-top:20px;
     background: #FAA226;
+      margin-top: -5px;
+
  }
 
   .textStep2 {
-    display: inline-block;
+    display: block;
     padding: 0px 40px;
     margin-top: 120px;
-    font-size: 29px;
+    line-height: 40px;
+    font-size: 25px;
     color: white;
     font-weight: 300;
-    line-height: 56px;
     background: #00ACEE;
     position:relative;
  }
 
      .textStep3 {
-    display: inline-block;
+    display: block;
     padding: 0px 40px;
     margin-top: 120px;
-    font-size: 29px;
+    line-height: 40px;
+    font-size: 25px;
     color: white;
     font-weight: 300;
-    line-height: 56px;
     background:  #49bf68;
     position:relative;
   }
 
 .textStep4 {
-    display: inline-block;
+    display: block;
     padding: 0px 40px;
     margin-top: 120px;
-    font-size: 29px;
+    line-height: 30px;
+    font-size: 25px;
     color: white;
     font-weight: 300;
-    line-height: 56px;
     background: #f4503e;
     position:relative;
   }
 
   .textStep5 {
-    display: inline-block;
+    display: block;
     padding: 0px 40px;
-    margin-top: 120px;
-    font-size: 29px;
+    margin-top: 125px;
+    line-height: 40px;
+    font-size: 25px;
     color: white;
     font-weight: 300;
-    line-height: 56px;
     background: #9464e2;
     position:relative;
   }
 
   #yaml{
     position: absolute;
-    left: 600px;
-    font-size: 20px;
+    left: 710px;
+    margin-top: 60px;
+    font-size: 12px;
     font-weight: 300;
+    color: #FAA226;
+    font: bold;
+    
   }
 
   #sql {
 
     position: absolute;
     left: 850px;
-    font-size: 20px;
+    margin-top: 60px;
+    font-size: 12px;
     font-weight: 300;
+    color: #FAA226;
   }
   #excel {
     position: absolute;
-    left: 600px;
-    font-size: 20px;
+    left: 710px;
+    font-size: 12px;
     font-weight: 300;
   }
   #dbtext {
     position: absolute;
-    left: 600px;
-    font-size: 20px;
+    left: 945px;
+    font-size: 12px;
     font-weight: 300;
+    margin-top: -30px;
   }
+  #jira {
+  position:relative;
+  top: 10px;
+  left: 15%;
+
+  }
+
+  #jira1, #jira2, #jira3, #jira4, #jira5 {
+    margin-right: 20px;
+    display: block;
+
+  }
+
+  #jira6 {
+ 
+    display: block;
+    left: 300px;
+    top: 19px;
+    position:absolute;
+
+  }
+  #jira6span, #jira7span{
+    display: block;
+  }
+
+   #username, #password {
+    left: 400px;
+    top: -300px;
+    position:relative;
+
+   }
+
+   #usernameSpan, #passwordSpan {
+        display: block;
+   }
+   #enitreJIRAdiv {
+   margin: 0 auto;
+
+   }
+   #injectIntoDButton {
+    height: 100%;
+
+   }
+   #jiraButton{
+      position: absolute;
+      left: 400px;
+      top:290px;
+   }
+
+   #recentRepoDirectoriesText {
+      left: 710px;
+      display: block;
+      position: absolute;
+      margin-top: -10px;
+      color:  #49bf68;
+   }
+   #recentRepoArea_hatch {
+    position: relative;
+    left: 710px;
+    margin-top: 70px;
+   }
+   #injectInDBText {
+    position: absolute;
+    margin-top: 100px;
+    left: 710px;
+   }
+
+   #loading_image {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  display:none;
+  margin: 120px auto 50px -50px; /* value of top margin: height of the image divide by 2 (ie: 240 / 2), value of left margin: width of the image divide by 2 (ie: 260 / 2) */ /* same as the image width */
+}
+
+#svnHintText{
+  position: relative;
+  left: 15%;
+  top: 15px;
+}
+
+#jiraHintText {
+  position: absolute;
+  top: 105px;
+  left: 400px;
+}
+
+#jiraCheckEmailText {
+  position: absolute;
+  top: 370px;
+  left: 620px ;
+}
+
+#intro {
+  background-color: black;
+  text-align: center;
+  height: 60px;
+  text-align: 10px;
+  line-height: 56px;
+  font-size: 29px;
+  padding: 0px 20px;
+  color: white;
+  font-weight: 300;
+  position:relative;
+}
+#recentDirectoriesText{
+  left: 100px;
+}
+
+#lastOfferChainBuild{
+  top: 10px;
+}
+#recentRepoArea_hatch{
+  background-color: white;
+  top:260px;
+  position:absolute;
+}
+#summary, #description {
+  background-color: white;
+}
+
+
+
+

@@ -1,8 +1,9 @@
 # encoding: utf-8
-class UploadController < ApplicationController
+require 'json'
 
+class UploadController < ApplicationController
     /-------------------------------------------------------------
-    -
+    - renders upload.html.erb
     -
     -
     --------------------------------------------------------------/
@@ -14,7 +15,9 @@ class UploadController < ApplicationController
  	end
 
     /-------------------------------------------------------------
-    -
+    - Uploads excel file onto the server, also creates the 
+    - necessary relationships in our database. Creates a new 
+    - offer chain as well as new tickets
     -
     -
     --------------------------------------------------------------/
@@ -24,12 +27,22 @@ class UploadController < ApplicationController
           offer_chain = OfferChain.new :approved => "false",
                                        :date => Time.now.strftime("%m/%d/%Y %H:%M")
     	  offer_chain.save
+
+          stagingTicket = offer_chain.tickets.create :description => ""
+          stagingTicket.summary = ""
+          stagingTicket.save
+
+          productionTicket = offer_chain.tickets.create :description => ""
+          productionTicket.summary = ""
+          productionTicket.save
+
           File.open(Rails.root.join('public', 'files', uploaded_io.original_filename), 'w') do |file|
               file.write(uploaded_io.read.force_encoding("utf-8"))
               nytfile = offer_chain.nytfiles.create(:upload => file)
               nytfile.name = uploaded_io.original_filename
-              #offer_chain.nytfiles.name => uploaded_io.original_filename
               offer_chain.nytfiles << nytfile
+              offer_chain.tickets << stagingTicket
+              offer_chain.tickets << productionTicket
               file.close
 	        end
 
@@ -37,16 +50,17 @@ class UploadController < ApplicationController
          @alert1 = true
          @alert1_check = true
          @alert2 = true
-         render "index.html.erb"	
+         @svnDirectoryNotOk = false
+         execute_python	
           
     else
-         render :text =>"No File"
+         render :text => "No File"
     end 
 
     end
 
     /-------------------------------------------------------------
-    -
+    - Executes plato_offers.sh which creates both .yaml and .sql files
     -
     -
     --------------------------------------------------------------/
@@ -61,6 +75,7 @@ class UploadController < ApplicationController
                 @alert2 = true
                 @alert2_check = true
                 @alert3 = true
+                @svnDirectoryNotOk = false
                 render "index.html.erb" 
             end
         rescue Exception 
@@ -68,9 +83,16 @@ class UploadController < ApplicationController
         end
     end
 
+     /-------------------------------------------------------------
+    - Updates the subversion repository. Creates a new directory
+    - and also creates upgrade.sql and rollback.sql files 
+    -
+    -
+    --------------------------------------------------------------/
 
     def update_svn_repo 
         directory = params[:textBox2]
+
         if system ("cd #{Rails.root}/public/offer_chains_svn_2/core_owner && mkdir #{directory} && cd #{directory} && touch rollback.sql && touch upgrade.sql")
             if system("cd #{Rails.root}/public/scripts && cat ./offers.auto.sql > #{Rails.root}/public/offer_chains_svn_2/core_owner/#{directory}/upgrade.sql ")
                 @alert1 = true
@@ -80,18 +102,40 @@ class UploadController < ApplicationController
                 @alert3 = true
                 @alert3_check = true
                 @alert4 = true
-                render "index.html.erb"
+                @svnDirectoryNotOk = false
+
+                ok = true
+                OfferChain.order('created_at DESC').first.tickets.each do |x|
+                    if ok
+                        x.summary = "Please deploy #{directory}"
+                        x.description = "Please deploy: https://svn.prvt.nytimes.com/svn/db/trunk/oracle/migrations/EC/core_owner/#{directory}"
+                        OfferChain.order('created_at DESC').first.tickets << x
+                        ok = false
+                
+                    else
+                        x.summary = "Please deploy #{directory} "
+                        x.description = "Please deploy: https://svn.prvt.nytimes.com/svn/db/trunk/oracle/migrations/EC/core_owner/#{directory}"
+                        OfferChain.order('created_at DESC').first.tickets << x
+                     end
+                end 
+
+                inject_into_db
             else
                 render :text => "Could not copy contents into upgrade.sql"
             end
         else
-            render :text => "Could not update svn repo, try changing the name of the directory"
+            @alert1 = true
+            @alert1_check = true
+            @alert2 = true
+            @alert2_check = true
+            @alert3 = true
+            @svnDirectoryNotOk = true and render "index.html.erb"
         end
     end
 
     
     /-------------------------------------------------------------
-    -
+    - Retrieves the latest excel file held on the server
     -
     -
     --------------------------------------------------------------/
@@ -103,7 +147,7 @@ class UploadController < ApplicationController
 
 
     /-------------------------------------------------------------
-    -
+    - Retrieves the latest yaml file held on the server
     -
     -
     --------------------------------------------------------------/
@@ -113,7 +157,7 @@ class UploadController < ApplicationController
 
 
     /-------------------------------------------------------------
-    -
+    - Retrieves the latest sql file held on the server
     -
     -
     --------------------------------------------------------------/
@@ -122,15 +166,16 @@ class UploadController < ApplicationController
     end
 
     /-------------------------------------------------------------
-    -
+    - Connects via sqlplus to the NYT databases, specifically
+    - boxes ECST and ECST2, injects the newly generated offers.auto.sql
+    - file into each database
     -
     -
     --------------------------------------------------------------/
     def inject_into_db
         begin 
-            value = system("sqlplus core_owner/ecdvo1@ECDV7 @offers.auto.sql") 
-            value2 = system("sqlplus core_owner/ecdvo1@ECDV6 @offers.auto.sql") 
-            #system("sqlplus core_owner/ecdvo1@ECDV7 @/Users/205463/nytimes/public/scripts/simple_query.sql")
+            system("sqlplus core_owner/ecdvo1@ECST @offers.auto.sql") 
+            system("sqlplus core_owner/ecdvo1@ECST2 @offers.auto.sql") 
                 @alert1 = true
                 @alert1_check = true
                 @alert2 = true
@@ -147,11 +192,15 @@ class UploadController < ApplicationController
     end
 
     /-------------------------------------------------------------
-    -
+    - Talks to the JIRA API to generate both a staging and
+    - production ticket for the user
     -
     -
     --------------------------------------------------------------/
     def generate_jira_ticket 
+
+        /getting parameters from upload.html.erb/
+
         project = projectHelper(params[:project])
         project_name = projectHelper2(params[:project])
         issue_type = issueTypeHelper(params[:issue_type])
@@ -160,64 +209,137 @@ class UploadController < ApplicationController
         username = params[:usernameTag]
         password = params[:passwordTag]
         db_service_type = serviceTypeHelper (params[:serviceType])
-        host_env = hostEnvHelper (params[:host_env])
         priority = priorityHelper (params[:priority])
-
-
-    if db_service_type != "None" && host_env != "None"
-        #curl = 
-    else
-        curl = "curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{project}\",\"name\": \"#{project_name}\"}, \"summary\": \"#{summary}.\",\"description\": \"#{description}\",\"issuetype\": {\"name\": \"#{issue_type}\"}}}\'  -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/"
-    end
-        
-    system(curl)
-      @alert1 = true
-      @alert1_check = true
-      @alert2 = true
-      @alert2_check = true
-      @alert3 = true
-      @alert3_check = true
-      @alert4 = true
-      @alert4_check = true
-      @alert5 = true
-      @alert5_check = true
+        staging_ticket_json = ""
+        production_ticket_json = ""
+        pmom_key =""
     
+        / generate PMOM Ticket /
+
+        begin 
+             pmom_project = "PMOM"
+             pmom_project_name = "Pay Model Sartre"
+             pmom_issue_type = "Story"
+             pmom_summary = Nytfile.last.name 
+             pmom_description =""
+             pmom_ticket = `curl -s -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{pmom_project}\",\"name\": \"#{pmom_project_name}\"}, \"summary\": \"#{pmom_summary}\",\"description\": \"#{pmom_description}\",\"issuetype\": {\"name\": \"#{pmom_issue_type}\"}}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/`
+             pmom_ticket = JSON.parse(pmom_ticket)
+             pmom_key = pmom_ticket["key"]
+             system(""" curl -D- -u \"#{username}\":\"#{password}\" -X POST -H \"X-Atlassian-Token: nocheck\" -F \"file=@#{Rails.root}/public/files/#{Nytfile.last.name}\" https://jira.em.nytimes.com/rest/api/2/issue/\"#{pmom_key}\"/attachments""")
+
+            / generate staging and production tickets /
+
+            ok=true
+            OfferChain.order('created_at DESC').first.tickets.each do |x|
+                if ok
+                    x.summary.concat(" to ECST")
+                    index =  x.description.index("https")
+                    x.description = "Please deploy " + URI.escape(x.description[index, x.description.length])
+                    x.description.concat(" to ECST")
+                    staging_ticket_json = `curl -s -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{project}\",\"name\": \"#{project_name}\"}, \"summary\": \"#{x.summary}\",\"description\": \"#{x.description}\",\"issuetype\": {\"name\": \"#{issue_type}\"}}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/`      
+                    ok = false
+                else
+                    x.summary.concat(" to ECPR")
+                    index =  x.description.index("https")
+                    x.description = "Please deploy " + URI.escape(x.description[index, x.description.length])
+                    x.description.concat(" to ECPR")
+                    production_ticket_json = `curl -s -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{project}\",\"name\": \"#{project_name}\"}, \"summary\": \"#{x.summary}.\",\"description\": \"#{x.description}\",\"issuetype\": {\"name\": \"#{issue_type}\"}}}\'  -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/`
+                end
+                OfferChain.order('created_at DESC').first.tickets << x
+            end
+
+            / Create Links between Tickets /
+
+            create_links_between_stg_prod_and_pmom_tickets(staging_ticket_json, production_ticket_json,username,password,pmom_key)
+
+            @alert1 = true
+            @alert1_check = true
+            @alert2 = true
+            @alert2_check = true
+            @alert3 = true
+            @alert3_check = true
+            @alert4 = true
+            @alert4_check = true
+            @alert5 = true
+            @alert5_check = true
+            render "index.html.erb" and return 
+        rescue
+            render :text => "Could not generate JIRA Tickets, make sure your username and password are correct" and return 
+        end
     end
 
-   /-------------------------------------------------------------
+    /-------------------------------------------------------------
+    - 
+    -
+    -
+    --------------------------------------------------------------/
+    def create_links_between_stg_prod_and_pmom_tickets(stg_json, prd_json, username,password,pmom_key)
+        
+        stg_json = JSON.parse(stg_json)
+        prd_json = JSON.parse(prd_json)
+
+        stg_id = stg_json["id"]
+        prd_id = prd_json["id"]
+
+        stg_key = stg_json["key"]
+        prd_key = prd_json["key"]
+ 
+        relationship_stg = "is blocked by"
+        relationship_prd = "blocks"
+        relationship_both = "relates to"
+
+        / staging / 
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_stg}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
+            
+        / production / 
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_prd}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
+
+        / pmom /
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
+    end
+
+
+    /-------------------------------------------------------------
     -
     -
     -
     --------------------------------------------------------------/
+
     def projectHelper(projectId)
-        
+
+
         case projectId
-        when 1
-            return "PMOM"
-        when 2
-            return "ORA"
-        when 3 
-            return "SY"
-        when 4
-            return "INFRASVC"
-        else 
-            render :text => "Error: Make sure necessary fields are filled out when generating a JIRA ticket"
+            when "1"
+                return "ORA" 
+            when "2"
+                return "PMOM"
+            when "3"
+                return "SY"
+            when "4"
+                return "INFRASVC"
+            
         end
     end
 
+    /-------------------------------------------------------------
+    -
+    -
+    -
+    --------------------------------------------------------------/
       def projectHelper2(projectId)
         
         case projectId
-        when 1
-            return "Pay Model Sartre"
-        when 2
+        when "1"
             return "Databases: Oracle"
-        when 3 
+        when "2"
+            return "Pay Model Sartre"
+        when "3" 
             return "Systems Operations"
-        when 4
+        when "4"
             return "Infra - Services"
-        else 
-            render :text => "Error: Make sure necessary fields are filled out when generating a JIRA ticket"
         end
     end
    
@@ -229,14 +351,12 @@ class UploadController < ApplicationController
     def issueTypeHelper(issueId)
     
          case issueId
-         when 1
-              return "Service Request "
-         when 2
+         when "1"
+              return "Service Request"
+         when "2"
               return "Story"
-         when 3 
+         when "3" 
               return "Bug"
-         else 
-            render :text => "Error: Make sure necessary fields are filled out when generating a JIRA ticket"
         end
     end
 
@@ -248,19 +368,18 @@ class UploadController < ApplicationController
 
     def priorityHelper(priorityId)
         case priorityId 
-        when 1
-            return "None"
-        when 2
-            return "Blocker"
-        when 3 
-            return "Critical"
-        when 4
-            return "Major"
-        when 5 
+        when "1"
             return "Minor"
-        else 
-            render :text => "Error: Make sure necessary fields are filled out when generating a JIRA ticket"
+        when "2"
+            return "Blocker"
+        when "3" 
+            return "Critical"
+        when "4"
+            return "Major"
+        when "5" 
+            return "Trivial" 
         end
+           
     end
 
    /-------------------------------------------------------------
@@ -271,16 +390,14 @@ class UploadController < ApplicationController
     def serviceTypeHelper(stypeId)
 
         case stypeId
-        when 1
-            return "None"
-        when 2
+        when "1"
             return "Deploy a Migration"
-        when 3
+        when "2"
+            return "None"
+        when "3"
             return "Backup Existing Database"
-        when 4
+        when "4"
             return "Setup new Database"
-        else 
-            render :text => "Error: Make sure necessary fields are filled out when generating a JIRA ticket"
         end
     end
 
@@ -291,16 +408,15 @@ class UploadController < ApplicationController
     --------------------------------------------------------------/
     def hostEnvHelper(hostEnvId)
         case hostEnvId
-        when 1
+        when "1"
             return "None"
-        when 2
+        when "2"
             return "Development"
-        when 3
+        when "3"
             return "Staging"
-        when 4 
+        when "4" 
             return "Production"
-        else 
-            render :text => "Error: Make sure necessary fields are filled out when generating a JIRA ticket"
         end
     end
 end
+
