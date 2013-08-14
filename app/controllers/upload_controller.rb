@@ -288,18 +288,33 @@ class UploadController < ApplicationController
         relationship_prd = "blocks"
         relationship_both = "relates to"
 
+        stg_summary = ""
+        prd_summary = ""
+
+        ok=true
+            OfferChain.order('created_at DESC').first.tickets.each do |x|
+                if ok
+                    stg_summary = x.summary
+                    ok = false
+                else
+                    prd_summary = x.summary
+                end
+
+        end
+
+  
         / staging / 
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_stg}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
-            
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_stg}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\", \"summary\":\" #{prd_summary}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\",\"summary\":\"#{Nytfile.last.name}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
+        
         / production / 
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_prd}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_prd}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\",\"summary\:\"#{stg_summary}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\",\"summary\":\"#{Nytfile.last.name}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
 
         / pmom /
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
-    end
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\",\"summary\":\"#{stg_summary}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
+        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\",\"summary\":\"#{prd_summary}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
+end
 
 
     /-------------------------------------------------------------
