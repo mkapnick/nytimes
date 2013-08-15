@@ -258,4 +258,17 @@ test
 vendor
   External libraries that the application depends on. Also includes the plugins
   subdirectory. If the app has frozen rails, those gems also go here, under
-  vendor/rails/. This directory is in the load path.
+  vendor/rails/. This directory is in the load path.I
+
+
+
+INSTALL*
+	When you git clone this repository, there are a few steps you need to take care of. First make sure you have ruby and rails downloaded on your local machine. 
+
+	When everything is set up, run the following commands.
+	
+	bundle install
+	rake db:reset
+	rake db:migrate
+	rails s
+ 	-- Open up a browser and go to localhost:3000/upload 
