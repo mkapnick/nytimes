@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20130807150932) do
     t.string   "summary"
     t.string   "description"
     t.integer  "offer_chain_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
 end

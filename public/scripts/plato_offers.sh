@@ -12,7 +12,7 @@ if [[ ! -f "$1" ]] ; then
 fi
 
 echo "PLATO: Creating offers.auto.yaml from $1"
-/Users/205463/nytimes/public/scripts/offersxls2yaml.py "$1" > /Users/205463/nytimes/public/scripts/offers.auto.yaml
+python $2/offersxls2yaml.py "$1" > $2/offers.auto.yaml
 
 echo "PLATO: Creating offers.auto.sql from offers.auto.yaml"
-/Users/205463/nytimes/public/scripts/offermaker_plato_phase_1.py offers.auto.yaml > /Users/205463/nytimes/public/scripts/offers.auto.sql
+python $2/offermaker_plato_phase_1.py $2/offers.auto.yaml > $2/offers.auto.sql

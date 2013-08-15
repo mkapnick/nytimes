@@ -7,7 +7,6 @@ class ChangeOfferChainToPlural < ActiveRecord::Migration
 
 
   def change
-   drop_table :offer_chains
    create_table :offer_chains do |t|
       t.string :approved
       t.string :date

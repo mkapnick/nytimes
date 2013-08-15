@@ -65,7 +65,7 @@ class UploadController < ApplicationController
     --------------------------------------------------------------/
     def execute_python(file)
         plato = Rails.root.join('public', 'scripts', 'plato_offers.sh') 
-            if system("bash #{Rails.root}/public/scripts/plato_offers.sh #{file.path}")
+            if logAndSystem("bash #{Rails.root}/public/scripts/plato_offers.sh #{file.path} #{Rails.root}/public/scripts")
                 @alert1 = true
                 @alert1_check = true
                 @alert2 = true
@@ -90,8 +90,8 @@ class UploadController < ApplicationController
     def update_svn_repo 
         directory = params[:textBox2]
 
-        if system ("cd #{Rails.root}/public/offer_chains_svn_2/core_owner && mkdir #{directory} && cd #{directory} && touch rollback.sql && touch upgrade.sql")
-            if system("cd #{Rails.root}/public/scripts && cat ./offers.auto.sql > #{Rails.root}/public/offer_chains_svn_2/core_owner/#{directory}/upgrade.sql ")
+        if logAndSystem ("cd #{Rails.root}/public/offer_chains_svn_2/core_owner && mkdir #{directory} && cd #{directory} && touch rollback.sql && touch upgrade.sql")
+            if logAndSystem("cd #{Rails.root}/public/scripts && cat ./offers.auto.sql > #{Rails.root}/public/offer_chains_svn_2/core_owner/#{directory}/upgrade.sql ")
                 @alert1 = true
                 @alert1_check = true
                 @alert2 = true
@@ -183,11 +183,11 @@ class UploadController < ApplicationController
     def inject_into_db(ecst, ecst2)
         begin 
             if(ecst)
-                system("sqlplus core_owner/ecdvo1@ECST @offers.auto.sql") 
+                logAndSystem("echo exit | sqlplus core_owner/ecdvo1@ECST @offers.auto.sql") 
                 @alert4_ecst_check = true
             end
             if(ecst2)
-                system("sqlplus core_owner/ecdvo1@ECST2 @offers.auto.sql")
+                logAndSystem("echo exit | sqlplus core_owner/ecdvo1@ECST2 @offers.auto.sql")
                 @alert4_ecst2_check = true 
             end
                 @alert1 = true
@@ -212,6 +212,8 @@ class UploadController < ApplicationController
     -
     --------------------------------------------------------------/
     def generate_jira_ticket 
+
+	Rails.logger.info("Very beginning")
 
         /getting parameters from upload.html.erb/
 
@@ -242,14 +244,20 @@ class UploadController < ApplicationController
                     index =  x.description.index("https")
                     x.description = "Please deploy " + URI.escape(x.description[index, x.description.length])
                     x.description.concat(" to ECST")
-                    staging_ticket_json = `curl -s -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{project}\",\"name\": \"#{project_name}\"}, \"summary\": \"#{x.summary}\",\"description\": \"#{x.description}\",\"issuetype\": {\"name\": \"#{issue_type}\"}}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/`      
+		
+                    staging_curl = "curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{project}\",\"name\": \"#{project_name}\"}, \"summary\": \"#{x.summary}\",\"description\": \"#{x.description}\",\"issuetype\": {\"name\": \"#{issue_type}\"}}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/"
+	            
+			Rails.logger.info("Staging curl: " + staging_curl)
+			staging_ticket_json = `#{staging_curl}`
                     ok = false
+
+			Rails.logger.info("Staging ticket json: " + staging_ticket_json)
                 else
                     x.summary.concat(" to ECPR")
                     index =  x.description.index("https")
                     x.description = "Please deploy " + URI.escape(x.description[index, x.description.length])
                     x.description.concat(" to ECPR")
-                    production_ticket_json = `curl -s -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{project}\",\"name\": \"#{project_name}\"}, \"summary\": \"#{x.summary}.\",\"description\": \"#{x.description}\",\"issuetype\": {\"name\": \"#{issue_type}\"}}}\'  -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/`
+                    production_ticket_json = `curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{project}\",\"name\": \"#{project_name}\"}, \"summary\": \"#{x.summary}.\",\"description\": \"#{x.description}\",\"issuetype\": {\"name\": \"#{issue_type}\"}}}\'  -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/`
                 end
                 OfferChain.order('created_at DESC').first.tickets.where(:id => x.offer_chain_id) << x
             end
@@ -269,7 +277,8 @@ class UploadController < ApplicationController
             @alert5 = true
             @alert5_check = true
             render "index.html.erb" and return 
-        rescue
+        rescue Exception => e
+	    Rails.logger.error("Failed due to: " + e.message)
             @alert1 = true
             @alert1_check = true
             @alert2 = true
@@ -292,7 +301,7 @@ class UploadController < ApplicationController
     -
     --------------------------------------------------------------/
     def create_links_between_stg_prod_and_pmom_tickets(stg_json, prd_json, username,password,pmom_key)
-        
+ 
         stg_json = JSON.parse(stg_json)
         prd_json = JSON.parse(prd_json)
 
@@ -310,6 +319,9 @@ class UploadController < ApplicationController
         prd_summary = ""
 
         ok=true
+
+	Rails.logger.info("Before DB call")
+
         OfferChain.order('created_at DESC').first.tickets.each do |x|
             if ok
                 stg_summary = x.summary
@@ -319,20 +331,28 @@ class UploadController < ApplicationController
             end
         end
 
+	Rails.logger.info("Before CURLs")
+
         / staging / 
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_stg}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\", \"summary\":\" #{prd_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\",\"summary\":\"#{Nytfile.last.name}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
+        logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_stg}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\", \"summary\":\" #{prd_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
+        
+
+	logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\",\"summary\":\"#{Nytfile.last.name}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
         
         / production / 
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_prd}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\",\"summary\:\"#{stg_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\",\"summary\":\"#{Nytfile.last.name}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
+        logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_prd}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\",\"summary\:\"#{stg_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
+        logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\",\"summary\":\"#{Nytfile.last.name}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
 
         / pmom /
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\",\"summary\":\"#{stg_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
-        system("curl -D- -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\",\"summary\":\"#{prd_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
+        logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\",\"summary\":\"#{stg_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
+        logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\",\"summary\":\"#{prd_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
 end
 
 
+	def logAndSystem(command)
+		Rails.logger.debug(command)
+		system(command)
+	end
     /-------------------------------------------------------------
     -
     -
