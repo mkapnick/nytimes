@@ -1,97 +1,0 @@
-10
-
-dir
-13979
-https://svn.prvt.nytimes.com/svn/db/trunk/oracle/migrations/EC/core_hist_owner
-https://svn.prvt.nytimes.com/svn/db
-
-
-
-2013-07-17T18:26:43.394840Z
-13612
-hudson
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-e63a05d5-09dd-4745-bf72-a6775c5331ca
-
-3.0-release-1.11.1-21_change
-dir
-
-5.2-release-1.13.0-2-CORE_HIST-all
-dir
-
-7.0-release-1.14.0-amazon-kindle-fire-change-file-028
-dir
-
-3.2-release-1.11.1-22_change
-dir
-
-6.0-release-1.13.2-2-CORE_HIST-all
-dir
-
-7.0-release-1.14.0-2-CORE_HIST-all
-dir
-
-4.0_release-1.11.2_023-change
-dir
-
-core_hist_owner_scrub_after_refresh
-dir
-
-59.0-release-1.17.0-30-change
-dir
-
-1-release-1.10.0-all
-dir
-
-3.3-post-release-1.11.1-data-copy
-dir
-
-2.1-release-1.11.0-all
-dir
-
-58.0-release-1.16.0-change-file-029
-dir
-
-5.0-release-1.13.0-change-file-024
-dir
-
-3.1-release-1.11.1-all
-dir
-
-5.1-release-1.13.0-change-file-025
-dir
-
-51.3-release-1.15.0-2-CORE_HIST-all.sql
-dir
-
-5.3-release-1.13.0-change-file-026
-dir
-
-5.4-release-1.13.0-change-file-027
-dir
-
-0-create-MVLOG_NOTIFICATION_HISTORY
-dir
-
-2.0-release-1.11.0-20_change
-dir
-
-58.3-release-1.16.0-2-CORE_HIST-all
-dir
-
-59.1-release-1.17.0-2-CORE_HIST-all
-dir
-

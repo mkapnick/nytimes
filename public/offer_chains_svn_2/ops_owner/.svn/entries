@@ -1,43 +1,0 @@
-10
-
-dir
-13979
-https://svn.prvt.nytimes.com/svn/db/trunk/oracle/migrations/EC/ops_owner
-https://svn.prvt.nytimes.com/svn/db
-
-
-
-2013-01-23T20:38:20.782709Z
-10548
-hudson
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-e63a05d5-09dd-4745-bf72-a6775c5331ca
-
-2-release-1.10.0-all
-dir
-
-3-release-1.11.0-all
-dir
-
-1.1-release-1.9.0-add-notification_type-for-cc-updater
-dir
-
-4-release-1.11.1-all
-dir
-
-1.0-release-1.9.0-OPS-grant
-dir
-

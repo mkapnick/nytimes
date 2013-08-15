@@ -1,79 +1,0 @@
-10
-
-dir
-13979
-https://svn.prvt.nytimes.com/svn/db/trunk/oracle/migrations/EC/nytdba
-https://svn.prvt.nytimes.com/svn/db
-
-
-
-2013-07-25T14:57:31.402047Z
-13887
-hudson
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-e63a05d5-09dd-4745-bf72-a6775c5331ca
-
-6-cr_user_core_qa_auto-stg
-dir
-
-2-grant_privs_to_core_owner
-dir
-
-9-cr_role_to_view_locks
-dir
-
-11-cr_role_core_owner_readonly
-dir
-
-ec_package_grant2coresupport
-dir
-
-8-cr_user_plato_owner-dev
-dir
-
-9.1-cr_user_lire_app-dev
-dir
-
-disable_recyclebin
-dir
-
-10-grant_view_locks_to_core_owner
-dir
-
-7-cr_role_core_owner_readonly-stg
-dir
-
-3-recreate_mvlog_transaction
-dir
-
-1-rc_license_mvlog
-dir
-
-set_passwd_life_time_unexpire
-dir
-
-12-cr_role_core_owner_execute
-dir
-
-5-deprecate_ops_owner_ops_hist_owner
-dir
-
-13-grant_roles_to_lire_app
-dir
-
-9.2-cr_user_lire_app-stg
-dir
-

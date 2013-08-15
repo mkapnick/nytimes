@@ -1,493 +1,0 @@
-10
-
-dir
-13979
-https://svn.prvt.nytimes.com/svn/db/trunk/oracle/migrations/EC/core_owner
-https://svn.prvt.nytimes.com/svn/db
-
-
-
-2013-08-01T18:32:15.439707Z
-13977
-michael.kapnick
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-e63a05d5-09dd-4745-bf72-a6775c5331ca
-
-0-create_MVLOG_INVOICE
-dir
-
-47.2-release-1.14.0-3-CORE-all
-dir
-
-20.8-post-release-1.11.1-data-copy
-dir
-
-20.0-release-1.11.1-128_change
-dir
-
-27.0-update-gc-expiration-date-SAR-278
-dir
-
-41.0-release-1.13.2-1-CORE-common
-dir
-
-26-update-gc-expiration-date-SAR-287
-dir
-
-0-create-MVLOG_SUBSCRIPTIION_META_DATA
-dir
-
-80-Samsung-bundle-a-b-d-12-week-offer-chains
-dir
-
-22.2-create-offers-SAR-247
-dir
-
-33-SAR-245-global-apac-pcf-offer-chain
-dir
-
-81-XanEdu-gift-offer-chains-6
-dir
-
-15.1-bugzilla-77434-new_trial_pay_offer_chains-offer_chains
-dir
-
-0-create_MVLOG_LICENSE
-dir
-
-21.0_release-1.11.2_132-change
-dir
-
-7.0-77105-insert-living_social-TrialPay-billing-source
-dir
-
-66-extend-grace-period-for-licensing-lag-users
-dir
-
-0-create_MVLOG_RCN_CPT_EXCEPTION_DETAIL
-dir
-
-32-SAR-353-share-the-times-offer-chains
-dir
-
-25.1-comp-offer-newsroon-SAR-260
-dir
-
-75.0-release-1.17.0-142-change
-dir
-
-48.2-SAR-484-back-populate-order-id
-dir
-
-67-extend-entitlements-for-licensing-lag-users
-dir
-
-39-SAR-449-chevy-offer-chain
-dir
-
-53-update-seat-ttl-ivanhoe
-dir
-
-20.1-release-1.11.1-129_change
-dir
-
-77.3-create-edu-one-year-4-wk-26-wk-52-wk-offers
-dir
-
-58.1.2-relase-1.16.0-138-changes.sql
-dir
-
-4-offer_chains_77078
-dir
-
-30.2-release-1.13.0-3-CORE-all
-dir
-
-58.1-release-1.16.0-141-change.sql
-dir
-
-0-create_MVLOG_TAX
-dir
-
-68.1-update-kindle-e-reader-offer-chain
-dir
-
-2-30_days_free_crossword_offer_chains_offers
-dir
-
-48.1-SAR-484-back-populate-order-id
-dir
-
-30.0-release-1.13.0-change-file-135
-dir
-
-75.1-release-1.17.0-143-change
-dir
-
-30.1-release-1.13.0-1-CORE-common
-dir
-
-40.3-disable-old-csr-offer-chains
-dir
-
-75.4-release-1.17.0-3-CORE-all
-dir
-
-41.0-release-1.13.2-0-remove-pending-gift-cert-tx-to-prevent-double-billing
-dir
-
-79-Starbucks-8-Week
-dir
-
-76-update-kindle-ereader-metadata-create-dates
-dir
-
-42-SAR-435-share-the-times-oc-set-2
-dir
-
-12-bugzilla_76373-correct_revoke_entitlements
-dir
-
-19.1-release-1.11.0-common
-dir
-
-60.1-update-gift-certicates-expiration-date
-dir
-
-45-extend-share-the-times-gift-code-expirations
-dir
-
-44-SAR-469-fab-com-ocs
-dir
-
-51.4-release-1.15.0-3-CORE-all.sql
-dir
-
-20.0-hotfix_fix-update_invoice_adjustment-proc
-dir
-
-48.0-SAR-484-back-populate-order-id
-dir
-
-74-Clear-Hulu-GC-Events
-dir
-
-28.0-release-1.12.1
-dir
-
-75.2-release-1.17.0-144-change
-dir
-
-20.3-release-1.11.1-audit_triggers
-dir
-
-22.1-create-notifications-SAR-247
-dir
-
-6-75341-cancel_fab_gc
-dir
-
-51.2-release-1.15.0-1-CORE-common.sql
-dir
-
-41-SAR-436-share-the-times-8-week-offer-chain
-dir
-
-47.0-release-1.14.0-amazon-kindle-fire
-dir
-
-47.1-release-1.14.0-1-CORE-common
-dir
-
-13.0-release-1.10.0-common
-dir
-
-30.4-release-1.13.0-update-transaction-type
-dir
-
-68.2-add-amazon-sub-entries
-dir
-
-60.0-update-gift-certicates-expiration-date
-dir
-
-63.0-license-job-process-more-license
-dir
-
-56-EDU-12-week-OC
-dir
-
-3-76631-academic-pass
-dir
-
-24.0-SAR-247-remove-ops-constraints
-dir
-
-64-Kindle-SKU-Change
-dir
-
-65-Update-Living-Social-BunB-Discount
-dir
-
-7.2-77105_offers_auto
-dir
-
-11.1-release-1.9.0-procs_cupy
-dir
-
-20.5-release-1.11.1-all
-dir
-
-75.5-post-release-1.17.0-145-change-drop-tables
-dir
-
-20.6-release-1.11.1-130_change
-dir
-
-72-pmom-40-update-kindle-ereader-metadata
-dir
-
-58.4-release-1.16.0-3-CORE-all.sql
-dir
-
-0-create_MVLOG_SUBSCRIPTION_NOTE
-dir
-
-36.1-enable-gift-cert-trigger
-dir
-
-0-create-MVLOG_ACCOUNT
-dir
-
-61-deploy-kindle-fire-ic
-dir
-
-31-extend-gift-certs-5-years
-dir
-
-58.2-release-1.16.0-1-CORE-common.sql
-dir
-
-22.4-create-offers-SAR-245
-dir
-
-20.4-release-1.11.1-common
-dir
-
-1-30_days_free_crossword_offer_chains_notifications
-dir
-
-70-SAR-754-revoke-entitlements-for-chargebacks
-dir
-
-71-PMOM-41-Chevy-email-template-update
-dir
-
-36.0-disable-gift-cert-trigger
-dir
-
-11.0-release-1.9.0-126_change
-dir
-
-25.0-comp-offer-newsroon-SAR-260
-dir
-
-78-Update-Hulu-Care-Expiration
-dir
-
-14-cancel-22-gift-certificates
-dir
-
-50-release-1.14.1-paypal-hard-decline-notification-type
-dir
-
-0-create-MVLOG_SUBSCRIPTION
-dir
-
-22.3-create-notifications-SAR-245
-dir
-
-52-SY-2465-update-seat-ttl
-dir
-
-34-bugzilla-78909-reactivate-cupy-suspended-credit-cards
-dir
-
-20.7-release-1.11.1-131_change
-dir
-
-46-trial-pay-8-wk-free-oc
-dir
-
-19.0-release-1.11.0-127_change
-dir
-
-0-create-MVLOG_GIFT_CERTIFICATE
-dir
-
-54-kindle-fire-oc-update
-dir
-
-55-update-99-cent-12-wk-oc-adoptability-end-date
-dir
-
-21.1-update-3-offer-chain-end-date
-dir
-
-51.1-release-1.15.0-140-change.sql
-dir
-
-0-test
-dir
-
-59-SAR-617-unique-group-email
-dir
-
-18-trigger_offer_chain_update
-dir
-
-40.2-enable-csr-oc-requires-email-domain
-dir
-
-76-Hulu-Update-Email-Template
-dir
-
-69-Hulu-Gift-Code-Offer-Chain
-dir
-
-19.2-release-1.11.0-all
-dir
-
-20.9-post-release-1.11.1-034-update
-dir
-
-17-extend-gft-certs-5-years
-dir
-
-40.1-disable-csr-oc-requires-email-domain
-dir
-
-58.1-release-1.16.0-141-change-recreate-amazon-tables.sql
-dir
-
-49-transamerica-oc
-dir
-
-62-PMOM-31-Living-Social-Gift
-dir
-
-37-extend-gift-certificate-expiration-dates
-dir
-
-16-iht-oc-desc-update
-dir
-
-0-create-MVLOG_RCN_CPT_DEPOSIT_DETAIL
-dir
-
-0-create-MVLOG_CREDIT_CARD
-dir
-
-35.0-fix-transaction-type-for-gift-certificate
-dir
-
-10-bugzilla-77226-academic-pass-insert
-dir
-
-7.1-77105_notifications_auto
-dir
-
-51.0-release-1.15.0-139-change.sql
-dir
-
-41.1-release-1.13.2-3-CORE-all
-dir
-
-77.2-create-edu-52-wk-gift-subs
-dir
-
-68.0-update-kindle-e-reader-offer-chain
-dir
-
-13.1-release-1.10.0-all
-dir
-
-20.2-release-1.11.1-033_update
-dir
-
-30.3-release-1.13.0-change-file-136
-dir
-
-73-paypal-expire-email-hotfix.3-CORE-ALL.sql
-dir
-
-15.0-bugzilla-77434-new_trial_pay_offer_chains-notifications
-dir
-
-0-create_MVLOG_LINE_ITEM
-dir
-
-29.0-bugzilla-78909-reactivate-cupy-suspended-credit-cards
-dir
-
-23.0-extend-expiration-date-SAR-261
-dir
-
-5-76911-academic_pass-add_deletes
-dir
-
-22.0-create-billing-source
-dir
-
-core_owner_scrub_after_refresh
-dir
-
-43-SAR-487-kindle-fire-ocs
-dir
-
-38-extend-gift-certificate-expiration-dates
-dir
-
-9-jira_RT-474-update_gc_expiration_date
-dir
-
-0-create_MVLOG_ITUNES_RECEIPT
-dir
-
-75.3-release-1.17.0-1-CORE-common
-dir
-
-0-create_MVLOG_TRANSACTION_ATTEMPT
-dir
-
-22.0-release-1.11.1-fix-grant-to-process-retry
-dir
-
-77.4-create-edu-39-wk-52-wk-offers
-dir
-
-57-Amazon-Kindle-Migration
-dir
-
-0-create_MVLOG_TRANSACTION
-dir
-
-77.1-create-edu-16-wk-gift-subs
-dir
-
-0-create_MVLOG_CHARGE
-dir
-

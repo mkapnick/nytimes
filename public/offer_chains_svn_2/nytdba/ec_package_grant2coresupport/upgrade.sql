@@ -1,1 +1,0 @@
-Grant select on sys.dba_source to coresupport;
