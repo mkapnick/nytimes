@@ -11,7 +11,8 @@
 
 <!--*********Upload Excel File******************************************************************************************************************************************************** -->
   
-  <span class = "textStep1"> Upload Excel File </span>
+  <span class = "textStep1"> Upload Excel File  </span>
+  <p><%= image_tag("question.jpeg", :id=> "q1", :size => "20x20") %> <span id="hoverUpload"> Open an excel file and click upload to get started, you will find other steps appearing as you go along </span></p>
   <div id= "excelDiv">
 
     <%= form_tag({action: :upload}, multipart: true, :id => 'upload') do %> 
@@ -39,11 +40,16 @@
  
   <% if @alert3 %>
     <span class = "textStep3"> Upload to repository </span>
+    <p><%= image_tag("question.jpeg", :id=> "q2", :size => "20x20") %><span id="hoverUpload"> This step deals with the subversion repository. Once you click update repo, a new directory will be created that contains 2 files, rollback.sql and upgrade.sql. Upgrade.sql will contain the necessary sql code to update our databases, namely ECST and ECST2. Upgrade.sql comes from the offers.auto.sql file you created in the previous step. </span></p> 
     <div>
-      <span id="svnHintText"> <b><i> Create a new directory below <br></b>Updating the repository will also update ECST and ECST2  </i></span>
+      <span id="svnHintText"> <b><i> Create a new directory name below <br></i></b></span>
       <%= form_tag({action: :update_svn_repo}, :id => 'updateRepo') do %>
-        <%= text_field_tag 'textBox2', nil, :placeholder => 'New directory name here' %>
+        <%= text_field_tag 'textBox2', nil, :value => "#{Nytfile.last.name}" %>
         <input type="submit" value="Update repo" id="updateRepoButton" />
+        <div id="checkBoxes"> 
+            <%= check_box_tag 'ECST', 'yes',true %> <span> Update ECST </span><br>
+            <%= check_box_tag 'ECST2', 'yes',true %> <span> Update ECST2 </span>
+        </div>
         <div id = "recentRepoHatchDiv">
             <span id="recentRepoDirectoriesText" >Recent Offer Chain Loads</span>
             <%= text_area 'recentRepoArea', :hatch, :style=>"width: 35%", :rows => 5,  :readonly => true, :value => `cd #{Rails.root}/public/offer_chains_svn_2/core_owner && ls -r` %>
@@ -53,21 +59,24 @@
   <% end %>
 
     <% if @alert3 && @alert3_check %>
-      <div id="success3"> <%= image_tag("check2.jpeg", :alt => "success3", :size => "20x20") %> </div>
       <% elsif @svnDirectoryNotOk %>
       <script> alert("This directory already exists, please rename the directory");</script>
     <% end %>
 
-    <% if @alert4 && @alert4_check %>
-      <span id="dbtext"> <b> ECST and ECST2 now updated </b></span>
+    <% if @alert4_ecst_check%>
+    <div id="ecstCheck1"> <%= image_tag("check2.jpeg", :alt => "success3", :size => "20x20") %> </div>
+    <% end %>
+    <% if @alert4_ecst2_check %>
+    <div id="ecstCheck2"> <%= image_tag("check2.jpeg", :alt => "success3", :size => "20x20") %> </div>
     <% end %>
 
 <!--*********Jira Ticket************************************************************************************************************************************************************** -->
   
   <% if @alert5 %>
     <span class = "textStep5"> Generate JIRA Tickets </span>
+    <p><%= image_tag("question.jpeg", :id=> "q3", :size => "20x20") %><span id="hoverUpload"> Once you click "Generate JIRA Tickets", a few things occur in the background. A PMOM ticket is created with your attached excel spreadsheet. This PMOM ticket will relate to 2 ORA tickets. One ORA ticket is for the DBA's to deploy to ECST, and the other ticket is for the DBA's to deploy to ECPR. All relationships are set between tickets. The magic of automation !  </span></p>
     <div id = "jira">
-       <span id="jiraHintText"> <b><i> Generating a JIRA  ticket will create both a <br>Stg. and Prod. Ticket</i></b></span>
+       <span id="jiraHintText"> <b><i> Generating a JIRA  ticket will create 3 tickets, <br> ONE PMOM ticket and TWO ORA tickets </i></b></span>
       <%= form_tag({action: :generate_jira_ticket}) do %>
         <br>
         <div id ="enitreJIRAdiv">

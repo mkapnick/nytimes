@@ -34,6 +34,18 @@
     
   }
 
+  #ecstCheck1 {
+    position: absolute;
+    margin-left: 525px;
+    margin-top: 47px;
+    
+  }
+  #ecstCheck2 {
+     position: absolute;
+     margin-left: 525px;
+     margin-top: 70px;
+  }
+
   .textBox {
     position:absolute;
     width: 400px;
@@ -104,7 +116,7 @@
     font-weight: 300;
     position:relative;
     background: #FAA226;
-      margin-top: -5px;
+    margin-top: -5px;
 
  }
 
@@ -130,6 +142,7 @@
     font-weight: 300;
     background:  #49bf68;
     position:relative;
+    border-top:2px solid #000000;
   }
 
 .textStep4 {
@@ -147,13 +160,14 @@
   .textStep5 {
     display: block;
     padding: 0px 40px;
-    margin-top: 125px;
+    margin-top: 160px;
     line-height: 40px;
     font-size: 25px;
     color: white;
     font-weight: 300;
     background: #9464e2;
     position:relative;
+    border-top:2px solid #000000;
   }
 
   #yaml{
@@ -181,6 +195,7 @@
     left: 710px;
     font-size: 12px;
     font-weight: 300;
+    margin-top: -10px;
   }
   #dbtext {
     position: absolute;
@@ -310,6 +325,59 @@
 #summary, #description {
   background-color: white;
 }
+
+#checkBoxes {
+  position: absolute;
+  left:400px;
+  margin-top: 70px;
+  display: inline-block;
+}
+#q1 {
+  position: absolute;
+  margin-left: 265px;
+  margin-top: -40px;
+
+}
+#q2 {
+  position: absolute;
+  margin-left: 295px;
+  margin-top: -40px;
+}
+#q3 {
+  position: absolute;
+  margin-left: 315px;
+  margin-top: -40px;
+}
+
+#hoverUpload {
+    background:#F8F8F8;
+    border: 4px solid #DFDFDF;
+    color: #717171;
+    font-size: 10px;
+    height: 33px;
+    letter-spacing: 1px;
+    line-height: 10px;
+    position: absolute;
+    display:none;
+    
+}
+#hoverUpload:after{
+    content:'';
+    bottom:-10px; 
+    width:10px;
+    height:12px;
+    border-bottom:5px solid #dfdfdf;
+    border-right:5px solid #dfdfdf;
+    background:#f8f8f8;
+}
+
+p:hover #hoverUpload{
+    display:block;
+    position: absolute;
+    margin-left: 295px;
+    margin-top: -40px;
+}
+
 
 
 

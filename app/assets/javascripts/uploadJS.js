@@ -19,8 +19,10 @@
 
   $("#jiraButton").click(function() 
   {
+    $("#entirePageDiv").fadeTo(500, 0.7) 
+    $('#loading_image').css('zIndex', 9999); 
     $('#loading_image').show(); // show animation
-    $("#entirePageDiv").fadeTo(500, 0.7)  
+    
     return true; // allow regular form submission
   });
 
