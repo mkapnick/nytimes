@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/db/!svn/ver/12606/trunk/oracle/migrations/EC/core_owner/49-transamerica-oc/logs
+END
+upgrade-20130503163201.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/db/!svn/ver/12606/trunk/oracle/migrations/EC/core_owner/49-transamerica-oc/logs/upgrade-20130503163201.production.log
+END
+upgrade-20130502113930.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/db/!svn/ver/12589/trunk/oracle/migrations/EC/core_owner/49-transamerica-oc/logs/upgrade-20130502113930.staging.log
+END

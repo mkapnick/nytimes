@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/db/!svn/ver/12381/trunk/oracle/migrations/EC/core_owner/46-trial-pay-8-wk-free-oc/logs
+END
+upgrade-20130417115052.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/db/!svn/ver/12318/trunk/oracle/migrations/EC/core_owner/46-trial-pay-8-wk-free-oc/logs/upgrade-20130417115052.staging.log
+END
+upgrade-20130419225106.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/db/!svn/ver/12381/trunk/oracle/migrations/EC/core_owner/46-trial-pay-8-wk-free-oc/logs/upgrade-20130419225106.production.log
+END

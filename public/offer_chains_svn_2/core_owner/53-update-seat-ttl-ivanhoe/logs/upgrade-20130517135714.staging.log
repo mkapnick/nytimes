@@ -1,0 +1,44 @@
+13:57:29 SQL> @/dbbackups/ECST/migrations/core_owner/53-update-seat-ttl-ivanhoe/upgrade.sql
+13:57:29 SQL> whenever sqlerror exit rollback;
+13:57:29 SQL> 
+13:57:29 SQL> update group_account
+13:57:29   2  set seat_ttl_in_hours = 24,
+13:57:29   3  update_date = sysdate,
+13:57:29   4  updated_by = 'jira-ora-831'
+13:57:29   5  where id = 109395;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:57:29 SQL> 
+13:57:29 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:57:29 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:57:29 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 53-update-seat-ttl-ivanhoe
+        SVN Revision: 12750
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-831

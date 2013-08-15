@@ -1,0 +1,111 @@
+13:41:36 SQL> @/dbbackups/ECST2/migrations/core_owner/22.1-create-notifications-SAR-247/upgrade.sql
+13:41:36 SQL> 
+13:41:36 SQL> BEGIN
+13:41:36   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'card_expiration', 'N/A');
+13:41:36   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+13:41:36   4  WHEN OTHERS THEN RAISE;
+13:41:36   5  END;
+13:41:36   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.09
+13:41:37 SQL> 
+13:41:37 SQL> BEGIN
+13:41:37   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'redeemer-access-livingsocial', 'N/A');
+13:41:37   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+13:41:37   4  WHEN OTHERS THEN RAISE;
+13:41:37   5  END;
+13:41:37   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+13:41:37 SQL> 
+13:41:37 SQL> BEGIN
+13:41:37   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-cancel', 'N/A');
+13:41:37   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+13:41:37   4  WHEN OTHERS THEN RAISE;
+13:41:37   5  END;
+13:41:37   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+13:41:37 SQL> 
+13:41:37 SQL> BEGIN
+13:41:37   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-decline', 'N/A');
+13:41:37   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+13:41:37   4  WHEN OTHERS THEN RAISE;
+13:41:37   5  END;
+13:41:37   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+13:41:37 SQL> 
+13:41:37 SQL> BEGIN
+13:41:37   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-purchase', 'N/A');
+13:41:37   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+13:41:37   4  WHEN OTHERS THEN RAISE;
+13:41:37   5  END;
+13:41:37   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+13:41:37 SQL> 
+13:41:37 SQL> BEGIN
+13:41:37   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-sub-expired-livingsocial', 'N/A');
+13:41:37   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+13:41:37   4  WHEN OTHERS THEN RAISE;
+13:41:37   5  END;
+13:41:37   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+13:41:37 SQL> 
+13:41:37 SQL> BEGIN
+13:41:37   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-upsell-sub-activation-livingsocial', 'N/A');
+13:41:37   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+13:41:37   4  WHEN OTHERS THEN RAISE;
+13:41:37   5  END;
+13:41:37   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+13:41:37 SQL> 
+13:41:37 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:41:37 SQL> 
+13:41:37 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:41:37 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST2@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST2
+        Schema: core_owner
+        Migration: 22.1-create-notifications-SAR-247
+        SVN Revision: 10648
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-383

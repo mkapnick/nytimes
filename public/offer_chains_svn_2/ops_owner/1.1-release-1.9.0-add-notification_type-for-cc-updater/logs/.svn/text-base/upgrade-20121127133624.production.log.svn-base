@@ -1,0 +1,40 @@
+13:36:35 SQL> @/dbbackups/ECPR/migrations/ops_owner/1.1-release-1.9.0-add-notification_type-for-cc-updater/upgrade.sql
+13:36:35 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+13:36:35 SQL> 
+13:36:35 SQL> INSERT INTO NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (NOTTID_SEQ.NEXTVAL, 'sartre-cc-updater', 'N/A');
+
+1 row created.
+
+Elapsed: 00:00:00.03
+13:36:35 SQL> 
+13:36:35 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:36:35 SQL> 
+13:36:35 SQL> 
+13:36:35 SQL> 
+13:36:35 SQL> 
+13:36:35 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:36:35 SQL> spool off;
+
+
+Subject: Nomad upgrade success: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: steven.nedlin@nytimes.com
+Nomad upgrade operation success. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        SID: ECPR
+        Schema: ops_owner
+        Migration: 1.1-release-1.9.0-add-notification_type-for-cc-updater
+        SVN Revision: 9651
+        Duration: 0

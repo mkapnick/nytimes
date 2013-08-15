@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/db/!svn/ver/12398/trunk/oracle/migrations/EC/core_owner/47.0-release-1.14.0-amazon-kindle-fire/logs
+END
+upgrade-20130417153332.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/db/!svn/ver/12345/trunk/oracle/migrations/EC/core_owner/47.0-release-1.14.0-amazon-kindle-fire/logs/upgrade-20130417153332.staging.log
+END
+upgrade-20130423132354.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/db/!svn/ver/12398/trunk/oracle/migrations/EC/core_owner/47.0-release-1.14.0-amazon-kindle-fire/logs/upgrade-20130423132354.production.log
+END

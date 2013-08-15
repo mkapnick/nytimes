@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/db/!svn/ver/10362/trunk/oracle/migrations/EC/core_hist_owner/2.1-release-1.11.0-all
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/db/!svn/ver/10361/trunk/oracle/migrations/EC/core_hist_owner/2.1-release-1.11.0-all/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/10170/trunk/oracle/migrations/EC/core_hist_owner/2.1-release-1.11.0-all/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/db/!svn/ver/10148/trunk/oracle/migrations/EC/core_hist_owner/2.1-release-1.11.0-all/rollback.sql
+END

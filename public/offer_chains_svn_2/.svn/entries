@@ -1,0 +1,46 @@
+10
+
+dir
+13861
+https://svn.prvt.nytimes.com/svn/db/trunk/oracle/migrations/EC
+https://svn.prvt.nytimes.com/svn/db
+
+
+
+2013-07-24T03:42:21.794987Z
+13853
+hudson
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+e63a05d5-09dd-4745-bf72-a6775c5331ca
+
+nytdba
+dir
+
+core_owner
+dir
+
+ops_hist_owner
+dir
+
+core_hist_owner
+dir
+
+plato_owner
+dir
+
+ops_owner
+dir
+

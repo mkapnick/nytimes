@@ -1,0 +1,170 @@
+13:36:31 SQL> @/dbbackups/ECST2/migrations/core_owner/20.9-post-release-1.11.1-034-update/upgrade.sql
+13:36:31 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+13:36:31 SQL> update invoice_adjustment set charge_id=12051240, update_date=sysdate, updated_by='SR-413' where invoice_id=26316164 AND ID=69875;
+
+0 rows updated.
+
+Elapsed: 00:00:00.06
+13:36:31 SQL> update invoice_adjustment set charge_id=12095637, update_date=sysdate, updated_by='SR-413' where invoice_id=26488972 AND ID=70117;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12031101, update_date=sysdate, updated_by='SR-413' where invoice_id=26655258 AND ID=69558;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12160839, update_date=sysdate, updated_by='SR-413' where invoice_id=26919879 AND ID=70966;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12113448, update_date=sysdate, updated_by='SR-413' where invoice_id=26862054 AND ID=70315;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12113449, update_date=sysdate, updated_by='SR-413' where invoice_id=26265507 AND ID=70316;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12050051, update_date=sysdate, updated_by='SR-413' where invoice_id=26193156 AND ID=69723;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12049418, update_date=sysdate, updated_by='SR-413' where invoice_id=26773766 AND ID=69653;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12095274, update_date=sysdate, updated_by='SR-413' where invoice_id=26269213 AND ID=70121;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12145532, update_date=sysdate, updated_by='SR-413' where invoice_id=26223960 AND ID=70705;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12072704, update_date=sysdate, updated_by='SR-413' where invoice_id=26667607 AND ID=69879;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12145041, update_date=sysdate, updated_by='SR-413' where invoice_id=26724871 AND ID=70598;
+
+0 rows updated.
+
+Elapsed: 00:00:00.01
+13:36:31 SQL> update invoice_adjustment set charge_id=12050142, update_date=sysdate, updated_by='SR-413' where invoice_id=17514425 AND ID=69745;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12145796, update_date=sysdate, updated_by='SR-413' where invoice_id=26471930 AND ID=70717;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12130029, update_date=sysdate, updated_by='SR-413' where invoice_id=25896047 AND ID=70502;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12049419, update_date=sysdate, updated_by='SR-413' where invoice_id=26112912 AND ID=69654;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12130032, update_date=sysdate, updated_by='SR-413' where invoice_id=26538596 AND ID=70473;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12095907, update_date=sysdate, updated_by='SR-413' where invoice_id=26589916 AND ID=70166;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12130024, update_date=sysdate, updated_by='SR-413' where invoice_id=26548008 AND ID=70500;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12095749, update_date=sysdate, updated_by='SR-413' where invoice_id=26719640 AND ID=70150;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12130030, update_date=sysdate, updated_by='SR-413' where invoice_id=24082659 AND ID=70475;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12130028, update_date=sysdate, updated_by='SR-413' where invoice_id=25266946 AND ID=70503;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12112813, update_date=sysdate, updated_by='SR-413' where invoice_id=26660904 AND ID=70256;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12030841, update_date=sysdate, updated_by='SR-413' where invoice_id=26275199 AND ID=69509;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12130031, update_date=sysdate, updated_by='SR-413' where invoice_id=24668357 AND ID=70474;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12145531, update_date=sysdate, updated_by='SR-413' where invoice_id=26878922 AND ID=70704;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12050052, update_date=sysdate, updated_by='SR-413' where invoice_id=26766754 AND ID=69724;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=12160840, update_date=sysdate, updated_by='SR-413' where invoice_id=26342702 AND ID=70967;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> update invoice_adjustment set charge_id=11996073, update_date=sysdate, updated_by='SR-413' where invoice_id=26343059 AND id=68609;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:36:31 SQL> EXIT;
+
+
+Subject: Nomad upgrade completed successfully: ECST2@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        SID: ECST2
+        Schema: core_owner
+        Migration: 20.9-post-release-1.11.1-034-update
+        SVN Revision: 10567
+        Duration: 0 sec.
+        Service Request: https://jira.em.nytimes.com/browse/ORA-348

@@ -1,0 +1,72 @@
+16:42:14 SQL> @/dbbackups/ECPR/migrations/core_owner/14-cancel-22-gift-certificates/upgrade.sql
+16:42:14 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK
+16:42:14 SQL> 
+16:42:14 SQL> UPDATE
+16:42:14   2  	 GIFT_CERTIFICATE
+16:42:14   3   SET
+16:42:14   4  	 EXPIRATION_DATE = CREATE_DATE -1,
+16:42:14   5  	 CANCELATION_DATE = sysdate,
+16:42:14   6  	 UPDATED_BY = 'bugzilla_75915',
+16:42:14   7  	 UPDATE_DATE = sysdate,
+16:42:14   8  	 GIFT_CERTIFICATE_STATUS_ID = 3
+16:42:14   9  WHERE
+16:42:14  10  	 EXPIRATION_DATE > sysdate
+16:42:14  11  	 and CANCELATION_DATE is NULL
+16:42:14  12  	 and REDEMPTION_DATE is NULL
+16:42:14  13  	 and CODE in (
+16:42:14  14  	 '1a04d4f6c8a910',
+16:42:14  15  	 '858db48b30ca9d',
+16:42:14  16  	 '1be7ae8ebe3be8',
+16:42:14  17  	 '73ef2baed09223',
+16:42:14  18  	 '24f57842ecc7f3',
+16:42:14  19  	 '5ebf2111b74367',
+16:42:14  20  	 'c2da0b887bbb2e',
+16:42:14  21  	 'bbe01dced4ee46',
+16:42:14  22  	 'a01fa3747dc7a0',
+16:42:14  23  	 'afe2b8bc713b18',
+16:42:14  24  	 '09659c7bd8a372',
+16:42:14  25  	 '68e8d948954fd3',
+16:42:14  26  	 '975d6d3b906d37',
+16:42:14  27  	 '2ff09d4fd6696f',
+16:42:14  28  	 '5ba6ae8ca4115d',
+16:42:14  29  	 '5a6cf750212f8d',
+16:42:14  30  	 'd4703985b2fade',
+16:42:14  31  	 '41dc4ef91e446c',
+16:42:14  32  	 'fdf238964a947b',
+16:42:14  33  	 'd84634acba8973',
+16:42:14  34  	 '7b44db94d2cfb6',
+16:42:14  35  	 '853a9fd0eeba12'
+16:42:14  36  );
+
+19 rows updated.
+
+Elapsed: 00:00:00.38
+16:42:14 SQL> 
+16:42:14 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:42:14 SQL> 
+16:42:14 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:42:14 SQL> spool off;
+
+
+Subject: Nomad upgrade success: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: steven.nedlin@nytimes.com
+Nomad upgrade operation success. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        SID: ECPR
+        Schema: core_owner
+        Migration: 14-cancel-22-gift-certificates
+        SVN Revision: 9701
+        Duration: 0

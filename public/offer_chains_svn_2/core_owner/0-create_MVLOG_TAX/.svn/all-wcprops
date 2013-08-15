@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create_MVLOG_TAX
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create_MVLOG_TAX/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create_MVLOG_TAX/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create_MVLOG_TAX/rollback.sql
+END

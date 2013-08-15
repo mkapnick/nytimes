@@ -1,0 +1,62 @@
+12:21:08 SQL> @/dbbackups/ECPR/migrations/core_owner/26-update-gc-expiration-date-SAR-287/upgrade.sql
+12:21:08 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK
+12:21:08 SQL> 
+12:21:08 SQL> DECLARE
+12:21:08   2  cnt  NUMBER(1,-2);
+12:21:08   3  today DATE :=sysdate;
+12:21:08   4  BEGIN
+12:21:08   5  	 cnt := 0;
+12:21:08   6  
+12:21:08   7  	 FOR f_row IN (
+12:21:08   8  	    SELECT code as "CODE"
+12:21:08   9  	    FROM
+12:21:08  10  	       GIFT_CERTIFICATE
+12:21:08  11  	    WHERE
+12:21:08  12  	       offer_chain_id = 1188880)
+12:21:08  13  	 LOOP
+12:21:08  14  	    UPDATE GIFT_CERTIFICATE
+12:21:08  15  	    SET EXPIRATION_DATE = to_date('06/08/13', 'MM/DD/YY'),
+12:21:08  16  	       UPDATE_DATE = today,
+12:21:08  17  	       UPDATED_BY = 'JIRA-SAR-287'
+12:21:08  18  	    WHERE OFFER_CHAIN_ID = 1188880
+12:21:08  19  	       AND CODE = f_row.CODE;
+12:21:08  20  
+12:21:08  21  	    cnt := cnt + 1;
+12:21:08  22  	    IF mod(cnt, 2000) = 0 THEN
+12:21:08  23  	       COMMIT;
+12:21:08  24  	    END IF;
+12:21:08  25  	 END LOOP;
+12:21:08  26  	 COMMIT;
+12:21:08  27  END;
+12:21:08  28  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:01:27.90
+12:22:36 SQL> 
+12:22:36 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+12:22:36 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 26-update-gc-expiration-date-SAR-287
+        SVN Revision: 10941
+        Duration: 88 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-462

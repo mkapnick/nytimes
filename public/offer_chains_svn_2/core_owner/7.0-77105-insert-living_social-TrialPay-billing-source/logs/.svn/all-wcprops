@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/db/!svn/ver/9614/trunk/oracle/migrations/EC/core_owner/7.0-77105-insert-living_social-TrialPay-billing-source/logs
+END
+upgrade-201211201438.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/db/!svn/ver/9614/trunk/oracle/migrations/EC/core_owner/7.0-77105-insert-living_social-TrialPay-billing-source/logs/upgrade-201211201438.production.log
+END
+upgrade-20121119153446.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/db/!svn/ver/9598/trunk/oracle/migrations/EC/core_owner/7.0-77105-insert-living_social-TrialPay-billing-source/logs/upgrade-20121119153446.staging.log
+END

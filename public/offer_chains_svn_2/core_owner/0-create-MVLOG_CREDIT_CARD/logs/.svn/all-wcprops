@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG_CREDIT_CARD/logs
+END
+upgrade-20130227152044.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG_CREDIT_CARD/logs/upgrade-20130227152044.staging.log
+END

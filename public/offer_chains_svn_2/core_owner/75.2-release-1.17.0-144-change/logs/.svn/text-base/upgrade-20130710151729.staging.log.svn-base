@@ -1,0 +1,108 @@
+15:17:42 SQL> @/dbbackups/ECST/migrations/core_owner/75.2-release-1.17.0-144-change/upgrade.sql
+15:17:42 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+15:17:42 SQL> 
+15:17:42 SQL> variable is_current_version_fine NUMBER;
+15:17:42 SQL> variable change_version NUMBER;
+15:17:42 SQL> variable bad_current_version VARCHAR2(1024);
+15:17:42 SQL> 
+15:17:42 SQL> exec :change_version := 144;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:17:42 SQL> exec PROCS_SYSTEM_V16.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:17:42 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:17:42 SQL> 
+15:17:42 SQL> UPDATE
+15:17:42   2  	product p
+15:17:42   3  SET
+15:17:42   4  	(
+15:17:42   5  	  entitlement,
+15:17:42   6  	  is_shareable
+15:17:42   7  	)
+15:17:42   8  	=
+15:17:42   9  	(
+15:17:42  10  	SELECT
+15:17:42  11  	  DECODE(MAX(c.code), 'NONE', NULL, MAX(c.code)),
+15:17:42  12  	  MAX(c.shareable)
+15:17:42  13  	FROM
+15:17:42  14  	    capability c,
+15:17:42  15  	    product_offering po
+15:17:42  16  	WHERE
+15:17:42  17  	  po.product_id = p.id
+15:17:42  18  	  AND c.id = po.capability_id
+15:17:42  19  	GROUP BY
+15:17:42  20  	  po.product_id);
+
+77 rows updated.
+
+Elapsed: 00:00:00.13
+15:17:42 SQL> 
+15:17:42 SQL> -- products migrated from erights have null tax_category_id, setting it to 2 since everything but crosswords is 2
+15:17:42 SQL> UPDATE
+15:17:42   2  	product p
+15:17:42   3  SET
+15:17:42   4  	(
+15:17:42   5  	  tax_category_id
+15:17:42   6  	)
+15:17:42   7  	=
+15:17:42   8  	(
+15:17:42   9  	SELECT
+15:17:42  10  	  DECODE(MAX(tax_category_id), NULL, 2, MAX(tax_category_id))
+15:17:42  11  	FROM
+15:17:42  12  	  product_offering po
+15:17:42  13  	WHERE
+15:17:42  14  	  po.product_id = p.id
+15:17:42  15  	GROUP BY
+15:17:42  16  	  po.product_id);
+
+77 rows updated.
+
+Elapsed: 00:00:00.02
+15:17:42 SQL> 
+15:17:42 SQL> -- implicit commit
+15:17:42 SQL> alter table product add constraint product_tax_category_fk foreign key (tax_category_id) references tax_category(id);
+
+Table altered.
+
+Elapsed: 00:00:00.03
+15:17:43 SQL> 
+15:17:43 SQL> EXEC PROCS_SYSTEM_V16.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+15:17:43 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:17:43 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 75.2-release-1.17.0-144-change
+        SVN Revision: 13437
+        Duration: 0 sec.
+        DBA: apathrose
+        

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/db/!svn/ver/11608/trunk/oracle/migrations/EC/core_owner/29.0-bugzilla-78909-reactivate-cupy-suspended-credit-cards
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/db/!svn/ver/11607/trunk/oracle/migrations/EC/core_owner/29.0-bugzilla-78909-reactivate-cupy-suspended-credit-cards/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/db/!svn/ver/11549/trunk/oracle/migrations/EC/core_owner/29.0-bugzilla-78909-reactivate-cupy-suspended-credit-cards/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/db/!svn/ver/11540/trunk/oracle/migrations/EC/core_owner/29.0-bugzilla-78909-reactivate-cupy-suspended-credit-cards/rollback.sql
+END

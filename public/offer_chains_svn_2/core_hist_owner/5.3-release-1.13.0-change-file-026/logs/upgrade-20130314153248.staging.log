@@ -1,0 +1,100 @@
+15:33:01 SQL> @/dbbackups/ECST/migrations/core_hist_owner/5.3-release-1.13.0-change-file-026/upgrade.sql
+15:33:01 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+15:33:01 SQL> 
+15:33:01 SQL> exec PROCS_SYSTEM_V9.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.09
+15:33:01 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:33:01 SQL> 
+15:33:01 SQL> variable is_current_version_fine NUMBER;
+15:33:01 SQL> variable change_version NUMBER;
+15:33:01 SQL> variable bad_current_version VARCHAR2(1024);
+15:33:01 SQL> 
+15:33:01 SQL> exec :change_version := 26;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:33:01 SQL> exec PROCS_SYSTEM_V9.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:33:01 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:33:01 SQL> 
+15:33:01 SQL> BEGIN
+15:33:01   2  	IF (:is_current_version_fine != 0) THEN
+15:33:01   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+15:33:01   4  	END IF;
+15:33:01   5  END;
+15:33:01   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:33:01 SQL> 
+15:33:01 SQL> update notification_history set id = not_hist_pk_seq.nextval where id is not null;
+
+6612533 rows updated.
+
+Elapsed: 00:07:07.37
+15:40:09 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.03
+15:40:09 SQL> 
+15:40:09 SQL> alter table notification_history add constraint not_hist_pk primary key(id);
+
+Table altered.
+
+Elapsed: 00:00:18.11
+15:40:27 SQL> 
+15:40:27 SQL> exec PROCS_SYSTEM_V9.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:40:27 SQL> 
+15:40:27 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:40:27 SQL> 
+15:40:27 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:40:27 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_hist_owner
+        Migration: 5.3-release-1.13.0-change-file-026
+        SVN Revision: 11706
+        Duration: 446 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-536

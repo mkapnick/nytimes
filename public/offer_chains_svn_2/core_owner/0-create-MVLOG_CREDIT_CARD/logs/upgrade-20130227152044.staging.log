@@ -1,0 +1,40 @@
+15:20:57 SQL> @/dbbackups/ECST/migrations/core_owner/3-create-MVLOG_CREDIT_CARD/upgrade.sql
+15:20:57 SQL> 
+15:20:57 SQL> Drop MATERIALIZED VIEW LOG ON "CORE_OWNER"."CREDIT_CARD";
+
+Materialized view log dropped.
+
+Elapsed: 00:00:00.15
+15:20:58 SQL> 
+15:20:58 SQL> CREATE MATERIALIZED VIEW LOG ON "CORE_OWNER"."CREDIT_CARD" PCTFREE 10 PCTUSED 30 INITRANS 1 MAXTRANS 255 LOGGING STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645 PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT) TABLESPACE "CORE"
+15:20:58   2  WITH PRIMARY KEY EXCLUDING NEW VALUES;
+
+Materialized view log created.
+
+Elapsed: 00:00:00.10
+15:20:58 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:20:58 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 3-create-MVLOG_CREDIT_CARD
+        SVN Revision: 11140
+        Duration: 0 sec.
+        DBA: rgorigy
+        Service Request: https://jira.em.nytimes.com/browse/ORA-418

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/db/!svn/ver/11816/trunk/oracle/migrations/EC/core_owner/35.0-fix-transaction-type-for-gift-certificate/logs
+END
+upgrade-20130319145015.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/db/!svn/ver/11815/trunk/oracle/migrations/EC/core_owner/35.0-fix-transaction-type-for-gift-certificate/logs/upgrade-20130319145015.staging.log
+END
+upgrade-20130319154435.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/db/!svn/ver/11816/trunk/oracle/migrations/EC/core_owner/35.0-fix-transaction-type-for-gift-certificate/logs/upgrade-20130319154435.production.log
+END
+upgrade-20130319134145.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/db/!svn/ver/11812/trunk/oracle/migrations/EC/core_owner/35.0-fix-transaction-type-for-gift-certificate/logs/upgrade-20130319134145.staging.log
+END

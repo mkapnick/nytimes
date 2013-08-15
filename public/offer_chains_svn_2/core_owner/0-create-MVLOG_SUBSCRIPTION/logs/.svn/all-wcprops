@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG_SUBSCRIPTION/logs
+END
+upgrade-20130227153726.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/db/!svn/ver/11186/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG_SUBSCRIPTION/logs/upgrade-20130227153726.staging.log
+END

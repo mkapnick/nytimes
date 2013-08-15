@@ -1,0 +1,83 @@
+12:31:15 SQL> @/dbbackups/ECST2/migrations/core_hist_owner/2.0-release-1.11.0-20_change/upgrade.sql
+12:31:15 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+12:31:15 SQL> 
+12:31:15 SQL> variable is_current_version_fine NUMBER;
+12:31:15 SQL> variable change_version NUMBER;
+12:31:15 SQL> variable bad_current_version VARCHAR2(1024);
+12:31:15 SQL> 
+12:31:15 SQL> exec :change_version := 20;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+12:31:15 SQL> exec PROCS_SYSTEM_V14.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.18
+12:31:15 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+12:31:15 SQL> 
+12:31:15 SQL> BEGIN
+12:31:15   2  	IF (:is_current_version_fine != 0) THEN
+12:31:15   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+12:31:15   4  	END IF;
+12:31:15   5  END;
+12:31:15   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+12:31:15 SQL> 
+12:31:15 SQL> CREATE TABLE "CORE_HIST_OWNER"."INVOICE_ADJUSTMENT_HISTORY"
+12:31:15   2   (    "INVOICE_ADJUSTMENT_ID" NUMBER,
+12:31:15   3  	    "INVOICE_ID" NUMBER,
+12:31:15   4  	    "IS_CREDIT" NUMBER,
+12:31:15   5  	    "CHARGE_ID" NUMBER,
+12:31:15   6  	    "ADJUSTMENT_DATE" VARCHAR2(20 BYTE),
+12:31:15   7  	    "CREATE_DATE" DATE,
+12:31:15   8  	    "CREATED_BY" VARCHAR2(255 BYTE),
+12:31:15   9  	    "INVOICE_ADJUSTMENT_REASON_ID" NUMBER,
+12:31:15  10  	    "UPDATE_DATE" DATE,
+12:31:15  11  	    "UPDATED_BY" VARCHAR2(255 BYTE)
+12:31:15  12   )
+12:31:15  13   PARTITION BY RANGE (CREATE_DATE)
+12:31:15  14  	(
+12:31:15  15  	    PARTITION invoice_adjustment_max values less than (maxvalue) tablespace "CORE_HIST"
+12:31:15  16  	);
+
+Table created.
+
+Elapsed: 00:00:00.14
+12:31:15 SQL> 
+12:31:15 SQL> exec PROCS_SYSTEM_V14.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+12:31:15 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+12:31:15 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST2@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        SID: ECST2
+        Schema: core_hist_owner
+        Migration: 2.0-release-1.11.0-20_change
+        SVN Revision: 10148
+        Duration: 0 sec.
+        Service Request: https://jira.em.nytimes.com/browse/ORA-284

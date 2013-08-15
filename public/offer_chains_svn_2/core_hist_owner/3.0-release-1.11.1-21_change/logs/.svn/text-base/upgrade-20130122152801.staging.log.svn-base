@@ -1,0 +1,99 @@
+15:28:13 SQL> @/dbbackups/ECST2/migrations/core_hist_owner/3.0-release-1.11.1-21_change/upgrade.sql
+15:28:13 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+15:28:13 SQL> 
+15:28:13 SQL> variable is_current_version_fine NUMBER;
+15:28:13 SQL> variable change_version NUMBER;
+15:28:13 SQL> variable bad_current_version VARCHAR2(1024);
+15:28:13 SQL> 
+15:28:13 SQL> exec :change_version := 21;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:28:13 SQL> exec PROCS_SYSTEM_V9.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.07
+15:28:13 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:28:13 SQL> 
+15:28:13 SQL> BEGIN
+15:28:13   2  	IF (:is_current_version_fine != 0) THEN
+15:28:13   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+15:28:13   4  	END IF;
+15:28:13   5  END;
+15:28:13   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:28:13 SQL> 
+15:28:13 SQL> CREATE TABLE
+15:28:13   2  	      NOTIFICATION_FAILURE_HISTORY
+15:28:13   3  (
+15:28:13   4  	ERROR_MESSAGE VARCHAR2(2048) NOT NULL,
+15:28:13   5  	NOTIFICATION_ID NUMBER NOT NULL,
+15:28:13   6  	CREATE_DATE DATE,
+15:28:13   7  	UPDATE_DATE DATE
+15:28:13   8  );
+
+Table created.
+
+Elapsed: 00:00:00.03
+15:28:13 SQL> COMMENT ON COLUMN NOTIFICATION_FAILURE_HISTORY.ERROR_MESSAGE
+15:28:13   2  IS
+15:28:13   3  	      'message returned from the api'
+15:28:13   4  
+15:28:13 SQL> CREATE TABLE
+15:28:13   2  	      NOTIFICATION_HISTORY
+15:28:13   3  (
+15:28:13   4  	ACCOUNT_ID NUMBER NOT NULL,
+15:28:13   5  	GROUP_ID NUMBER,
+15:28:13   6  	NOTIFICATION_REASON_TYPE_ID NUMBER NOT NULL,
+15:28:13   7  	NOTIFICATION_STATUS_ID NUMBER NOT NULL,
+15:28:13   8  	CREATE_DATE DATE NOT NULL,
+15:28:13   9  	EMAIL_TEMPLATE_PARAMS CLOB NOT NULL,
+15:28:13  10  	UPDATE_DATE DATE,
+15:28:13  11  	NOTIFICATION_ID NUMBER,
+15:28:13  12  	DATE_TO_NOTIFY DATE
+15:28:13  13  );
+
+Table created.
+
+Elapsed: 00:00:00.03
+15:28:13 SQL> COMMENT ON TABLE NOTIFICATION_HISTORY
+15:28:13   2  IS
+15:28:13   3  	      'Alias: nota'
+15:28:13   4  
+15:28:13 SQL> exec PROCS_SYSTEM_V9.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:28:13 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:28:13 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST2@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        SID: ECST2
+        Schema: core_hist_owner
+        Migration: 3.0-release-1.11.1-21_change
+        SVN Revision: 10382
+        Duration: 0 sec.
+        Service Request: https://jira.em.nytimes.com/browse/ORA-339

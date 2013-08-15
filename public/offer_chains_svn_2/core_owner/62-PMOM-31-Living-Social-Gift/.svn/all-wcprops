@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/db/!svn/ver/13132/trunk/oracle/migrations/EC/core_owner/62-PMOM-31-Living-Social-Gift
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/db/!svn/ver/13130/trunk/oracle/migrations/EC/core_owner/62-PMOM-31-Living-Social-Gift/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/db/!svn/ver/13114/trunk/oracle/migrations/EC/core_owner/62-PMOM-31-Living-Social-Gift/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/db/!svn/ver/13098/trunk/oracle/migrations/EC/core_owner/62-PMOM-31-Living-Social-Gift/rollback.sql
+END

@@ -1,0 +1,109 @@
+10:41:30 SQL> @/dbbackups/ECST/migrations/core_owner/15.0-bugzilla-77434-new_trial_pay_offer_chains-notifications/upgrade.sql
+10:41:30 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+10:41:30 SQL> 
+10:41:30 SQL> BEGIN
+10:41:30   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'card_expiration', 'N/A');
+10:41:30   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+10:41:30   4  WHEN OTHERS THEN RAISE;
+10:41:30   5  END;
+10:41:30   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.06
+10:41:30 SQL> 
+10:41:30 SQL> BEGIN
+10:41:30   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'redeemer-access-groupon', 'N/A');
+10:41:30   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+10:41:30   4  WHEN OTHERS THEN RAISE;
+10:41:30   5  END;
+10:41:30   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+10:41:30 SQL> 
+10:41:30 SQL> BEGIN
+10:41:30   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-cancel', 'N/A');
+10:41:30   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+10:41:30   4  WHEN OTHERS THEN RAISE;
+10:41:30   5  END;
+10:41:30   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+10:41:30 SQL> 
+10:41:30 SQL> BEGIN
+10:41:30   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-decline', 'N/A');
+10:41:30   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+10:41:30   4  WHEN OTHERS THEN RAISE;
+10:41:30   5  END;
+10:41:30   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+10:41:30 SQL> 
+10:41:30 SQL> BEGIN
+10:41:30   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-purchase', 'N/A');
+10:41:30   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+10:41:30   4  WHEN OTHERS THEN RAISE;
+10:41:30   5  END;
+10:41:30   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+10:41:30 SQL> 
+10:41:30 SQL> BEGIN
+10:41:30   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-sub-expired-groupon', 'N/A');
+10:41:30   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+10:41:30   4  WHEN OTHERS THEN RAISE;
+10:41:30   5  END;
+10:41:30   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+10:41:30 SQL> 
+10:41:30 SQL> BEGIN
+10:41:30   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-upsell-sub-activation-groupon', 'N/A');
+10:41:30   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+10:41:30   4  WHEN OTHERS THEN RAISE;
+10:41:30   5  END;
+10:41:30   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+10:41:30 SQL> 
+10:41:30 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:41:30 SQL> 
+10:41:30 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:41:30 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.sea1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.sea1.nytimes.com
+        SID: ECST
+        Schema: core_owner
+        Migration: 15.0-bugzilla-77434-new_trial_pay_offer_chains-notifications
+        SVN Revision: 9728
+        Duration: 0 sec.
+        

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/db/!svn/ver/12037/trunk/oracle/migrations/EC/core_hist_owner/0-create-MVLOG_NOTIFICATION_HISTORY
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/db/!svn/ver/12036/trunk/oracle/migrations/EC/core_hist_owner/0-create-MVLOG_NOTIFICATION_HISTORY/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/db/!svn/ver/12034/trunk/oracle/migrations/EC/core_hist_owner/0-create-MVLOG_NOTIFICATION_HISTORY/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/db/!svn/ver/12034/trunk/oracle/migrations/EC/core_hist_owner/0-create-MVLOG_NOTIFICATION_HISTORY/rollback.sql
+END

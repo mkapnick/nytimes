@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/db/!svn/ver/13174/trunk/oracle/migrations/EC/core_owner/65-Update-Living-Social-BunB-Discount
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/db/!svn/ver/13173/trunk/oracle/migrations/EC/core_owner/65-Update-Living-Social-BunB-Discount/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/db/!svn/ver/13172/trunk/oracle/migrations/EC/core_owner/65-Update-Living-Social-BunB-Discount/rollback.sql
+END

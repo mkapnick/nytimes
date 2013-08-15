@@ -1,0 +1,99 @@
+16:12:32 SQL> @/dbbackups/ECPR/migrations/core_hist_owner/5.4-release-1.13.0-change-file-027/upgrade.sql
+16:12:32 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+16:12:32 SQL> 
+16:12:32 SQL> exec PROCS_SYSTEM_V9.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+16:12:32 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:12:32 SQL> 
+16:12:32 SQL> variable is_current_version_fine NUMBER;
+16:12:32 SQL> variable change_version NUMBER;
+16:12:32 SQL> variable bad_current_version VARCHAR2(1024);
+16:12:32 SQL> 
+16:12:32 SQL> exec :change_version := 27;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+16:12:32 SQL> exec PROCS_SYSTEM_V9.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+16:12:32 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+16:12:32 SQL> 
+16:12:32 SQL> BEGIN
+16:12:32   2  	IF (:is_current_version_fine != 0) THEN
+16:12:32   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+16:12:32   4  	END IF;
+16:12:32   5  END;
+16:12:32   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+16:12:32 SQL> 
+16:12:32 SQL> update notification_history set id = not_hist_pk_seq.nextval where id is null;
+
+366 rows updated.
+
+Elapsed: 00:00:01.88
+16:12:34 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:12:34 SQL> alter table notification_history add constraint not_hist_pk primary key(id);
+
+Table altered.
+
+Elapsed: 00:00:05.72
+16:12:40 SQL> 
+16:12:40 SQL> exec PROCS_SYSTEM_V9.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+16:12:40 SQL> 
+16:12:40 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:12:40 SQL> 
+16:12:40 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:12:40 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_hist_owner
+        Migration: 5.4-release-1.13.0-change-file-027
+        SVN Revision: 11723
+        Duration: 8 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-557

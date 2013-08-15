@@ -1,0 +1,106 @@
+13:26:44 SQL> @/dbbackups/ECPR/migrations/core_hist_owner/7.0-release-1.14.0-amazon-kindle-fire-change-file-028/upgrade.sql
+13:26:44 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+13:26:44 SQL> 
+13:26:44 SQL> variable is_current_version_fine NUMBER;
+13:26:44 SQL> variable change_version NUMBER;
+13:26:44 SQL> variable bad_current_version VARCHAR2(1024);
+13:26:44 SQL> 
+13:26:44 SQL> exec :change_version := 28;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+13:26:44 SQL> exec PROCS_SYSTEM_V17.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.07
+13:26:44 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+13:26:44 SQL> 
+13:26:44 SQL> BEGIN
+13:26:44   2  	IF (:is_current_version_fine != 0) THEN
+13:26:44   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+13:26:44   4  	END IF;
+13:26:44   5  END;
+13:26:44   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+13:26:44 SQL> 
+13:26:44 SQL> CREATE SEQUENCE AAS_HISTORY_ID_SEQ;
+
+Sequence created.
+
+Elapsed: 00:00:00.02
+13:26:44 SQL> CREATE TABLE CORE_HIST_OWNER.AMAZON_APPSTORE_HISTORY (
+13:26:44   2  	ID NUMBER NOT NULL,
+13:26:44   3  	AMAZON_APPSTORE_ID NUMBER NOT NULL,
+13:26:44   4  	SUBSCRIPTION_ID NUMBER NOT NULL,
+13:26:44   5  	USER_ID VARCHAR2(4000) NOT NULL,
+13:26:44   6  	ITEM_TYPE VARCHAR2(50) NOT NULL,
+13:26:44   7  	START_DATE DATE NOT NULL,
+13:26:44   8  	END_DATE DATE NULL,
+13:26:44   9  	SKU VARCHAR2(4000) NOT NULL,
+13:26:44  10  	PURCHASE_TOKEN VARCHAR2(4000) NOT NULL,
+13:26:44  11  	AMAZON_APPSTORE_CREATE_DATE DATE NOT NULL,
+13:26:44  12  	AMAZON_APPSTORE_CREATED_BY VARCHAR2(255) NOT NULL,
+13:26:44  13  	AMAZON_APPSTORE_UPDATE_DATE DATE NOT NULL,
+13:26:44  14  	AMAZON_APPSTORE_UPDATED_BY VARCHAR2(255) NOT NULL,
+13:26:44  15  	CREATE_DATE DATE NOT NULL,
+13:26:44  16  	CREATED_BY VARCHAR2(255) NOT NULL,
+13:26:44  17  	UPDATE_DATE DATE NOT NULL,
+13:26:44  18  	UPDATED_BY VARCHAR2(255) NOT NULL,
+13:26:44  19  	SYSTEM_ACTIVITY_REASON_ID NUMBER NOT NULL,
+13:26:44  20  	CONSTRAINT AAP_HISTORY_PK PRIMARY KEY (ID) USING INDEX TABLESPACE CORE_HIST_IDX
+13:26:44  21  ) TABLESPACE CORE_HIST;
+
+Table created.
+
+Elapsed: 00:00:00.07
+13:26:44 SQL> COMMENT ON TABLE CORE_HIST_OWNER.AMAZON_APPSTORE_HISTORY	IS 'This is the history table for CORE_OWNER.AMAZON_APPSTORE';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+13:26:45 SQL> CREATE INDEX CORE_HIST_OWNER.AMAZON_APPSTORE_HISTORY ON CORE_HIST_OWNER.AMAZON_APPSTORE_HISTORY (AMAZON_APPSTORE_ID) TABLESPACE CORE_HIST_IDX;
+
+Index created.
+
+Elapsed: 00:00:00.01
+13:26:45 SQL> 
+13:26:45 SQL> exec PROCS_SYSTEM_V17.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+13:26:45 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:26:45 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_hist_owner
+        Migration: 7.0-release-1.14.0-amazon-kindle-fire-change-file-028
+        SVN Revision: 12320
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-755

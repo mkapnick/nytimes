@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/db/!svn/ver/12191/trunk/oracle/migrations/EC/core_owner/41.0-release-1.13.2-0-remove-pending-gift-cert-tx-to-prevent-double-billing
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/db/!svn/ver/12188/trunk/oracle/migrations/EC/core_owner/41.0-release-1.13.2-0-remove-pending-gift-cert-tx-to-prevent-double-billing/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/db/!svn/ver/12187/trunk/oracle/migrations/EC/core_owner/41.0-release-1.13.2-0-remove-pending-gift-cert-tx-to-prevent-double-billing/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/db/!svn/ver/12187/trunk/oracle/migrations/EC/core_owner/41.0-release-1.13.2-0-remove-pending-gift-cert-tx-to-prevent-double-billing/rollback.sql
+END

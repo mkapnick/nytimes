@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/db/!svn/ver/10935/trunk/oracle/migrations/EC/nytdba/1-rc_license_mvlog
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/db/!svn/ver/10894/trunk/oracle/migrations/EC/nytdba/1-rc_license_mvlog/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/db/!svn/ver/10892/trunk/oracle/migrations/EC/nytdba/1-rc_license_mvlog/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/db/!svn/ver/10892/trunk/oracle/migrations/EC/nytdba/1-rc_license_mvlog/rollback.sql
+END

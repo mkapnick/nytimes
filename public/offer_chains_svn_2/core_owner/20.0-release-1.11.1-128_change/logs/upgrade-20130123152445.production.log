@@ -1,0 +1,307 @@
+15:24:57 SQL> @/dbbackups/ECPR/migrations/core_owner/20.0-release-1.11.1-128_change/upgrade.sql
+15:24:57 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+15:24:57 SQL> 
+15:24:57 SQL> variable is_current_version_fine NUMBER;
+15:24:57 SQL> variable change_version NUMBER;
+15:24:57 SQL> variable bad_current_version VARCHAR2(1024);
+15:24:57 SQL> 
+15:24:57 SQL> exec :change_version := 128;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:24:57 SQL> exec PROCS_SYSTEM_V9.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.16
+15:24:57 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:24:57 SQL> 
+15:24:57 SQL> BEGIN
+15:24:57   2  	IF (:is_current_version_fine != 0) THEN
+15:24:57   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+15:24:57   4  	END IF;
+15:24:57   5  END;
+15:24:57   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:24:57 SQL> 
+15:24:57 SQL> CREATE TABLE
+15:24:57   2  	      NOTIFICATION_STATUS
+15:24:57   3  (
+15:24:57   4  	ID NUMBER NOT NULL,
+15:24:57   5  	VALUE VARCHAR2(32) NOT NULL,
+15:24:57   6  	CONSTRAINT NOTS_PK PRIMARY KEY (ID) USING INDEX TABLESPACE CORE_IDX
+15:24:57   7  ) TABLESPACE CORE;
+
+Table created.
+
+Elapsed: 00:00:00.89
+15:24:58 SQL> COMMENT ON TABLE NOTIFICATION_STATUS
+15:24:58   2  IS
+15:24:58   3  	      'Alias: nots  SENT / PENDING / FAILED';
+
+Comment created.
+
+Elapsed: 00:00:00.08
+15:24:58 SQL> COMMENT ON COLUMN NOTIFICATION_STATUS.ID
+15:24:58   2  IS
+15:24:58   3  	      'nots_id_seq';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+15:24:58 SQL> COMMENT ON COLUMN NOTIFICATION_STATUS.VALUE
+15:24:58   2  IS
+15:24:58   3  	      'SENT / PENDING / FAILED';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+15:24:58 SQL> 
+15:24:58 SQL> CREATE TABLE
+15:24:58   2  	      NOTIFICATION_TYPE
+15:24:58   3  (
+15:24:58   4  	ID NUMBER NOT NULL,
+15:24:58   5  	VALUE VARCHAR2(255) NOT NULL,
+15:24:58   6  	TEMPLATE_URL VARCHAR2(2048) NOT NULL,
+15:24:58   7  	CONSTRAINT NOTT_PK PRIMARY KEY (ID) USING INDEX TABLESPACE CORE_IDX,
+15:24:58   8  	CONSTRAINT NOTT_VALUE_U_IDX UNIQUE (VALUE) USING INDEX TABLESPACE CORE_IDX
+15:24:58   9  ) TABLESPACE CORE;
+
+Table created.
+
+Elapsed: 00:00:00.09
+15:24:58 SQL> COMMENT ON TABLE NOTIFICATION_TYPE
+15:24:58   2  IS
+15:24:58   3  	      'Alias: nott  reasons why email needs to be sent';
+
+Comment created.
+
+Elapsed: 00:00:00.00
+15:24:58 SQL> COMMENT ON COLUMN NOTIFICATION_TYPE.ID
+15:24:58   2  IS
+15:24:58   3  	      'nottid_seq';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+15:24:58 SQL> COMMENT ON COLUMN NOTIFICATION_TYPE.TEMPLATE_URL
+15:24:58   2  IS
+15:24:58   3  	      'url of template to be mailed out';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+15:24:58 SQL> 
+15:24:58 SQL> CREATE TABLE
+15:24:58   2  	      NOTIFICATION
+15:24:58   3  (
+15:24:58   4  	ID NUMBER NOT NULL,
+15:24:58   5  	ACCOUNT_ID NUMBER NOT NULL,
+15:24:58   6  	GROUP_ID NUMBER,
+15:24:58   7  	NOTIFICATION_TYPE_ID NUMBER NOT NULL,
+15:24:58   8  	NOTIFICATION_STATUS_ID NUMBER NOT NULL,
+15:24:58   9  	CREATE_DATE DATE NOT NULL,
+15:24:58  10  	UPDATE_DATE DATE NOT NULL,
+15:24:58  11  	EMAIL_TEMPLATE_PARAMS CLOB NOT NULL,
+15:24:58  12  	DATE_TO_NOTIFY DATE,
+15:24:58  13  	CONSTRAINT NOT_PK PRIMARY KEY (ID) USING INDEX TABLESPACE CORE_IDX,
+15:24:58  14  	CONSTRAINT NOTS_NOT_FK FOREIGN KEY (NOTIFICATION_STATUS_ID) REFERENCES NOTIFICATION_STATUS
+15:24:58  15  	(ID),
+15:24:58  16  	CONSTRAINT NOTT_NOT_FK FOREIGN KEY (NOTIFICATION_TYPE_ID) REFERENCES NOTIFICATION_TYPE (ID)
+15:24:58  17  ) TABLESPACE CORE;
+
+Table created.
+
+Elapsed: 00:00:00.12
+15:24:58 SQL> COMMENT ON TABLE NOTIFICATION
+15:24:58   2  IS
+15:24:58   3  	      'Alias: not';
+
+Comment created.
+
+Elapsed: 00:00:00.03
+15:24:58 SQL> COMMENT ON COLUMN NOTIFICATION.ID
+15:24:58   2  IS
+15:24:58   3  	      'not_id_seq';
+
+Comment created.
+
+Elapsed: 00:00:00.00
+15:24:58 SQL> 
+15:24:58 SQL> CREATE TABLE
+15:24:58   2  	      NOTIFICATION_FAILURE
+15:24:58   3  (
+15:24:58   4  	ID NUMBER NOT NULL,
+15:24:58   5  	NOTIFICATION_ID NUMBER NOT NULL,
+15:24:58   6  	ERROR_MESSAGE VARCHAR2(2048) NOT NULL,
+15:24:58   7  	CREATE_DATE DATE,
+15:24:58   8  	CONSTRAINT NOTF_PK PRIMARY KEY (ID) USING INDEX TABLESPACE CORE_IDX,
+15:24:58   9  	CONSTRAINT NOT_NOTF_FK FOREIGN KEY (NOTIFICATION_ID) REFERENCES NOTIFICATION (ID) ON
+15:24:58  10  	DELETE
+15:24:58  11  	CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE VALIDATE
+15:24:58  12  ) TABLESPACE CORE;
+
+Table created.
+
+Elapsed: 00:00:00.04
+15:24:58 SQL> COMMENT ON TABLE NOTIFICATION_FAILURE
+15:24:58   2  IS
+15:24:58   3  	      'Alias: notf';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+15:24:58 SQL> COMMENT ON COLUMN NOTIFICATION_FAILURE.ID
+15:24:58   2  IS
+15:24:58   3  	      'notf_id_seq';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+15:24:58 SQL> COMMENT ON COLUMN NOTIFICATION_FAILURE.ERROR_MESSAGE
+15:24:58   2  IS
+15:24:58   3  	      'message returned from the api';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+15:24:58 SQL> 
+15:24:58 SQL> CREATE TABLE
+15:24:58   2  	      PROCESS_RETRY_THROTTLE
+15:24:58   3  (
+15:24:58   4  	PROCESS_NAME VARCHAR2(100) NOT NULL,
+15:24:58   5  	GENERIC_ID NUMBER NOT NULL,
+15:24:58   6  	RETRY_COUNT NUMBER NOT NULL,
+15:24:58   7  	CREATE_DATE DATE NOT NULL,
+15:24:58   8  	UPDATE_DATE DATE NOT NULL,
+15:24:58   9  	CONSTRAINT PFT_PK PRIMARY KEY (PROCESS_NAME, GENERIC_ID) USING INDEX TABLESPACE CORE_IDX
+15:24:58  10  ) TABLESPACE CORE;
+
+Table created.
+
+Elapsed: 00:00:00.03
+15:24:58 SQL> COMMENT ON TABLE PROCESS_RETRY_THROTTLE
+15:24:58   2  IS
+15:24:58   3  	      'Count the number of times a process retries to process an id';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+15:24:58 SQL> 
+15:24:58 SQL> CREATE INDEX
+15:24:58   2  	      NOTF_NOTIF_ID_IDX
+15:24:58   3  ON
+15:24:58   4  	      NOTIFICATION_FAILURE
+15:24:58   5  	      (
+15:24:58   6  		      NOTIFICATION_ID
+15:24:58   7  	      );
+
+Index created.
+
+Elapsed: 00:00:00.01
+15:24:58 SQL> 
+15:24:58 SQL> CREATE INDEX
+15:24:58   2  	      NOT_NOTS_ID_IDX
+15:24:58   3  ON
+15:24:58   4  	      NOTIFICATION
+15:24:58   5  	      (
+15:24:58   6  		      NOTIFICATION_STATUS_ID
+15:24:58   7  	      );
+
+Index created.
+
+Elapsed: 00:00:00.02
+15:24:58 SQL> 
+15:24:58 SQL> CREATE INDEX
+15:24:58   2  	      NOT_NOTT_ID_IDX
+15:24:58   3  ON
+15:24:58   4  	      NOTIFICATION
+15:24:58   5  	      (
+15:24:58   6  		      NOTIFICATION_TYPE_ID
+15:24:58   7  	      );
+
+Index created.
+
+Elapsed: 00:00:00.02
+15:24:58 SQL> 
+15:24:58 SQL> CREATE INDEX
+15:24:58   2  	      PFT_CREATE_DATE_IDX
+15:24:58   3  ON
+15:24:58   4  	      PROCESS_RETRY_THROTTLE
+15:24:58   5  	      (
+15:24:58   6  		      CREATE_DATE
+15:24:58   7  	      );
+
+Index created.
+
+Elapsed: 00:00:00.01
+15:24:58 SQL> 
+15:24:58 SQL> CREATE INDEX
+15:24:58   2  	      PFT_UPDATE_DATE_IDX
+15:24:58   3  ON
+15:24:58   4  	      PROCESS_RETRY_THROTTLE
+15:24:58   5  	      (
+15:24:58   6  		      UPDATE_DATE
+15:24:58   7  	      );
+
+Index created.
+
+Elapsed: 00:00:00.02
+15:24:58 SQL> 
+15:24:58 SQL> CREATE SEQUENCE NOT_ID_SEQ START WITH 10000000;
+
+Sequence created.
+
+Elapsed: 00:00:00.06
+15:24:59 SQL> CREATE SEQUENCE NOTF_ID_SEQ START WITH 10000000;
+
+Sequence created.
+
+Elapsed: 00:00:00.01
+15:24:59 SQL> CREATE SEQUENCE NOTS_ID_SEQ START WITH 10000000;
+
+Sequence created.
+
+Elapsed: 00:00:00.01
+15:24:59 SQL> CREATE SEQUENCE NOTTID_SEQ START WITH 10000000;
+
+Sequence created.
+
+Elapsed: 00:00:00.01
+15:24:59 SQL> 
+15:24:59 SQL> exec PROCS_SYSTEM_V9.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:24:59 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:24:59 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        SID: ECPR
+        Schema: core_owner
+        Migration: 20.0-release-1.11.1-128_change
+        SVN Revision: 10382
+        Duration: 2 sec.
+        Service Request: https://jira.em.nytimes.com/browse/ORA-348

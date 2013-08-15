@@ -1,0 +1,93 @@
+11:49:04 SQL> @/dbbackups/ECST2/migrations/core_owner/25.0-comp-offer-newsroon-SAR-260/upgrade.sql
+11:49:04 SQL> 
+11:49:04 SQL> BEGIN
+11:49:04   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'complimentary_access2', 'N/A');
+11:49:04   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+11:49:04   4  WHEN OTHERS THEN RAISE;
+11:49:04   5  END;
+11:49:04   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.07
+11:49:04 SQL> 
+11:49:04 SQL> BEGIN
+11:49:04   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'complimentary_access2_biz', 'N/A');
+11:49:04   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+11:49:04   4  WHEN OTHERS THEN RAISE;
+11:49:04   5  END;
+11:49:04   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+11:49:04 SQL> 
+11:49:04 SQL> BEGIN
+11:49:04   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'complimentary_access2_cr', 'N/A');
+11:49:04   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+11:49:04   4  WHEN OTHERS THEN RAISE;
+11:49:04   5  END;
+11:49:04   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+11:49:04 SQL> 
+11:49:04 SQL> BEGIN
+11:49:04   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'complimentary_access2_nr', 'N/A');
+11:49:04   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+11:49:04   4  WHEN OTHERS THEN RAISE;
+11:49:04   5  END;
+11:49:04   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+11:49:04 SQL> 
+11:49:04 SQL> BEGIN
+11:49:04   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'complimentary_access2_ns', 'N/A');
+11:49:04   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+11:49:04   4  WHEN OTHERS THEN RAISE;
+11:49:04   5  END;
+11:49:04   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+11:49:04 SQL> 
+11:49:04 SQL> BEGIN
+11:49:04   2  	INSERT INTO CORE_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (CORE_OWNER.NOTTID_SEQ.NEXTVAL, 'complimentary_access2_pr', 'N/A');
+11:49:04   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+11:49:04   4  WHEN OTHERS THEN RAISE;
+11:49:04   5  END;
+11:49:04   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+11:49:04 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+11:49:04 SQL> exit
+
+
+Subject: Nomad upgrade completed successfully: ECST2@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST2
+        Schema: core_owner
+        Migration: 25.0-comp-offer-newsroon-SAR-260
+        SVN Revision: 10910
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-452

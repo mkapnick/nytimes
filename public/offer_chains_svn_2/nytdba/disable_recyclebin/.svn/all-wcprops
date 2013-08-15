@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/db/!svn/ver/12768/trunk/oracle/migrations/EC/nytdba/disable_recyclebin
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/db/!svn/ver/12768/trunk/oracle/migrations/EC/nytdba/disable_recyclebin/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/db/!svn/ver/12768/trunk/oracle/migrations/EC/nytdba/disable_recyclebin/rollback.sql
+END

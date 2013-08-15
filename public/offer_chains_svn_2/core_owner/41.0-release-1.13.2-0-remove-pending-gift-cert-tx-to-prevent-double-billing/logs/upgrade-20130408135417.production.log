@@ -1,0 +1,73 @@
+13:54:29 SQL> @/dbbackups/ECPR/migrations/core_owner/41.0-release-1.13.2-0-remove-pending-gift-cert-tx-to-prevent-double-billing/upgrade.sql
+13:54:29 SQL> whenever sqlerror exit rollback;
+13:54:29 SQL> 
+13:54:29 SQL> update invoice
+13:54:29   2  set invoice_status_id = 3,
+13:54:29   3  updated_by = 'JIRA-SAR-483',
+13:54:29   4  update_date = sysdate
+13:54:29   5  where id in (
+13:54:29   6  	select invoice_id from charge
+13:54:29   7  	where transaction_id in (15494422, 15494418, 16741183, 15658484, 17402236, 17402237, 15545431, 15657959, 15598777)
+13:54:29   8  	and charge_status_id = 1
+13:54:29   9  )
+13:54:29  10  and invoice_status_id = 1;
+
+8 rows updated.
+
+Elapsed: 00:00:00.29
+13:54:30 SQL> 
+13:54:30 SQL> update transaction
+13:54:30   2  set
+13:54:30   3  	transaction_status_id = 2,
+13:54:30   4  	updated_by = 'JIRA-SAR-483',
+13:54:30   5  	update_date = sysdate
+13:54:30   6  where id in (15494422, 15494418, 16741183, 15658484, 17402236, 17402237, 15545431, 15657959, 15598777)
+13:54:30   7  and transaction_status_id = 1;
+
+9 rows updated.
+
+Elapsed: 00:00:00.16
+13:54:30 SQL> 
+13:54:30 SQL> update charge
+13:54:30   2  set
+13:54:30   3  	charge_status_id = 3,
+13:54:30   4  	updated_by = 'JIRA-SAR-483',
+13:54:30   5  	update_date = sysdate
+13:54:30   6  where transaction_id in (15494422, 15494418, 16741183, 15658484, 17402236, 17402237, 15545431, 15657959, 15598777)
+13:54:30   7  and charge_status_id = 1;
+
+9 rows updated.
+
+Elapsed: 00:00:00.08
+13:54:30 SQL> 
+13:54:30 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:54:30 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:54:30 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 41.0-release-1.13.2-0-remove-pending-gift-cert-tx-to-prevent-double-billing
+        SVN Revision: 12187
+        Duration: 1 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-695

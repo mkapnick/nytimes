@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/db/!svn/ver/12399/trunk/oracle/migrations/EC/core_hist_owner/7.0-release-1.14.0-amazon-kindle-fire-change-file-028
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/db/!svn/ver/12347/trunk/oracle/migrations/EC/core_hist_owner/7.0-release-1.14.0-amazon-kindle-fire-change-file-028/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/db/!svn/ver/12320/trunk/oracle/migrations/EC/core_hist_owner/7.0-release-1.14.0-amazon-kindle-fire-change-file-028/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/db/!svn/ver/12320/trunk/oracle/migrations/EC/core_hist_owner/7.0-release-1.14.0-amazon-kindle-fire-change-file-028/rollback.sql
+END

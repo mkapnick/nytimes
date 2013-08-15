@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/db/!svn/ver/11961/trunk/oracle/migrations/EC/core_owner/36.0-disable-gift-cert-trigger
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/11958/trunk/oracle/migrations/EC/core_owner/36.0-disable-gift-cert-trigger/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/db/!svn/ver/11957/trunk/oracle/migrations/EC/core_owner/36.0-disable-gift-cert-trigger/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/db/!svn/ver/11957/trunk/oracle/migrations/EC/core_owner/36.0-disable-gift-cert-trigger/rollback.sql
+END

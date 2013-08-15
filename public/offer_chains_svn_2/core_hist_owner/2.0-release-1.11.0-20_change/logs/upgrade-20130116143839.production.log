@@ -1,0 +1,58 @@
+14:38:51 SQL> @/dbbackups/ECPR/migrations/core_hist_owner/2.0-release-1.11.0-20_change/upgrade.sql
+14:38:51 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+14:38:51 SQL> 
+14:38:51 SQL> variable is_current_version_fine NUMBER;
+14:38:51 SQL> variable change_version NUMBER;
+14:38:51 SQL> variable bad_current_version VARCHAR2(1024);
+14:38:51 SQL> 
+14:38:51 SQL> exec :change_version := 20;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+14:38:51 SQL> exec PROCS_SYSTEM_V14.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.10
+14:38:51 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+14:38:51 SQL> 
+14:38:51 SQL> BEGIN
+14:38:51   2  	IF (:is_current_version_fine != 0) THEN
+14:38:51   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+14:38:51   4  	END IF;
+14:38:51   5  END;
+14:38:51   6  /
+BEGIN
+*
+ERROR at line 1:
+ORA-20001: Current version is bad, please update your version to 19 
+ORA-06512: at line 3 
+
+
+
+
+Subject: Nomad upgrade completed with errors: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation has errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        SID: ECPR
+        Migration: 2.0-release-1.11.0-20_change
+        SVN Revision: 10148
+        Duration: 0 sec.
+        Service Request: https://jira.em.nytimes.com/browse/ORA-315        
+        
+        Error Detail
+        ------------
+        
+        ERROR at line 1: ORA-20001: Current version is bad, please update your version to 19 ORA-06512: at line 3

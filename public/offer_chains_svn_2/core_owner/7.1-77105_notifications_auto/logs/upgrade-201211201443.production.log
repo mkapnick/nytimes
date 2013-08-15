@@ -1,0 +1,96 @@
+14:43:25 SQL> 
+14:43:26 SQL> show user
+USER is "CORE_OWNER"
+14:43:28 SQL> 
+14:43:29 SQL> select * from global_name;
+
+GLOBAL_NAME                                                                     
+--------------------------------------------------------------------------------
+ECPR                                                                            
+
+Elapsed: 00:00:00.00
+14:43:46 SQL> @upgrade.sql
+14:43:53 SQL> 
+14:43:53 SQL> BEGIN
+14:43:53   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'card_expiration', 'N/A');
+14:43:53   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+14:43:53   4  WHEN OTHERS THEN RAISE;
+14:43:53   5  END;
+14:43:53   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+14:43:53 SQL> 
+14:43:53 SQL> BEGIN
+14:43:53   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'redeemer-access-groupon', 'N/A');
+14:43:53   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+14:43:53   4  WHEN OTHERS THEN RAISE;
+14:43:53   5  END;
+14:43:53   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+14:43:53 SQL> 
+14:43:53 SQL> BEGIN
+14:43:53   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-cancel', 'N/A');
+14:43:53   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+14:43:53   4  WHEN OTHERS THEN RAISE;
+14:43:53   5  END;
+14:43:53   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+14:43:53 SQL> 
+14:43:53 SQL> BEGIN
+14:43:53   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-decline', 'N/A');
+14:43:53   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+14:43:53   4  WHEN OTHERS THEN RAISE;
+14:43:53   5  END;
+14:43:53   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+14:43:53 SQL> 
+14:43:53 SQL> BEGIN
+14:43:53   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-purchase', 'N/A');
+14:43:53   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+14:43:53   4  WHEN OTHERS THEN RAISE;
+14:43:53   5  END;
+14:43:53   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+14:43:53 SQL> 
+14:43:53 SQL> BEGIN
+14:43:53   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-sub-expired-groupon', 'N/A');
+14:43:53   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+14:43:53   4  WHEN OTHERS THEN RAISE;
+14:43:53   5  END;
+14:43:53   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.01
+14:43:53 SQL> 
+14:43:53 SQL> BEGIN
+14:43:53   2  	INSERT INTO OPS_OWNER.NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL) VALUES (OPS_OWNER.NOTTID_SEQ.NEXTVAL, 'sartre-upsell-sub-activation-groupon', 'N/A');
+14:43:53   3  EXCEPTION WHEN DUP_VAL_ON_INDEX THEN NULL;
+14:43:53   4  WHEN OTHERS THEN RAISE;
+14:43:53   5  END;
+14:43:53   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+14:43:53 SQL> 
+14:43:53 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+14:43:53 SQL> spool off;

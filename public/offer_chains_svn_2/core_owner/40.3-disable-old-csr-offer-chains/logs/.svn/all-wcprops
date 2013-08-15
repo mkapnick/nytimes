@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/db/!svn/ver/12139/trunk/oracle/migrations/EC/core_owner/40.3-disable-old-csr-offer-chains/logs
+END
+upgrade-20130403145202.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/db/!svn/ver/12139/trunk/oracle/migrations/EC/core_owner/40.3-disable-old-csr-offer-chains/logs/upgrade-20130403145202.production.log
+END
+upgrade-20130402163414.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/db/!svn/ver/12131/trunk/oracle/migrations/EC/core_owner/40.3-disable-old-csr-offer-chains/logs/upgrade-20130402163414.staging.log
+END
+upgrade-20130402163621.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/db/!svn/ver/12132/trunk/oracle/migrations/EC/core_owner/40.3-disable-old-csr-offer-chains/logs/upgrade-20130402163621.staging.log
+END

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/db/!svn/ver/13852/trunk/oracle/migrations/EC/nytdba/12-cr_role_core_owner_execute/logs
+END
+upgrade-20130723172002.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13809/trunk/oracle/migrations/EC/nytdba/12-cr_role_core_owner_execute/logs/upgrade-20130723172002.development.log
+END
+upgrade-20130723193357.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13817/trunk/oracle/migrations/EC/nytdba/12-cr_role_core_owner_execute/logs/upgrade-20130723193357.development.log
+END
+upgrade-20130723193619.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13818/trunk/oracle/migrations/EC/nytdba/12-cr_role_core_owner_execute/logs/upgrade-20130723193619.development.log
+END
+upgrade-20130723231431.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13843/trunk/oracle/migrations/EC/nytdba/12-cr_role_core_owner_execute/logs/upgrade-20130723231431.development.log
+END
+upgrade-20130723194130.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13821/trunk/oracle/migrations/EC/nytdba/12-cr_role_core_owner_execute/logs/upgrade-20130723194130.development.log
+END
+upgrade-20130723232742.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13847/trunk/oracle/migrations/EC/nytdba/12-cr_role_core_owner_execute/logs/upgrade-20130723232742.development.log
+END
+upgrade-20130723234059.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/13852/trunk/oracle/migrations/EC/nytdba/12-cr_role_core_owner_execute/logs/upgrade-20130723234059.development.log
+END

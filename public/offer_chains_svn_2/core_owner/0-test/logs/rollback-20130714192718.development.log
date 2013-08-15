@@ -1,0 +1,33 @@
+19:27:28 SQL> @/dbbackups/ECDV8/migrations/core_owner/0-test/rollback.sql
+19:27:28 SQL> select count(*) from user_objects;
+
+  COUNT(*)                                                                      
+----------                                                                      
+      2664                                                                      
+
+Elapsed: 00:00:00.42
+19:27:28 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+19:27:28 SQL> spool off;
+
+
+Subject: Nomad rollback completed successfully: ECDV8@rac02.qprvt.nytimes.com
+From: Nomad for Oracle <db.alert@nytimes.com>
+To: steven.nedlin@nytimes.com
+
+Nomad rollback operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac02.qprvt.nytimes.com
+        DB Role: primary
+        SID: ECDV8
+        Schema: core_owner
+        Migration: 0-test
+        SVN Revision: 13535
+        Duration: 1 sec.
+        DBA: steven.nedlin
+        

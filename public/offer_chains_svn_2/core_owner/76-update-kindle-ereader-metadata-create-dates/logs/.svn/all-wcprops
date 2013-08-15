@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/db/!svn/ver/13522/trunk/oracle/migrations/EC/core_owner/76-update-kindle-ereader-metadata-create-dates/logs
+END
+upgrade-20130711183912.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/db/!svn/ver/13522/trunk/oracle/migrations/EC/core_owner/76-update-kindle-ereader-metadata-create-dates/logs/upgrade-20130711183912.production.log
+END
+upgrade-20130711171401.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/db/!svn/ver/13520/trunk/oracle/migrations/EC/core_owner/76-update-kindle-ereader-metadata-create-dates/logs/upgrade-20130711171401.staging.log
+END

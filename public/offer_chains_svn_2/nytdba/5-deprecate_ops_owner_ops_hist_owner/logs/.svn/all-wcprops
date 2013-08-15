@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/db/!svn/ver/12790/trunk/oracle/migrations/EC/nytdba/5-deprecate_ops_owner_ops_hist_owner/logs
+END
+upgrade-20130523131733.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/12790/trunk/oracle/migrations/EC/nytdba/5-deprecate_ops_owner_ops_hist_owner/logs/upgrade-20130523131733.staging.log
+END
+upgrade-20130416095031.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/12294/trunk/oracle/migrations/EC/nytdba/5-deprecate_ops_owner_ops_hist_owner/logs/upgrade-20130416095031.staging.log
+END
+upgrade-20130522154641.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/12786/trunk/oracle/migrations/EC/nytdba/5-deprecate_ops_owner_ops_hist_owner/logs/upgrade-20130522154641.staging.log
+END

@@ -1,0 +1,58 @@
+10:59:37 SQL> @/dbbackups/ECPR/migrations/core_owner/16-iht-oc-desc-update/upgrade.sql
+10:59:37 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK
+10:59:37 SQL> SET SCAN OFF
+10:59:37 SQL> SET DEFINE OFF
+10:59:37 SQL> 
+10:59:37 SQL> DECLARE
+10:59:37   2  	 today DATE :=sysdate;
+10:59:37   3  BEGIN
+10:59:37   4  	 UPDATE OFFER_CHAIN
+10:59:37   5  	 SET DESCRIPTION = 'Unlimited access to the IHT smartphone and tablet apps and NYTimes.com*',
+10:59:37   6  	    UPDATE_DATE = today,
+10:59:37   7  	    UPDATED_BY = 'BUGZILLA_75530'
+10:59:37   8  	 WHERE ID IN (
+10:59:37   9  4001063937,
+10:59:37  10  2266371006,
+10:59:37  11  2146261245,
+10:59:37  12  2109789937,
+10:59:37  13  1873190447,
+10:59:37  14  3901435067,
+10:59:37  15  3958422832,
+10:59:37  16  1715884446,
+10:59:37  17  1208963559,
+10:59:37  18  1000480,
+10:59:37  19  1000481,
+10:59:37  20  2513648887,
+10:59:37  21  1869852981,
+10:59:37  22  34578145
+10:59:37  23  );
+10:59:37  24  COMMIT;
+10:59:37  25  
+10:59:37  26  END;
+10:59:37  27  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+10:59:37 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:59:37 SQL> spool off;
+
+
+Subject: Nomad upgrade success: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: steven.nedlin@nytimes.com
+Nomad upgrade operation success. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        SID: ECPR
+        Schema: core_owner
+        Migration: 16-iht-oc-desc-update
+        SVN Revision: 9883
+        Duration: 0

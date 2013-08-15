@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/db/!svn/ver/12213/trunk/oracle/migrations/EC/core_owner/41-SAR-436-share-the-times-8-week-offer-chain/logs
+END
+upgrade-20130403155734.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/db/!svn/ver/12146/trunk/oracle/migrations/EC/core_owner/41-SAR-436-share-the-times-8-week-offer-chain/logs/upgrade-20130403155734.staging.log
+END
+upgrade-20130409114939.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/db/!svn/ver/12213/trunk/oracle/migrations/EC/core_owner/41-SAR-436-share-the-times-8-week-offer-chain/logs/upgrade-20130409114939.production.log
+END

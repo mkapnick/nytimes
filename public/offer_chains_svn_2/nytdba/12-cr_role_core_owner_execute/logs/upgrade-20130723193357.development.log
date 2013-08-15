@@ -1,0 +1,69 @@
+19:34:00 SQL> @/dbbackups/ECDV8/migrations/nytdba/12-cr_role_core_owner_execute/upgrade.sql
+19:34:00 SQL> -- code to drop/create a role with execute privileges on <object_owner>'s packages
+19:34:00 SQL> -- if you drop an existing role that is granted to anther user, make sure to grant it back to that user after the role is recreated.
+19:34:00 SQL> 
+19:34:00 SQL> set serveroutput on termout on verify off
+19:34:00 SQL> define rol=CORE_OWNER_EXECUTE
+19:34:00 SQL> WHENEVER OSERROR EXIT
+19:34:00 SQL> WHENEVER SQLERROR CONTINUE
+19:34:00 SQL> 
+19:34:00 SQL> drop role &rol;
+drop role &rol
+          *
+ERROR at line 1:
+ORA-01935: missing user or role name 
+
+
+Elapsed: 00:00:00.06
+19:34:00 SQL> 
+19:34:00 SQL> WHENEVER SQLERROR EXIT ROLLBACK
+19:34:00 SQL> 
+19:34:00 SQL> declare
+19:34:00   2  
+19:34:00   3  	    role varchar2(30) := '&rol';
+19:34:00   4  	    object_owner varchar2(30) := 'CORE_OWNER';
+19:34:00   5  
+19:34:00   6  begin
+19:34:00   7  	  /* create role */
+19:34:00   8  	  execute immediate 'create role '||role;
+19:34:00   9  
+19:34:00  10  	  /* grant execute  privileges on object_owner's tables to role */
+19:34:00  11  	  for x in (select object_name from dba_objects  where object_type = 'PACKAGE' and owner = object_owner)
+19:34:00  12  	  loop
+19:34:00  13  	       execute immediate 'grant  execute on ' ||object_owner||'.'|| x.object_name || ' to '||role;
+19:34:00  14  	       dbms_output.put_line ('grant execute on ' ||object_owner||'.'|| x.object_name || ' to '||role);
+19:34:00  15  	  end loop;
+19:34:00  16  
+19:34:00  17  end;
+19:34:00  18  /
+declare
+*
+ERROR at line 1:
+ORA-01937: missing or invalid role name 
+ORA-06512: at line 8 
+
+
+
+
+Subject: Nomad upgrade completed with errors: ECDV8@rac01.qprvt.nytimes.com
+From: Nomad for Oracle <db.alert@nytimes.com>
+To: steven.nedlin@nytimes.com
+
+Nomad upgrade operation has errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.qprvt.nytimes.com
+        DB Role: primary
+        Database: ECDV8
+        Schema: nytdba
+        Migration: 12-cr_role_core_owner_execute
+        SVN Revision: 13802
+        Duration: 0 sec.
+        DBA: apathrose
+                
+        
+        Error Detail
+        ------------
+        
+        ERROR at line 1: ORA-01935: missing user or role name -- ERROR at line 1: ORA-01937: missing or invalid role name

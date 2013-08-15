@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/11963/trunk/oracle/migrations/EC/core_owner/32-SAR-353-share-the-times-offer-chains
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/db/!svn/ver/11962/trunk/oracle/migrations/EC/core_owner/32-SAR-353-share-the-times-offer-chains/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/db/!svn/ver/11618/trunk/oracle/migrations/EC/core_owner/32-SAR-353-share-the-times-offer-chains/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/db/!svn/ver/11618/trunk/oracle/migrations/EC/core_owner/32-SAR-353-share-the-times-offer-chains/rollback.sql
+END

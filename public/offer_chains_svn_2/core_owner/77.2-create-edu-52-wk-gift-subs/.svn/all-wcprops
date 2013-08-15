@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/db/!svn/ver/13659/trunk/oracle/migrations/EC/core_owner/77.2-create-edu-52-wk-gift-subs
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/db/!svn/ver/13656/trunk/oracle/migrations/EC/core_owner/77.2-create-edu-52-wk-gift-subs/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/db/!svn/ver/13606/trunk/oracle/migrations/EC/core_owner/77.2-create-edu-52-wk-gift-subs/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/db/!svn/ver/13606/trunk/oracle/migrations/EC/core_owner/77.2-create-edu-52-wk-gift-subs/rollback.sql
+END

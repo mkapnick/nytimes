@@ -1,0 +1,55 @@
+16:08:10 SQL> @/dbbackups/ECPR/migrations/core_owner/38-extend-gift-certificate-expiration-dates/upgrade.sql
+16:08:10 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+16:08:10 SQL> 
+16:08:10 SQL> update gift_certificate set expiration_date = to_date('2018-07-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), updated_by = 'ORA-619' where purchaser_group_id = 67473234;
+
+749734 rows updated.
+
+Elapsed: 00:01:38.26
+16:09:49 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.06
+16:09:49 SQL> update gift_certificate set expiration_date = to_date('2018-07-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), updated_by = 'ORA-619' where purchaser_group_id = 67473235;
+
+410000 rows updated.
+
+Elapsed: 00:00:44.14
+16:10:33 SQL> 
+16:10:33 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.03
+16:10:33 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:10:33 SQL> spool off;
+
+
+Subject: Nomad upgrade completed with errors: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation has errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 38-extend-gift-certificate-expiration-dates
+        SVN Revision: 11997
+        Duration: 143 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-619        
+        
+        Error Detail
+        ------------
+        
+        16:08:10 SQL> 16:08:10 SQL> update gift_certificate set expiration_date = to_date('2018-07-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), updated_by = 'ORA-619' where purchaser_group_id = 67473234; -- Elapsed: 00:00:00.06 16:09:49 SQL> update gift_certificate set expiration_date = to_date('2018-07-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), updated_by = 'ORA-619' where purchaser_group_id = 67473235;

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/db/!svn/ver/12139/trunk/oracle/migrations/EC/core_owner/40.3-disable-old-csr-offer-chains
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/db/!svn/ver/12129/trunk/oracle/migrations/EC/core_owner/40.3-disable-old-csr-offer-chains/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/db/!svn/ver/12098/trunk/oracle/migrations/EC/core_owner/40.3-disable-old-csr-offer-chains/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/db/!svn/ver/12093/trunk/oracle/migrations/EC/core_owner/40.3-disable-old-csr-offer-chains/rollback.sql
+END

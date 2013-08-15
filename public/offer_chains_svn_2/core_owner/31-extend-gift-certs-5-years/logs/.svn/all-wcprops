@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/db/!svn/ver/11640/trunk/oracle/migrations/EC/core_owner/31-extend-gift-certs-5-years/logs
+END
+upgrade-20130312140154.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/db/!svn/ver/11639/trunk/oracle/migrations/EC/core_owner/31-extend-gift-certs-5-years/logs/upgrade-20130312140154.staging.log
+END
+upgrade-20130312140831.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/db/!svn/ver/11640/trunk/oracle/migrations/EC/core_owner/31-extend-gift-certs-5-years/logs/upgrade-20130312140831.staging.log
+END

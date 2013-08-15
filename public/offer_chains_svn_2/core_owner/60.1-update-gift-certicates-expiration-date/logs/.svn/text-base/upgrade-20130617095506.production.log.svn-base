@@ -1,0 +1,66 @@
+09:55:19 SQL> @/dbbackups/ECPR/migrations/core_owner/60.1-update-gift-certicates-expiration-date/upgrade.sql
+09:55:19 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK
+09:55:19 SQL> 
+09:55:19 SQL> -- 322 updates are expected in PROD
+09:55:19 SQL> UPDATE
+09:55:19   2  	  gift_certificate gc
+09:55:19   3  SET
+09:55:19   4  	  gc.expiration_date = add_months(purchase_date, 12 * 5),
+09:55:19   5  	  updated_by = 'jira_SAR-705',
+09:55:19   6  	  update_date = SYSDATE
+09:55:19   7  WHERE
+09:55:19   8  	  gift_certificate_status_id = 1
+09:55:19   9  AND purchase_date > '01-NOV-11'
+09:55:19  10  AND expiration_date < SYSDATE + 90
+09:55:19  11  AND expiration_date > purchase_date
+09:55:19  12  AND expiration_date < add_months(purchase_date, 12 * 5)
+09:55:19  13  AND finalized_invoice_id IS NULL
+09:55:19  14  AND gc.offer_chain_id IN(1001513,
+09:55:19  15  			       1001523,
+09:55:19  16  			       1001533,
+09:55:19  17  			       1001543,
+09:55:19  18  			       1001553,
+09:55:19  19  			       1001563,
+09:55:19  20  			       1005710,
+09:55:19  21  			       1005720,
+09:55:19  22  			       1005730,
+09:55:19  23  			       1005740,
+09:55:19  24  			       1005750,
+09:55:19  25  			       1005760,
+09:55:19  26  			       100001);
+
+398 rows updated.
+
+Elapsed: 00:00:08.35
+09:55:28 SQL> 
+09:55:28 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+09:55:28 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+09:55:28 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 60.1-update-gift-certicates-expiration-date
+        SVN Revision: 13052
+        Duration: 8 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-941

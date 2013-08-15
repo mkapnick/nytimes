@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/db/!svn/ver/13851/trunk/oracle/migrations/EC/nytdba/11-cr_role_core_owner_readonly
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/db/!svn/ver/13838/trunk/oracle/migrations/EC/nytdba/11-cr_role_core_owner_readonly/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/db/!svn/ver/13837/trunk/oracle/migrations/EC/nytdba/11-cr_role_core_owner_readonly/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/13802/trunk/oracle/migrations/EC/nytdba/11-cr_role_core_owner_readonly/rollback.sql
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/db/!svn/ver/12399/trunk/oracle/migrations/EC/core_hist_owner/7.0-release-1.14.0-amazon-kindle-fire-change-file-028/logs
+END
+upgrade-20130417154117.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn/db/!svn/ver/12349/trunk/oracle/migrations/EC/core_hist_owner/7.0-release-1.14.0-amazon-kindle-fire-change-file-028/logs/upgrade-20130417154117.staging.log
+END
+upgrade-20130423132631.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/svn/db/!svn/ver/12399/trunk/oracle/migrations/EC/core_hist_owner/7.0-release-1.14.0-amazon-kindle-fire-change-file-028/logs/upgrade-20130423132631.production.log
+END

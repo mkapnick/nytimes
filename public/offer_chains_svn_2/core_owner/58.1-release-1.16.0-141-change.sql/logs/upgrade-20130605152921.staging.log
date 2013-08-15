@@ -1,0 +1,187 @@
+15:29:34 SQL> @/dbbackups/ECST/migrations/core_owner/58.1-release-1.16.0-141-change.sql/upgrade.sql
+15:29:34 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+15:29:34 SQL> 
+15:29:34 SQL> variable is_current_version_fine NUMBER;
+15:29:34 SQL> variable change_version NUMBER;
+15:29:34 SQL> variable bad_current_version VARCHAR2(1024);
+15:29:34 SQL> 
+15:29:34 SQL> exec :change_version := 141;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:29:34 SQL> exec PROCS_SYSTEM_V20.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.06
+15:29:34 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:29:34 SQL> 
+15:29:34 SQL> BEGIN
+15:29:34   2  	IF (:is_current_version_fine != 0) THEN
+15:29:34   3  	  RAISE_APPLICATION_ERROR(-20001, :bad_current_version);
+15:29:34   4  	END IF;
+15:29:34   5  END;
+15:29:34   6  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:29:34 SQL> 
+15:29:34 SQL> DROP TABLE "CORE_OWNER"."AMAZON_APPSTORE_ITEM_TYPE" CASCADE CONSTRAINTS PURGE;
+
+Table dropped.
+
+Elapsed: 00:00:00.71
+15:29:35 SQL> DROP SEQUENCE "CORE_OWNER"."AAS_ID_SEQ";
+
+Sequence dropped.
+
+Elapsed: 00:00:00.04
+15:29:35 SQL> DROP TABLE "CORE_OWNER"."AMAZON_APPSTORE" CASCADE CONSTRAINTS PURGE;
+
+Table dropped.
+
+Elapsed: 00:00:00.28
+15:29:35 SQL> 
+15:29:35 SQL> CREATE TABLE AMAZON_APPSTORE_RECEIPT_TYPE (
+15:29:35   2  	ID	    VARCHAR2(30)   NOT NULL,
+15:29:35   3  	DESCRIPTION VARCHAR2(1000) NOT NULL,
+15:29:35   4  	CREATE_DATE DATE	   NOT NULL,
+15:29:35   5  	CREATED_BY  VARCHAR2(255)  NOT NULL,
+15:29:35   6  	CONSTRAINT AAS_RECEIPT_TYPE_ID_PK PRIMARY KEY (ID)
+15:29:35   7  	  USING INDEX TABLESPACE CORE_IDX
+15:29:35   8  ) TABLESPACE CORE;
+
+Table created.
+
+Elapsed: 00:00:00.26
+15:29:36 SQL> 
+15:29:36 SQL> INSERT INTO AMAZON_APPSTORE_RECEIPT_TYPE VALUES ('ENTITLED', 'Amazon App Store entitlement receipt type', SYSDATE, 'JIRA-SAR-269');
+
+1 row created.
+
+Elapsed: 00:00:00.05
+15:29:36 SQL> INSERT INTO AMAZON_APPSTORE_RECEIPT_TYPE VALUES ('CONSUMABLE', 'Amazon App Store consumable receipt type', SYSDATE, 'JIRA-SAR-269');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+15:29:36 SQL> INSERT INTO AMAZON_APPSTORE_RECEIPT_TYPE VALUES ('SUBSCRIPTION', 'Amazon App Store subscription receipt type', SYSDATE, 'JIRA-SAR-269');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+15:29:36 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:29:36 SQL> 
+15:29:36 SQL> CREATE TABLE AMAZON_APPSTORE_RECEIPT (
+15:29:36   2  	ID		NUMBER	       NOT NULL,
+15:29:36   3  	SUBSCRIPTION_ID NUMBER	       NOT NULL,
+15:29:36   4  	USER_ID 	VARCHAR2(4000) NOT NULL,
+15:29:36   5  	ITEM_TYPE	VARCHAR2(30)   NOT NULL,
+15:29:36   6  	START_DATE	DATE	       NOT NULL,
+15:29:36   7  	END_DATE	DATE,
+15:29:36   8  	SKU		VARCHAR2(4000) NOT NULL,
+15:29:36   9  	PURCHASE_TOKEN	VARCHAR2(4000) NOT NULL,
+15:29:36  10  	CREATE_DATE	DATE	       NOT NULL,
+15:29:36  11  	CREATED_BY	VARCHAR2(255)  NOT NULL,
+15:29:36  12  	UPDATE_DATE	DATE	       NOT NULL,
+15:29:36  13  	UPDATED_BY	VARCHAR2(255)  NOT NULL,
+15:29:36  14  	LAST_CHECK_DATE DATE,
+15:29:36  15  	CONSTRAINT AAS_RECEIPT_ID_PK PRIMARY KEY (ID)
+15:29:36  16  	  USING INDEX TABLESPACE CORE_IDX,
+15:29:36  17  	CONSTRAINT AAS_RECEIPT_SUB_ID_FK FOREIGN KEY (SUBSCRIPTION_ID) REFERENCES SUBSCRIPTION (ID),
+15:29:36  18  	CONSTRAINT AAS_RECEIPT_TYPE_FK FOREIGN KEY (ITEM_TYPE) REFERENCES AMAZON_APPSTORE_RECEIPT_TYPE (ID)
+15:29:36  19  ) TABLESPACE CORE;
+
+Table created.
+
+Elapsed: 00:00:00.06
+15:29:36 SQL> 
+15:29:36 SQL> CREATE INDEX AAS_RECEIPT_USER_ID_IDX ON AMAZON_APPSTORE_RECEIPT (USER_ID) TABLESPACE CORE_IDX;
+
+Index created.
+
+Elapsed: 00:00:00.02
+15:29:36 SQL> CREATE INDEX AAS_RECEIPT_SKU_IDX ON AMAZON_APPSTORE_RECEIPT (SKU) TABLESPACE CORE_IDX;
+
+Index created.
+
+Elapsed: 00:00:00.02
+15:29:36 SQL> CREATE UNIQUE INDEX AAS_RECEIPT_PURCHASE_TOKEN_IDX ON AMAZON_APPSTORE_RECEIPT (PURCHASE_TOKEN) TABLESPACE CORE_IDX;
+
+Index created.
+
+Elapsed: 00:00:00.02
+15:29:36 SQL> CREATE UNIQUE INDEX AAS_RECEIPT_SUB_ID_IDX ON AMAZON_APPSTORE_RECEIPT (SUBSCRIPTION_ID) TABLESPACE CORE_IDX;
+
+Index created.
+
+Elapsed: 00:00:00.03
+15:29:36 SQL> CREATE INDEX AASR_LAST_CHECK_DATE_IDX ON AMAZON_APPSTORE_RECEIPT (LAST_CHECK_DATE) TABLESPACE CORE_IDX;
+
+Index created.
+
+Elapsed: 00:00:00.02
+15:29:36 SQL> CREATE SEQUENCE AAS_RECEIPT_ID_SEQ;
+
+Sequence created.
+
+Elapsed: 00:00:00.03
+15:29:36 SQL> 
+15:29:36 SQL> COMMENT ON COLUMN AMAZON_APPSTORE_RECEIPT.ID IS 'Use sequence AAS_RECEIPT_ID_SEQ';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+15:29:36 SQL> COMMENT ON COLUMN AMAZON_APPSTORE_RECEIPT.END_DATE IS 'This column is allow to be null b/c that is how the amazon verification service indicates that the subscription is still active';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+15:29:36 SQL> COMMENT ON COLUMN AMAZON_APPSTORE_RECEIPT.LAST_CHECK_DATE IS 'This column is hold the last date that the receipt was check against the Amazon Receipt Verification Service';
+
+Comment created.
+
+Elapsed: 00:00:00.00
+15:29:36 SQL> 
+15:29:36 SQL> CREATE UNIQUE INDEX IDX_DUP_ACT_EMAIL_DOMAIN ON GROUP_ACCOUNT_EMAIL_DOMAIN ( CASE WHEN is_active = 1 THEN EMAIL_DOMAIN ELSE NULL END ) TABLESPACE CORE_IDX;
+CREATE UNIQUE INDEX IDX_DUP_ACT_EMAIL_DOMAIN ON GROUP_ACCOUNT_EMAIL_DOMAIN ( CASE WHEN is_active = 1 THEN EMAIL_DOMAIN ELSE NULL END ) TABLESPACE CORE_IDX
+                                                                                                                            *
+ERROR at line 1:
+ORA-01452: cannot CREATE UNIQUE INDEX; duplicate keys found 
+
+
+
+
+Subject: Nomad upgrade completed with errors: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation has errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 58.1-release-1.16.0-141-change.sql
+        SVN Revision: 12902
+        Duration: 2 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-898        
+        
+        Error Detail
+        ------------
+        
+        ERROR at line 1: ORA-01452: cannot CREATE UNIQUE INDEX; duplicate keys found

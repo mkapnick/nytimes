@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/db/!svn/ver/12820/trunk/oracle/migrations/EC/core_owner/55-update-99-cent-12-wk-oc-adoptability-end-date/logs
+END
+upgrade-20130523144340.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/db/!svn/ver/12794/trunk/oracle/migrations/EC/core_owner/55-update-99-cent-12-wk-oc-adoptability-end-date/logs/upgrade-20130523144340.staging.log
+END
+upgrade-20130523145236.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/db/!svn/ver/12797/trunk/oracle/migrations/EC/core_owner/55-update-99-cent-12-wk-oc-adoptability-end-date/logs/upgrade-20130523145236.staging.log
+END
+upgrade-20130528160735.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/db/!svn/ver/12820/trunk/oracle/migrations/EC/core_owner/55-update-99-cent-12-wk-oc-adoptability-end-date/logs/upgrade-20130528160735.production.log
+END

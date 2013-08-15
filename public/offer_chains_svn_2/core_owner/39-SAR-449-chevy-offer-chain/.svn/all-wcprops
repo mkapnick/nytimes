@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/db/!svn/ver/12087/trunk/oracle/migrations/EC/core_owner/39-SAR-449-chevy-offer-chain
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/db/!svn/ver/12056/trunk/oracle/migrations/EC/core_owner/39-SAR-449-chevy-offer-chain/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/db/!svn/ver/12024/trunk/oracle/migrations/EC/core_owner/39-SAR-449-chevy-offer-chain/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/db/!svn/ver/12024/trunk/oracle/migrations/EC/core_owner/39-SAR-449-chevy-offer-chain/rollback.sql
+END

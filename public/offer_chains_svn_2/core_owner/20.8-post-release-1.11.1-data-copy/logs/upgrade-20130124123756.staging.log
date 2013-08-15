@@ -1,0 +1,12 @@
+12:38:08 SQL> @/dbbackups/ECST2/migrations/core_owner/20.8-post-release-1.11.1-data-copy/upgrade.sql
+12:38:08 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+12:38:08 SQL> 
+12:38:08 SQL> truncate table core_owner.NOTIFICATION;
+truncate table core_owner.NOTIFICATION
+                          *
+ERROR at line 1:
+ORA-02266: unique/primary keys in table referenced by enabled foreign keys 
+
+
+
+

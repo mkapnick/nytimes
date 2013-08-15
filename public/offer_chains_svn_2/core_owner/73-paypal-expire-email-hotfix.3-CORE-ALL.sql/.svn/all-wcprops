@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/db/!svn/ver/13392/trunk/oracle/migrations/EC/core_owner/73-paypal-expire-email-hotfix.3-CORE-ALL.sql
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/db/!svn/ver/13375/trunk/oracle/migrations/EC/core_owner/73-paypal-expire-email-hotfix.3-CORE-ALL.sql/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/db/!svn/ver/13366/trunk/oracle/migrations/EC/core_owner/73-paypal-expire-email-hotfix.3-CORE-ALL.sql/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/db/!svn/ver/13366/trunk/oracle/migrations/EC/core_owner/73-paypal-expire-email-hotfix.3-CORE-ALL.sql/rollback.sql
+END

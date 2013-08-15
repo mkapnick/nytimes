@@ -1,0 +1,29 @@
+10:52:27 SQL> @/dbbackups/ECST2/migrations/nytdba/ec_package_grant2coresupport/upgrade.sql
+10:52:27 SQL> Grant select on sys.dba_source to coresupport;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.01
+10:52:27 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+10:52:27 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST2@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        SID: ECST2
+        Schema: nytdba
+        Migration: ec_package_grant2coresupport
+        SVN Revision: 10677
+        Duration: 0 sec.
+        Service Request: https://jira.em.nytimes.com/browse/ORA-332

@@ -1,0 +1,92 @@
+13:35:48 SQL> @/dbbackups/ECPR/migrations/core_owner/51.1-release-1.15.0-140-change.sql/upgrade.sql
+13:35:48 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+13:35:48 SQL> 
+13:35:48 SQL> variable is_current_version_fine NUMBER;
+13:35:48 SQL> variable change_version NUMBER;
+13:35:48 SQL> variable bad_current_version VARCHAR2(1024);
+13:35:48 SQL> 
+13:35:48 SQL> exec :change_version := 140;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+13:35:48 SQL> exec PROCS_SYSTEM_V16.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.09
+13:35:48 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+13:35:48 SQL> 
+13:35:48 SQL> INSERT INTO NOTIFICATION_TYPE (ID, VALUE, TEMPLATE_URL)
+13:35:48   2  VALUES (NOTTID_SEQ.NEXTVAL, 'sartre-paypal-expiring-soon', 'N/A');
+
+1 row created.
+
+Elapsed: 00:00:00.04
+13:35:48 SQL> 
+13:35:48 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:35:48 SQL> 
+13:35:48 SQL> update offer_chain set GROUP_ACCOUNT_TYPE_ID = 'FL', UPDATE_DATE = sysdate, UPDATED_BY = 'SAR-439' where id in
+13:35:48   2  (1000002,
+13:35:48   3  1000281,
+13:35:48   4  1000221,
+13:35:48   5  1000231,
+13:35:48   6  1000241,
+13:35:48   7  1000251,
+13:35:48   8  1000481,
+13:35:48   9  1001531,
+13:35:48  10  1001561,
+13:35:48  11  1005731,
+13:35:48  12  1005761,
+13:35:48  13  5801360121,
+13:35:48  14  1036781);
+
+13 rows updated.
+
+Elapsed: 00:00:00.11
+13:35:49 SQL> 
+13:35:49 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:35:49 SQL> 
+13:35:49 SQL> EXEC PROCS_SYSTEM_V16.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+13:35:49 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:35:49 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECPR@rac01.prd.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.prd.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECPR
+        Schema: core_owner
+        Migration: 51.1-release-1.15.0-140-change.sql
+        SVN Revision: 12649
+        Duration: 0 sec.
+        DBA: sbao
+        

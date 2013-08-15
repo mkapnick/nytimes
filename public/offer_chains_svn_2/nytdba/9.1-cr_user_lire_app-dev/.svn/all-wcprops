@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/db/!svn/ver/13850/trunk/oracle/migrations/EC/nytdba/9.1-cr_user_lire_app-dev
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/db/!svn/ver/13799/trunk/oracle/migrations/EC/nytdba/9.1-cr_user_lire_app-dev/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/db/!svn/ver/13746/trunk/oracle/migrations/EC/nytdba/9.1-cr_user_lire_app-dev/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/db/!svn/ver/13746/trunk/oracle/migrations/EC/nytdba/9.1-cr_user_lire_app-dev/rollback.sql
+END

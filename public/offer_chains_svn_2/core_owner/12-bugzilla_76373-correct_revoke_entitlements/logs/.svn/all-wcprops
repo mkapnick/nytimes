@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/db/!svn/ver/9649/trunk/oracle/migrations/EC/core_owner/12-bugzilla_76373-correct_revoke_entitlements/logs
+END
+upgrade-20121127125332.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/db/!svn/ver/9649/trunk/oracle/migrations/EC/core_owner/12-bugzilla_76373-correct_revoke_entitlements/logs/upgrade-20121127125332.production.log
+END
+upgrade-20121126162214.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/db/!svn/ver/9640/trunk/oracle/migrations/EC/core_owner/12-bugzilla_76373-correct_revoke_entitlements/logs/upgrade-20121126162214.staging.log
+END
