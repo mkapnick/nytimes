@@ -17,15 +17,6 @@
     return true; // allow regular form submission
   });
 
-  $("#jiraButton").click(function() 
-  {
-    $("#entirePageDiv").fadeTo(500, 0.7) 
-    $('#loading_image').css('zIndex', 9999); 
-    $('#loading_image').show(); // show animation
-    
-    return true; // allow regular form submission
-  });
-
    $("input[type=file]").change(function()
    {
     $("#chooseFileButton").removeAttr("disabled");
@@ -41,9 +32,16 @@
 
    $("#jiraButton").click(function(event)
    {
-      if (($("#usernameTag").val()) == '' || ($("#passwordTag").val()) == '' ) {
-          alert("Username and Password must be set before creating tickets");
+      if (($("#usernameTag").val()) == '' || ($("#passwordTag").val()) == '' || ($("#PMOMTag").val()) == ''   ) {
+          alert("Username, Password, and PMOM ticket key must be set before creating tickets");
           event.preventDefault();
+      }
+      else {
+         $("#entirePageDiv").fadeTo(500, 0.7) 
+         $('#loading_image').css('zIndex', 9999); 
+         $('#loading_image').show(); // show animation
+    
+          return true; // allow regular form submission
       }
    });
  });

@@ -54,13 +54,8 @@ class UploadController < ApplicationController
          @alert1_check = true
          @alert2 = true
          @svnDirectoryNotOk = false
-
          execute_python	(execute_file)
-          
-    else
-         render :text => "No File"
     end 
-
     end
 
     /-------------------------------------------------------------
@@ -69,9 +64,7 @@ class UploadController < ApplicationController
     -
     --------------------------------------------------------------/
     def execute_python(file)
-        plato = Rails.root.join('public', 'scripts', 'plato_offers.sh')
-
-        begin 
+        plato = Rails.root.join('public', 'scripts', 'plato_offers.sh') 
             if system("bash #{Rails.root}/public/scripts/plato_offers.sh #{file.path}")
                 @alert1 = true
                 @alert1_check = true
@@ -79,10 +72,11 @@ class UploadController < ApplicationController
                 @alert2_check = true
                 @alert3 = true
                 @svnDirectoryNotOk = false
-                render "index.html.erb" 
-            end
-        rescue Exception 
-            render :text => "ERROR running plato_offers.sh"
+                render "index.html.erb" and return
+            
+           else
+            @alert_file_not_good = true
+            render "index.html.erb" and return
         end
     end
 
@@ -237,15 +231,7 @@ class UploadController < ApplicationController
         / generate PMOM Ticket /
 
         begin 
-             pmom_project = "PMOM"
-             pmom_project_name = "Pay Model Sartre"
-             pmom_issue_type = "Story"
-             pmom_summary = Nytfile.last.name 
-             pmom_description =""
-             pmom_ticket = `curl -s -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{pmom_project}\",\"name\": \"#{pmom_project_name}\"}, \"summary\": \"#{pmom_summary}\",\"description\": \"#{pmom_description}\",\"issuetype\": {\"name\": \"#{pmom_issue_type}\"}}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/`
-             pmom_ticket = JSON.parse(pmom_ticket)
-             pmom_key = pmom_ticket["key"]
-             system(""" curl -D- -u \"#{username}\":\"#{password}\" -X POST -H \"X-Atlassian-Token: nocheck\" -F \"file=@#{Rails.root}/public/files/#{Nytfile.last.name}\" https://jira.em.nytimes.com/rest/api/2/issue/\"#{pmom_key}\"/attachments""")
+            pmom_key = params[:PMOMTag]
 
             / generate staging and production tickets /
 
@@ -284,7 +270,17 @@ class UploadController < ApplicationController
             @alert5_check = true
             render "index.html.erb" and return 
         rescue
-            render :text => "Could not generate JIRA Tickets, make sure your username and password are correct" and return 
+            @alert1 = true
+            @alert1_check = true
+            @alert2 = true
+            @alert2_check = true
+            @alert3 = true
+            @alert3_check = true
+            @alert4 = true
+            @alert4_check = true
+            @alert5 = true
+            @jira_ticket_failed = true 
+            render "index.html.erb" and return
         end
     end
 

@@ -1,0 +1,9 @@
+pmom_project = "PMOM"
+             pmom_project_name = "Pay Model Sartre"
+             pmom_issue_type = "Story"
+             pmom_summary = Nytfile.last.name 
+             pmom_description =""
+             pmom_ticket = `curl -s -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{pmom_project}\",\"name\": \"#{pmom_project_name}\"}, \"summary\": \"#{pmom_summary}\",\"description\": \"#{pmom_description}\",\"issuetype\": {\"name\": \"#{pmom_issue_type}\"}}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/`
+             pmom_ticket = JSON.parse(pmom_ticket)
+             pmom_key = pmom_ticket["key"]
+             system(""" curl -D- -u \"#{username}\":\"#{password}\" -X POST -H \"X-Atlassian-Token: nocheck\" -F \"file=@#{Rails.root}/public/files/#{Nytfile.last.name}\" https://jira.em.nytimes.com/rest/api/2/issue/\"#{pmom_key}\"/attachments""")

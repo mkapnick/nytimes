@@ -248,9 +248,9 @@
 
    }
    #jiraButton{
-      position: absolute;
+      position: relative;
       left: 400px;
-      top:290px;
+      top:-290px;
    }
 
    #recentRepoDirectoriesText {
@@ -347,6 +347,15 @@
   position: absolute;
   margin-left: 315px;
   margin-top: -40px;
+}
+#PMOM{
+  left: 400px;
+  top: -300px;
+  position:relative;
+
+}
+#PMOMspan{
+  display: block;
 }
 
 #hoverUpload {

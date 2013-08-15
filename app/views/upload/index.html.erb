@@ -31,7 +31,9 @@
 
   </div>
 
-  <% if @alert2 && @alert2_check %>
+  <% if @alert_file_not_good %>
+    <script>alert("Something went wrong while parsing the excel file. Check the extension")</script>
+  <% elsif @alert2 && @alert2_check %>
       <div> <a href = <%= '/offers.auto.yaml'%> id="yaml"> offers.auto.yaml</a>  </div>
       <div>  <a href = <%= '/offers.auto.sql'%> id="sql"> offers.auto.sql</a>  </div>
   <% end %>
@@ -44,7 +46,7 @@
     <div>
       <span id="svnHintText"> <b><i> Create a new directory name below <br></i></b></span>
       <%= form_tag({action: :update_svn_repo}, :id => 'updateRepo') do %>
-        <%= text_field_tag 'textBox2', nil, :value => "#{Nytfile.last.name}" %>
+        <%= text_field_tag 'textBox2', nil, :placeholder=> "New directory name here " %>
         <input type="submit" value="Update repo" id="updateRepoButton" />
         <div id="checkBoxes"> 
             <%= check_box_tag 'ECST', 'yes',true %> <span> Update ECST </span><br>
@@ -74,9 +76,9 @@
   
   <% if @alert5 %>
     <span class = "textStep5"> Generate JIRA Tickets </span>
-    <p><%= image_tag("question.jpeg", :id=> "q3", :size => "20x20") %><span id="hoverUpload"> Once you click "Generate JIRA Tickets", a few things occur in the background. A PMOM ticket is created with your attached excel spreadsheet. This PMOM ticket will relate to 2 ORA tickets. One ORA ticket is for the DBA's to deploy to ECST, and the other ticket is for the DBA's to deploy to ECPR. All relationships are set between tickets. The magic of automation !  </span></p>
+    <p><%= image_tag("question.jpeg", :id=> "q3", :size => "20x20") %><span id="hoverUpload"> Once you click "Generate JIRA Tickets", a few things occur in the background. Two ORA tickets are created - one for the DBA's to deploy to ECST, and the other ticket for the DBA's to deploy to ECPR. All relationships are set between tickets. The magic of automation!  </span></p>
     <div id = "jira">
-       <span id="jiraHintText"> <b><i> Generating a JIRA  ticket will create 3 tickets, <br> ONE PMOM ticket and TWO ORA tickets </i></b></span>
+       <span id="jiraHintText"> <b><i> Generating a JIRA ticket will create two ORA tickets <br> in the background </i></b></span>
       <%= form_tag({action: :generate_jira_ticket}) do %>
         <br>
         <div id ="enitreJIRAdiv">
@@ -98,6 +100,11 @@
             <div id="jira6"><span id="jira6span">Database Service Type </span><%= select_tag(:serviceType, options_for_select([['Deploy a Migration', 1]], 1)) %>
             </div>
 
+
+            <div id="PMOM">
+              <span id="PMOMspan"> PMOM Ticket (i.e., PMOM-55) </span><%= text_field_tag 'PMOMTag',nil, :placeholder => "PMOM-55" %>
+            </div>
+
             <div id= "username">
               <span id="usernameSpan"> Username * </span> <%= text_field_tag 'usernameTag' %>
             </div>
@@ -111,7 +118,11 @@
             <% if @alert5 && @alert5_check %>
                  <div id="success5"> <%= image_tag("check2.jpeg", :alt => "success4", :size => "20x20") %> </div>
                  <span id="jiraCheckEmailText"> <i>Check Email for generated tickets</i></span>
+
+            <% elsif  @jira_ticket_failed %>
+            <script>alert("Could not generate JIRA Tickets, make sure username, password, and PMOM ticket are correct")</script>
             <% end %>
+
         </div>
       <% end %>
     </div>
