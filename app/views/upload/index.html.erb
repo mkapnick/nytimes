@@ -7,25 +7,25 @@
 
 <div id="entirePageDiv">
 
-<div id="intro"><span> The Offer Chain Process </span></div>
+<div id="theOfferChainProcessTextDiv"><span> The Offer Chain Process </span></div>
 
 <!--*********Upload Excel File******************************************************************************************************************************************************** -->
   
-  <span class = "textStep1"> Upload Excel File  </span>
-  <p><%= image_tag("question.jpeg", :id=> "q1", :size => "20x20") %> <span id="hoverUpload"> Open an excel file and click upload to get started, you will find other steps appearing as you go along </span></p>
-  <div id= "excelDiv">
+  <span class = "uploadExcelFileTextSpan"> Upload Excel File  </span>
+  <p><%= image_tag("nytLogoImage.jpeg", :id=> "nytImage1", :size => "20x20") %> <span id="hoverNytImageSpan"> Open an excel file and click upload to get started, you will find other steps appearing as you go along </span></p>
+  <div id= "uploadExcelFileDiv">
 
     <%= form_tag({action: :upload}, multipart: true, :id => 'upload') do %> 
-      <input type="text" class = "textBox" id="textBox" size = "50" value="CLICK HERE" readonly  />
+      <input type="text" class = "uploadExcelFileTextBox" id="uploadExcelFileTextBox" size = "50" value="CLICK HERE" readonly  />
       <%= file_field_tag 'file', accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' %>  
-      <input type="submit" value="Upload" id="chooseFileButton", disabled="true" /> 
+      <input type="submit" value="Upload" id="uploadExcelFileButton", disabled="true" /> 
       
-      <%= image_tag("ajax-loader.gif", :id => "loading_image", :alt => "loading_image") %>
+      <%= image_tag("ajax-loader.gif", :id => "loading_image_on_wait_gif", :alt => "loading_image_on_wait_gif") %>
 
       <% end %>
 
-    <% if @alert1 && @alert1_check %>
-      <div id="success1"> <%= image_tag("check2.jpeg", :alt => "success1", :size => "20x20") %> </div>
+    <% if @file_upload %>
+      <div id="success1"> <%= image_tag("greenCheckMarkOnSuccess.jpeg", :alt => "success1", :size => "20x20") %> </div>
       <div id="excel"> <b>File uploaded: </b> <%= Nytfile.order('created_at DESC').first.name %> </div>
     <% end %>
 
@@ -33,24 +33,24 @@
 
   <% if @alert_file_not_good %>
     <script>alert("Something went wrong while parsing the excel file. Check the extension")</script>
-  <% elsif @alert2 && @alert2_check %>
-      <div> <a href = <%= '/offers.auto.yaml'%> id="yaml"> offers.auto.yaml</a>  </div>
-      <div>  <a href = <%= '/offers.auto.sql'%> id="sql"> offers.auto.sql</a>  </div>
+  <% elsif @file_upload && @plato_offers_ran  %>
+      <div> <a href = <%= '/offers.auto.yaml'%> id="yamlFileGeneratedHref"> offers.auto.yaml</a>  </div>
+      <div>  <a href = <%= '/offers.auto.sql'%> id="sqlFileGeneratedHref"> offers.auto.sql</a>  </div>
   <% end %>
 
 <!--**********Upload svn repo********************************************************************************************************************************************************* -->
  
-  <% if @alert3 %>
-    <span class = "textStep3"> Upload to repository </span>
-    <p><%= image_tag("question.jpeg", :id=> "q2", :size => "20x20") %><span id="hoverUpload"> This step deals with the subversion repository. Once you click update repo, a new directory will be created that contains 2 files, rollback.sql and upgrade.sql. Upgrade.sql will contain the necessary sql code to update our databases, namely ECST and ECST2. Upgrade.sql comes from the offers.auto.sql file you created in the previous step. </span></p> 
+  <% if @plato_offers_ran && @show_svn_step%>
+    <span class = "uploadToRepositoryTextSpan"> Upload to repository </span>
+    <p><%= image_tag("nytLogoImage.jpeg", :id=> "nytImage2", :size => "20x20") %><span id="hoverNytImageSpan"> This step deals with the subversion repository. Once you click update repo, a new directory will be created that contains 2 files, rollback.sql and upgrade.sql. Upgrade.sql will contain the necessary sql code to update our databases, namely ECST and ECST2. Upgrade.sql comes from the offers.auto.sql file you created in the previous step. </span></p> 
     <div>
-      <span id="svnHintText"> <b><i> Create a new directory name below <br></i></b></span>
+      <span id="svnCreateNewDirectoryBoldTextSpan"> <b><i> Create a new directory name below <br></i></b></span>
       <%= form_tag({action: :update_svn_repo}, :id => 'updateRepo') do %>
-        <%= text_field_tag 'textBox2', nil, :placeholder=> "New directory name here " %>
+        <%= text_field_tag 'updateSvnRepoAndDBTextField', nil, :placeholder=> "New directory name here " %>
         <input type="submit" value="Update repo" id="updateRepoButton" />
         <div id="checkBoxes"> 
-            <%= check_box_tag 'ECST', 'yes',true %> <span> Update ECST </span><br>
-            <%= check_box_tag 'ECST2', 'yes',true %> <span> Update ECST2 </span>
+            <%= check_box_tag 'ECSTcheckBox', 'yes',true %> <span> Update ECST </span><br>
+            <%= check_box_tag 'ECST2checkBox', 'yes',true %> <span> Update ECST2 </span>
         </div>
         <div id = "recentRepoHatchDiv">
             <span id="recentRepoDirectoriesText" >Recent Offer Chain Loads</span>
@@ -60,36 +60,35 @@
     </div>
   <% end %>
 
-    <% if @alert3 && @alert3_check %>
-      <% elsif @svnDirectoryNotOk %>
+    <% if @svnDirectoryNotOk %>
       <script> alert("This directory already exists, please rename the directory");</script>
     <% end %>
 
-    <% if @alert4_ecst_check%>
-    <div id="ecstCheck1"> <%= image_tag("check2.jpeg", :alt => "success3", :size => "20x20") %> </div>
+    <% if @db_inject_ecst%>
+    <div id="ecstCheck1"> <%= image_tag("greenCheckMarkOnSuccess.jpeg", :alt => "success3", :size => "20x20") %> </div>
     <% end %>
-    <% if @alert4_ecst2_check %>
-    <div id="ecstCheck2"> <%= image_tag("check2.jpeg", :alt => "success3", :size => "20x20") %> </div>
+    <% if @db_inject_ecst2%>
+    <div id="ecstCheck2"> <%= image_tag("greenCheckMarkOnSuccess.jpeg", :alt => "success3", :size => "20x20") %> </div>
     <% end %>
 
 <!--*********Jira Ticket************************************************************************************************************************************************************** -->
   
-  <% if @alert5 %>
-    <span class = "textStep5"> Generate JIRA Tickets </span>
-    <p><%= image_tag("question.jpeg", :id=> "q3", :size => "20x20") %><span id="hoverUpload"> Once you click "Generate JIRA Tickets", a few things occur in the background. Two ORA tickets are created - one for the DBA's to deploy to ECST, and the other ticket for the DBA's to deploy to ECPR. All relationships are set between tickets. The magic of automation!  </span></p>
-    <div id = "jira">
-       <span id="jiraHintText"> <b><i> Generating a JIRA ticket will create two ORA tickets <br> in the background </i></b></span>
+  <% if @show_jira_tickets_step %>
+    <span class = "generateJiraTicketsTextSpan"> Generate JIRA Tickets </span>
+    <p><%= image_tag("nytLogoImage.jpeg", :id=> "nytImage3", :size => "20x20") %><span id="hoverNytImageSpan"> Once you click "Generate JIRA Tickets", a few things occur in the background. Two ORA tickets are created - one for the DBA's to deploy to ECST, and the other ticket for the DBA's to deploy to ECPR. All relationships are set between tickets. The magic of automation!  </span></p>
+    <div id = "jiraDiv">
+       <span id="jiraBoldTextSpan"> <b><i> Generating a JIRA ticket will create two ORA tickets <br> in the background </i></b></span>
       <%= form_tag({action: :generate_jira_ticket}) do %>
         <br>
         <div id ="enitreJIRAdiv">
 
-            <span id="jira1">Project *</span> <%= select_tag(:project, options_for_select([['Databases: Oracle', 1]], 1)) %>
+            <span id="jira1">Project *</span> <%= select_tag(:jira_project, options_for_select([['Databases: Oracle', 1]], 1)) %>
             <br>
 
-            <span id="jira2">Issue Type * </span> <%= select_tag(:issue_type, options_for_select([['Service Request', 1]], 1)) %>
+            <span id="jira2">Issue Type * </span> <%= select_tag(:jira_issue_type, options_for_select([['Service Request', 1]], 1)) %>
             <br>
 
-            <span id="jira3">Priority</span> <%= select_tag(:priority, options_for_select([['Minor', 1],['Blocker', 2], ['Critical', 3], ['Major', 4], ['Trivial', 5]], 1)) %>
+            <span id="jira3">Priority</span> <%= select_tag(:jira_priority, options_for_select([['Minor', 1],['Blocker', 2], ['Critical', 3], ['Major', 4], ['Trivial', 5]], 1)) %>
             <br>
 
             <span id="jira4">Summary *</span> <%= text_area_tag 'summary', OfferChain.order('created_at DESC').first.tickets.first.summary, :size => "30x5", :readonly => true %>
@@ -97,7 +96,7 @@
 
              <span id="jira5">Description * </span> <%= text_area_tag 'description', OfferChain.order('created_at DESC').first.tickets.first.description, :size => "30x5", :readonly => true %>
 
-            <div id="jira6"><span id="jira6span">Database Service Type </span><%= select_tag(:serviceType, options_for_select([['Deploy a Migration', 1]], 1)) %>
+            <div id="jira6"><span id="jira6span">Database Service Type </span><%= select_tag(:jira_serviceType, options_for_select([['Deploy a Migration', 1]], 1)) %>
             </div>
 
 
@@ -115,8 +114,8 @@
 
             <input type="submit" value="Generate JIRA Tickets" id="jiraButton" />
             
-            <% if @alert5 && @alert5_check %>
-                 <div id="success5"> <%= image_tag("check2.jpeg", :alt => "success4", :size => "20x20") %> </div>
+            <% if @jira_tickets_created%>
+                 <div id="success5"> <%= image_tag("greenCheckMarkOnSuccess.jpeg", :alt => "success4", :size => "20x20") %> </div>
                  <span id="jiraCheckEmailText"> <i>Check Email for generated tickets</i></span>
 
             <% elsif  @jira_ticket_failed %>

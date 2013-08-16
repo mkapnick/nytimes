@@ -8,25 +8,25 @@ class UploadController < ApplicationController
     -
     --------------------------------------------------------------/
 
-	def index
-    	 respond_to do |format|
-      		format.html 
-    	end
- 	end
+    def index
+         respond_to do |format|
+            format.html 
+        end
+    end
 
     /-------------------------------------------------------------
     - Uploads excel file onto the server, also creates the 
-    - necessary relationships in our database. Creates a new 
+    - necessary relationships in our rails database. Creates a new 
     - offer chain as well as new tickets
     -
     -
     --------------------------------------------------------------/
     def upload
- 	uploaded_io = params[:file] 
+    uploaded_io = params[:file] 
       if uploaded_io != nil      
           offer_chain = OfferChain.new :approved => "false",
                                        :date => Time.now.strftime("%m/%d/%Y %H:%M")
-    	  offer_chain.save
+          offer_chain.save
 
           stagingTicket = offer_chain.tickets.create :description => ""
           stagingTicket.summary = ""
@@ -47,14 +47,10 @@ class UploadController < ApplicationController
               offer_chain.tickets << productionTicket
               execute_file = file
               file.close
-	        end
+            end
 
          offer_chain.save
-         @alert1 = true
-         @alert1_check = true
-         @alert2 = true
-         @svnDirectoryNotOk = false
-         execute_python	(execute_file)
+         execute_python (execute_file)
     end 
     end
 
@@ -66,11 +62,9 @@ class UploadController < ApplicationController
     def execute_python(file)
         plato = Rails.root.join('public', 'scripts', 'plato_offers.sh') 
             if logAndSystem("bash #{Rails.root}/public/scripts/plato_offers.sh #{file.path} #{Rails.root}/public/scripts")
-                @alert1 = true
-                @alert1_check = true
-                @alert2 = true
-                @alert2_check = true
-                @alert3 = true
+                @file_upload = true
+                @plato_offers_ran = true
+                @show_svn_step = true
                 @svnDirectoryNotOk = false
                 render "index.html.erb" and return
             
@@ -80,7 +74,7 @@ class UploadController < ApplicationController
         end
     end
 
-     /-------------------------------------------------------------
+    /-------------------------------------------------------------
     - Updates the subversion repository. Creates a new directory
     - and also creates upgrade.sql and rollback.sql files 
     -
@@ -88,18 +82,10 @@ class UploadController < ApplicationController
     --------------------------------------------------------------/
 
     def update_svn_repo 
-        directory = params[:textBox2]
+        directory = params[:updateSvnRepoAndDBTextField]
 
         if logAndSystem ("cd #{Rails.root}/public/offer_chains_svn_2/core_owner && mkdir #{directory} && cd #{directory} && touch rollback.sql && touch upgrade.sql")
             if logAndSystem("cd #{Rails.root}/public/scripts && cat ./offers.auto.sql > #{Rails.root}/public/offer_chains_svn_2/core_owner/#{directory}/upgrade.sql ")
-                @alert1 = true
-                @alert1_check = true
-                @alert2 = true
-                @alert2_check = true
-                @alert3 = true
-                @alert3_check = true
-                @alert4 = true
-                @svnDirectoryNotOk = false
 
                 ok = true
                 OfferChain.order('created_at DESC').first.tickets.each do |x|
@@ -119,11 +105,11 @@ class UploadController < ApplicationController
                 ecst = false
                 ecst2 = false
 
-                if params[:ECST] 
+                if params[:ECSTcheckBox] 
                     ecst = true
                 end
 
-                if params[:ECST2]
+                if params[:ECST2checkBox]
                     ecst2 = true
                 end
 
@@ -132,14 +118,13 @@ class UploadController < ApplicationController
                 render :text => "Could not copy contents into upgrade.sql"
             end
         else
-            @alert1 = true
-            @alert1_check = true
-            @alert2 = true
-            @alert2_check = true
-            @alert3 = true
+            @file_upload = true
+            @plato_offers_ran = true
+            @show_svn_step = true
             @svnDirectoryNotOk = true and render "index.html.erb"
         end
     end
+
 
     
     /-------------------------------------------------------------
@@ -184,21 +169,18 @@ class UploadController < ApplicationController
         begin 
             if(ecst)
                 logAndSystem("echo exit | sqlplus core_owner/ecdvo1@ECST @offers.auto.sql") 
-                @alert4_ecst_check = true
+                @db_inject_ecst = true
             end
             if(ecst2)
                 logAndSystem("echo exit | sqlplus core_owner/ecdvo1@ECST2 @offers.auto.sql")
-                @alert4_ecst2_check = true 
+                @db_inject_ecst2 = true
             end
-                @alert1 = true
-                @alert1_check = true
-                @alert2 = true
-                @alert2_check = true
-                @alert3 = true
-                @alert3_check = true
-                @alert4 = true
-                @alert4_check = true
-                @alert5 = true
+                @file_upload = true
+                @plato_offers_ran = true
+                @show_svn_step = true
+                @svnDirectoryNotOk = false
+                @db_inject = true
+                @show_jira_tickets_step = true
             render "index.html.erb" 
         rescue Exception
             render :text => "Build Failed"
@@ -213,26 +195,25 @@ class UploadController < ApplicationController
     --------------------------------------------------------------/
     def generate_jira_ticket 
 
-	Rails.logger.info("Very beginning")
+    Rails.logger.info("Very beginning")
 
         /getting parameters from upload.html.erb/
 
-        project = projectHelper(params[:project])
-        project_name = projectHelper2(params[:project])
-        issue_type = issueTypeHelper(params[:issue_type])
+        project = projectHelper(params[:jira_project])
+        project_name = projectHelper2(params[:jira_project])
+        issue_type = issueTypeHelper(params[:jira_issue_type])
         summary = params[:summary]
         description = params[:description]
         username = params[:usernameTag]
         password = params[:passwordTag]
-        db_service_type = serviceTypeHelper (params[:serviceType])
-        priority = priorityHelper (params[:priority])
+        db_service_type = serviceTypeHelper (params[:jira_serviceType])
+        priority = priorityHelper (params[:jira_priority])
         staging_ticket_json = ""
         production_ticket_json = ""
         pmom_key =""
-    
-        / generate PMOM Ticket /
 
         begin 
+            / pmom ticket /
             pmom_key = params[:PMOMTag]
 
             / generate staging and production tickets /
@@ -244,14 +225,14 @@ class UploadController < ApplicationController
                     index =  x.description.index("https")
                     x.description = "Please deploy " + URI.escape(x.description[index, x.description.length])
                     x.description.concat(" to ECST")
-		
+        
                     staging_curl = "curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"fields\": { \"project\": { \"key\": \"#{project}\",\"name\": \"#{project_name}\"}, \"summary\": \"#{x.summary}\",\"description\": \"#{x.description}\",\"issuetype\": {\"name\": \"#{issue_type}\"}}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/"
-	            
-			Rails.logger.info("Staging curl: " + staging_curl)
-			staging_ticket_json = `#{staging_curl}`
+                
+            Rails.logger.info("Staging curl: " + staging_curl)
+            staging_ticket_json = `#{staging_curl}`
                     ok = false
 
-			Rails.logger.info("Staging ticket json: " + staging_ticket_json)
+            Rails.logger.info("Staging ticket json: " + staging_ticket_json)
                 else
                     x.summary.concat(" to ECPR")
                     index =  x.description.index("https")
@@ -266,29 +247,27 @@ class UploadController < ApplicationController
 
             create_links_between_stg_prod_and_pmom_tickets(staging_ticket_json, production_ticket_json,username,password,pmom_key)
 
-            @alert1 = true
-            @alert1_check = true
-            @alert2 = true
-            @alert2_check = true
-            @alert3 = true
-            @alert3_check = true
-            @alert4 = true
-            @alert4_check = true
-            @alert5 = true
-            @alert5_check = true
+            @file_upload = true
+            @plato_offers_ran = true
+            @show_svn_step = true
+            @svnDirectoryNotOk = false
+            @db_inject = true
+            @show_jira_tickets_step = true
+            @jira_tickets_created = true
+
             render "index.html.erb" and return 
+
         rescue Exception => e
-	    Rails.logger.error("Failed due to: " + e.message)
-            @alert1 = true
-            @alert1_check = true
-            @alert2 = true
-            @alert2_check = true
-            @alert3 = true
-            @alert3_check = true
-            @alert4 = true
-            @alert4_check = true
-            @alert5 = true
+
+            Rails.logger.error("Failed due to: " + e.message)
+            @file_upload = true
+            @plato_offers_ran = true
+            @show_svn_step = true
+            @svnDirectoryNotOk = false
+            @db_inject = true
+            @show_jira_tickets_step = true
             @jira_ticket_failed = true 
+            
             render "index.html.erb" and return
         end
     end
@@ -320,7 +299,7 @@ class UploadController < ApplicationController
 
         ok=true
 
-	Rails.logger.info("Before DB call")
+    Rails.logger.info("Before DB call")
 
         OfferChain.order('created_at DESC').first.tickets.each do |x|
             if ok
@@ -331,13 +310,11 @@ class UploadController < ApplicationController
             end
         end
 
-	Rails.logger.info("Before CURLs")
+    Rails.logger.info("Before CURLs")
 
         / staging / 
         logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_stg}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\", \"summary\":\" #{prd_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
-        
-
-	logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\",\"summary\":\"#{Nytfile.last.name}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
+        logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{pmom_key}\", \"title\":\"#{pmom_key}\",\"summary\":\"#{Nytfile.last.name}\"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{stg_key}/remotelink ")
         
         / production / 
         logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_prd}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\",\"summary\:\"#{stg_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{prd_key}/remotelink ")
@@ -346,13 +323,13 @@ class UploadController < ApplicationController
         / pmom /
         logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{stg_key}\", \"title\":\"#{stg_key}\",\"summary\":\"#{stg_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
         logAndSystem("curl -s -k -u \"#{username}\":\"#{password}\" -X POST --data \'{\"relationship\": \"#{relationship_both}\", \"object\": { \"url\":\"https://jira.em.nytimes.com/browse/#{prd_key}\", \"title\":\"#{prd_key}\",\"summary\":\"#{prd_summary} \"}}\' -H \"Content-Type: application/json\" https://jira.em.nytimes.com/rest/api/2/issue/#{pmom_key}/remotelink ")
-end
+    end
 
 
-	def logAndSystem(command)
-		Rails.logger.debug(command)
-		system(command)
-	end
+    def logAndSystem(command)
+        Rails.logger.debug(command)
+        system(command)
+    end
     /-------------------------------------------------------------
     -
     -
