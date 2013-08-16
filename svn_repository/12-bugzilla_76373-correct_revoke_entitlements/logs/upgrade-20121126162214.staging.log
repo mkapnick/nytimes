@@ -1,0 +1,52 @@
+16:22:15 SQL> @/dbbackups/ECST/migrations/core_owner/12-bugzilla_76373-correct_revoke_entitlements/upgrade.sql
+16:22:15 SQL> -- Bug 76373: Correct revoke_entitlements setting for comp offer chains
+16:22:15 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+16:22:15 SQL> 
+16:22:15 SQL> UPDATE offer_chain
+16:22:15   2  SET revoke_entitlements = 1,
+16:22:15   3  	  updated_by = 'bugzilla_76373',
+16:22:15   4  	  update_date = SYSDATE
+16:22:15   5  WHERE id IN (1000002,
+16:22:15   6  		   1000221,
+16:22:15   7  		   1000231,
+16:22:15   8  		   1000241,
+16:22:15   9  		   1000251,
+16:22:15  10  		   3990783944,
+16:22:15  11  		   1000281,
+16:22:15  12  		   826796,
+16:22:15  13  		   126084,
+16:22:15  14  		   256605,
+16:22:15  15  		   1000481);
+
+11 rows updated.
+
+Elapsed: 00:00:00.12
+16:22:15 SQL> 
+16:22:15 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:22:15 SQL> 
+16:22:15 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:22:15 SQL> spool off;
+
+
+Subject: Nomad upgrade success: ECST@rac01.stg.sea1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_oracledba@nytimes.com
+Cc: steven.nedlin@nytimes.com
+Nomad upgrade operation success. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.sea1.nytimes.com
+        SID: ECST
+        Schema: core_owner
+        Migration: 12-bugzilla_76373-correct_revoke_entitlements
+        SVN Revision: 9637
+        Duration: 0

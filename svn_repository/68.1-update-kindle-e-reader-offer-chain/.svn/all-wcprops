@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/13307/trunk/oracle/migrations/EC/core_owner/68.1-update-kindle-e-reader-offer-chain
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/db/!svn/ver/13280/trunk/oracle/migrations/EC/core_owner/68.1-update-kindle-e-reader-offer-chain/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/db/!svn/ver/13269/trunk/oracle/migrations/EC/core_owner/68.1-update-kindle-e-reader-offer-chain/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/db/!svn/ver/13220/trunk/oracle/migrations/EC/core_owner/68.1-update-kindle-e-reader-offer-chain/rollback.sql
+END

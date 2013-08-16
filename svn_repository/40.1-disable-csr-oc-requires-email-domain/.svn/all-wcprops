@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/db/!svn/ver/12192/trunk/oracle/migrations/EC/core_owner/40.1-disable-csr-oc-requires-email-domain
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/db/!svn/ver/12089/trunk/oracle/migrations/EC/core_owner/40.1-disable-csr-oc-requires-email-domain/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/db/!svn/ver/12088/trunk/oracle/migrations/EC/core_owner/40.1-disable-csr-oc-requires-email-domain/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/db/!svn/ver/12041/trunk/oracle/migrations/EC/core_owner/40.1-disable-csr-oc-requires-email-domain/rollback.sql
+END

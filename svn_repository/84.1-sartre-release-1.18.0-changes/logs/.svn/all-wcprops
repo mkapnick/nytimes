@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/14304/trunk/oracle/migrations/EC/core_owner/84.1-sartre-release-1.18.0-changes/logs
+END
+upgrade-20130816084103.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/db/!svn/ver/14304/trunk/oracle/migrations/EC/core_owner/84.1-sartre-release-1.18.0-changes/logs/upgrade-20130816084103.staging.log
+END
+upgrade-20130816091352.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/db/!svn/ver/14304/trunk/oracle/migrations/EC/core_owner/84.1-sartre-release-1.18.0-changes/logs/upgrade-20130816091352.staging.log
+END
+rollback-20130816091336.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/db/!svn/ver/14304/trunk/oracle/migrations/EC/core_owner/84.1-sartre-release-1.18.0-changes/logs/rollback-20130816091336.staging.log
+END

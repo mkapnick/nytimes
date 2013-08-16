@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/db/!svn/ver/14310/trunk/oracle/migrations/EC/core_owner/0-create_MVLOG_AR_BALANCE_APPLIES/logs
+END
+upgrade-20130814141625.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/db/!svn/ver/14208/trunk/oracle/migrations/EC/core_owner/0-create_MVLOG_AR_BALANCE_APPLIES/logs/upgrade-20130814141625.staging.log
+END
+upgrade-20130816133930.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/db/!svn/ver/14310/trunk/oracle/migrations/EC/core_owner/0-create_MVLOG_AR_BALANCE_APPLIES/logs/upgrade-20130816133930.staging.log
+END

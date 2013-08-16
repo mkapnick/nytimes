@@ -1,0 +1,290 @@
+16:59:55 SQL> @/dbbackups/ECST/migrations/core_owner/20.0-hotfix_fix-update_invoice_adjustment-proc/upgrade.sql
+16:59:55 SQL> CREATE OR REPLACE PACKAGE BODY "PROCS_ADJUSTMENTS_V16" AS
+16:59:55   2  
+16:59:55   3  PROCEDURE CREATE_INVOICE_ADJUSTMENT (
+16:59:55   4  	in_invoice_id		  IN NUMBER,
+16:59:55   5  	in_adjustment_reason	  IN VARCHAR2,
+16:59:55   6  	in_is_credit		  IN NUMBER,
+16:59:55   7  	in_charge_id		  IN NUMBER,
+16:59:55   8  	in_business_date	  IN DATE,
+16:59:55   9  	in_created_by		  IN VARCHAR2,
+16:59:55  10  	out_invoice_adjustment_id OUT NUMBER
+16:59:55  11  ) AS
+16:59:55  12  SPROC_NAME CONSTANT VARCHAR2(25) := 'CREATE_INVOICE_ADJUSTMENT';
+16:59:55  13  -- VARIABLES
+16:59:55  14  var_current_date	    DATE := SYSDATE;
+16:59:55  15  var_new_entity_id     NUMBER;
+16:59:55  16  var_inv_adj_reason_id NUMBER;
+16:59:55  17  -- EXCEPTIONS
+16:59:55  18  BAD_IN_IS_CREDIT_VALUE EXCEPTION;
+16:59:55  19  DAB_ADJUSTMENT_REASON  EXCEPTION;
+16:59:55  20  BEGIN
+16:59:55  21  
+16:59:55  22  	IF in_is_credit != GLOBAL_CONSTANTS_V16.TRUE AND in_is_credit != GLOBAL_CONSTANTS_V16.FALSE THEN
+16:59:55  23  	  RAISE BAD_IN_IS_CREDIT_VALUE;
+16:59:55  24  	END IF;
+16:59:55  25  
+16:59:55  26  	BEGIN
+16:59:55  27  	  SELECT
+16:59:55  28  	    ID into var_inv_adj_reason_id
+16:59:55  29  	  FROM
+16:59:55  30  	    INVOICE_ADJUSTMENT_REASON
+16:59:55  31  	  WHERE
+16:59:55  32  	    UPPER(VALUE) = UPPER(in_adjustment_reason);
+16:59:55  33  	  EXCEPTION
+16:59:55  34  	    WHEN NO_DATA_FOUND THEN
+16:59:55  35  	      RAISE DAB_ADJUSTMENT_REASON;
+16:59:55  36  	END;
+16:59:55  37  
+16:59:55  38  	SELECT
+16:59:55  39  	  INV_ADJ_ID_SEQ.nextVal into var_new_entity_id
+16:59:55  40  	FROM
+16:59:55  41  	  DUAL;
+16:59:55  42  
+16:59:55  43  	INSERT INTO INVOICE_ADJUSTMENT (
+16:59:55  44  	  ID,
+16:59:55  45  	  INVOICE_ID,
+16:59:55  46  	  INVOICE_ADJUSTMENT_REASON_ID,
+16:59:55  47  	  IS_CREDIT,
+16:59:55  48  	  CHARGE_ID,
+16:59:55  49  	  ADJUSTMENT_DATE,
+16:59:55  50  	  CREATE_DATE,
+16:59:55  51  	  CREATED_BY,
+16:59:55  52  	  UPDATE_DATE,
+16:59:55  53  	  UPDATED_BY
+16:59:55  54  	)
+16:59:55  55  	VALUES (
+16:59:55  56  	  var_new_entity_id,
+16:59:55  57  	  in_invoice_id,
+16:59:55  58  	  var_inv_adj_reason_id,
+16:59:55  59  	  in_is_credit,
+16:59:55  60  	  in_charge_id,
+16:59:55  61  	  in_business_date,
+16:59:55  62  	  var_current_date,
+16:59:55  63  	  in_created_by,
+16:59:55  64  	  var_current_date,
+16:59:55  65  	  in_created_by
+16:59:55  66  	);
+16:59:55  67  
+16:59:55  68  	out_invoice_adjustment_id := var_new_entity_id;
+16:59:55  69  
+16:59:55  70  EXCEPTION
+16:59:55  71  WHEN BAD_IN_IS_CREDIT_VALUE THEN
+16:59:55  72  	PROCS_COMMON_V16.THROW_EXCEPTION(APP_EXCEPTION_CODES_V16.INVALID_PARAMETER,
+16:59:55  73  	  SPROC_NAME, 'Bad in_is_credit value');
+16:59:55  74  WHEN DAB_ADJUSTMENT_REASON THEN
+16:59:55  75  	PROCS_COMMON_V16.THROW_EXCEPTION(APP_EXCEPTION_CODES_V16.INVALID_PARAMETER,
+16:59:55  76  	  SPROC_NAME, 'Bad adjustment reason');
+16:59:55  77  WHEN OTHERS THEN
+16:59:55  78  	PROCS_COMMON_V16.THROW_EXCEPTION(APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR,
+16:59:55  79  	  SPROC_NAME, 'Unknown error', SQLERRM);
+16:59:55  80  END CREATE_INVOICE_ADJUSTMENT;
+16:59:55  81  
+16:59:55  82  /******************************************************************************/
+16:59:55  83  
+16:59:55  84  PROCEDURE UPDATE_INVOICE_ADJUSTMENT (
+16:59:55  85  	  in_invoice_id 	    IN NUMBER,
+16:59:55  86  	  in_original_charge_id     IN NUMBER,
+16:59:55  87  	  in_charge_id		    IN NUMBER,
+16:59:55  88  	  in_updated_by 	    IN VARCHAR2
+16:59:55  89  ) AS
+16:59:55  90  SPROC_NAME CONSTANT VARCHAR2(32) := 'UPDATE_INVOICE_ADJUSTMENT';
+16:59:55  91  var_invoice_adjustment_id NUMBER;
+16:59:55  92  BEGIN
+16:59:55  93  	SELECT
+16:59:55  94  	  id into var_invoice_adjustment_id
+16:59:55  95  	FROM
+16:59:55  96  	  INVOICE_ADJUSTMENT
+16:59:55  97  	WHERE INVOICE_ID = in_invoice_id
+16:59:55  98  	      AND CHARGE_ID = in_original_charge_id;
+16:59:55  99  
+16:59:55 100  	--create history
+16:59:55 101  	PROCS_HISTORY_V16.CREATE_INVOICE_ADJ_HISTORY(
+16:59:55 102  	  in_invoice_adjustment_id    => var_invoice_adjustment_id,
+16:59:55 103  	  in_system_activity_reason_id => GLOBAL_ENUMS_V16.SAC_SYSTEM_APPLIED_RULE
+16:59:55 104  	);
+16:59:55 105  
+16:59:55 106  	UPDATE INVOICE_ADJUSTMENT
+16:59:55 107  	SET CHARGE_ID = in_charge_id, UPDATE_DATE=sysdate, UPDATED_BY=in_updated_by
+16:59:55 108  	WHERE ID = var_invoice_adjustment_id;
+16:59:55 109  
+16:59:55 110  EXCEPTION
+16:59:55 111  WHEN NO_DATA_FOUND THEN
+16:59:55 112  	    NULL;
+16:59:55 113  END UPDATE_INVOICE_ADJUSTMENT;
+16:59:55 114  
+16:59:55 115  /******************************************************************************/
+16:59:55 116  
+16:59:55 117  PROCEDURE CREATE_LINE_ITEM_ADJUSTMENT (
+16:59:55 118  	in_line_item_id 	    IN NUMBER,
+16:59:55 119  	in_invoice_adjustment_id    IN NUMBER,
+16:59:55 120  	in_amount		    IN NUMBER,
+16:59:55 121  	in_tax			    IN NUMBER,
+16:59:55 122  	in_discount		    IN NUMBER,
+16:59:55 123  	in_created_by		    IN VARCHAR2,
+16:59:55 124  	out_line_item_adjustment_id OUT NUMBER
+16:59:55 125  ) AS
+16:59:55 126  SPROC_NAME CONSTANT VARCHAR2(30) := 'CREATE_LINE_ITEM_ADJUSTMENT';
+16:59:55 127  -- VARIABLES
+16:59:55 128  var_current_date DATE := SYSDATE;
+16:59:55 129  var_new_entity_id NUMBER;
+16:59:55 130  BEGIN
+16:59:55 131  
+16:59:55 132  	SELECT
+16:59:55 133  	  LI_ADJ_ID_SEQ.nextVal into var_new_entity_id
+16:59:55 134  	FROM
+16:59:55 135  	  DUAL;
+16:59:55 136  
+16:59:55 137  	INSERT INTO LINE_ITEM_ADJUSTMENT (
+16:59:55 138  	  ID,
+16:59:55 139  	  LINE_ITEM_ID,
+16:59:55 140  	  INVOICE_ADJUSTMENT_ID,
+16:59:55 141  	  AMOUNT,
+16:59:55 142  	  TAX,
+16:59:55 143  	  DISCOUNT,
+16:59:55 144  	  CREATE_DATE,
+16:59:55 145  	  CREATED_BY
+16:59:55 146  	)
+16:59:55 147  	VALUES (
+16:59:55 148  	  var_new_entity_id,
+16:59:55 149  	  in_line_item_id,
+16:59:55 150  	  in_invoice_adjustment_id,
+16:59:55 151  	  in_amount,
+16:59:55 152  	  in_tax,
+16:59:55 153  	  in_discount,
+16:59:55 154  	  var_current_date,
+16:59:55 155  	  in_created_by
+16:59:55 156  	);
+16:59:55 157  
+16:59:55 158  	out_line_item_adjustment_id := var_new_entity_id;
+16:59:55 159  
+16:59:55 160  EXCEPTION
+16:59:55 161  WHEN OTHERS THEN
+16:59:55 162  	PROCS_COMMON_V16.THROW_EXCEPTION(APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR,
+16:59:55 163  	  SPROC_NAME, 'Unknown error', SQLERRM);
+16:59:55 164  END CREATE_LINE_ITEM_ADJUSTMENT;
+16:59:55 165  
+16:59:55 166  /******************************************************************************/
+16:59:55 167  
+16:59:55 168  PROCEDURE CREATE_TAX_ADJUSTMENT (
+16:59:55 169  	in_tax_id		   IN NUMBER,
+16:59:55 170  	in_line_item_adjustment_id IN NUMBER,
+16:59:55 171  	in_amount		   IN NUMBER,
+16:59:55 172  	in_created_by		   IN VARCHAR2,
+16:59:55 173  	out_tax_adjustment_id	   OUT NUMBER
+16:59:55 174  ) AS
+16:59:55 175  SPROC_NAME CONSTANT VARCHAR2(30) := 'CREATE_TAX_ADJUSTMENT';
+16:59:55 176  -- VARIABLES
+16:59:55 177  var_current_date DATE := SYSDATE;
+16:59:55 178  var_new_entity_id NUMBER;
+16:59:55 179  BEGIN
+16:59:55 180  
+16:59:55 181  	SELECT
+16:59:55 182  	  TAXADJ_ID_SEQ.nextVal into var_new_entity_id
+16:59:55 183  	FROM
+16:59:55 184  	  DUAL;
+16:59:55 185  
+16:59:55 186  	INSERT INTO TAX_ADJUSTMENT (
+16:59:55 187  	  ID,
+16:59:55 188  	  TAX_ID,
+16:59:55 189  	  LINE_ITEM_ADJUSTMENT_ID,
+16:59:55 190  	  AMOUNT,
+16:59:55 191  	  CREATE_DATE,
+16:59:55 192  	  CREATED_BY
+16:59:55 193  	)
+16:59:55 194  	VALUES (
+16:59:55 195  	  var_new_entity_id,
+16:59:55 196  	  in_tax_id,
+16:59:55 197  	  in_line_item_adjustment_id,
+16:59:55 198  	  in_amount,
+16:59:55 199  	  var_current_date,
+16:59:55 200  	  in_created_by
+16:59:55 201  	);
+16:59:55 202  
+16:59:55 203  	out_tax_adjustment_id := var_new_entity_id;
+16:59:55 204  
+16:59:55 205  EXCEPTION
+16:59:55 206  WHEN OTHERS THEN
+16:59:55 207  	PROCS_COMMON_V16.THROW_EXCEPTION(APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR,
+16:59:55 208  	  SPROC_NAME, 'Unknown error', SQLERRM);
+16:59:55 209  END CREATE_TAX_ADJUSTMENT;
+16:59:55 210  
+16:59:55 211  /******************************************************************************/
+16:59:55 212  
+16:59:55 213  PROCEDURE CREATE_DISCOUNT_LI_ADJUSTMENT (
+16:59:55 214  	in_discount_id		   NUMBER,
+16:59:55 215  	in_line_item_id 	   NUMBER,
+16:59:55 216  	in_line_item_adjustment_id IN NUMBER,
+16:59:55 217  	in_amount		   IN NUMBER,
+16:59:55 218  	in_created_by		   IN VARCHAR2,
+16:59:55 219  	out_discount_li_id	   OUT NUMBER
+16:59:55 220  ) AS
+16:59:55 221  SPROC_NAME CONSTANT VARCHAR2(32) := 'CREATE_DISCOUNT_LI_ADJUSTMENT';
+16:59:55 222  -- VARIABLES
+16:59:55 223  var_current_date DATE := SYSDATE;
+16:59:55 224  var_new_entity_id NUMBER;
+16:59:55 225  BEGIN
+16:59:55 226  
+16:59:55 227  	SELECT
+16:59:55 228  	  DLIADJ_ID_SEQ.nextVal into var_new_entity_id
+16:59:55 229  	FROM
+16:59:55 230  	  DUAL;
+16:59:55 231  
+16:59:55 232  	INSERT INTO DISCOUNT_LINEITEM_ADJUSTMENT (
+16:59:55 233  	  ID,
+16:59:55 234  	  DISCOUNT_ID,
+16:59:55 235  	  LINE_ITEM_ID,
+16:59:55 236  	  LINE_ITEM_ADJUSTMENT_ID,
+16:59:55 237  	  AMOUNT,
+16:59:55 238  	  CREATE_DATE,
+16:59:55 239  	  CREATED_BY
+16:59:55 240  	)
+16:59:55 241  	VALUES (
+16:59:55 242  	  var_new_entity_id,
+16:59:55 243  	  in_discount_id,
+16:59:55 244  	  in_line_item_id,
+16:59:55 245  	  in_line_item_adjustment_id,
+16:59:55 246  	  in_amount,
+16:59:55 247  	  var_current_date,
+16:59:55 248  	  in_created_by
+16:59:55 249  	);
+16:59:55 250  
+16:59:55 251  	out_discount_li_id := var_new_entity_id;
+16:59:55 252  
+16:59:55 253  EXCEPTION
+16:59:55 254  WHEN OTHERS THEN
+16:59:55 255  	PROCS_COMMON_V16.THROW_EXCEPTION(APP_EXCEPTION_CODES_V16.UNKNOWN_ERROR,
+16:59:55 256  	  SPROC_NAME, 'Unknown error', SQLERRM);
+16:59:55 257  END CREATE_DISCOUNT_LI_ADJUSTMENT;
+16:59:55 258  
+16:59:55 259  END PROCS_ADJUSTMENTS_V16;
+16:59:55 260  .
+16:59:55 SQL> /
+
+Package body created.
+
+Elapsed: 00:00:00.11
+16:59:55 SQL> 
+16:59:55 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:59:55 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        SID: ECST
+        Schema: core_owner
+        Migration: 20.0-hotfix_fix-update_invoice_adjustment-proc
+        SVN Revision: 10356
+        Duration: 0 sec.
+        Service Request: https://jira.em.nytimes.com/browse/ORA-330

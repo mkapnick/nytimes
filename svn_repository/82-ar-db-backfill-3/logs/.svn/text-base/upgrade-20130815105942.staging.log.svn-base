@@ -1,0 +1,193 @@
+10:59:45 SQL> @/dbbackups/ECST2/migrations/core_owner/82-ar-db-backfill-3/upgrade.sql
+10:59:45 SQL> set SERVEROUTPUT on;
+10:59:45 SQL> whenever SQLERROR EXIT rollback;
+10:59:45 SQL> 
+10:59:45 SQL> CREATE or REPLACE TRIGGER TR_CHARGE_AUD
+10:59:45   2  	  AFTER INSERT or UPDATE or DELETE
+10:59:45   3  ON CHARGE
+10:59:45   4  	  REFERENCING NEW as new old as old
+10:59:45   5  	  FOR EACH ROW
+10:59:45   6  DECLARE
+10:59:45   7  	  v_action char(1);
+10:59:45   8  BEGIN
+10:59:45   9  	  IF INSERTING THEN
+10:59:45  10  	      v_action := 'I';
+10:59:45  11  	  ELSIF UPDATING THEN
+10:59:45  12  	      v_action := 'U';
+10:59:45  13  	  ELSE
+10:59:45  14  	      v_action := 'D';
+10:59:45  15  	      insert into change_log(id,change_time,action,item)
+10:59:45  16  	      values(:old.id,systimestamp,v_action,'CHARGE');
+10:59:45  17  	  END IF;
+10:59:45  18  
+10:59:45  19  	  if (v_action <> 'D' AND new:updated_by <> 'SAR-786') then
+10:59:45  20  	      insert into change_log(id,change_time,action,item)
+10:59:45  21  	      values(:new.id,systimestamp,v_action,'CHARGE');
+10:59:45  22  	  end if;
+10:59:45  23  END;
+10:59:45  24  /
+
+Warning: Trigger created with compilation errors.
+
+Elapsed: 00:00:00.76
+10:59:45 SQL> 
+10:59:45 SQL> DECLARE
+10:59:45   2  VAR_COUNT number := 0;
+10:59:45   3  VAR_LAST_STATUS_ID NUMBER := 1;
+10:59:45   4  VAR_PENDING_STATUS number := 1;
+10:59:45   5  VAR_CANCELED_STATUS number := 3;
+10:59:45   6  VAR_CAPTURED_STATUS number := 4;
+10:59:45   7  VAR_FAILED_STATUS number := 5;
+10:59:45   8  VAR_SETTLED_STATUS number := 6;
+10:59:45   9  VAR_CHARGEBACK_STATUS number := 8;
+10:59:45  10  VAR_JIRA VARCHAR2(40) := 'SAR-786';
+10:59:45  11  VAR_START_DATE date := to_date('01-Mar-2013', 'DD-Mon-YYYY');
+10:59:45  12  VAR_END_DATE date := to_date('01-Apr-2013', 'DD-Mon-YYYY');
+10:59:45  13  begin
+10:59:45  14  
+10:59:45  15  
+10:59:45  16  	UPDATE CHARGE SET
+10:59:45  17  	    CHARGE_STATUS_ID = VAR_FAILED_STATUS ,
+10:59:45  18  	    UPDATED_BY = VAR_JIRA
+10:59:45  19  	WHERE
+10:59:45  20  	    UPDATED_BY != VAR_JIRA
+10:59:45  21  	    AND ID IN (
+10:59:45  22  	      SELECT C.ID
+10:59:45  23  	      FROM
+10:59:45  24  		CHARGE C,
+10:59:45  25  		TRANSACTION_ATTEMPT TA
+10:59:45  26  	      WHERE
+10:59:45  27  		C.TRANSACTION_ID = TA.TRANSACTION_ID
+10:59:45  28  		AND C.CHARGE_STATUS_ID = VAR_CANCELED_STATUS
+10:59:45  29  		AND TA.EXTERNAL_STATUS_CODE = 'cancelled due to realtime auth capture fail'
+10:59:45  30  		AND C.CREATE_DATE >= VAR_START_DATE
+10:59:45  31  		AND C.CREATE_DATE < VAR_END_DATE
+10:59:45  32  	    ) ;
+10:59:45  33  	COMMIT;
+10:59:45  34  
+10:59:45  35  	INSERT INTO CHARGE_STATUS_LOG (ID,CHARGE_ID,CHARGE_STATUS_ID,CREATE_DATE,CREATED_BY)
+10:59:45  36  	(
+10:59:45  37  	      SELECT CHARGE_STATUS_LOG_ID_SEQ.NEXTVAL,ID, VAR_PENDING_STATUS, C.CREATE_DATE,VAR_JIRA
+10:59:45  38  	      FROM CHARGE C
+10:59:45  39  	      WHERE C.CHARGE_STATUS_ID = 3
+10:59:45  40  	      AND C.UPDATED_BY != VAR_JIRA
+10:59:45  41  	      AND C.CREATE_DATE >= VAR_START_DATE
+10:59:45  42  	      AND C.CREATE_DATE < VAR_END_DATE
+10:59:45  43  	) ;
+10:59:45  44  
+10:59:45  45  	INSERT INTO CHARGE_STATUS_LOG (ID,CHARGE_ID,CHARGE_STATUS_ID,CREATE_DATE,CREATED_BY)
+10:59:45  46  	(
+10:59:45  47  	    SELECT CHARGE_STATUS_LOG_ID_SEQ.NEXTVAL,ID, VAR_CANCELED_STATUS, C.UPDATE_DATE,VAR_JIRA
+10:59:45  48  	    FROM CHARGE C
+10:59:45  49  	    WHERE C.CHARGE_STATUS_ID = 3
+10:59:45  50  	    AND C.CREATE_DATE >= VAR_START_DATE
+10:59:45  51  	    AND C.CREATE_DATE < VAR_END_DATE
+10:59:45  52  	    AND C.UPDATED_BY != VAR_JIRA
+10:59:45  53  	) ;
+10:59:45  54  
+10:59:45  55  	UPDATE CHARGE SET
+10:59:45  56  	  UPDATED_BY = VAR_JIRA
+10:59:45  57  	WHERE CHARGE_STATUS_ID = 3
+10:59:45  58  	  AND CREATE_DATE >= VAR_START_DATE
+10:59:45  59  	  AND CREATE_DATE < VAR_END_DATE
+10:59:45  60  	  AND UPDATED_BY != VAR_JIRA;
+10:59:45  61  
+10:59:45  62  	COMMIT;
+10:59:45  63  
+10:59:45  64  
+10:59:45  65  	FOR REC IN
+10:59:45  66  	(
+10:59:45  67  	    SELECT
+10:59:45  68  		C.ID AS CHARGE_ID
+10:59:45  69  	      , C.INVOICE_ID AS INVOICE_ID
+10:59:45  70  	      , C.CHARGE_AMOUNT as CHARGE_AMOUNT
+10:59:45  71  	      , T.ID AS TRANSACTION_ID
+10:59:45  72  	      , T.ORDER_ID AS ORDER_ID
+10:59:45  73  	      , t.create_date as create_date
+10:59:45  74  	      ,  MIN(success.create_date) as capture_date
+10:59:45  75  	      , CASE
+10:59:45  76  		     WHEN MIN(success.create_date) is not NULL then NULL
+10:59:45  77  		     WHEN c.charge_status_id IN (5) THEN COALESCE(MAX(failed.create_date), c.create_date)
+10:59:45  78  		     WHEN t.transaction_status_id = 2 THEN MAX(failed.create_date)
+10:59:45  79  		     ELSE NULL
+10:59:45  80  		END failed_date
+10:59:45  81  	      , COALESCE(MIN(cpt_s.create_date), MIN(pp_s.create_date)) settled_date
+10:59:45  82  	      , COALESCE(MIN(cpt_c.create_date), MIN(pp_c.create_date), MIN(amx_c.create_date) ) chargeback_date
+10:59:45  83  	    FROM transaction t
+10:59:45  84  	    JOIN charge c ON t.id = c.transaction_id
+10:59:45  85  	    LEFT JOIN transaction_attempt success ON t.id = success.transaction_id AND success.transaction_attempt_status_id = 2
+10:59:45  86  	    LEFT JOIN transaction_attempt failed ON t.id = failed.transaction_id AND failed.transaction_attempt_status_id = 3 AND t.transaction_status_id = 2
+10:59:45  87  	    LEFT JOIN rcn_cpt_deposit_detail cpt_s ON t.order_id = cpt_s.merchant_order_number
+10:59:45  88  	    LEFT JOIN rcn_pp_trans_detail pp_s ON t.order_id = pp_s.invoice_id AND pp_s.trans_status = 'S'
+10:59:45  89  	    LEFT JOIN rcn_cpt_chargeback_act_detail cpt_c ON t.order_id = cpt_c.merchant_order_number AND cpt_c.chargeback_category = 'RECD'
+10:59:45  90  	    LEFT JOIN rcn_pp_trans_detail pp_c ON t.order_id = pp_c.invoice_id AND pp_c.trans_status IN ('D', 'V')
+10:59:45  91  	    LEFT JOIN RCN_AMEX_CHARGEBACK AMX_C ON T.ORDER_ID = LOWER(AMX_C.IND_REF_NUMBER)
+10:59:45  92  	    WHERE
+10:59:45  93  	    C.CREATE_DATE >= VAR_START_DATE
+10:59:45  94  	    AND C.CREATE_DATE < VAR_END_DATE
+10:59:45  95  	    AND C.CHARGE_STATUS_ID NOT IN (VAR_CANCELED_STATUS,VAR_PENDING_STATUS)
+10:59:45  96  	    AND C.UPDATED_BY != VAR_JIRA
+10:59:45  97  	    GROUP BY C.ID,C.INVOICE_ID,C.CHARGE_AMOUNT,T.ID, T.ORDER_ID, T.IS_REFUND, T.TRANSACTION_AMOUNT, T.CREATE_DATE, C.CREATE_DATE, C.CHARGE_STATUS_ID, T.TRANSACTION_STATUS_ID
+10:59:45  98  	)
+10:59:45  99  	LOOP
+10:59:45 100  	  --DBMS_OUTPUT.PUT_LINE('Charge ID '||REC.CHARGE_ID ||' Transaction ID '||REC.TRANSACTION_ID|| ' Open Date '|| REC.CREATE_DATE);
+10:59:45 101  	  IF (REC.CREATE_DATE IS NOT NULL) THEN
+10:59:45 102  	    --DBMS_OUTPUT.PUT_LINE('Open!');
+10:59:45 103  	    VAR_LAST_STATUS_ID := VAR_PENDING_STATUS;
+10:59:45 104  	    INSERT INTO CHARGE_STATUS_LOG (ID,CHARGE_ID,CHARGE_STATUS_ID,CREATE_DATE,CREATED_BY) VALUES (CHARGE_STATUS_LOG_ID_SEQ.nextval,REC.CHARGE_ID,var_last_status_id,REC.CREATE_DATE,VAR_JIRA);
+10:59:45 105  	  END IF;
+10:59:45 106  
+10:59:45 107  	  --should not have failed date
+10:59:45 108  	  IF (REC.failed_date IS NOT NULL) THEN
+10:59:45 109  	    --DBMS_OUTPUT.PUT_LINE('Failed!');
+10:59:45 110  	    VAR_LAST_STATUS_ID := VAR_FAILED_STATUS;
+10:59:45 111  	    INSERT INTO CHARGE_STATUS_LOG (ID,CHARGE_ID,CHARGE_STATUS_ID,CREATE_DATE,CREATED_BY) VALUES (CHARGE_STATUS_LOG_ID_SEQ.nextval,REC.CHARGE_ID,var_last_status_id,REC.failed_date,VAR_JIRA);
+10:59:45 112  	  END IF;
+10:59:45 113  
+10:59:45 114  	  IF (REC.capture_date IS NOT NULL) THEN
+10:59:45 115  	    --DBMS_OUTPUT.PUT_LINE('Captured!');
+10:59:45 116  	    VAR_LAST_STATUS_ID := VAR_CAPTURED_STATUS;
+10:59:45 117  	    INSERT INTO CHARGE_STATUS_LOG (ID,CHARGE_ID,CHARGE_STATUS_ID,CREATE_DATE,CREATED_BY) VALUES (CHARGE_STATUS_LOG_ID_SEQ.nextval,REC.CHARGE_ID,var_last_status_id,REC.capture_date,VAR_JIRA);
+10:59:45 118  	  END IF;
+10:59:45 119  
+10:59:45 120  	  IF (REC.settled_date IS NOT NULL) THEN
+10:59:45 121  	    --DBMS_OUTPUT.PUT_LINE('Settled!');
+10:59:45 122  	    VAR_LAST_STATUS_ID := VAR_SETTLED_STATUS;
+10:59:45 123  	    INSERT  INTO CHARGE_STATUS_LOG (ID,CHARGE_ID,CHARGE_STATUS_ID,CREATE_DATE,CREATED_BY) VALUES (CHARGE_STATUS_LOG_ID_SEQ.NEXTVAL,REC.CHARGE_ID,VAR_LAST_STATUS_ID,REC.settled_date,VAR_JIRA);
+10:59:45 124  	  END IF;
+10:59:45 125  
+10:59:45 126  	  IF (REC.CHARGEBACK_DATE IS NOT NULL) THEN
+10:59:45 127  	    --DBMS_OUTPUT.PUT_LINE('Chargeback!');
+10:59:45 128  	    VAR_LAST_STATUS_ID := VAR_CHARGEBACK_STATUS;
+10:59:45 129  	    INSERT  INTO CHARGE_STATUS_LOG (ID,CHARGE_ID,CHARGE_STATUS_ID,CREATE_DATE,CREATED_BY) VALUES (CHARGE_STATUS_LOG_ID_SEQ.NEXTVAL,REC.CHARGE_ID,VAR_LAST_STATUS_ID,REC.CHARGEBACK_DATE,VAR_JIRA);
+10:59:45 130  	  END IF;
+10:59:45 131  
+10:59:45 132  	  --DBMS_OUTPUT.PUT_LINE('Last Charge Status ID '||VAR_LAST_STATUS_ID);
+10:59:45 133  	  UPDATE CHARGE SET
+10:59:45 134  	    CHARGE_STATUS_ID = VAR_LAST_STATUS_ID,
+10:59:45 135  	    UPDATED_BY = VAR_JIRA
+10:59:45 136  	  WHERE ID = REC.CHARGE_ID;
+10:59:45 137  
+10:59:45 138  	  IF (REC.capture_date is not NULL) THEN
+10:59:45 139  	    INSERT  /*+ ignore_row_on_dupkey_index(AR_BALANCE_APPLIES,AR_APPLIES_PK) */ INTO AR_BALANCE_APPLIES (CHARGE_ID,INVOICE_ID,AMOUNT,CREATE_DATE,CREATED_BY) VALUES (REC.CHARGE_ID,REC.INVOICE_ID,REC.CHARGE_AMOUNT,COALESCE(REC.capture_date,REC.create_date),VAR_JIRA);
+10:59:45 140  	  END IF;
+10:59:45 141  
+10:59:45 142  	  VAR_COUNT := VAR_COUNT + 1;
+10:59:45 143  	  IF( MOD(VAR_COUNT,1000) = 0 ) THEN
+10:59:45 144  	    commit;
+10:59:45 145  	    DBMS_OUTPUT.PUT_LINE('VAR_COUNT = '||VAR_COUNT);
+10:59:45 146  	  END IF;
+10:59:45 147  
+10:59:45 148  	END LOOP;
+10:59:45 149  	commit;
+10:59:45 150  
+10:59:45 151  END;
+10:59:45 152  /
+DECLARE
+*
+ERROR at line 1:
+ORA-04098: trigger 'CORE_OWNER.TR_CHARGE_AUD' is invalid and failed 
+re-validation 
+ORA-06512: at line 16 
+
+

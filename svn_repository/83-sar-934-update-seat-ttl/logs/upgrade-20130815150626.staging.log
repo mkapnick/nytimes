@@ -1,0 +1,24 @@
+15:06:29 SQL> @/dbbackups/ECST/migrations/core_owner/83-sar-934-update-seat-ttl/upgrade.sql
+15:06:29 SQL> whenever sqlerror exit rollback;
+15:06:29 SQL> 
+15:06:29 SQL> update group_account
+15:06:29   2  set seat_ttl_in_hours = 24,
+15:06:29   3  update_date = sysdate,
+15:06:29   4  updated_by = 'jira-sar-934'
+15:06:29   5  where seat_ttl_in_hours = 0;
+
+135 rows updated.
+
+Elapsed: 00:00:00.15
+15:06:29 SQL> 
+15:06:29 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+15:06:29 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:06:29 SQL> spool off;

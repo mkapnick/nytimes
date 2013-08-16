@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/db/!svn/ver/11605/trunk/oracle/migrations/EC/core_owner/17-extend-gft-certs-5-years
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/db/!svn/ver/9963/trunk/oracle/migrations/EC/core_owner/17-extend-gft-certs-5-years/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/11605/trunk/oracle/migrations/EC/core_owner/17-extend-gft-certs-5-years/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/9962/trunk/oracle/migrations/EC/core_owner/17-extend-gft-certs-5-years/rollback.sql
+END

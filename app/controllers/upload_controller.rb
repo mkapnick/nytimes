@@ -9,9 +9,7 @@ class UploadController < ApplicationController
     --------------------------------------------------------------/
 
     def index
-         respond_to do |format|
-            format.html 
-        end
+         render "index.html.erb"
     end
 
     /-------------------------------------------------------------
@@ -84,8 +82,8 @@ class UploadController < ApplicationController
     def update_svn_repo 
         directory = params[:updateSvnRepoAndDBTextField]
 
-        if logAndSystem ("cd #{Rails.root}/public/offer_chains_svn_2/core_owner && mkdir #{directory} && cd #{directory} && touch rollback.sql && touch upgrade.sql")
-            if logAndSystem("cd #{Rails.root}/public/scripts && cat ./offers.auto.sql > #{Rails.root}/public/offer_chains_svn_2/core_owner/#{directory}/upgrade.sql ")
+        if logAndSystem ("svn co https://svn.prvt.nytimes.com/svn/db/trunk/oracle/migrations/EC/core_owner/ #{Rails.root}/svn_repository && cd #{Rails.root}/svn_repository && mkdir #{directory} && cd #{directory} && touch rollback.sql && touch upgrade.sql")
+            if logAndSystem("cd #{Rails.root}/public/scripts && cat ./offers.auto.sql > #{Rails.root}/svn_repository/#{directory}/upgrade.sql ")
 
                 ok = true
                 OfferChain.order('created_at DESC').first.tickets.each do |x|
@@ -101,6 +99,9 @@ class UploadController < ApplicationController
                         OfferChain.order('created_at DESC').first.tickets << x
                      end
                 end 
+
+                / commit changes to svn repository /
+                logAndSystem(" cd #{Rails.root}/svn_repository && svn add #{directory} && svn commit -m \"New directory created for DBA's to deploy\"") 
 
                 ecst = false
                 ecst2 = false
@@ -267,7 +268,7 @@ class UploadController < ApplicationController
             @db_inject = true
             @show_jira_tickets_step = true
             @jira_ticket_failed = true 
-            
+
             render "index.html.erb" and return
         end
     end

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/db/!svn/ver/14036/trunk/oracle/migrations/EC/core_owner/81-XanEdu-gift-offer-chains-6/logs
+END
+upgrade-20130806113253.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/14035/trunk/oracle/migrations/EC/core_owner/81-XanEdu-gift-offer-chains-6/logs/upgrade-20130806113253.staging.log
+END
+upgrade-20130806115024.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/14036/trunk/oracle/migrations/EC/core_owner/81-XanEdu-gift-offer-chains-6/logs/upgrade-20130806115024.production.log
+END

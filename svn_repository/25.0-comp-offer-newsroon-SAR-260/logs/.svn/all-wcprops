@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/db/!svn/ver/12376/trunk/oracle/migrations/EC/core_owner/25.0-comp-offer-newsroon-SAR-260/logs
+END
+upgrade-20130312092534.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/11621/trunk/oracle/migrations/EC/core_owner/25.0-comp-offer-newsroon-SAR-260/logs/upgrade-20130312092534.staging.log
+END
+upgrade-20130419132925.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/db/!svn/ver/12376/trunk/oracle/migrations/EC/core_owner/25.0-comp-offer-newsroon-SAR-260/logs/upgrade-20130419132925.production.log
+END
+upgrade-20130416132941.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/12297/trunk/oracle/migrations/EC/core_owner/25.0-comp-offer-newsroon-SAR-260/logs/upgrade-20130416132941.staging.log
+END
+upgrade-20130416132759.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/12295/trunk/oracle/migrations/EC/core_owner/25.0-comp-offer-newsroon-SAR-260/logs/upgrade-20130416132759.staging.log
+END
+upgrade-20130311114851.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/db/!svn/ver/11590/trunk/oracle/migrations/EC/core_owner/25.0-comp-offer-newsroon-SAR-260/logs/upgrade-20130311114851.staging.log
+END

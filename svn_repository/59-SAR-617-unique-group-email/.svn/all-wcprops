@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/db/!svn/ver/13023/trunk/oracle/migrations/EC/core_owner/59-SAR-617-unique-group-email
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/db/!svn/ver/12990/trunk/oracle/migrations/EC/core_owner/59-SAR-617-unique-group-email/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/db/!svn/ver/12922/trunk/oracle/migrations/EC/core_owner/59-SAR-617-unique-group-email/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/db/!svn/ver/12921/trunk/oracle/migrations/EC/core_owner/59-SAR-617-unique-group-email/rollback.sql
+END

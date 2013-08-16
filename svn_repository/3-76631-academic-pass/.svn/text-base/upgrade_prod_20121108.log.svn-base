@@ -1,0 +1,40 @@
+SQL> set echo on timing on time on
+16:59:34 SQL> show user;
+USER is "CORE_OWNER"
+16:59:36 SQL> @upgrade.sql
+16:59:42 SQL> -- Bugzilla: 76631 - Two New Academic Passes Accounts
+16:59:42 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+16:59:42 SQL> 
+16:59:42 SQL> --------------------------------------------------------------------------------
+16:59:42 SQL> -- Group Id: 71415
+16:59:42 SQL> -- Group Name: SOHDDX NEW ACCT
+16:59:42 SQL> -- Subscription Id: 7329591
+16:59:42 SQL> -- Subscription created: 2012-10-25 08:24:22
+16:59:42 SQL> --------------------------------------------------------------------------------
+16:59:42 SQL> INSERT INTO group_account_email_domain (id, group_account_id, email_domain, is_active, created_by, create_date, updated_by, update_date)
+16:59:42   2  VALUES (groupaccountemaildomain_seq.nextval, 71415, 'mail.uc.edu', 1, 'Bugzilla_76631', sysdate, 'Bugzilla_76631', sysdate);
+
+1 row created.
+
+Elapsed: 00:00:00.02
+16:59:42 SQL> 
+16:59:42 SQL> --------------------------------------------------------------------------------
+16:59:42 SQL> -- Group Id: 71764
+16:59:42 SQL> -- Group Name: SPAF8X 200352235
+16:59:42 SQL> -- Subscription Id: 7333236
+16:59:42 SQL> -- Subscription created: 2012-10-26 08:49:02
+16:59:42 SQL> --------------------------------------------------------------------------------
+16:59:42 SQL> INSERT INTO group_account_email_domain (id, group_account_id, email_domain, is_active, created_by, create_date, updated_by, update_date)
+16:59:42   2  VALUES (groupaccountemaildomain_seq.nextval, 71764, 'dickinson.edu', 1, 'Bugzilla_76631', sysdate, 'Bugzilla_76631', sysdate);
+
+1 row created.
+
+Elapsed: 00:00:00.00
+16:59:42 SQL> 
+16:59:42 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:59:42 SQL> 
+16:59:42 SQL> spool off

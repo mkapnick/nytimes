@@ -1,0 +1,37 @@
+15:54:22 SQL> @/dbbackups/ECST2/migrations/core_owner/82-ar-db-backfill-2-ecst2/upgrade.sql
+15:54:22 SQL> 
+15:54:22 SQL> -- Custom NYTimes template
+15:54:22 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK;
+15:54:22 SQL> 
+15:54:22 SQL> 
+15:54:22 SQL> -- START CHANGE SCRIPT #20130801152708: 20130801152708-alter_ar_balance_indexes.sql
+15:54:22 SQL> delete from
+15:54:22   2  ar_balance_applies a
+15:54:22   3  where
+15:54:22   4  a.rowid >
+15:54:22   5  any (select b.rowid
+15:54:22   6  	      from
+15:54:22   7  	      ar_balance_applies b
+15:54:22   8  	      where
+15:54:22   9  	      a.charge_id = b.charge_id
+15:54:22  10  	      and
+15:54:22  11  	      a.invoice_id = B.invoice_id
+15:54:22  12  )
+15:54:22  13  ;
+
+0 rows deleted.
+
+Elapsed: 00:00:50.67
+15:55:12 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+15:55:12 SQL> 
+15:55:12 SQL> ALTER TABLE AR_BALANCE_APPLIES ADD CONSTRAINT AR_APPLIES_PK PRIMARY KEY (CHARGE_ID, INVOICE_ID) ;
+ALTER TABLE AR_BALANCE_APPLIES ADD CONSTRAINT AR_APPLIES_PK PRIMARY KEY (CHARGE_ID, INVOICE_ID) 
+                                                            *
+ERROR at line 1:
+ORA-02260: table can have only one primary key 
+
+

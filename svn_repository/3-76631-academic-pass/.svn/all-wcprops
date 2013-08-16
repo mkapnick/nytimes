@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/db/!svn/ver/9389/trunk/oracle/migrations/EC/core_owner/3-76631-academic-pass
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/db/!svn/ver/9387/trunk/oracle/migrations/EC/core_owner/3-76631-academic-pass/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/db/!svn/ver/9387/trunk/oracle/migrations/EC/core_owner/3-76631-academic-pass/rollback.sql
+END
+upgrade_prod_20121108.log
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/db/!svn/ver/9389/trunk/oracle/migrations/EC/core_owner/3-76631-academic-pass/upgrade_prod_20121108.log
+END

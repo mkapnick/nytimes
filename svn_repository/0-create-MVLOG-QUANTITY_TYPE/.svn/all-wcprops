@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/db/!svn/ver/14254/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG-QUANTITY_TYPE
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/db/!svn/ver/14178/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG-QUANTITY_TYPE/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/db/!svn/ver/14177/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG-QUANTITY_TYPE/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/db/!svn/ver/14177/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG-QUANTITY_TYPE/rollback.sql
+END

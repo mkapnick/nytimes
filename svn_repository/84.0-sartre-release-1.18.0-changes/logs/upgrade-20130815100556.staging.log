@@ -1,0 +1,455 @@
+10:05:59 SQL> @/dbbackups/ECST/migrations/core_owner/84.0-sartre-release-1.18.0-changes/upgrade.sql
+10:05:59 SQL> 
+10:05:59 SQL> -- Custom NYTimes template
+10:05:59 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK;
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> -- START CHANGE SCRIPT #20130711103301: 20130711103301-SAR-428-hermes-data-create-table.sql
+10:05:59 SQL> 
+10:05:59 SQL> CREATE TABLE notification_hermes_data (
+10:05:59   2  	id NUMBER NOT NULL,
+10:05:59   3  	copy VARCHAR(140) NOT NULL,
+10:05:59   4  	link_ref VARCHAR(255),
+10:05:59   5  	link_offset NUMBER DEFAULT 0,
+10:05:59   6  	link_count NUMBER DEFAULT 0,
+10:05:59   7  	CONSTRAINT notification_hermes_data_pk PRIMARY KEY (id)
+10:05:59   8  ) TABLESPACE CORE;
+
+Table created.
+
+Elapsed: 00:00:00.11
+10:05:59 SQL> 
+10:05:59 SQL> COMMENT ON COLUMN notification_hermes_data.id IS 'Use sequence notification_hermes_id_seq';
+
+Comment created.
+
+Elapsed: 00:00:00.03
+10:05:59 SQL> COMMENT ON COLUMN notification_hermes_data.copy IS 'Text to display in Hermes notification';
+
+Comment created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> COMMENT ON COLUMN notification_hermes_data.link_ref IS 'URL of link to send';
+
+Comment created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> COMMENT ON COLUMN notification_hermes_data.link_offset IS 'Index of first linked character in copy';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+10:05:59 SQL> COMMENT ON COLUMN notification_hermes_data.link_count IS 'Length of linked text in copy';
+
+Comment created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+10:05:59   2  VALUES (20130711103301, CURRENT_TIMESTAMP, USER, '20130711103301-SAR-428-hermes-data-create-table.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.01
+10:05:59 SQL> 
+10:05:59 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- END CHANGE SCRIPT #20130711103301: 20130711103301-SAR-428-hermes-data-create-table.sql
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> -- START CHANGE SCRIPT #20130711103310: 20130711103310-SAR-428-alter-notify-table.sql
+10:05:59 SQL> 
+10:05:59 SQL> ALTER TABLE notification_type ADD (
+10:05:59   2  	notification_hermes_data_id NUMBER,
+10:05:59   3  	CONSTRAINT not_typ_hermes_fk FOREIGN KEY (notification_hermes_data_id) REFERENCES notification_hermes_data(id),
+10:05:59   4  	assoc_hermes_id NUMBER,
+10:05:59   5  	CONSTRAINT not_assoc_fk FOREIGN KEY (assoc_hermes_id) REFERENCES notification_type(id)
+10:05:59   6  );
+
+Table altered.
+
+Elapsed: 00:00:00.06
+10:05:59 SQL> COMMENT ON COLUMN notification_type.notification_hermes_data_id
+10:05:59   2  IS 'If not NULL, this type of notification should also generate a Hermes notification with the data in the referred-to row.';
+
+Comment created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> COMMENT ON COLUMN notification_type.assoc_hermes_id
+10:05:59   2  IS 'If not NULL, new notifications of this type will also insert hermes notifications of the associated type';
+
+Comment created.
+
+Elapsed: 00:00:00.01
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+10:05:59   2  VALUES (20130711103310, CURRENT_TIMESTAMP, USER, '20130711103310-SAR-428-alter-notify-table.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- END CHANGE SCRIPT #20130711103310: 20130711103310-SAR-428-alter-notify-table.sql
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> -- START CHANGE SCRIPT #20130711103320: 20130711103320-SAR-428-hermes-sequence.sql
+10:05:59 SQL> 
+10:05:59 SQL> CREATE SEQUENCE notification_hermes_id_seq;
+
+Sequence created.
+
+Elapsed: 00:00:00.01
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+10:05:59   2  VALUES (20130711103320, CURRENT_TIMESTAMP, USER, '20130711103320-SAR-428-hermes-sequence.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+10:05:59 SQL> 
+10:05:59 SQL> -- END CHANGE SCRIPT #20130711103320: 20130711103320-SAR-428-hermes-sequence.sql
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> -- START CHANGE SCRIPT #20130711103330: 20130711103330-SAR-428-hermes-insert-data.sql
+10:05:59 SQL> 
+10:05:59 SQL> -- DML for SAR-428
+10:05:59 SQL> 
+10:05:59 SQL> -- Credit Card Closed (CUPY)
+10:05:59 SQL> INSERT INTO notification_hermes_data (
+10:05:59   2  	id, copy
+10:05:59   3  ) VALUES (
+10:05:59   4  	notification_hermes_id_seq.NEXTVAL, 'The credit card we have on file is no longer valid.'
+10:05:59   5  );
+
+1 row created.
+
+Elapsed: 00:00:00.04
+10:05:59 SQL> INSERT INTO notification_type (
+10:05:59   2  	id, value, template_url, notification_hermes_data_id, assoc_hermes_id
+10:05:59   3  ) VALUES (
+10:05:59   4  	nottid_seq.NEXTVAL, 'hermes-card-expiration', 'N/A', notification_hermes_id_seq.CURRVAL, NULL
+10:05:59   5  );
+
+1 row created.
+
+Elapsed: 00:00:00.02
+10:05:59 SQL> UPDATE notification_type SET (assoc_hermes_id) = nottid_seq.CURRVAL
+10:05:59   2  WHERE value = 'card_expiration';
+
+1 row updated.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- Transaction Failed (PRE-DUNNING)
+10:05:59 SQL> INSERT INTO notification_hermes_data (
+10:05:59   2  	id, copy
+10:05:59   3  ) VALUES (
+10:05:59   4  	notification_hermes_id_seq.NEXTVAL, 'We are unable to process your subscription payment.'
+10:05:59   5  );
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> INSERT INTO notification_type (
+10:05:59   2  	id, value, template_url, notification_hermes_data_id, assoc_hermes_id
+10:05:59   3  ) VALUES (
+10:05:59   4  	nottid_seq.NEXTVAL, 'hermes-sartre-pre-dunning-hard-decline', 'N/A', notification_hermes_id_seq.CURRVAL, NULL
+10:05:59   5  );
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> UPDATE notification_type SET (assoc_hermes_id) = nottid_seq.CURRVAL
+10:05:59   2  WHERE value = 'sartre-pre-dunning-hard-decline';
+
+1 row updated.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- Grace Period (GRACE)
+10:05:59 SQL> INSERT INTO notification_hermes_data (
+10:05:59   2  	id, copy
+10:05:59   3  ) VALUES (
+10:05:59   4  	notification_hermes_id_seq.NEXTVAL, 'Final notice:  Your subscription payment is past due.'
+10:05:59   5  );
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> INSERT INTO notification_type (
+10:05:59   2  	id, value, template_url, notification_hermes_data_id, assoc_hermes_id
+10:05:59   3  ) VALUES (
+10:05:59   4  	nottid_seq.NEXTVAL, 'hermes-sartre-grace-ending-soon', 'N/A', notification_hermes_id_seq.CURRVAL, NULL
+10:05:59   5  );
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> UPDATE notification_type SET (assoc_hermes_id) = nottid_seq.CURRVAL
+10:05:59   2  WHERE value = 'sartre-grace-ending-soon';
+
+1 row updated.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- Entitlement Cancelled
+10:05:59 SQL> INSERT INTO notification_hermes_data (
+10:05:59   2  	id, copy
+10:05:59   3  ) VALUES (
+10:05:59   4  	notification_hermes_id_seq.NEXTVAL, 'Your subscription has been canceled due to non-payment.'
+10:05:59   5  );
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> INSERT INTO notification_type (
+10:05:59   2  	id, value, template_url, notification_hermes_data_id, assoc_hermes_id
+10:05:59   3  ) VALUES (
+10:05:59   4  	nottid_seq.NEXTVAL, 'hermes-close-subscription', 'N/A', notification_hermes_id_seq.CURRVAL, NULL
+10:05:59   5  );
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- cf https://jira.em.nytimes.com/browse/SAR-876
+10:05:59 SQL> UPDATE notification_type
+10:05:59   2  SET assoc_hermes_id = (
+10:05:59   3  	SELECT id
+10:05:59   4  	FROM notification_type
+10:05:59   5  	WHERE value = 'hermes-close-subscription'
+10:05:59   6  )
+10:05:59   7  WHERE id IN (
+10:05:59   8  	SELECT UNIQUE n.id
+10:05:59   9  	FROM offer_chain_notification_type o
+10:05:59  10  	INNER JOIN notification_type n
+10:05:59  11  	ON o.notification_type_id = n.id
+10:05:59  12  	INNER JOIN action a
+10:05:59  13  	ON o.action_id = a.id
+10:05:59  14  	WHERE a.name = 'CLOSE_SUBSCRIPTION'
+10:05:59  15  );
+
+8 rows updated.
+
+Elapsed: 00:00:00.02
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+10:05:59   2  VALUES (20130711103330, CURRENT_TIMESTAMP, USER, '20130711103330-SAR-428-hermes-insert-data.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+10:05:59 SQL> 
+10:05:59 SQL> -- END CHANGE SCRIPT #20130711103330: 20130711103330-SAR-428-hermes-insert-data.sql
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> -- START CHANGE SCRIPT #20130801150223: 20130801150223-ar_balance_applies_create.sql
+10:05:59 SQL> 
+10:05:59 SQL> CREATE TABLE AR_BALANCE_APPLIES (
+10:05:59   2  		charge_id  NUMBER NOT NULL,
+10:05:59   3  		invoice_id NUMBER NOT NULL,
+10:05:59   4  		amount NUMBER NOT NULL,
+10:05:59   5  		create_date DATE NOT NULL,
+10:05:59   6  		created_by VARCHAR2(255) NOT NULL
+10:05:59   7  )
+10:05:59   8  TABLESPACE CORE;
+
+Table created.
+
+Elapsed: 00:00:00.03
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+10:05:59   2  VALUES (20130801150223, CURRENT_TIMESTAMP, USER, '20130801150223-ar_balance_applies_create.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- END CHANGE SCRIPT #20130801150223: 20130801150223-ar_balance_applies_create.sql
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> -- START CHANGE SCRIPT #20130801150252: 20130801150252-new_charge_status.sql
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO "CORE_OWNER"."CHARGE_STATUS" (ID, VALUE) VALUES (4, 'CAPTURED');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> INSERT INTO "CORE_OWNER"."CHARGE_STATUS" (ID, VALUE) VALUES (5, 'FAILED');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> INSERT INTO "CORE_OWNER"."CHARGE_STATUS" (ID, VALUE) VALUES (6, 'SETTLED');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> INSERT INTO "CORE_OWNER"."CHARGE_STATUS" (ID, VALUE) VALUES (7, 'CHARGEBACK_CLAIM');
+
+1 row created.
+
+Elapsed: 00:00:00.01
+10:05:59 SQL> INSERT INTO "CORE_OWNER"."CHARGE_STATUS" (ID, VALUE) VALUES (8, 'CHARGEBACK_SETTLED');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> INSERT INTO "CORE_OWNER"."CHARGE_STATUS" (ID, VALUE) VALUES (9, 'VOID');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+10:05:59   2  VALUES (20130801150252, CURRENT_TIMESTAMP, USER, '20130801150252-new_charge_status.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- END CHANGE SCRIPT #20130801150252: 20130801150252-new_charge_status.sql
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> -- START CHANGE SCRIPT #20130801150405: 20130801150405-charge_status_log_create.sql
+10:05:59 SQL> 
+10:05:59 SQL> CREATE SEQUENCE CHARGE_STATUS_LOG_ID_SEQ;
+
+Sequence created.
+
+Elapsed: 00:00:00.01
+10:05:59 SQL> 
+10:05:59 SQL> CREATE TABLE CHARGE_STATUS_LOG (
+10:05:59   2  		id NUMBER NOT NULL,
+10:05:59   3  		charge_id  NUMBER NOT NULL,
+10:05:59   4  		charge_status_id NUMBER NOT NULL,
+10:05:59   5  		create_date DATE NOT NULL,
+10:05:59   6  		created_by VARCHAR2(255) NOT NULL
+10:05:59   7  )
+10:05:59   8  TABLESPACE CORE;
+
+Table created.
+
+Elapsed: 00:00:00.03
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+10:05:59   2  VALUES (20130801150405, CURRENT_TIMESTAMP, USER, '20130801150405-charge_status_log_create.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- END CHANGE SCRIPT #20130801150405: 20130801150405-charge_status_log_create.sql
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> -- START CHANGE SCRIPT #20130801150502: 20130801150502-new_instrument_type.sql
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO   "CORE_OWNER"."INSTRUMENT_TYPE" (ID,VALUE) VALUES (6,'Credit');
+
+1 row created.
+
+Elapsed: 00:00:00.01
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+10:05:59   2  VALUES (20130801150502, CURRENT_TIMESTAMP, USER, '20130801150502-new_instrument_type.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- END CHANGE SCRIPT #20130801150502: 20130801150502-new_instrument_type.sql
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> -- START CHANGE SCRIPT #20130801150609: 20130801150609-alter_charge_instrument_type_nullable.sql
+10:05:59 SQL> 
+10:05:59 SQL> ALTER TABLE CHARGE modify (instrument_id null);
+
+Table altered.
+
+Elapsed: 00:00:00.22
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> 
+10:05:59 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+10:05:59   2  VALUES (20130801150609, CURRENT_TIMESTAMP, USER, '20130801150609-alter_charge_instrument_type_nullable.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> 
+10:05:59 SQL> -- END CHANGE SCRIPT #20130801150609: 20130801150609-alter_charge_instrument_type_nullable.sql
+10:05:59 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+10:05:59 SQL> spool off;

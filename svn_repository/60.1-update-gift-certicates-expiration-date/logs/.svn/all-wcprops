@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/db/!svn/ver/13108/trunk/oracle/migrations/EC/core_owner/60.1-update-gift-certicates-expiration-date/logs
+END
+upgrade-20130617095506.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/db/!svn/ver/13108/trunk/oracle/migrations/EC/core_owner/60.1-update-gift-certicates-expiration-date/logs/upgrade-20130617095506.production.log
+END
+upgrade-20130614095631.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/db/!svn/ver/13095/trunk/oracle/migrations/EC/core_owner/60.1-update-gift-certicates-expiration-date/logs/upgrade-20130614095631.staging.log
+END

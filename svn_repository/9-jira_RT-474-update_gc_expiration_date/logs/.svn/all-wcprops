@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/db/!svn/ver/9613/trunk/oracle/migrations/EC/core_owner/9-jira_RT-474-update_gc_expiration_date/logs
+END
+upgrade-20121120111700.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/db/!svn/ver/9608/trunk/oracle/migrations/EC/core_owner/9-jira_RT-474-update_gc_expiration_date/logs/upgrade-20121120111700.staging.log
+END
+upgrade-201211201137.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/db/!svn/ver/9613/trunk/oracle/migrations/EC/core_owner/9-jira_RT-474-update_gc_expiration_date/logs/upgrade-201211201137.production.log
+END

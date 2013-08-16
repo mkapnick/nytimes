@@ -1,0 +1,50 @@
+16:23:32 SQL> @/dbbackups/ECST/migrations/core_owner/45-extend-share-the-times-gift-code-expirations/upgrade.sql
+16:23:32 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+16:23:32 SQL> 
+16:23:32 SQL> update gift_certificate set expiration_date = to_date('2018-07-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), updated_by = 'SAR-480' where purchaser_group_id = 67513982;
+
+0 rows updated.
+
+Elapsed: 00:00:00.05
+16:23:32 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.02
+16:23:32 SQL> update gift_certificate set expiration_date = to_date('2018-07-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), updated_by = 'SAR-480' where purchaser_group_id = 67513974;
+
+0 rows updated.
+
+Elapsed: 00:00:00.00
+16:23:32 SQL> 
+16:23:32 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:23:32 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+16:23:32 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 45-extend-share-the-times-gift-code-expirations
+        SVN Revision: 12223
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-716

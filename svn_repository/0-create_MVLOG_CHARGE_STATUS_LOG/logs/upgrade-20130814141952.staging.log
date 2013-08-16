@@ -1,0 +1,23 @@
+14:19:55 SQL> @/dbbackups/ECST3/migrations/core_owner/0-create_MVLOG_CHARGE_STATUS_LOG/upgrade.sql
+14:19:55 SQL> 
+14:19:55 SQL> Drop MATERIALIZED VIEW LOG ON CORE_OWNER.CHARGE_STATUS_LOG;
+Drop MATERIALIZED VIEW LOG ON CORE_OWNER.CHARGE_STATUS_LOG
+*
+ERROR at line 1:
+ORA-12002: there is no materialized view log on table 
+"CORE_OWNER"."CHARGE_STATUS_LOG" 
+
+
+Elapsed: 00:00:00.00
+14:19:55 SQL> 
+14:19:55 SQL> CREATE MATERIALIZED VIEW LOG ON CORE_OWNER.CHARGE_STATUS_LOG TABLESPACE CORE;
+
+Materialized view log created.
+
+Elapsed: 00:00:00.09
+14:19:55 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+14:19:55 SQL> spool off;

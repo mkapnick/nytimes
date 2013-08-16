@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/db/!svn/ver/10540/trunk/oracle/migrations/EC/core_owner/20.1-release-1.11.1-129_change
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/10460/trunk/oracle/migrations/EC/core_owner/20.1-release-1.11.1-129_change/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/db/!svn/ver/10382/trunk/oracle/migrations/EC/core_owner/20.1-release-1.11.1-129_change/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/db/!svn/ver/10382/trunk/oracle/migrations/EC/core_owner/20.1-release-1.11.1-129_change/rollback.sql
+END

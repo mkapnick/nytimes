@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/db/!svn/ver/14239/trunk/oracle/migrations/EC/core_owner/82-ar-db-backfill-2-ecst2
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/db/!svn/ver/14228/trunk/oracle/migrations/EC/core_owner/82-ar-db-backfill-2-ecst2/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/db/!svn/ver/14216/trunk/oracle/migrations/EC/core_owner/82-ar-db-backfill-2-ecst2/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/db/!svn/ver/14141/trunk/oracle/migrations/EC/core_owner/82-ar-db-backfill-2-ecst2/rollback.sql
+END

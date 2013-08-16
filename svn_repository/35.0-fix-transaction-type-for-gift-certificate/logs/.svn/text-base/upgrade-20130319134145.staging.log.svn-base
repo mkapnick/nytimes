@@ -1,0 +1,95 @@
+13:41:59 SQL> @/dbbackups/ECST/migrations/core_owner/35.0-fix-transaction-type-for-gift-certificate/upgrade.sql
+13:41:59 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+13:41:59 SQL> 
+13:41:59 SQL> -- cf https://jira.em.nytimes.com/browse/SAR-314, acceptance criteria tab
+13:41:59 SQL> INSERT INTO SUBSCRIPTION_CANCEL_REASON (ID, VALUE, CANCELATION_STATUS_ID, DESCRIPTION)
+13:41:59   2  VALUES (sct_id_seq.nextVal, 'Failed Start Subscription', 3, -- status internal-only
+13:41:59   3  	      'set by core when realtime subscription attempt fails and by billing job when non-realtime start subscription transaction attempt fails');
+
+1 row created.
+
+Elapsed: 00:00:00.04
+13:41:59 SQL> 
+13:41:59 SQL> INSERT INTO SUBSCRIPTION_CANCEL_REASON (ID, VALUE, CANCELATION_STATUS_ID, DESCRIPTION)
+13:41:59   2  VALUES (sct_id_seq.nextVal, 'Failed Grace Period Final Recur', 3,
+13:41:59   3  	       'Set by billing job when final transaction attempt within grace period fails');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+13:41:59 SQL> 
+13:41:59 SQL> INSERT INTO SUBSCRIPTION_CANCEL_REASON (ID, VALUE, CANCELATION_STATUS_ID, DESCRIPTION)
+13:41:59   2  VALUES (sct_id_seq.nextVal, 'Past Grace Period End', 3,
+13:41:59   3  	      'Set by billing job when invoices are found with grace end dates in the past');
+
+1 row created.
+
+Elapsed: 00:00:00.00
+13:41:59 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+13:41:59 SQL> 
+13:41:59 SQL> UPDATE
+13:41:59   2  	CORE_OWNER.TRANSACTION
+13:41:59   3  SET
+13:41:59   4  	TRANSACTION_TYPE_CODE = 'GIFT_CERTIFICATE_PURCHASE',
+13:41:59   5  	UPDATED_BY = 'JIRA-SAR-434',
+13:41:59   6  	UPDATE_DATE = SYSDATE
+13:41:59   7  WHERE
+13:41:59   8  	ID IN
+13:41:59   9  	(
+13:41:59  10  	  SELECT
+13:41:59  11  	    CORE_OWNER.TRANSACTION.ID
+13:41:59  12  	  FROM
+13:41:59  13  	    CORE_OWNER.GIFT_CERTIFICATE
+13:41:59  14  	  INNER JOIN CORE_OWNER.CHARGE
+13:41:59  15  	  ON
+13:41:59  16  	    CORE_OWNER.GIFT_CERTIFICATE.PURCHASE_INVOICE_ID =
+13:41:59  17  	    CORE_OWNER.CHARGE.INVOICE_ID
+13:41:59  18  	  INNER JOIN CORE_OWNER.TRANSACTION
+13:41:59  19  	  ON
+13:41:59  20  	    CORE_OWNER.CHARGE.TRANSACTION_ID = CORE_OWNER.TRANSACTION.ID
+13:41:59  21  	  WHERE
+13:41:59  22  	    Core_Owner.Transaction.Transaction_Type_Code LIKE 'RECURRING_%'
+13:41:59  23  	);
+
+0 rows updated.
+
+Elapsed: 00:00:43.88
+13:42:43 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:42:43 SQL> 
+13:42:43 SQL> 
+13:42:43 SQL> 
+13:42:43 SQL> 
+13:42:43 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+13:42:43 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 35.0-fix-transaction-type-for-gift-certificate
+        SVN Revision: 11808
+        Duration: 44 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-586

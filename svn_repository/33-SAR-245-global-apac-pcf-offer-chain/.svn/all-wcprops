@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/db/!svn/ver/12115/trunk/oracle/migrations/EC/core_owner/33-SAR-245-global-apac-pcf-offer-chain
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/db/!svn/ver/12114/trunk/oracle/migrations/EC/core_owner/33-SAR-245-global-apac-pcf-offer-chain/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/db/!svn/ver/11619/trunk/oracle/migrations/EC/core_owner/33-SAR-245-global-apac-pcf-offer-chain/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/db/!svn/ver/11619/trunk/oracle/migrations/EC/core_owner/33-SAR-245-global-apac-pcf-offer-chain/rollback.sql
+END

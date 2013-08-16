@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/db/!svn/ver/13740/trunk/oracle/migrations/EC/core_owner/77.4-create-edu-39-wk-52-wk-offers/logs
+END
+upgrade-20130722174421.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/db/!svn/ver/13736/trunk/oracle/migrations/EC/core_owner/77.4-create-edu-39-wk-52-wk-offers/logs/upgrade-20130722174421.staging.log
+END
+upgrade-20130722174726.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/db/!svn/ver/13740/trunk/oracle/migrations/EC/core_owner/77.4-create-edu-39-wk-52-wk-offers/logs/upgrade-20130722174726.production.log
+END

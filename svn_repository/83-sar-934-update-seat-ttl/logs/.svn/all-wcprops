@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/db/!svn/ver/14293/trunk/oracle/migrations/EC/core_owner/83-sar-934-update-seat-ttl/logs
+END
+upgrade-20130815150626.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/db/!svn/ver/14291/trunk/oracle/migrations/EC/core_owner/83-sar-934-update-seat-ttl/logs/upgrade-20130815150626.staging.log
+END
+upgrade-20130815151550.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/db/!svn/ver/14293/trunk/oracle/migrations/EC/core_owner/83-sar-934-update-seat-ttl/logs/upgrade-20130815151550.production.log
+END

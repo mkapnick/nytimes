@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/db/!svn/ver/14245/trunk/oracle/migrations/EC/core_owner/84.2-sartre-release-1.18.0-bulk-1-CORE-common.sql/logs
+END
+upgrade-20130815101609.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/db/!svn/ver/14245/trunk/oracle/migrations/EC/core_owner/84.2-sartre-release-1.18.0-bulk-1-CORE-common.sql/logs/upgrade-20130815101609.staging.log
+END

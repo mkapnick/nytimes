@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/db/!svn/ver/13487/trunk/oracle/migrations/EC/core_owner/72-pmom-40-update-kindle-ereader-metadata
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/db/!svn/ver/13341/trunk/oracle/migrations/EC/core_owner/72-pmom-40-update-kindle-ereader-metadata/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/db/!svn/ver/13340/trunk/oracle/migrations/EC/core_owner/72-pmom-40-update-kindle-ereader-metadata/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/db/!svn/ver/13335/trunk/oracle/migrations/EC/core_owner/72-pmom-40-update-kindle-ereader-metadata/rollback.sql
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/db/!svn/ver/14255/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG-BUNDLE/logs
+END
+upgrade-20130813154411.development.log
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/db/!svn/ver/14165/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG-BUNDLE/logs/upgrade-20130813154411.development.log
+END
+upgrade-20130815110042.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/db/!svn/ver/14255/trunk/oracle/migrations/EC/core_owner/0-create-MVLOG-BUNDLE/logs/upgrade-20130815110042.staging.log
+END

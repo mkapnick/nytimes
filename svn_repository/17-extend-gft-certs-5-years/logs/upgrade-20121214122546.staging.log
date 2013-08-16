@@ -1,0 +1,69 @@
+12:25:51 SQL> @/dbbackups/ECST/migrations/core_owner/17-extend-gft-certs-5-years/upgrade.sql
+12:25:51 SQL> WHENEVER SQLERROR EXIT SQL.SQLCODE ROLLBACK
+12:25:51 SQL> SET SCAN OFF
+12:25:51 SQL> SET DEFINE OFF
+12:25:51 SQL> 
+12:25:51 SQL> BEGIN
+12:25:51   2  
+12:25:51   3  UPDATE
+12:25:51   4  	  gift_certificate gc
+12:25:51   5  SET
+12:25:51   6  	  gc.expiration_date = add_months(purchase_date, 12 * 5),
+12:25:51   7  	  updated_by = 'JIRA-SAR-115',
+12:25:51   8  	  update_date = SYSDATE
+12:25:51   9  WHERE
+12:25:51  10  	  gift_certificate_status_id = 1 AND
+12:25:51  11  	  purchase_date > '01-NOV-11' AND
+12:25:51  12  	  expiration_date < SYSDATE + 90 AND
+12:25:51  13  	  expiration_date > purchase_date AND
+12:25:51  14  	  expiration_date < add_months(purchase_date, 12 * 5) AND
+12:25:51  15  	  finalized_invoice_id IS NULL AND
+12:25:51  16  	  gc.offer_chain_id IN(1001513,
+12:25:51  17  			       1001523,
+12:25:51  18  			       1001533,
+12:25:51  19  			       1001543,
+12:25:51  20  			       1001553,
+12:25:51  21  			       1001563,
+12:25:51  22  			       1005710,
+12:25:51  23  			       1005720,
+12:25:51  24  			       1005730,
+12:25:51  25  			       1005740,
+12:25:51  26  			       1005750,
+12:25:51  27  			       1005760,
+12:25:51  28  			       100001);
+12:25:51  29  
+12:25:51  30  END;
+12:25:51  31  /
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:01.92
+12:25:53 SQL> 
+12:25:53 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.02
+12:25:53 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+12:25:53 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.sea1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com,nytd_oracledba@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.sea1.nytimes.com
+        SID: ECST
+        Schema: core_owner
+        Migration: 17-extend-gft-certs-5-years
+        SVN Revision: 9962
+        Duration: 2 sec.
+        Service Request: https://jira.em.nytimes.com/browse/ORA-225

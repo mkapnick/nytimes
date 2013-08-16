@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/db/!svn/ver/12192/trunk/oracle/migrations/EC/core_owner/40.1-disable-csr-oc-requires-email-domain/logs
+END
+upgrade-20130408140358.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/db/!svn/ver/12192/trunk/oracle/migrations/EC/core_owner/40.1-disable-csr-oc-requires-email-domain/logs/upgrade-20130408140358.production.log
+END
+upgrade-20130401143515.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/db/!svn/ver/12086/trunk/oracle/migrations/EC/core_owner/40.1-disable-csr-oc-requires-email-domain/logs/upgrade-20130401143515.staging.log
+END
+upgrade-20130401161138.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/db/!svn/ver/12090/trunk/oracle/migrations/EC/core_owner/40.1-disable-csr-oc-requires-email-domain/logs/upgrade-20130401161138.staging.log
+END

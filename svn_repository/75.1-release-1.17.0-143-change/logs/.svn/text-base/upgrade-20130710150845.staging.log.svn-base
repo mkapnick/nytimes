@@ -1,0 +1,127 @@
+15:08:59 SQL> @/dbbackups/ECST/migrations/core_owner/75.1-release-1.17.0-143-change/upgrade.sql
+15:08:59 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+15:08:59 SQL> 
+15:08:59 SQL> variable is_current_version_fine NUMBER;
+15:08:59 SQL> variable change_version NUMBER;
+15:08:59 SQL> variable bad_current_version VARCHAR2(1024);
+15:08:59 SQL> 
+15:08:59 SQL> exec :change_version := 143;
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:08:59 SQL> exec PROCS_SYSTEM_V16.CHECK_VERSION(:change_version - 1, :is_current_version_fine);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.12
+15:08:59 SQL> exec :bad_current_version := 'Current version is bad, please update your version to '||(:change_version-1);
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:08:59 SQL> 
+15:08:59 SQL> -- two copies of crosswords product, differ only in unit_price, which is not used
+15:08:59 SQL> update product_offering set product_id = 6 where product_id = 2;
+
+17 rows updated.
+
+Elapsed: 00:00:00.07
+15:08:59 SQL> -- two copies of archive article product, exactly the same
+15:08:59 SQL> update product_offering set product_id = 3 where product_id = 4;
+
+47 rows updated.
+
+Elapsed: 00:00:00.03
+15:08:59 SQL> truncate table product_eligibility;
+
+Table truncated.
+
+Elapsed: 00:00:01.00
+15:09:00 SQL> delete from product where id = 2;
+
+1 row deleted.
+
+Elapsed: 00:00:00.13
+15:09:00 SQL> delete from product where id = 4;
+
+1 row deleted.
+
+Elapsed: 00:00:00.01
+15:09:00 SQL> 
+15:09:00 SQL> -- fixing three product_offerings that have NONE capability due to hack for MEU
+15:09:00 SQL> update product_offering set capability_id = 9 where product_id = 73 and capability_id = 0;
+
+3 rows updated.
+
+Elapsed: 00:00:00.06
+15:09:00 SQL> 
+15:09:00 SQL> alter table product add entitlement varchar2(32);
+
+Table altered.
+
+Elapsed: 00:00:01.25
+15:09:01 SQL> alter table product add is_shareable number default 0 not null;
+
+Table altered.
+
+Elapsed: 00:00:00.19
+15:09:02 SQL> alter table product add tax_category_id number default 0 not null;
+
+Table altered.
+
+Elapsed: 00:00:00.09
+15:09:02 SQL> alter table product add default_vat_rate varchar2(32);
+
+Table altered.
+
+Elapsed: 00:00:00.08
+15:09:02 SQL> 
+15:09:02 SQL> -- set default_vat_rate to 0.2 for crosswords and archive articles, 0 for everything else
+15:09:02 SQL> update product set default_vat_rate = '{"*": 0.0}';
+
+77 rows updated.
+
+Elapsed: 00:00:00.03
+15:09:02 SQL> update product set default_vat_rate = '{"*": .2}' where id in (3, 6);
+
+2 rows updated.
+
+Elapsed: 00:00:00.00
+15:09:02 SQL> alter table product modify default_vat_rate constraint vat_not_null not null;
+
+Table altered.
+
+Elapsed: 00:00:00.13
+15:09:02 SQL> 
+15:09:02 SQL> EXEC PROCS_SYSTEM_V16.INCREMENT_VERSION();
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.00
+15:09:02 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+15:09:02 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 75.1-release-1.17.0-143-change
+        SVN Revision: 13437
+        Duration: 4 sec.
+        DBA: apathrose
+        

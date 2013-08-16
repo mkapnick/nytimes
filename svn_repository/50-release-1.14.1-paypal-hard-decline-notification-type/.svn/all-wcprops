@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/db/!svn/ver/12595/trunk/oracle/migrations/EC/core_owner/50-release-1.14.1-paypal-hard-decline-notification-type
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/12592/trunk/oracle/migrations/EC/core_owner/50-release-1.14.1-paypal-hard-decline-notification-type/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/db/!svn/ver/12586/trunk/oracle/migrations/EC/core_owner/50-release-1.14.1-paypal-hard-decline-notification-type/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/db/!svn/ver/12586/trunk/oracle/migrations/EC/core_owner/50-release-1.14.1-paypal-hard-decline-notification-type/rollback.sql
+END

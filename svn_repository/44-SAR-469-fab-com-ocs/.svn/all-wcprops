@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/db/!svn/ver/12225/trunk/oracle/migrations/EC/core_owner/44-SAR-469-fab-com-ocs
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/db/!svn/ver/12176/trunk/oracle/migrations/EC/core_owner/44-SAR-469-fab-com-ocs/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/db/!svn/ver/12172/trunk/oracle/migrations/EC/core_owner/44-SAR-469-fab-com-ocs/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/db/!svn/ver/12172/trunk/oracle/migrations/EC/core_owner/44-SAR-469-fab-com-ocs/rollback.sql
+END

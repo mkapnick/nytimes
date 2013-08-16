@@ -1,0 +1,64 @@
+14:42:36 SQL> @/dbbackups/ECST/migrations/core_owner/59-SAR-617-unique-group-email/upgrade.sql
+14:42:36 SQL> WHENEVER SQLERROR EXIT ROLLBACK;
+14:42:36 SQL> 
+14:42:36 SQL> --was set to pacific.edu incorrectly for SY-2192
+14:42:36 SQL> update group_account_email_domain set email_domain='pacificu.edu', updated_by='jira-SAR-617', update_date=sysdate where ID=724;
+
+0 rows updated.
+
+Elapsed: 00:00:00.03
+14:42:36 SQL> 
+14:42:36 SQL> --is active even though the subscription is  not, another sjcny.edu is active with group account id 59253 with active subscription
+14:42:36 SQL> update group_account_email_domain set is_active=0, updated_by='jira-SAR-617', update_date=sysdate where ID=431;
+
+1 row updated.
+
+Elapsed: 00:00:00.00
+14:42:36 SQL> 
+14:42:36 SQL> --Based on Carol email
+14:42:36 SQL> --UNIV OF NEB-LINCOLN via Bugzilla 74966 (892025628@unl.edu) is UNL.edu – that’s a L as in Lincoln
+14:42:36 SQL> --UNIV OF NORTHERN IA via Bugzilla 74966 (same ticket) (892025586@uni.edu) is UNI.edu – as in Iowa
+14:42:36 SQL> update group_account_email_domain set email_domain='unl.edu', updated_by='jira-SAR-617', update_date=sysdate where ID=306;
+
+1 row updated.
+
+Elapsed: 00:00:00.01
+14:42:36 SQL> 
+14:42:36 SQL> --duplicate uni.edu under same  group account
+14:42:36 SQL> update group_account_email_domain set is_active=0, updated_by='jira-SAR-617', update_date=sysdate where ID=307;
+
+1 row updated.
+
+Elapsed: 00:00:00.00
+14:42:36 SQL> 
+14:42:36 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+14:42:36 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+14:42:36 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <nytd_oracledba@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+Cc: nytd_oracledba@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: PRIMARY
+        SID: ECST
+        Schema: core_owner
+        Migration: 59-SAR-617-unique-group-email
+        SVN Revision: 12922
+        Duration: 0 sec.
+        DBA: sbao
+        Service Request: https://jira.em.nytimes.com/browse/ORA-907

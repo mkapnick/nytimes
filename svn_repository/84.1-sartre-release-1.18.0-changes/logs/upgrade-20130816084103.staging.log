@@ -1,0 +1,119 @@
+08:41:06 SQL> @/dbbackups/ECST/migrations/core_owner/84.1-sartre-release-1.18.0-changes/upgrade.sql
+08:41:06 SQL> -- START CHANGE SCRIPT #20130801152708: 20130801152708-alter_ar_balance_indexes.sql
+08:41:06 SQL> 
+08:41:06 SQL> delete from
+08:41:06   2  ar_balance_applies a
+08:41:06   3  where
+08:41:06   4  a.rowid >
+08:41:06   5  any (select b.rowid
+08:41:06   6  	      from
+08:41:06   7  	      ar_balance_applies b
+08:41:06   8  	      where
+08:41:06   9  	      a.charge_id = b.charge_id
+08:41:06  10  	      and
+08:41:06  11  	      a.invoice_id = B.invoice_id
+08:41:06  12  )
+08:41:06  13  ;
+
+0 rows deleted.
+
+Elapsed: 00:00:27.22
+08:41:33 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+08:41:33 SQL> 
+08:41:33 SQL> ALTER TABLE AR_BALANCE_APPLIES ADD CONSTRAINT AR_APPLIES_PK PRIMARY KEY (CHARGE_ID, INVOICE_ID) ;
+
+Table altered.
+
+Elapsed: 00:00:13.57
+08:41:46 SQL> ALTER TABLE AR_BALANCE_APPLIES ADD CONSTRAINT AR_APPLIES_CHARGEID_FK FOREIGN KEY (CHARGE_ID) REFERENCES CHARGE (ID);
+
+Table altered.
+
+Elapsed: 00:00:21.12
+08:42:07 SQL> ALTER TABLE AR_BALANCE_APPLIES ADD CONSTRAINT AR_APPLIES_INVID_FK FOREIGN KEY (INVOICE_ID) REFERENCES INVOICE (ID);
+ALTER TABLE AR_BALANCE_APPLIES ADD CONSTRAINT AR_APPLIES_INVID_FK FOREIGN KEY (INVOICE_ID) REFERENCES INVOICE (ID)
+            *
+ERROR at line 1:
+ORA-00054: resource busy and acquire with NOWAIT specified or timeout expired 
+
+
+Elapsed: 00:00:00.01
+08:42:08 SQL> CREATE INDEX AR_BAL_APPLIES_CID_IDX ON AR_BALANCE_APPLIES (CHARGE_ID) TABLESPACE CORE_IDX;
+
+Index created.
+
+Elapsed: 00:00:20.25
+08:42:28 SQL> CREATE INDEX AR_BAL_APPLIES_IID_IDX ON AR_BALANCE_APPLIES (INVOICE_ID) TABLESPACE CORE_IDX;
+
+Index created.
+
+Elapsed: 00:00:16.09
+08:42:44 SQL> 
+08:42:44 SQL> 
+08:42:44 SQL> 
+08:42:44 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+08:42:44   2  VALUES (20130801152708, CURRENT_TIMESTAMP, USER, '20130801152708-alter_ar_balance_indexes.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.01
+08:42:44 SQL> 
+08:42:44 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+08:42:44 SQL> 
+08:42:44 SQL> -- END CHANGE SCRIPT #20130801152708: 20130801152708-alter_ar_balance_indexes.sql
+08:42:44 SQL> 
+08:42:44 SQL> 
+08:42:44 SQL> -- START CHANGE SCRIPT #20130801152742: 20130801152742-alter_charge_status_indexes.sql
+08:42:44 SQL> 
+08:42:44 SQL> ALTER TABLE CHARGE_STATUS_LOG ADD CONSTRAINT CHARGE_STATUS_LOG_PK PRIMARY KEY (ID);
+
+Table altered.
+
+Elapsed: 00:01:02.75
+08:43:47 SQL> ALTER TABLE CHARGE_STATUS_LOG ADD CONSTRAINT CHARGE_STATUS_LOG_CRG_ID_FK FOREIGN KEY (CHARGE_ID) REFERENCES CHARGE (ID);
+
+Table altered.
+
+Elapsed: 00:01:07.47
+08:44:54 SQL> ALTER TABLE CHARGE_STATUS_LOG ADD CONSTRAINT CHARGE_STATUS_LOG_CSSTAT_ID_FK FOREIGN KEY (CHARGE_STATUS_ID) REFERENCES CHARGE_STATUS (ID);
+
+Table altered.
+
+Elapsed: 00:00:46.89
+08:45:41 SQL> CREATE INDEX CHARGE_STATUS_LOG_CID_IDX ON CHARGE_STATUS_LOG (CHARGE_ID) TABLESPACE CORE_IDX;
+
+Index created.
+
+Elapsed: 00:01:32.85
+08:47:14 SQL> 
+08:47:14 SQL> 
+08:47:14 SQL> 
+08:47:14 SQL> INSERT INTO dbdeploy_changelog (change_number, complete_dt, applied_by, description)
+08:47:14   2  VALUES (20130801152742, CURRENT_TIMESTAMP, USER, '20130801152742-alter_charge_status_indexes.sql');
+
+1 row created.
+
+Elapsed: 00:00:00.01
+08:47:14 SQL> 
+08:47:14 SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+08:47:14 SQL> 
+08:47:14 SQL> -- END CHANGE SCRIPT #20130801152742: 20130801152742-alter_charge_status_indexes.sql
+08:47:14 SQL> 
+08:47:14 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+08:47:14 SQL> spool off;

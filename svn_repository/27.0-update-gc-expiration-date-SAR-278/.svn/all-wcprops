@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/db/!svn/ver/11039/trunk/oracle/migrations/EC/core_owner/27.0-update-gc-expiration-date-SAR-278
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/db/!svn/ver/11029/trunk/oracle/migrations/EC/core_owner/27.0-update-gc-expiration-date-SAR-278/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/db/!svn/ver/11028/trunk/oracle/migrations/EC/core_owner/27.0-update-gc-expiration-date-SAR-278/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/db/!svn/ver/10949/trunk/oracle/migrations/EC/core_owner/27.0-update-gc-expiration-date-SAR-278/rollback.sql
+END

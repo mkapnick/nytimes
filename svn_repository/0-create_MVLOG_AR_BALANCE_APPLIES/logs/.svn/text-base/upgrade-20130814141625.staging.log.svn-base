@@ -1,0 +1,23 @@
+14:16:28 SQL> @/dbbackups/ECST3/migrations/core_owner/0-create_MVLOG_AR_BALANCE_APPLIES/upgrade.sql
+14:16:28 SQL> 
+14:16:28 SQL> Drop MATERIALIZED VIEW LOG ON CORE_OWNER.AR_BALANCE_APPLIES;
+Drop MATERIALIZED VIEW LOG ON CORE_OWNER.AR_BALANCE_APPLIES
+*
+ERROR at line 1:
+ORA-12002: there is no materialized view log on table 
+"CORE_OWNER"."AR_BALANCE_APPLIES" 
+
+
+Elapsed: 00:00:00.79
+14:16:28 SQL> 
+14:16:28 SQL> CREATE MATERIALIZED VIEW LOG ON CORE_OWNER.AR_BALANCE_APPLIES TABLESPACE CORE;
+
+Materialized view log created.
+
+Elapsed: 00:00:00.85
+14:16:29 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+14:16:29 SQL> spool off;

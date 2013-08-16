@@ -1,0 +1,32 @@
+11:00:45 SQL> @/dbbackups/ECST3/migrations/core_owner/0-create-MVLOG-BUNDLE/upgrade.sql
+11:00:45 SQL> CREATE MATERIALIZED VIEW LOG ON "CORE_OWNER"."BUNDLE"  TABLESPACE "CORE" WITH PRIMARY KEY EXCLUDING NEW VALUES;
+
+Materialized view log created.
+
+Elapsed: 00:00:00.24
+11:00:45 SQL> 
+11:00:45 SQL> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+11:00:45 SQL> spool off;
+
+
+Subject: Nomad upgrade completed successfully: ECST3@rac01.stg.ewr1.nytimes.com
+From: Nomad for Oracle <db.alert@nytimes.com>
+To: nytd_ecommerce@nytimes.com
+
+Nomad upgrade operation completed successfully without errors. 
+        
+        Details
+        -------
+        DB Hostname: rac01.stg.ewr1.nytimes.com
+        DB Role: primary
+        Database: ECST3
+        Schema: core_owner
+        Migration: 0-create-MVLOG-BUNDLE
+        SVN Revision: 14162
+        Duration: 0 sec.
+        DBA: achinnappan
+        

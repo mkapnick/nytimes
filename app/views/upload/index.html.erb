@@ -54,7 +54,7 @@
         </div>
         <div id = "recentRepoHatchDiv">
             <span id="recentRepoDirectoriesText" >Recent Offer Chain Loads</span>
-            <%= text_area 'recentRepoArea', :hatch, :style=>"width: 35%", :rows => 5,  :readonly => true, :value => `cd #{Rails.root}/public/offer_chains_svn_2/core_owner && ls -r` %>
+            <%= text_area 'recentRepoArea', :hatch, :style=>"width: 35%", :rows => 5,  :readonly => true, :value => `cd #{Rails.root}/svn_repository/ && ls -r` %>
         </div>
       <% end %>
     </div>

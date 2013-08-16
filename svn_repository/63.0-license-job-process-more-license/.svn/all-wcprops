@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/db/!svn/ver/13119/trunk/oracle/migrations/EC/core_owner/63.0-license-job-process-more-license
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/db/!svn/ver/13116/trunk/oracle/migrations/EC/core_owner/63.0-license-job-process-more-license/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/db/!svn/ver/13113/trunk/oracle/migrations/EC/core_owner/63.0-license-job-process-more-license/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/db/!svn/ver/13113/trunk/oracle/migrations/EC/core_owner/63.0-license-job-process-more-license/rollback.sql
+END

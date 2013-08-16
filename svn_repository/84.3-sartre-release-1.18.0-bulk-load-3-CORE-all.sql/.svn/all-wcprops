@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/db/!svn/ver/14251/trunk/oracle/migrations/EC/core_owner/84.3-sartre-release-1.18.0-bulk-load-3-CORE-all.sql
+END
+approved
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/db/!svn/ver/14249/trunk/oracle/migrations/EC/core_owner/84.3-sartre-release-1.18.0-bulk-load-3-CORE-all.sql/approved
+END
+upgrade.sql
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/db/!svn/ver/14232/trunk/oracle/migrations/EC/core_owner/84.3-sartre-release-1.18.0-bulk-load-3-CORE-all.sql/upgrade.sql
+END
+rollback.sql
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/db/!svn/ver/14232/trunk/oracle/migrations/EC/core_owner/84.3-sartre-release-1.18.0-bulk-load-3-CORE-all.sql/rollback.sql
+END

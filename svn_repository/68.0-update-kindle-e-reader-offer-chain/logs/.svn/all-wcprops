@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/db/!svn/ver/13303/trunk/oracle/migrations/EC/core_owner/68.0-update-kindle-e-reader-offer-chain/logs
+END
+upgrade-20130702095414.production.log
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/db/!svn/ver/13303/trunk/oracle/migrations/EC/core_owner/68.0-update-kindle-e-reader-offer-chain/logs/upgrade-20130702095414.production.log
+END
+upgrade-20130702095103.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/db/!svn/ver/13302/trunk/oracle/migrations/EC/core_owner/68.0-update-kindle-e-reader-offer-chain/logs/upgrade-20130702095103.staging.log
+END
+upgrade-20130701111027.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/db/!svn/ver/13279/trunk/oracle/migrations/EC/core_owner/68.0-update-kindle-e-reader-offer-chain/logs/upgrade-20130701111027.staging.log
+END
+upgrade-20130701112523.staging.log
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/db/!svn/ver/13283/trunk/oracle/migrations/EC/core_owner/68.0-update-kindle-e-reader-offer-chain/logs/upgrade-20130701112523.staging.log
+END
